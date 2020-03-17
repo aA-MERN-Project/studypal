@@ -7,12 +7,14 @@ const bodyParser = require('body-parser');
 // EXPRESS ROUTES
 const users = require("./routes/api/users");
 
-// USING EXPRESS ROUTES
-app.use("/api/users", users);
 
 //MIDDLE WARE FOR BODY PARSER
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+
+// USING EXPRESS ROUTES
+app.use("/api/users", users);
 
 // SETUP MONGOOSE DB -> MONGODB
 mongoose
