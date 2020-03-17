@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
             password: '',
             errors: {}
         }
+        this.renderErrors = this.renderErrors.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.update = this.update.bind(this)
     }
@@ -26,13 +27,20 @@ class SessionForm extends React.Component {
     }
 
     renderErrors() {
-        this.props.errors
+        this.props.errors.map((err) => {
+            return(
+                <li>
+                    {err}
+                </li>
+            )
+        })
     }
 
     login() {
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
+                    {this.renderErrors()}
                     <div>
                         <label>Email
                             <input
@@ -63,6 +71,7 @@ class SessionForm extends React.Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
+                    {this.renderErrors()}
                     <div>
                         <label>Username
                             <input
