@@ -6,6 +6,7 @@ const db = require('./config/keys').mongoURI;
 const bodyParser = require('body-parser');
 // EXPRESS ROUTES
 const users = require("./routes/api/users");
+const cafes = require("./routes/api/cafes")
 
 
 //MIDDLE WARE FOR BODY PARSER
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 
 // USING EXPRESS ROUTES
 app.use("/api/users", users);
+app.use("/api/cafes", cafes);
 
 // SETUP MONGOOSE DB -> MONGODB
 mongoose
