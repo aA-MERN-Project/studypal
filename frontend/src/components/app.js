@@ -1,7 +1,8 @@
 import React from 'react';
-import LoginFormContainer from './session/login_form_container'
-import SignupFormContainer from './session/signup_form_container'
-import { Switch, Route } from "react-router";
+import LoginFormContainer from './session/login_form_container';
+import SignupFormContainer from './session/signup_form_container';
+// import { Switch, Route } from "react-router";
+import {Switch, Route} from 'react-router-dom';
 
 const App = () => (
   <div>
