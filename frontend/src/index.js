@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+// import * as serviceWorker from './serviceWorker';
+import axios from 'axios';
+
 import Root from "./components/root";
 import configureStore from './store/store';
-
-import jwt_decode from 'jwt_decode';
+import jwt_decode from 'jwt-decode';
 import {setAuthToken} from './util/session_api_util';
 import {logout} from './actions/session_actions';
-
-
-
-// ReactDOM.render(<Root />, document.getElementById('root'));
 
 document.addEventListener("DOMContentLoaded", () => {
     // let store = configureStore({});
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(localStorage.jwtToken){
         setAuthToken(localStorage.jwtToken);
-        const decodedUser = jwt_decode(localStoage.jwtToken);
+        const decodedUser = jwt_decode(localStorage.jwtToken);
         const preloadedState = {session: {isAuthenticated: true, user: decodedUser}};
     
         store = configureStore(preloadedState);
@@ -37,5 +37,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const root = document.getElementById("root");
 
-    ReactDOM.render(<Root store={store} />, root);
+    debugger;
+    ReactDOM.render(<Root store={store}/>, root);
+    // ReactDOM.render(<App store={store} />, root);
 })
+
+
+
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+
+//don't need
+// serviceWorker.unregister();
+
+//set axios on the window
+
+window.axios=axios;

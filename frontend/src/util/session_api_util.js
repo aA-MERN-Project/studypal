@@ -16,6 +16,7 @@ export const signup = (userData) => {
     return axios.post('api/users/register',userData);
 } 
 
+//not using 
 export const logout = () => {
     return null
 }

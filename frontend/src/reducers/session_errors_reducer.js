@@ -3,6 +3,7 @@ import {
 } from '../actions/session_actions';
 
 const _nullErrors = []; 
+
 const SessionErrorsReducer = (state = _nullErrors, action) => {
     Object.freeze(state);
     switch(action.type){

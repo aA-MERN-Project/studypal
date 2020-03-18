@@ -17,7 +17,7 @@ const logoutCurrentUser = () => ({
     type: LOGOUT_CURRENT_USER
 });
 
-const receiveErrors = errors => dispatch ({
+const receiveErrors = errors => ({
     type: RECEIVE_ERRORS,
     errors
 });
@@ -35,12 +35,12 @@ const receiveUserSignIn = () => ({
 //         err => dispatch(receiveErrors(err.responseJSON))
 // );
 
-//shouldn't it pass dispatch? 
-export const signup = () => dispatch =>  (
-    SessionAPIUTil.signup(user)
-        .then(user => dispatch(receiveCurrentUser(user))),
-        err => dispatch(receiveErrors(err.responseJSON))
-);
+//Wilson's sighup function
+// export const signup = () => dispatch =>  (
+//     SessionAPIUTil.signup(user)
+//         .then(user => dispatch(receiveCurrentUser(user))),
+//         err => dispatch(receiveErrors(err.responseJSON))
+// );
 
 //Fei added a different logout function
 //Wilson's logout function
@@ -51,13 +51,13 @@ export const signup = () => dispatch =>  (
 // );
 
 //added by fei
-export const signup  = (user) => dispatch => {
+export const signup  = (user) => dispatch => (
     SessionAPIUtil.signup(user)
         .then(() => dispatch(receiveUserSignIn())
-        .catch(err => dispatch(receiveErrors(err.response.data)))
-};   
+        .catch(err => dispatch(receiveErrors(err.response.data))))
+);
 
-//added by fei, 
+//added by fei
 export const login = (user) => dispatch => {
     return SessionAPIUtil.login(user).then(res => {
         const {token} = res.data;
