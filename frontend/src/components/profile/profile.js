@@ -28,11 +28,13 @@ class Profile extends React.Component {
     render() {
         return (
           <div className="page">
-            <div className="profile-info-div">
-              <div className="profile-info">
-                <div className="name">Name</div>
-                <div className="email">Email</div>
-                <div>Current Location</div>
+            <div>
+              <div className="profile-info-div">
+                <div className="profile-info">
+                  <div className="name">Name</div>
+                  <div className="email">Email</div>
+                  <div>Current Location</div>
+                </div>
               </div>
             </div>
             <br />
@@ -43,7 +45,7 @@ class Profile extends React.Component {
                   <div className="top-row">
                     <div className="top-mini-1">
                       <div className="within-select">Within: </div>
-                      <div>
+                      <form>
                         <label className="filter">
                           <input className="checkbox" type="checkbox" name="0.5 miles" />
                           <span className="checkbox"></span>
@@ -69,14 +71,14 @@ class Profile extends React.Component {
                           <span className="checkbox"></span>
                           10 miles
                         </label>
-                      </div>
+                      </form>
                     </div>
 
                       <div className="vertical-line"></div>
 
                     <div className="top-mini-2">
                       <div className="within-select">Open for the next: </div>
-                      <div>
+                      <form>
                         <label className="filter">
                           <input className="checkbox" type="checkbox" name="1 hour" />
                           <span className="checkbox"></span>
@@ -102,7 +104,7 @@ class Profile extends React.Component {
                           <span className="checkbox"></span>
                           8 hours
                         </label>
-                      </div>
+                      </form>
                     </div>
                   </div>
                   <br />
@@ -110,7 +112,7 @@ class Profile extends React.Component {
                   <div className="bottom-row">
                     <div className="mini-1">
                       <div className="within-select-2">Free WiFi: </div>
-                      <div >
+                      <form >
                         <label className="filter">
                           <input className="checkbox" type="checkbox" name="true" />
                           <span className="checkbox"></span>
@@ -121,13 +123,13 @@ class Profile extends React.Component {
                           <span className="checkbox"></span>
                           No
                         </label>
-                      </div>
+                      </form>
                     </div>
                       <div className="vertical-line"></div>
 
                     <div className="mini-2">
                       <div className="within-select-2">Takes Credit Card: </div>
-                      <div >
+                      <form >
                         <label className="filter">
                           <input className="checkbox" type="checkbox" name="true" />
                           <span className="checkbox"></span>
@@ -138,13 +140,13 @@ class Profile extends React.Component {
                           <span className="checkbox"></span>
                           No
                         </label>
-                      </div>
+                      </form>
                     </div>
 
                       <div className="vertical-line"></div>
                     <div className="mini-3">
                       <div className="within-select-2">Noise Level: </div>
-                      <div >
+                      <form >
                         <label className="filter"> 
                           <input className="checkbox" type="checkbox" name="quiet" />
                           <span className="checkbox"></span>
@@ -160,7 +162,7 @@ class Profile extends React.Component {
                           <span className="checkbox"></span>
                           Loud
                         </label>
-                      </div>
+                      </form>
                     </div>
 
                   </div>
@@ -168,6 +170,9 @@ class Profile extends React.Component {
               </div>
 
             </div>
+              <div className="find-cafe-profile-div">
+                <button className="find-cafe-profile">Find a Cafe</button>
+              </div>
           </div>
         );
     }

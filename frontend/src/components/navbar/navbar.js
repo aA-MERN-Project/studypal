@@ -16,6 +16,7 @@ class NavBar extends React.Component {
             return (
                 <div className="button-div">
                     <Link className="button" to="/login">Log In</Link>
+                    <div className="vertical-line-navbar"></div>
                     <Link className="button" to="/signup">Sign Up</Link>
                 </div>
             )

@@ -20,6 +20,11 @@ const UserSchema = new Schema({
     date:{
         type: Date,
         default: Date.now
+    },
+
+    zipcode:{
+        type:Number,
+        required:true
     }
 });
 
