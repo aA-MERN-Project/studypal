@@ -3,9 +3,7 @@ import { signup } from '../../actions/session_actions'
 import SessionForm from './session_form'
 
 const mapStateToProps = state => {
-    debugger;
     return{
-    // errors: null,
     users:state.entities.users,
     errors: state.errors.session,
     formType: "Sign up",
