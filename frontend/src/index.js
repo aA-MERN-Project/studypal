@@ -18,7 +18,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // TESTING APIS
     window.filter = { term: 'starbucks'}
-
     window.getCafes = getCafes;
-
 })
