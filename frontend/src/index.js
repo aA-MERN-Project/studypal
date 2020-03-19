@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from "./components/root"
 import configureStore from './store/store';
-import getCafes from './util/yelp_api';
+import getYelpCafes from './util/yelp_api';
+
+import {getCafes, getCafe} from './util/cafe_api_util';
 
 
 // ReactDOM.render(<Root />, document.getElementById('root'));
@@ -17,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // TESTING APIS
     window.filter = { term: 'starbucks'}
-
     window.getCafes = getCafes;
+    window.getCafe = getCafe;
+    window.getYelpCafes = getYelpCafes;
 })
