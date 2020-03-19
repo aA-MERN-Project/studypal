@@ -11,7 +11,7 @@ import {Switch, Route} from 'react-router-dom';
 const App = () => {
   return(
     <div className="app">
-        <NavBarContainer />
+        {/* <NavBarContainer /> */}
 
       <Switch>
         <Route exact path="/login" component={LoginFormContainer}/>

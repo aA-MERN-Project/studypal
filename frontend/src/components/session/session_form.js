@@ -1,5 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import './signup_form.css'
+import './login_form.css'
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -20,18 +22,11 @@ class SessionForm extends React.Component {
         this.signup = this.signup.bind(this);
         this.login =this.login.bind(this);
     }
-    // render(){
-    //     return(
-    //         <div>Hello</div>
-    //     )
-    // }
     
     componentWillReceiveProps(nextProps){
-        // debugger;
         if(nextProps.formType === "Sign up"){
             if(nextProps.signedIn === true){
                 console.log("SUCCESS");
-                // this.props.history.push('/test');
             }
             this.setState({errors: nextProps.errors});
         }
@@ -46,11 +41,7 @@ class SessionForm extends React.Component {
             password2: this.state.password2,
             zipcode: this.state.zipcode
         };
-        // debugger;
         this.props.processForm(user);
-        
-    //     this.props.processForm(user, this.props.history)
-    //         .then(this.props.history.push("/api/users/test"));
     }
 
     update(field){
@@ -60,7 +51,6 @@ class SessionForm extends React.Component {
     }
 
     renderErrors() {
-        // debugger;
         if (this.props.errors){
             return(
                 Object.values(this.props.errors).map((err) => (
@@ -116,68 +106,79 @@ class SessionForm extends React.Component {
 
     signup() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    
-                    <div>
-                        <label>Username
-                            <input
-                                type="text"
-                                value={this.state.handle}
-                                onChange={this.update('handle')}
-                            />
-                        </label>
-                    </div>
-                    <br />
-                    <div>
-                        <label>Email
-                            <input
-                                type="text"
-                                value={this.state.email}
-                                onChange={this.update('email')}
-                            />
-                        </label>
-                    </div>
-                    <br />
-                    <div>
-                        <label>Password
-                            <input
-                                type="password"
-                                value={this.state.password}
-                                onChange={this.update('password')}
-                            />
-                        </label>
-                    </div>
-                    <br />
-                    <div>
-                        <label>Confirm Password
-                            <input
-                                type="password"
-                                value={this.state.password2}
-                                onChange={this.update('password2')}
-                            />
-                        </label>
-                    </div>
-                    <br/>
-                    <div>
-                        <label>Zipcode
-                            <input
-                                type="zipcode"
-                                value={this.state.zipcode}
-                                onChange={this.update('zipcode')}
-                            />
-                        </label>
-                    </div>
-                    <button>{this.props.formType}</button>
-                </form>
-                <div>
-                    <ul>
-                        {this.renderErrors()}
-                    </ul>
+          <div className="signup-page-div">
+            <div className="signup-div">
+              <form className="left-div-signup" onSubmit={this.handleSubmit}>
+                <div className="signup-form-div">
+                  <div className="welcome-studypal">Welcome to StudyPal</div>
+                  <div>Create a new account</div>
+                  <div>
+                    <label>
+                      Username
+                      <input
+                        type="text"
+                        value={this.state.handle}
+                        onChange={this.update("handle")}
+                      />
+                    </label>
+                  </div>
+                  <br />
+                  <div>
+                    <label>
+                      Email
+                      <input
+                        type="text"
+                        value={this.state.email}
+                        onChange={this.update("email")}
+                      />
+                    </label>
+                  </div>
+                  <br />
+                  <div>
+                    <label>
+                      Password
+                      <input
+                        type="password"
+                        value={this.state.password}
+                        onChange={this.update("password")}
+                      />
+                    </label>
+                  </div>
+                  <br />
+                  <div>
+                    <label>
+                      Confirm Password
+                      <input
+                        type="password"
+                        value={this.state.password2}
+                        onChange={this.update("password2")}
+                      />
+                    </label>
+                  </div>
+                  <br />
+                  <div>
+                    <label>
+                      Zipcode
+                      <input
+                        type="zipcode"
+                        value={this.state.zipcode}
+                        onChange={this.update("zipcode")}
+                      />
+                    </label>
+                  </div>
+                  <button>{this.props.formType}</button>
                 </div>
-                
+              </form>
             </div>
-        )
+
+            <div className="right-div-signup">
+                <div >image</div>
+            </div>
+            <div>
+                <ul>{this.renderErrors()}</ul>
+            </div>
+          </div>
+        );
     }
 
     render() {
