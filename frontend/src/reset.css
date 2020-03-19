@@ -1,20 +1,4 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
- */
-
- html, body, div, span, object, iframe,
+/* html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
 del, dfn, em, img, ins, kbd, q, samp,
@@ -33,11 +17,6 @@ time, mark, audio, video {
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
-}
-
-html, body {
-    height: 100%;
-    width: 100%;
 }
 
 body {
@@ -71,14 +50,14 @@ a {
     background:transparent;
 }
 
-/* change colours to suit your needs */
+
 ins {
     background-color:#ff9;
     color:#000;
     text-decoration:none;
 }
 
-/* change colours to suit your needs */
+
 mark {
     background-color:#ff9;
     color:#000;
@@ -100,7 +79,7 @@ table {
     border-spacing:0;
 }
 
-/* change border colour to suit your needs */
+
 hr {
     display:block;
     height:1px;
@@ -112,4 +91,4 @@ hr {
 
 input, select {
     vertical-align:middle;
-}
+} */

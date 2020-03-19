@@ -1,15 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap');
 
 .navbar {
+    display: flex;
+    justify-content: space-between;
     height: 68px;
     background-color: #4169E1;
 }
 
 .button {
+    display: inline-block;
     font-family: "Montserrat";
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
+    color: white;
+    text-decoration: none;
+    padding-left: 7%;
+    width: 25%
 }
 
 .logo {
@@ -17,4 +24,16 @@
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
+    color: white;
+    padding-left: 4%;
+    padding-top: .5%
+}
+
+.button-div {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: .5%;
+    padding-right: 6%;
+    width: 300px;
+    padding-top: 1.9%;
 }

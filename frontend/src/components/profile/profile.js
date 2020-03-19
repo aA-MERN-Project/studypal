@@ -1,3 +1,5 @@
+import '../../reset.css'
+import './profile.css'
 import React from 'react'
 
 class Profile extends React.Component {
@@ -5,7 +7,7 @@ class Profile extends React.Component {
         super(props)
 
         this.state = {
-            test: test
+            test: "test"
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -24,68 +26,150 @@ class Profile extends React.Component {
     }
 
     render() {
-        return(
-            <div>
-                <div>
-                    <div className="name">Name</div>
-                    <div className="email">Email</div>
-                    <div>Current Location</div>
-                </div>
-                <br/>
-                <div>
-                    <div className="preferences">Saved Preferences</div>
-                    <div>
-                        <div className="top-row">
-                            <div className="within">
-                                <div className="within-select">Within: </div>
-                                <select className="within-select">
-                                    <option value="0.5 miles">0.5 miles</option>
-                                    <option value="1 mile">1 mile</option>
-                                    <option value="3 miles">3 miles</option>
-                                    <option value="5 miles">5 miles</option>
-                                    <option value="10 miles">10 miles</option>
-                                </select>
-                            </div>
-                            <div className="open-for">
-                                <div className="within-select">Open for the next: </div>
-                                <select className="open-for-selected">
-                                    <option value="1 hour">1 hour</option>
-                                    <option value="2 hours">2 hours</option>
-                                    <option value="3 hours">3 hours</option>
-                                    <option value="5 hours">5 hours</option>
-                                    <option value="8 hours">8 hours</option>
-                                </select>
-                            </div>
-                        </div>
-                        <br/>
-                        <div className="bottom-row">
-                            <div className="wifi">
-                                <div className="within-select">Free WiFi: </div>
-                                <select className="wifi-select">
-                                    <option value="true">Yes</option>
-                                    <option value="false">No</option>
-                                </select>
-                            </div>
-                            <div className="credit">
-                                <div className="within-select">Takes Credit Card: </div>
-                                <select className="credit-select">
-                                    <option value="true">Yes</option>
-                                    <option value="false">No</option>
-                                </select>
-                            </div>
-                            <div className="noise">
-                                <div className="within-select">Noise Level: </div>
-                                <select className="noise-select">
-                                    <option value="quiet">Quiet</option>
-                                    <option value="average">Average</option>
-                                    <option value="loud">Loud</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        return (
+          <div className="page">
+            <div className="profile-info-div">
+              <div className="profile-info">
+                <div className="name">Name</div>
+                <div className="email">Email</div>
+                <div>Current Location</div>
+              </div>
             </div>
-        )
+            <br />
+            <div className="outer-filter-box-div">
+              <div className="filter-box-div">
+                <div className="preferences">Saved Preferences</div>
+                <div>
+                  <div className="top-row">
+                    <div className="top-mini-1">
+                      <div className="within-select">Within: </div>
+                      <div>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="0.5 miles" />
+                          <span className="checkbox"></span>
+                          0.5 miles
+                        </label>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="1 mile" />
+                          <span className="checkbox"></span>
+                          1 mile
+                        </label>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="3 miles" />
+                          <span className="checkbox"></span>
+                          3 miles
+                        </label>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="5 miles" />
+                          <span className="checkbox"></span>
+                          5 miles
+                        </label>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="10 miles" />
+                          <span className="checkbox"></span>
+                          10 miles
+                        </label>
+                      </div>
+                    </div>
+
+                      <div className="vertical-line"></div>
+
+                    <div className="top-mini-2">
+                      <div className="within-select">Open for the next: </div>
+                      <div>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="1 hour" />
+                          <span className="checkbox"></span>
+                          1 hour
+                        </label>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="2 hours" />
+                          <span className="checkbox"></span>
+                          2 hours
+                        </label>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="3 hours" />
+                          <span className="checkbox"></span>
+                          3 hours
+                        </label>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="5 hours" />
+                          <span className="checkbox"></span>
+                          5 hours
+                        </label>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="8 hours" />
+                          <span className="checkbox"></span>
+                          8 hours
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <div className="horizontal-line"></div>
+                  <div className="bottom-row">
+                    <div className="mini-1">
+                      <div className="within-select-2">Free WiFi: </div>
+                      <div >
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="true" />
+                          <span className="checkbox"></span>
+                          Yes
+                        </label>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="false" />
+                          <span className="checkbox"></span>
+                          No
+                        </label>
+                      </div>
+                    </div>
+                      <div className="vertical-line"></div>
+
+                    <div className="mini-2">
+                      <div className="within-select-2">Takes Credit Card: </div>
+                      <div >
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="true" />
+                          <span className="checkbox"></span>
+                          Yes
+                        </label>
+                        <label className="filter">
+                          <input className="checkbox" type="checkbox" name="false" />
+                          <span className="checkbox"></span>
+                          No
+                        </label>
+                      </div>
+                    </div>
+
+                      <div className="vertical-line"></div>
+                    <div className="mini-3">
+                      <div className="within-select-2">Noise Level: </div>
+                      <div >
+                        <label className="filter"> 
+                          <input className="checkbox" type="checkbox" name="quiet" />
+                          <span className="checkbox"></span>
+                          Quiet
+                        </label>
+                        <label className="filter"> 
+                          <input className="checkbox" type="checkbox" name="average" />
+                          <span className="checkbox"></span>
+                          Average
+                        </label>
+                        <label className="filter"> 
+                          <input className="checkbox" type="checkbox" name="loud" />
+                          <span className="checkbox"></span>
+                          Loud
+                        </label>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        );
     }
 }
 

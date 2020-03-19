@@ -5,8 +5,8 @@ const mapStateToProps = state => ({
     loggedIn: state.session.isAuthenticated
 })
 
-const mapDispatchToProps = dispatch => ({
+// const mapDispatchToProps = dispatch => ({
     
-})
+// })
 
 export default connect(mapStateToProps, null)(NavBar)
