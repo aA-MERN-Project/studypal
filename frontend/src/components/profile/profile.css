@@ -94,12 +94,14 @@
     width: 61%;
     height: 40%;
     padding: 40px;
+
 }
 
 .profile-info-div {
     display: flex;
     justify-content: space-around;
-    padding-top: 5%;
+    padding-top: 10%;
+    /* top: 216px; */
 
 }
 
@@ -122,6 +124,7 @@ top: 216px; */
     display: flex;
     justify-content: space-around;
     padding-top: 10%;
+    top: 216px;
 }
 
 .outer-filter-box-div {

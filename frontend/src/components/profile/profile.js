@@ -1,6 +1,7 @@
 import '../../reset.css'
 import './profile.css'
 import React from 'react'
+import NavBar from '../navbar/navbar_container'
 
 class Profile extends React.Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class Profile extends React.Component {
     render() {
         return (
           <div className="page">
-            <div>
+            <NavBar/>
               <div className="profile-info-div">
                 <div className="profile-info">
                   <div className="name">Name</div>
@@ -36,7 +37,6 @@ class Profile extends React.Component {
                   <div>Current Location</div>
                 </div>
               </div>
-            </div>
             <br />
             <div className="outer-filter-box-div">
               <div className="filter-box-div">
