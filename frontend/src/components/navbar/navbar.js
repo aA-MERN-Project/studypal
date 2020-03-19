@@ -26,7 +26,9 @@ class NavBar extends React.Component {
     loggedIn() {
         if (this.props.loggedIn) {
             return (
-                <button className="button-div">Log Out</button>
+                <div className="button-div">
+                    <Link className="button">Log Out</Link>
+                </div>
                 //needs to dispatch logout
             )
         }
