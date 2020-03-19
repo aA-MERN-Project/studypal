@@ -4,9 +4,10 @@ import './index.css';
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
-
 import Root from "./components/root";
 import configureStore from './store/store';
+import getYelpCafes from './util/yelp_api';
+import {getCafes, getCafe} from './util/cafe_api_util';
 import jwt_decode from 'jwt-decode';
 import {setAuthToken} from './util/session_api_util';
 import {logout} from './actions/session_actions';
@@ -55,3 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
 //set axios on the window
 
 window.axios=axios;
+
+    // TESTING APIS
+    window.filter = { term: 'starbucks'};
+    window.getCafes = getCafes;
+    window.getCafe = getCafe;
+    window.getYelpCafes = getYelpCafes;
