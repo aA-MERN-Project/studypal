@@ -13,10 +13,11 @@ export const login = (userData) => {
 }
 
 export const signup = (userData) => {
+    // debugger;
     return axios.post('api/users/register',userData);
 } 
 
 //not using 
-export const logout = () => {
-    return null
-}
+// export const logout = () => {
+//     return null
+// }

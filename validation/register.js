@@ -35,7 +35,8 @@ module.exports = function validateRegisterInput(data){
         errors.password = "Password must be at least 6 characters";
     }
 
-    if(Validator.isLength(data.zipcode, {min: 5, max: 5})){
+    //don't know why min of 4 puts 
+    if(Validator.isLength(data.zipcode, {min: 4, max: 4})){
         errors.zipcode = "Please enter a 5 digit zipcode";
     }
 
@@ -43,6 +44,7 @@ module.exports = function validateRegisterInput(data){
         errors.password2 = "Passwords must match";
     }
 
+    // debugger;
     return {
         errors, 
         isValid: Object.keys(errors).length === 0

@@ -1,121 +1,188 @@
-import React from 'react'
+import React from 'react';
+import {withRouter} from 'react-router-dom';
 
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            username: '',
+            handle: '',
             email: '',
             password: '',
-            errors: {}
+            password2: '',
+            zipcode: '',
+            errors: {},
+            users: props.users
         };
-        // this.renderErrors = this.renderErrors.bind(this)
-        // this.handleSubmit = this.handleSubmit.bind(this)
-        // this.update = this.update.bind(this)
+        this.renderErrors = this.renderErrors.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.update = this.update.bind(this);
+        this.signup = this.signup.bind(this);
+        this.login =this.login.bind(this);
     }
-    render(){
+    // render(){
+    //     return(
+    //         <div>Hello</div>
+    //     )
+    // }
+    
+    componentWillReceiveProps(nextProps){
+        // debugger;
+        if(nextProps.formType === "Sign up"){
+            if(nextProps.signedIn === true){
+                console.log("SUCCESS");
+                // this.props.history.push('/test');
+            }
+            this.setState({errors: nextProps.errors});
+        }
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+        let user = {
+            email: this.state.email,
+            handle: this.state.handle,
+            password: this.state.password,
+            password2: this.state.password2,
+            zipcode: this.state.zipcode
+        };
+        // debugger;
+        this.props.processForm(user);
+        
+    //     this.props.processForm(user, this.props.history)
+    //         .then(this.props.history.push("/api/users/test"));
+    }
+
+    update(field){
+        return e => this.setState({
+            [field]: e.currentTarget.value
+        })
+    }
+
+    renderErrors() {
+        // debugger;
+        if (this.props.errors){
+            return(
+                Object.values(this.props.errors).map((err) => (
+                    <li>
+                        {err}
+                    </li>
+                )
+            )
+        )
+            
+        }else{
+            return(
+                <div></div>
+            )
+        }
+        
+    }
+
+    login() {
         return(
-            <div>Hello</div>
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <div>
+                        <label>Email
+                            <input
+                                type="text"
+                                value={this.state.email}
+                                onChange={this.update('email')}
+                            />
+                        </label>
+                    </div>
+                    <br />
+                    <div>
+                        <label>Password
+                            <input
+                                type="password"
+                                value={this.state.password}
+                                onChange={this.update('password')}
+                            />
+                        </label>
+                    </div>
+                    <br/>
+                    <button>{this.props.formType}</button>
+                </form>
+                <div>
+                    <ul>
+                        {this.renderErrors()}
+                    </ul>
+                </div>
+            </div>
         )
     }
 
-    // handleSubmit(e) {
-    //     e.preventDefault()
-    //     this.props.processForm(this.state)
-    // }
+    signup() {
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    
+                    <div>
+                        <label>Username
+                            <input
+                                type="text"
+                                value={this.state.handle}
+                                onChange={this.update('handle')}
+                            />
+                        </label>
+                    </div>
+                    <br />
+                    <div>
+                        <label>Email
+                            <input
+                                type="text"
+                                value={this.state.email}
+                                onChange={this.update('email')}
+                            />
+                        </label>
+                    </div>
+                    <br />
+                    <div>
+                        <label>Password
+                            <input
+                                type="password"
+                                value={this.state.password}
+                                onChange={this.update('password')}
+                            />
+                        </label>
+                    </div>
+                    <br />
+                    <div>
+                        <label>Confirm Password
+                            <input
+                                type="password"
+                                value={this.state.password2}
+                                onChange={this.update('password2')}
+                            />
+                        </label>
+                    </div>
+                    <br/>
+                    <div>
+                        <label>Zipcode
+                            <input
+                                type="zipcode"
+                                value={this.state.zipcode}
+                                onChange={this.update('zipcode')}
+                            />
+                        </label>
+                    </div>
+                    <button>{this.props.formType}</button>
+                </form>
+                <div>
+                    <ul>
+                        {this.renderErrors()}
+                    </ul>
+                </div>
+                
+            </div>
+        )
+    }
 
-    // update(field) {
-    //     return e => this.setState({
-    //         [field]: e.currentTarget.value
-    //     })
-    // }
+    render() {
+        return this.props.formType === "Log in" ? this.login() : this.signup()
+    }
+};
 
-    // renderErrors() {
-    //     this.props.errors.map((err) => {
-    //         return(
-    //             <li>
-    //                 {err}
-    //             </li>
-    //         )
-    //     })
-    // }
-
-    // login() {
-    //     return(
-    //         <div>
-    //             <form onSubmit={this.handleSubmit}>
-    //                 {this.renderErrors()}
-    //                 <div>
-    //                     <label>Email
-    //                         <input
-    //                             type="text"
-    //                             value={this.state.email}
-    //                             onChange={this.forceUpdate('email')}
-    //                         />
-    //                     </label>
-    //                 </div>
-    //                 <br />
-    //                 <div>
-    //                     <label>Password
-    //                         <input
-    //                             type="password"
-    //                             value={this.state.password}
-    //                             onChange={this.forceUpdate('password')}
-    //                         />
-    //                     </label>
-    //                 </div>
-    //                 <br/>
-    //                 <button>{this.props.formType}</button>
-    //             </form>
-    //         </div>
-    //     )
-    // }
-
-    // signup() {
-    //     return (
-    //         <div>
-    //             <form onSubmit={this.handleSubmit}>
-    //                 {this.renderErrors()}
-    //                 <div>
-    //                     <label>Username
-    //                         <input
-    //                             type="text"
-    //                             value={this.state.username}
-    //                             onChange={this.update('username')}
-    //                         />
-    //                     </label>
-    //                 </div>
-    //                 <br />
-    //                 <div>
-    //                     <label>Email
-    //                         <input
-    //                             type="text"
-    //                             value={this.state.email}
-    //                             onChange={this.update('email')}
-    //                         />
-    //                     </label>
-    //                 </div>
-    //                 <br />
-    //                 <div>
-    //                     <label>Password
-    //                         <input
-    //                             type="password"
-    //                             value={this.state.password}
-    //                             onChange={this.update('password')}
-    //                         />
-    //                     </label>
-    //                 </div>
-    //                 <br/>
-    //                 <button>{this.props.formType}</button>
-    //             </form>
-    //         </div>
-    //     )
-    // }
-
-    // render() {
-    //     return this.props.formType === "Log in " ? this.login() : this.signup()
-    // }
-}
-
-export default SessionForm
+export default SessionForm;

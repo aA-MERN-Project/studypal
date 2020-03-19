@@ -4,8 +4,9 @@ import SessionForm from './session_form';
 
 const mapStateToProps = state => {
     return {
-    errors: null,
-    formType: "Log in"
+    errors: state.errors.session,
+    formType: "Log in",
+    signedIn: state.session.isSignedIn
     };
 };
 

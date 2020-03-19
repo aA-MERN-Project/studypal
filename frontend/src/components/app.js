@@ -10,15 +10,15 @@ const App = () => {
   return(
     <div>
     
-      <LoginFormContainer/>
+      {/* <LoginFormContainer/> */}
 
       <Switch>
-        {/* <Route exact path="/login" component={LoginFormContainer}/> */}
-        {/* <Route exact path="/signup" component={SignupFormContainer}/> */}
+        <Route exact path="/login" component={LoginFormContainer}/>
+        <Route exact path="/signup" component={SignupFormContainer}/>
 
       </Switch>
     </div>
   )
 };
 
-export default App
+export default App;

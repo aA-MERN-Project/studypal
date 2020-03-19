@@ -23,9 +23,12 @@ const receiveErrors = errors => ({
 });
 
 //added by Fei
-const receiveUserSignIn = () => ({
+const receiveUserSignIn = () => {
+    debugger;
+    return({
     type: RECEIVE_USER_SIGN_IN
 });
+};
 
 //Fei added different login function
 //Wilson's login function
@@ -53,21 +56,24 @@ const receiveUserSignIn = () => ({
 //added by fei
 export const signup  = (user) => dispatch => (
     SessionAPIUtil.signup(user)
-        .then(() => dispatch(receiveUserSignIn())
-        .catch(err => dispatch(receiveErrors(err.response.data))))
+        .then((user) => dispatch(receiveUserSignIn(user)),
+        err => (dispatch(receiveErrors(err.response.data)))
+        // .catch(err => dispatch(receiveErrors(err.response.data)))
+    )
 );
 
 //added by fei
 export const login = (user) => dispatch => {
     return SessionAPIUtil.login(user).then(res => {
         const {token} = res.data;
-        //localStorage allows us to save something on client side, so if user refreshes page, loads it in from localStor
+        //localStorage allows us t  o save something on client side, so if user refreshes page, loads it in from localStor
         localStorage.setItem('jwtToken', token);
         SessionAPIUtil.setAuthToken(token); 
         const decoded = jwt_decode(token);
         // debugger;
         dispatch(receiveCurrentUser(decoded));
-    }).catch(err => {dispatch(receiveErrors(err.response.data));
+    })
+    .catch(err => {dispatch(receiveErrors(err.response.data))
     });
 };
 
