@@ -6,12 +6,13 @@ mongoose.connect(db);
 
 const Cafe = require('../models/Cafe');
 const yelpData = require('../data/yelp_test_data.json')
+const moreYelpData = require('../data/yelp_more_data.json')
 
 
 Cafe.collection.drop();
 
 
-Cafe.create(yelpData)
+Cafe.create(moreYelpData)
   .then(cafe => {
     console.log(`${cafe.length} cafes created`);
   })

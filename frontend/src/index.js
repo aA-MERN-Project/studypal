@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // debugger;
     ReactDOM.render(<Root store={store}/>, root);
-    // ReactDOM.render(<App store={store} />, root);
 })
 
 
