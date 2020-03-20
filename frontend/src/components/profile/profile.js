@@ -2,6 +2,7 @@ import '../../reset.css'
 import './profile.css'
 import React from 'react'
 import NavBar from '../navbar/navbar_container'
+import $ from "jquery";
 
 class Profile extends React.Component {
     constructor(props) {
@@ -12,13 +13,77 @@ class Profile extends React.Component {
           hours_opened_left: "",
           free_wifi: "",
           credit_card: "",
-          noise_level: ""
-          // user: props.user,
+          noise_level: "",
+          user: props.user
         };
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.update = this.update.bind(this)
+        // this.checkbox = this.checkbox.bind(this)
     }
+
+    componentDidMount() {
+      // const hi = $("div")
+
+      $(".checkbox-miles").click(function() {
+        $(".checkbox-miles").prop("checked", false);
+        $(this).prop("checked", true);
+      })
+    }
+    
+
+        
+    //     // if ($(this).prop("checked") === true) {
+    //     // // console.log("bla");
+
+    //     //   $(this).prop("checked", false);
+    //     // }
+
+
+    //     // } else if ($(this).prop("checked") === true) {
+    //     //         $(".checkbox-miles").prop("checked", false);
+    //     //         console.log($(this).prop("checked"));
+    //     //         console.log("bla")
+    //     //          $(this).prop("checked", false);
+    //     //          console.log($(this).prop("checked"));
+    //     //          console.log("bye");
+    //     //        }
+    //   });
+
+    //   // $(".checkbox-hours").click(function() {
+    //   //   $(".checkbox-hours").prop("checked", false);
+    //   //   $(this).prop("checked", true);
+    //   // });
+
+    //   // $(".checkbox-wifi").click(function() {
+    //   //   $(".check-wifi").prop("checked", false);
+    //   //   $(this).prop("checked", true);
+    //   // });
+
+    //   // $(".checkbox-credit").click(function() {
+    //   //   $(".checkbox-credit").prop("checked", false);
+    //   //   $(this).prop("checked", true);
+    //   // });
+    //   // $(".checkbox-noise").click(function() {
+    //   //   $(".checkbox-noise").prop("checked", false);
+    //   //   $(this).prop("checked", true);
+    //   // });
+    // }
+
+    // checkbox(e) {
+    //   // if($(".checkbox-miles").prop("checked") === true) {
+    //   //   $(".checkbox-miles").prop("checked", false);
+    //   //   $(this).prop("checked", true);
+    //   // } else {
+    //   //   $(".checkbox-miles").prop("checked", false);
+    //   //   $(e).prop("checked", true);
+    //   // }
+    //     debugger
+    //     $(".checkbox-miles").prop("checked", false);
+    //     debugger
+    //     $(e).prop("checked", true);
+    //     debugger
+    // }
 
     handleSubmit(e) {
         this.props.processForm(this.state)
@@ -133,6 +198,7 @@ class Profile extends React.Component {
   // }
 
     update(field) {
+      debugger
         return e => this.setState({
             [field]: e.currentTarget.name
         })
@@ -161,6 +227,7 @@ class Profile extends React.Component {
                       <form>
                         <label className="filter">
                           <input
+                            // onClick={e => this.checkbox(e)}
                             // onClick={() => this.checkboxes1(0)}
                             onChange={this.update("miles_away")}
                             className="checkbox-miles"
@@ -171,6 +238,7 @@ class Profile extends React.Component {
                         </label>
                         <label className="filter">
                           <input
+                            // onClick={e => this.checkbox(e)}
                             // onClick={() => this.checkboxes1(1)}
                             onChange={this.update("miles_away")}
                             className="checkbox-miles"
@@ -181,6 +249,7 @@ class Profile extends React.Component {
                         </label>
                         <label className="filter">
                           <input
+                            // onClick={e => this.checkbox(e)}
                             // onClick={() => this.checkboxes1(2)}
                             onChange={this.update("miles_away")}
                             className="checkbox-miles"
@@ -191,6 +260,7 @@ class Profile extends React.Component {
                         </label>
                         <label className="filter">
                           <input
+                            // onClick={e => this.checkbox(e)}
                             // onClick={() => this.checkboxes1(3)}
                             onChange={this.update("miles_away")}
                             className="checkbox-miles"
@@ -201,6 +271,7 @@ class Profile extends React.Component {
                         </label>
                         <label className="filter">
                           <input
+                            // onClick={e => this.checkbox(e)}
                             // onClick={() => this.checkboxes1(4)}
                             onChange={this.update("miles_away")}
                             className="checkbox-miles"
@@ -219,6 +290,7 @@ class Profile extends React.Component {
                       <form>
                         <label className="filter">
                           <input
+                            // onClick={e => this.checkbox(e)}
                             // onClick={() => this.checkboxes2(5)}
                             onChange={this.update("hours_opened_left")}
                             className="checkbox-hours"
@@ -229,6 +301,7 @@ class Profile extends React.Component {
                         </label>
                         <label className="filter">
                           <input
+                            // onClick={e => this.checkbox(e)}
                             // onClick={() => this.checkboxes2(6)}
                             onChange={this.update("hours_opened_left")}
                             className="checkbox-hours"
@@ -239,6 +312,7 @@ class Profile extends React.Component {
                         </label>
                         <label className="filter">
                           <input
+                            // onClick={e => this.checkbox(e)}
                             // onClick={() => this.checkboxes2(7)}
                             onChange={this.update("hours_opened_left")}
                             className="checkbox-hours"
@@ -249,6 +323,7 @@ class Profile extends React.Component {
                         </label>
                         <label className="filter">
                           <input
+                            // onClick={e => this.checkbox(e)}
                             // onClick={() => this.checkboxes2(8)}
                             onChange={this.update("hours_opened_left")}
                             className="checkbox-hours"
@@ -259,6 +334,7 @@ class Profile extends React.Component {
                         </label>
                         <label className="filter">
                           <input
+                            // onClick={e => this.checkbox(e)}
                             // onClick={() => this.checkboxes2(9)}
                             onChange={this.update("hours_opened_left")}
                             className="checkbox-hours"
