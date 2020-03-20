@@ -8,7 +8,10 @@ class Profile extends React.Component {
         super(props)
 
         this.state = {
-            test: "test"
+            user: props.user,
+            // handle: props.user.handle,
+            email: props.user.email
+            
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)

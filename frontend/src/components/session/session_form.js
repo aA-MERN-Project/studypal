@@ -21,15 +21,34 @@ class SessionForm extends React.Component {
         this.update = this.update.bind(this);
         this.signup = this.signup.bind(this);
         this.login =this.login.bind(this);
+        // this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
+        // this.handleSubmitSignup = this.handleSubmitSignup.bind(this);
+        
     }
     
     componentWillReceiveProps(nextProps){
-        if(nextProps.formType === "Sign up"){
-            if(nextProps.signedIn === true){
-                console.log("SUCCESS");
-            }
-            this.setState({errors: nextProps.errors});
+        // debugger;
+        let user = {
+            email: this.state.email,
+            password: this.state.password,
+            handle: this.state.handle,
+            zipcode: this.state.zipcode
+        };
+        //checking if user registered successfully, then log them in
+        if(nextProps.signedIn === true){
+            console.log("SUCCESS");
+            this.props.logInNewUser(user)
+                .then(this.props.history.push("user"));
+            // this.props.history.push('/login');
         }
+        
+        this.setState({errors: nextProps.errors});
+    }
+
+    componentDidMount(){
+        // debugger;
+        this.props.clearErrors();
+        
     }
 
     handleSubmit(e){
@@ -41,8 +60,38 @@ class SessionForm extends React.Component {
             password2: this.state.password2,
             zipcode: this.state.zipcode
         };
-        this.props.processForm(user);
+        if(this.props.formType==="Log in"){   
+            
+            this.props.processForm(user)
+                .then(this.props.history.push("user"));
+        }else{
+            this.props.processForm(user);
+        }
+
+        // this.props.processForm(user);
+        
     }
+
+    // handleSubmitSignup(e){
+    //     e.preventDefault();
+    //     let user = {
+    //         email: this.state.email,
+    //         handle: this.state.handle,
+    //         password: this.state.password,
+    //         password2: this.state.password2,
+    //         zipcode: this.state.zipcode
+    //     };
+    //     this.props.processForm(user);
+    // }
+
+    // handleSubmitLogin(e){
+    //     e.preventDefault();
+    //     let user = {
+    //         email: this.state.email,
+    //         password: this.state.password
+    //     };
+    //     this.props.processForm(user);   
+    // }
 
     update(field){
         return e => this.setState({
@@ -59,8 +108,7 @@ class SessionForm extends React.Component {
                     </li>
                 )
             )
-        )
-            
+        )          
         }else{
             return(
                 <div></div>
@@ -182,6 +230,7 @@ class SessionForm extends React.Component {
     }
 
     render() {
+        // debugger;
         return this.props.formType === "Log in" ? this.login() : this.signup()
     }
 };
