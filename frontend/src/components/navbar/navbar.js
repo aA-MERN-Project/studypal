@@ -1,6 +1,6 @@
 import '../../reset.css';
 import './navbar.css';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter} from 'react-router-dom';
 import React from 'react';
 
 class NavBar extends React.Component {
@@ -15,10 +15,11 @@ class NavBar extends React.Component {
     handleLogout(){
         // debugger;
         this.props.logout();
-            // .then(this.props.history.push("login"));
+        // debugger;
+        this.props.history.push('/');
         
     }
-
+                
     loggedOut() {
         if (!this.props.loggedIn) {
             return (
@@ -58,4 +59,4 @@ class NavBar extends React.Component {
 
 
 
-export default NavBar
+export default withRouter(NavBar);

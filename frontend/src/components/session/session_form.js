@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Redirect} from 'react-router-dom';
 import './signup_form.css'
 import './login_form.css'
 
@@ -23,7 +23,7 @@ class SessionForm extends React.Component {
         this.login =this.login.bind(this);
         // this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
         // this.handleSubmitSignup = this.handleSubmitSignup.bind(this);
-        
+        // this.checkErrors = this.checkErrors.bind(this);
     }
     
     componentWillReceiveProps(nextProps){
@@ -39,7 +39,9 @@ class SessionForm extends React.Component {
             console.log("SUCCESS");
             this.props.logInNewUser(user)
                 .then(this.props.history.push("user"));
-            // this.props.history.push('/login');
+       
+        }else if(nextProps.isAuthenticated ===true){
+          this.props.history.push("user");
         }
         
         this.setState({errors: nextProps.errors});
@@ -47,9 +49,9 @@ class SessionForm extends React.Component {
 
     componentDidMount(){
         // debugger;
-        this.props.clearErrors();
+            this.props.clearErrors(); 
+        }
         
-    }
 
     handleSubmit(e){
         e.preventDefault();
@@ -63,14 +65,20 @@ class SessionForm extends React.Component {
         if(this.props.formType==="Log in"){   
             
             this.props.processForm(user)
-                .then(this.props.history.push("user"));
+              // .then(this.checkErrors());
         }else{
             this.props.processForm(user);
-        }
-
-        // this.props.processForm(user);
-        
+        }   
     }
+
+    // checkErrors(){
+    //   if(this.props.errors.length > 0){      
+    //     console.log("login errors, like no user with that email");
+    //   }else if(this.props.errors.length === 0 ){
+    //     debugger;
+    //     this.props.history.push('user');
+    //   }
+    // }
 
     // handleSubmitSignup(e){
     //     e.preventDefault();
@@ -235,4 +243,4 @@ class SessionForm extends React.Component {
     }
 };
 
-export default SessionForm;
+export default withRouter(SessionForm);

@@ -1,25 +1,29 @@
-import '../../reset.css'
-import './profile.css'
-import React from 'react'
-import NavBar from '../navbar/navbar_container'
+import '../../reset.css';
+import './profile.css';
+import React from 'react';
+import NavBar from '../navbar/navbar_container';
 
 class Profile extends React.Component {
     constructor(props) {
         super(props)
 
+        // debugger;
         this.state = {
-            user: props.user,
-            // handle: props.user.handle,
-            email: props.user.email
-            
+            user: props.user
+            // handle: props.user.handle,          
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.update = this.update.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.update = this.update.bind(this);
     }
 
     handleSubmit(e) {
-        this.props.processForm(this.state)
+        this.props.processForm(this.state);
+    }
+
+    componentDidMount(){
+      // debugger;
+      this.setState({user:this.props.user});
     }
 
 
@@ -30,14 +34,19 @@ class Profile extends React.Component {
     }
 
     render() {
+       const {user} = this.props;
+       let username = user ? user.handle : "";
+       let email = user ? user.email : "";
+       let zipcode = user ? user.zipcode : ""; 
+
         return (
           <div className="page">
             <NavBar/>
               <div className="profile-info-div">
                 <div className="profile-info">
-                  <div className="name">Name</div>
-                  <div className="email">Email</div>
-                  <div>Current Location</div>
+                    <div className="name">{username}</div>
+                    <div className="email">{email}</div>
+                    <div>Current Zipcode {zipcode}</div>
                 </div>
               </div>
             <br />

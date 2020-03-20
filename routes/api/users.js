@@ -60,6 +60,7 @@ router.post('/login', (req, res) => {
 
     User.findOne({email})
         .then(user => {
+            // debugger;
             if(!user){
                 errors.email = "User not found";
                 return res.status(404).json(errors);
@@ -70,7 +71,8 @@ router.post('/login', (req, res) => {
                         const payload = {
                             id: user.id,
                             handle: user.handle,
-                            email: user.email
+                            email: user.email,
+                            zipcode: user.zipcode
                         };
                         jwt.sign(
                             payload, keys.secretOrKey, {expiresIn: 3600},
