@@ -6,6 +6,7 @@ import App from './App';
 import axios from 'axios';
 import Root from "./components/root";
 import configureStore from './store/store';
+import './index.css'
 import getYelpCafes from './util/yelp_api';
 import {getCafes, getCafe} from './util/cafe_api_util';
 import jwt_decode from 'jwt-decode';
