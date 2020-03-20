@@ -62,7 +62,7 @@ export const clearErrors = () => {
 
 //added by fei
 export const signup  = (user) => dispatch => {
-    // debugger;
+    debugger;
     return(
         SessionAPIUtil.signup(user)
             .then((user) => dispatch(receiveUserSignIn(user)),
@@ -74,11 +74,19 @@ export const signup  = (user) => dispatch => {
 
 //added by fei
 export const login = (user) => dispatch => {
+    debugger;
     return SessionAPIUtil.login(user).then(res => {
+        //in axios, all of our json data is in data key of response
+        //response carries lot of information
         const {token} = res.data;
-        //localStorage allows us t  o save something on client side, so if user refreshes page, loads it in from localStor
+        //localStorage allows us to save something on client side, so if user refreshes page, loads it in from localStor
+        // if close page, jwtToken still stores there
         localStorage.setItem('jwtToken', token);
+
+        //set header for future axios requests to pass along that json web token to backend to be authenticated
         SessionAPIUtil.setAuthToken(token); 
+        //decoded contains all the data we get back from API
+        //res.data.token is the => is the json web token we are passing into jwt decode function
         const decoded = jwt_decode(token);
         // debugger;
         dispatch(receiveCurrentUser(decoded));

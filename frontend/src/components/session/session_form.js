@@ -15,44 +15,41 @@ class SessionForm extends React.Component {
             users: props.users
         };
         this.renderErrors = this.renderErrors.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
         this.update = this.update.bind(this);
         this.signup = this.signup.bind(this);
         this.login =this.login.bind(this);
+        this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
+        this.handleSubmitSignup = this.handleSubmitSignup.bind(this);
         
     }
-    // render(){
-    //     return(
-    //         <div>Hello</div>
-    //     )
-    // }
     
     componentWillReceiveProps(nextProps){
         debugger;
-        if(nextProps.formType === "Sign up"){
-            if(nextProps.signedIn === true){
-                console.log("SUCCESS");
-                // this.props.history.push('/login');
-            }
-            this.setState({errors: nextProps.errors});
+        let user = {
+            email: this.state.email,
+            password: this.state.password,
+            handle: this.state.handle,
+            zipcode: this.state.zipcode
+        };
+        //checking if user registered successfully, then log them in
+        if(nextProps.signedIn === true){
+            console.log("SUCCESS");
+            this.props.logInNewUser(user)
+                .then(this.props.history.push("/api/users/test"));
+            // this.props.history.push('/login');
         }
+        
+        this.setState({errors: nextProps.errors});
     }
 
     componentDidMount(){
+        debugger;
         this.props.clearErrors();
-        // let user = {
-        //     email: this.state.email,
-        //     handle: this.state.handle,
-        //     password: this.state.password,
-        //     password2: this.state.password2,
-        //     zipcode: this.state.zipcode
-        // };
-        // if (this.props.formType === "Sign up"){
-        //     this.props.logInNewUser(user);
-        // }
+        
     }
 
-    handleSubmit(e){
+    handleSubmitSignup(e){
         e.preventDefault();
         let user = {
             email: this.state.email,
@@ -63,10 +60,15 @@ class SessionForm extends React.Component {
         };
         // debugger;
         this.props.processForm(user);
+    }
 
-       
-        // this.props.processForm(user, this.props.history)
-        //     .then(this.props.history.push("/api/users/test"));
+    handleSubmitLogin(e){
+        e.preventDefault();
+        let user = {
+            email: this.state.email,
+            password: this.state.password
+        };
+        this.props.processForm(user);   
     }
 
     update(field){
@@ -85,8 +87,7 @@ class SessionForm extends React.Component {
                     </li>
                 )
             )
-        )
-            
+        )          
         }else{
             return(
                 <div></div>
@@ -98,7 +99,7 @@ class SessionForm extends React.Component {
     login() {
         return(
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmitLogin}>
                     <div>
                         <label>Email
                             <input
@@ -133,7 +134,7 @@ class SessionForm extends React.Component {
     signup() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmitSignup}>
                     
                     <div>
                         <label>Username
@@ -198,15 +199,7 @@ class SessionForm extends React.Component {
 
     render() {
         // debugger;
-        if(this.props.isAuthenticated  || this.props.signedIn){
-            return (
-                <div>You're signed in
-                <button onClick={this.props.logout}>Logout</button>
-                </div>
-            )
-        }else{
-            return this.props.formType === "Log in" ? this.login() : this.signup()
-        }
+        return this.props.formType === "Log in" ? this.login() : this.signup()
     }
 };
 
