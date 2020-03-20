@@ -1,7 +1,7 @@
-import '../../reset.css'
-import './navbar.css'
-import { Link } from 'react-router-dom'
-import React from 'react'
+import '../../reset.css';
+import './navbar.css';
+import { Link, Redirect } from 'react-router-dom';
+import React from 'react';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -9,6 +9,14 @@ class NavBar extends React.Component {
 
         this.loggedOut = this.loggedOut.bind(this)
         this.loggedIn = this.loggedIn.bind(this)
+        this.handleLogout = this.handleLogout.bind(this);
+    }
+
+    handleLogout(){
+        // debugger;
+        this.props.logout();
+            // .then(this.props.history.push("login"));
+        
     }
 
     loggedOut() {
@@ -27,7 +35,8 @@ class NavBar extends React.Component {
         if (this.props.loggedIn) {
             return (
                 <div className="button-div">
-                    <Link className="button">Log Out</Link>
+                    <Link className="button" to="/login">Log Out</Link>
+                    <button onClick={this.handleLogout}>Log Out Button</button>
                 </div>
                 //needs to dispatch logout
             )

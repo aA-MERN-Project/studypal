@@ -5,7 +5,7 @@ import Cafe from '../cafe/cafe';
 import {asArray} from '../../reducers/selectors'
 
 const mapStateToProps = state => {
-     
+    // debugger
     
     return {
         cafes: Object.values(state.entities.cafes),

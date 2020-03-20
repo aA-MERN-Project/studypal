@@ -61,3 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //set axios on the window
 
+window.axios=axios;
+
+// TESTING APIS
+window.filter = { term: 'starbucks'};
+window.getCafes = getCafes;
+window.getCafe = getCafe;
+window.getYelpCafes = getYelpCafes;
