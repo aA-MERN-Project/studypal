@@ -9,6 +9,7 @@ export const RECEIVE_USER_SIGN_IN = 'RECEIVE_USER_SIGN_IN';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 const receiveCurrentUser = (currentUser) => ({
+    // debugger;
     type: RECEIVE_CURRENT_USER,
     currentUser
 });
@@ -62,7 +63,7 @@ export const clearErrors = () => {
 
 //added by fei
 export const signup  = (user) => dispatch => {
-    debugger;
+    // debugger;
     return(
         SessionAPIUtil.signup(user)
             .then((user) => dispatch(receiveUserSignIn(user)),
@@ -74,7 +75,7 @@ export const signup  = (user) => dispatch => {
 
 //added by fei
 export const login = (user) => dispatch => {
-    debugger;
+    // debugger;
     return SessionAPIUtil.login(user).then(res => {
         //in axios, all of our json data is in data key of response
         //response carries lot of information
@@ -99,7 +100,8 @@ export const login = (user) => dispatch => {
 // 1) remove jwtkey from localstorage 2) need to take jwt authHeader off of axios as a default
 // 3) get user out of redux store
 export const logout = () => dispatch => {
+    // debugger;
     localStorage.removeItem('jwtToken');
     SessionAPIUtil.setAuthToken(false);
-    dispatch(logout());
+    dispatch(logoutCurrentUser());
 };

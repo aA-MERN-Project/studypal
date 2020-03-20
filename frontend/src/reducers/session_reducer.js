@@ -9,20 +9,20 @@ const sessionReducer = (state = initialState, action) => {
     switch(action.type){
       
         case RECEIVE_CURRENT_USER:
-        debugger;
+        // debugger;
           return{
                 ...state,
                 isAuthenticated: !!action.currentUser,
                 user: action.currentUser
             };
         case LOGOUT_CURRENT_USER:
-            debugger;
+            // debugger;
             return{
                 isAuthenticated: false,
                 user:undefined
             };
         case RECEIVE_USER_SIGN_IN:
-            debugger;
+            // debugger;
             return{
                 ...state,
                 isSignedIn: true,

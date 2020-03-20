@@ -10,7 +10,7 @@ const usersReducer = (state={}, action) => {
         case RECEIVE_CURRENT_USER:
             return Object.assign({}, state, {[action.currentUser.id]: action.currentUser});
         case RECEIVE_USER_SIGN_IN:
-            debugger;
+            // debugger;
             // return Object.assign({}, state, {[action.currentUser.id]: action.currentUser});
             return Object.assign({}, state, {[action.currentUser.data._id]: action.currentUser.data});
             //at this point, action.currentUser is much more complex

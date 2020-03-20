@@ -27,7 +27,7 @@ class SessionForm extends React.Component {
     }
     
     componentWillReceiveProps(nextProps){
-        debugger;
+        // debugger;
         let user = {
             email: this.state.email,
             password: this.state.password,
@@ -38,7 +38,7 @@ class SessionForm extends React.Component {
         if(nextProps.signedIn === true){
             console.log("SUCCESS");
             this.props.logInNewUser(user)
-                .then(this.props.history.push("/api/users/test"));
+                .then(this.props.history.push("user"));
             // this.props.history.push('/login');
         }
         
@@ -46,7 +46,7 @@ class SessionForm extends React.Component {
     }
 
     componentDidMount(){
-        debugger;
+        // debugger;
         this.props.clearErrors();
         
     }
@@ -60,7 +60,16 @@ class SessionForm extends React.Component {
             password2: this.state.password2,
             zipcode: this.state.zipcode
         };
-        this.props.processForm(user);
+        if(this.props.formType==="Log in"){   
+            
+            this.props.processForm(user)
+                .then(this.props.history.push("user"));
+        }else{
+            this.props.processForm(user);
+        }
+
+        // this.props.processForm(user);
+        
     }
 
     // handleSubmitSignup(e){
@@ -111,7 +120,7 @@ class SessionForm extends React.Component {
     login() {
         return(
             <div>
-                <form onSubmit={this.handleSubmitLogin}>
+                <form onSubmit={this.handleSubmit}>
                     <div>
                         <label>Email
                             <input
@@ -208,11 +217,6 @@ class SessionForm extends React.Component {
                   <button>{this.props.formType}</button>
                 </div>
               </form>
-            </div>
-            <div>
-                    <ul>
-                        {this.renderErrors()}
-                    </ul>
             </div>
 
             <div className="right-div-signup">
