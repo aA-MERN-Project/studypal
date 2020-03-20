@@ -25,7 +25,6 @@ const receiveErrors = errors => ({
 
 //added by Fei
 const receiveUserSignIn = (currentUser) => {
-    // debugger;
     return({
     type: RECEIVE_USER_SIGN_IN,
     currentUser
@@ -89,7 +88,7 @@ export const login = (user) => dispatch => {
         //decoded contains all the data we get back from API
         //res.data.token is the => is the json web token we are passing into jwt decode function
         const decoded = jwt_decode(token);
-        // debugger;
+        //  ;
         dispatch(receiveCurrentUser(decoded));
     })
     .catch(err => {dispatch(receiveErrors(err.response.data))

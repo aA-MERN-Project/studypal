@@ -1,7 +1,8 @@
 import React from 'react';
-import {withRouter, Redirect} from 'react-router-dom';
+import {withRouter, Redirect, Link} from 'react-router-dom';
 import './signup_form.css'
 import './login_form.css'
+import './session_form.css'
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -127,30 +128,47 @@ class SessionForm extends React.Component {
 
     login() {
         return(
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <label>Email
-                            <input
-                                type="text"
-                                value={this.state.email}
-                                onChange={this.update('email')}
-                            />
-                        </label>
+            <div className="signup-page-div">
+              <div className="left-div-signup">
+                <div>image</div>
+              </div>
+            <div className="signup-div">
+              <form className="signup-form-div" onSubmit={this.handleSubmit}>
+                <div className="welcome-studypal">Welcome Back</div>
+                <div className="create-account-login">
+                  Login to your account
                     </div>
-                    <br />
-                    <div>
-                        <label>Password
-                            <input
-                                type="password"
-                                value={this.state.password}
-                                onChange={this.update('password')}
-                            />
-                        </label>
-                    </div>
-                    <br/>
-                    <button>{this.props.formType}</button>
-                </form>
+
+                <div className="form-input-div">
+                  <label className="form-labels">Email
+                              <input
+                      className="input-box"
+                      type="text"
+                      value={this.state.email}
+                      onChange={this.update('email')}
+                    />
+                    <div className="horizontal-line-session"></div>
+                  </label>
+                </div>
+                <div className="form-input-div">
+                  <label className="form-labels">Password
+                              <input
+                      className="input-box"
+                      type="password"
+                      value={this.state.password}
+                      onChange={this.update('password')}
+                    />
+                    <div className="horizontal-line-session"></div>
+                  </label>
+                </div>
+                <div className="l-s-button-div">
+                  <button className="login-signup-button">{this.props.formType}</button>
+                </div>
+              </form>
+              <div className="nevermind">
+                Never mind, <Link>just help me find a cafe.</Link>
+              </div>
+            </div>
                 <div>
                     <ul>
                         {this.renderErrors()}
@@ -164,74 +182,90 @@ class SessionForm extends React.Component {
         return (
           <div className="signup-page-div">
             <div className="signup-div">
-              <form className="left-div-signup" onSubmit={this.handleSubmit}>
-                <div className="signup-form-div">
+              <form className="signup-form-div" onSubmit={this.handleSubmit}>
+                
                   <div className="welcome-studypal">Welcome to StudyPal</div>
-                  <div>Create a new account</div>
-                  <div>
-                    <label>
+                  <div className="create-account-login">
+                    Create a new account
+                  </div>
+                  <div className="form-input-div">
+                    <label className="form-labels">
                       Username
                       <input
+                        className="input-box"
                         type="text"
                         value={this.state.handle}
                         onChange={this.update("handle")}
                       />
+                      <div className="horizontal-line-session"></div>
                     </label>
                   </div>
-                  <br />
-                  <div>
-                    <label>
+                  {/* <br /> */}
+                  <div className="form-input-div">
+                    <label className="form-labels">
                       Email
                       <input
+                        className="input-box"
                         type="text"
                         value={this.state.email}
                         onChange={this.update("email")}
                       />
+                      <div className="horizontal-line-session"></div>
                     </label>
                   </div>
-                  <br />
-                  <div>
-                    <label>
+                  {/* <br /> */}
+                  <div className="form-input-div">
+                    <label className="form-labels">
                       Password
                       <input
+                        className="input-box"
                         type="password"
                         value={this.state.password}
                         onChange={this.update("password")}
                       />
+                      <div className="horizontal-line-session"></div>
                     </label>
                   </div>
-                  <br />
-                  <div>
-                    <label>
+                  {/* <br /> */}
+                  <div className="form-input-div">
+                    <label className="form-labels">
                       Confirm Password
                       <input
+                        className="input-box"
                         type="password"
                         value={this.state.password2}
                         onChange={this.update("password2")}
                       />
+                      <div className="horizontal-line-session"></div>
                     </label>
                   </div>
-                  <br />
-                  <div>
-                    <label>
+                  {/* <br /> */}
+                  <div className="form-input-div">
+                    <label className="form-labels">
                       Zipcode
                       <input
+                        className="input-box"
                         type="zipcode"
                         value={this.state.zipcode}
                         onChange={this.update("zipcode")}
                       />
+                      <div className="horizontal-line-session"></div>
                     </label>
                   </div>
-                  <button>{this.props.formType}</button>
-                </div>
+                  <div className="l-s-button-div">
+                    <button className="login-signup-button">{this.props.formType}</button>
+                  </div>
               </form>
+              <div className="nevermind">
+                Never mind, <Link>just help me find a cafe.</Link>
+              </div>
             </div>
 
             <div className="right-div-signup">
-                <div >image</div>
+              <div>image</div>
             </div>
             <div>
-                <ul>{this.renderErrors()}</ul>
+              <ul>{this.renderErrors()}</ul>
             </div>
           </div>
         );

@@ -4,12 +4,18 @@ export const RECEIVE_CAFEBYZIPCODE = "RECEIVE_CAFEBYZIPCODE";
 export const RECEIVE_CAFE = "RECEIVE_CAFE";
 export const RECEIVE_CAFES = "RECEIVE_CAFES";
 export const RECEIVE_CLEAR_CAFES = "RECEIVE_CLEAR_CAFES";
+export const REROLL_CAFES = "REROLL_CAFES";
 
 // export const receiveCafeByZipcode = cafes => ({
 //     type: RECEIVE_CAFEBYZIPCODE,
 //     cafes,
 // });
 
+export const rerollCafes = cafes => ({
+    type: REROLL_CAFES,
+    cafes,
+
+})
 
 export const clearCafes = () => ({
     type: RECEIVE_CLEAR_CAFES,
