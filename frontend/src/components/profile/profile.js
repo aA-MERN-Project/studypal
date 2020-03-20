@@ -8,20 +8,13 @@ class Profile extends React.Component {
         super(props)
 
         this.state = {
-<<<<<<< HEAD
           miles_away: "",
           hours_opened_left: "",
           free_wifi: "",
           credit_card: "",
           noise_level: ""
+          // user: props.user,
         };
-=======
-            user: props.user,
-            // handle: props.user.handle,
-            email: props.user.email
-            
-        }
->>>>>>> 46744516c4e3ed989dc5469b7bb079bbddf46600
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.update = this.update.bind(this)
