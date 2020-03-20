@@ -3,31 +3,20 @@ import axios from 'axios';
 const apiKey = require("../keys/keys").YELP_API_KEY;
 
 
-const getYelpCafes = (filter = {}) => {
-    axios.get(`https://api.yelp.com/v3/businesses/search`, {
+const getYelpCafeById = (id) => {
+    axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${id}`, {
         headers: {
             Authorization: `Bearer ${apiKey}`
 
         },
-
-        params: {
-            limit: 10,
-				categories: 'coffee,coffeeroasteries,coffeeshops,cafe',
-				location: 'San Francisco, CA'
-
-        }
     })
-    .then(res => 
-        res.data.businesses.map( business => { return {
-                name: business.name,
-                coords: business.coordinates
-            };
-            })
-        )
-    .catch(error => console.log(error))
+    .then(res => {
+        console.log(res)
 
+    })
+    .catch(error => console.log(error))
 
 };
 
 
-export default getYelpCafes;
+export default getYelpCafeById;
