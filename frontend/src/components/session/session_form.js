@@ -19,6 +19,7 @@ class SessionForm extends React.Component {
         this.update = this.update.bind(this);
         this.signup = this.signup.bind(this);
         this.login =this.login.bind(this);
+        
     }
     // render(){
     //     return(
@@ -27,14 +28,28 @@ class SessionForm extends React.Component {
     // }
     
     componentWillReceiveProps(nextProps){
-        // debugger;
+        debugger;
         if(nextProps.formType === "Sign up"){
             if(nextProps.signedIn === true){
                 console.log("SUCCESS");
-                // this.props.history.push('/test');
+                // this.props.history.push('/login');
             }
             this.setState({errors: nextProps.errors});
         }
+    }
+
+    componentDidMount(){
+        this.props.clearErrors();
+        // let user = {
+        //     email: this.state.email,
+        //     handle: this.state.handle,
+        //     password: this.state.password,
+        //     password2: this.state.password2,
+        //     zipcode: this.state.zipcode
+        // };
+        // if (this.props.formType === "Sign up"){
+        //     this.props.logInNewUser(user);
+        // }
     }
 
     handleSubmit(e){
@@ -48,9 +63,10 @@ class SessionForm extends React.Component {
         };
         // debugger;
         this.props.processForm(user);
-        
-    //     this.props.processForm(user, this.props.history)
-    //         .then(this.props.history.push("/api/users/test"));
+
+       
+        // this.props.processForm(user, this.props.history)
+        //     .then(this.props.history.push("/api/users/test"));
     }
 
     update(field){
@@ -181,7 +197,16 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        return this.props.formType === "Log in" ? this.login() : this.signup()
+        // debugger;
+        if(this.props.isAuthenticated  || this.props.signedIn){
+            return (
+                <div>You're signed in
+                <button onClick={this.props.logout}>Logout</button>
+                </div>
+            )
+        }else{
+            return this.props.formType === "Log in" ? this.login() : this.signup()
+        }
     }
 };
 
