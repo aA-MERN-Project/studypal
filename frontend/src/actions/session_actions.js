@@ -24,7 +24,7 @@ const receiveErrors = errors => ({
 
 //added by Fei
 const receiveUserSignIn = () => {
-    debugger;
+     ;
     return({
     type: RECEIVE_USER_SIGN_IN
 });
@@ -70,7 +70,7 @@ export const login = (user) => dispatch => {
         localStorage.setItem('jwtToken', token);
         SessionAPIUtil.setAuthToken(token); 
         const decoded = jwt_decode(token);
-        // debugger;
+        //  ;
         dispatch(receiveCurrentUser(decoded));
     })
     .catch(err => {dispatch(receiveErrors(err.response.data))

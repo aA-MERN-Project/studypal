@@ -6,11 +6,12 @@ class Splash extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            miles_away : '',
-            hours_away : '',
-            free_wifi : '',
-            credit_card : '',
-            noise_level : '',
+            // TOY DATA FOR FILTER CHANGE LATER
+            miles_away : 1, 
+            hours_away : 3,
+            free_wifi : true,
+            credit_card : true,
+            noise_level : false,
             zipcode : '',
 
         }
@@ -19,19 +20,12 @@ class Splash extends React.Component {
     }
 
 
-    // pickRandomCafe(){
-
-
-    //     const cafe_data = Object.assign({}, this.state);
-        
-    // }
-
-
 
 
     handleSubmit(e) {
         e.preventDefault();
         this.props.fetchCafeByZipcode(this.state.zipcode);
+        this.props.getFilters(this.state)
         // redirect to new page here with props
         this.props.history.push(`/cafe`);
     };
@@ -48,8 +42,8 @@ class Splash extends React.Component {
 
         return (
           <div>
-
-
+            <h1>SPLASH PAGE</h1>
+            <br/>
             <form onSubmit={this.handleSubmit}>
                 <input
                     type="checkbox"

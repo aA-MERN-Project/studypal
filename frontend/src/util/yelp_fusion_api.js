@@ -13,9 +13,13 @@ let defaultSearchParams = {
 
 
 // testing out api 
-client.search(defaultSearchParams)
+const getFusionYelpId = id => client.business(id)
     .then(response => {
-        console.log(response.jsonBody.businesses)
-    }).catch ( error => {
-        console.log(e)
+        console.log(response.jsonBody);
     })
+    .catch(error => {
+        console.log(e);
+    });
+
+
+export default getFusionYelpId;
