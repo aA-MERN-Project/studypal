@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
         store = configureStore();
     }
 
+    window.getState = store.getState
+
     const root = document.getElementById("root");
 
     // debugger;
