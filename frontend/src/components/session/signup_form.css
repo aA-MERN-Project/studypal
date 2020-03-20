@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap');
+
+.signup-page-div {
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+/* .signup-div {
+    display: flex;
+    justify-content: space-around;
+} */
+
+.signup-form-div {
+    width: 466px;
+    height: 495px;
+    border: 2px solid rgba(65, 105, 225, 0.5);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.welcome-studypal {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    color: #4169E1;
+}
+
+/* .signup-background {
+    background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%); 
+} */
+
+.left-div-signup {
+    width: 50%;
+}
+
+.right-div-signup {
+    display: flex;
+    width: 50%;
+    background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%); 
+}
