@@ -24,8 +24,7 @@ const receiveErrors = errors => ({
 });
 
 //added by Fei
-const receiveUserSignIn = () => {
-     ;
+const receiveUserSignIn = (currentUser) => {
     return({
     type: RECEIVE_USER_SIGN_IN,
     currentUser
