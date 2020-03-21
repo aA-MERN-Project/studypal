@@ -116,6 +116,7 @@ padding-top: 4%
 }
 
 .login-signup-button {
+    outline: none;
     width: 70%;
     height: 40px;
     background: rgba(255, 127, 80, 0.8);
@@ -142,4 +143,9 @@ padding-top: 4%
     line-height: 19px;
     color: #333333;
     width: 36%;
+}
+
+.errors {
+    padding-left: 11%;
+    padding-bottom: 2%
 }
