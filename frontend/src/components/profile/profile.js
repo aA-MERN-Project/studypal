@@ -20,17 +20,67 @@ class Profile extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.update = this.update.bind(this)
         // this.checkbox = this.checkbox.bind(this)
+        this.toggleCheckbox = this.toggleCheckbox.bind(this)
+        this.createCheckbox = this.createCheckbox.bind(this)
+        this.createCheckboxes = this.createCheckboxes.bind(this)
+        this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
 
-    componentDidMount() {
-      // const hi = $("div")
-
-      $(".checkbox-miles").click(function() {
-        $(".checkbox-miles").prop("checked", false);
-        $(this).prop("checked", true);
-      })
+    componentWillMount = () => {
+      this.selectedCheckboxes = new Set();
     }
+
+    // componentDidMount() {
+    //   // const hi = $("div")
+
+    //   $(".checkbox-miles").click(function() {
+    //     $(".checkbox-miles").prop("checked", false);
+    //     $(this).prop("checked", true);
+    //   })
+    // }
     
+    toggleCheckbox = label => {
+      if (this.selectedCheckboxes.has(label)) {
+        this.selectedCheckboxes.delete(label);
+      } else {
+        this.selectedCheckboxes.add(label);
+      }
+    }
+
+  handleFormSubmit = formSubmitEvent => {
+    formSubmitEvent.preventDefault();
+
+    for (const checkbox of this.selectedCheckboxes) {
+      console.log(checkbox, 'is selected.');
+    }
+  }
+
+  createCheckbox = label => (
+    <Checkbox
+      label={label}
+      handleCheckboxChange={this.toggleCheckbox}
+      key={label}
+    />
+  )
+
+  createCheckboxes = () => {
+    let items = [
+      '0.5 miles',
+      '1 mile',
+      '3 miles',
+      '5 miles',
+      '10 miles',
+      '1 hour',
+      '2 hours',
+      '3 hours',
+      '5 hours',
+      '8 hours',
+      'true',
+      'true',
+      'true',
+    ];
+     return items.map(this.createCheckbox)
+}
 
         
     //     // if ($(this).prop("checked") === true) {
@@ -89,116 +139,8 @@ class Profile extends React.Component {
         this.props.processForm(this.state)
     }
 
-  //   checkboxes1(num) {
-  //     let checks = document.getElementsByClassName("checkbox")
-  //     let arrChecks = Array.from(checks)
-      
-  //     let newArrChecks = arrChecks.map((check) => {
-  //       if (arrChecks.indexOf(check) < 5) {
-  //        return  check
-  //       }
-  //     })
-      
-
-  //     newArrChecks.forEach((check) => {
-        
-  //       if (check) {
-  //         check.checked = false
-  //       }
-  //     })
-
-  //     if (newArrChecks[num].checked === true) {
-  //       newArrChecks[num].checked = false
-  //     } else {
-  //       newArrChecks[num].checked = true
-  //     }
-  //   }
-
-  //   checkboxes2(num) {
-  //     let checks = document.getElementsByClassName("checkbox")
-  //     let arrChecks = Array.from(checks)
-
-  //     let newArrChecks = arrChecks.map((check) => {
-  //       if (arrChecks.indexOf(check) > 4 && arrChecks.indexOf(check) < 10) {
-  //         return check
-  //       } else {
-  //         return check.checked = true
-  //       }
-  //     })
-
-  //     newArrChecks.forEach( (check) => {
-  //       if (check) {
-  //         check.checked = false
-  //       }
-  //     })
-
-
-  //     if (newArrChecks[num].checked === true) {
-  //       newArrChecks[num].checked = false
-  //     } else {
-  //       newArrChecks[num].checked = true
-  //     }
-  //   }
-
-  // checkboxes3(num) {
-  //   let checks = document.getElementsByClassName("checkbox")
-  //   let arrChecks = Array.from(checks)
-  //   let newArrChecks = arrChecks[10]
-
-  //   newArrChecks.forEach((check) => {
-
-  //     if (check) {
-  //       check.checked = false
-  //     }
-  //   })
-
-  //   if (newArrChecks[num].checked === true) {
-  //     newArrChecks[num].checked = false
-  //   } else {
-  //     newArrChecks[num].checked = true
-  //   }
-  // }
-
-  // checkboxes4(num) {
-  //   let checks = document.getElementsByClassName("checkbox")
-  //   let arrChecks = Array.from(checks)
-
-  //   let newArrChecks = arrChecks[11]
-
-  //   newArrChecks.forEach((check) => {
-  //     if (check) {
-  //       check.checked = false
-  //     } 
-  //   })
-
-  //   if (newArrChecks[num].checked === true) {
-  //     newArrChecks[num].checked = false
-  //   } else {
-  //     newArrChecks[num].checked = true
-  //   }
-  // }
-
-  // checkboxes5(num) {
-  //   let checks = document.getElementsByClassName("checkbox")
-  //   let arrChecks = Array.from(checks)
-
-  //   let newArrChecks = arrChecks[12]
-
-  //   newArrChecks.forEach((check) => {
-  //     if (check) {
-  //       check.checked = false
-  //     }
-  //   })
-
-  //   if (newArrChecks[num].checked === true) {
-  //     newArrChecks[num].checked = false
-  //   } else {
-  //     newArrChecks[num].checked = true
-  //   }
-  // }
-
     update(field) {
-      debugger
+      
         return e => this.setState({
             [field]: e.currentTarget.name
         })

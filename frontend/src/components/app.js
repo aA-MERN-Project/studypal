@@ -11,7 +11,7 @@ import {Switch, Route} from 'react-router-dom';
 
 const App = () => {
   return (
-    <div>
+    <div className="app">
       {/* <LoginFormContainer/> */}
 
       <Switch>
