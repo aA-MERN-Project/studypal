@@ -71,24 +71,7 @@
     padding-bottom: 2%
 }
 
-.checkbox-miles {
-    border-radius: 5px;
-    vertical-align: baseline;
-}
-.checkbox-hours {
-    border-radius: 5px;
-    vertical-align: baseline;
-}
-.checkbox-wifi {
-    border-radius: 5px;
-    vertical-align: baseline;
-}
-.checkbox-credit {
-    border-radius: 5px;
-    vertical-align: baseline;
-}
-.checkbox-noise {
-    border-radius: 5px;
+.checkbox {
     vertical-align: baseline;
 }
 

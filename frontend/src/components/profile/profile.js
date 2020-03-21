@@ -19,133 +19,31 @@ class Profile extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.update = this.update.bind(this)
-        // this.checkbox = this.checkbox.bind(this)
-        this.toggleCheckbox = this.toggleCheckbox.bind(this)
-        this.createCheckbox = this.createCheckbox.bind(this)
-        this.createCheckboxes = this.createCheckboxes.bind(this)
-        this.handleFormSubmit = this.handleFormSubmit.bind(this)
+        this.clear = this.clear.bind(this)
     }
-
-    componentWillMount = () => {
-      this.selectedCheckboxes = new Set();
-    }
-
-    // componentDidMount() {
-    //   // const hi = $("div")
-
-    //   $(".checkbox-miles").click(function() {
-    //     $(".checkbox-miles").prop("checked", false);
-    //     $(this).prop("checked", true);
-    //   })
-    // }
-    
-    toggleCheckbox = label => {
-      if (this.selectedCheckboxes.has(label)) {
-        this.selectedCheckboxes.delete(label);
-      } else {
-        this.selectedCheckboxes.add(label);
-      }
-    }
-
-  handleFormSubmit = formSubmitEvent => {
-    formSubmitEvent.preventDefault();
-
-    for (const checkbox of this.selectedCheckboxes) {
-      console.log(checkbox, 'is selected.');
-    }
-  }
-
-  createCheckbox = label => (
-    <Checkbox
-      label={label}
-      handleCheckboxChange={this.toggleCheckbox}
-      key={label}
-    />
-  )
-
-  createCheckboxes = () => {
-    let items = [
-      '0.5 miles',
-      '1 mile',
-      '3 miles',
-      '5 miles',
-      '10 miles',
-      '1 hour',
-      '2 hours',
-      '3 hours',
-      '5 hours',
-      '8 hours',
-      'true',
-      'true',
-      'true',
-    ];
-     return items.map(this.createCheckbox)
-}
-
-        
-    //     // if ($(this).prop("checked") === true) {
-    //     // // console.log("bla");
-
-    //     //   $(this).prop("checked", false);
-    //     // }
-
-
-    //     // } else if ($(this).prop("checked") === true) {
-    //     //         $(".checkbox-miles").prop("checked", false);
-    //     //         console.log($(this).prop("checked"));
-    //     //         console.log("bla")
-    //     //          $(this).prop("checked", false);
-    //     //          console.log($(this).prop("checked"));
-    //     //          console.log("bye");
-    //     //        }
-    //   });
-
-    //   // $(".checkbox-hours").click(function() {
-    //   //   $(".checkbox-hours").prop("checked", false);
-    //   //   $(this).prop("checked", true);
-    //   // });
-
-    //   // $(".checkbox-wifi").click(function() {
-    //   //   $(".check-wifi").prop("checked", false);
-    //   //   $(this).prop("checked", true);
-    //   // });
-
-    //   // $(".checkbox-credit").click(function() {
-    //   //   $(".checkbox-credit").prop("checked", false);
-    //   //   $(this).prop("checked", true);
-    //   // });
-    //   // $(".checkbox-noise").click(function() {
-    //   //   $(".checkbox-noise").prop("checked", false);
-    //   //   $(this).prop("checked", true);
-    //   // });
-    // }
-
-    // checkbox(e) {
-    //   // if($(".checkbox-miles").prop("checked") === true) {
-    //   //   $(".checkbox-miles").prop("checked", false);
-    //   //   $(this).prop("checked", true);
-    //   // } else {
-    //   //   $(".checkbox-miles").prop("checked", false);
-    //   //   $(e).prop("checked", true);
-    //   // }
-    //     debugger
-    //     $(".checkbox-miles").prop("checked", false);
-    //     debugger
-    //     $(e).prop("checked", true);
-    //     debugger
-    // }
 
     handleSubmit(e) {
         this.props.processForm(this.state)
     }
 
-    update(field) {
+    clear() {
+      $("input[type=radio]:checked").prop("checked", false);
       
-        return e => this.setState({
-            [field]: e.currentTarget.name
-        })
+
+      this.setState({
+        miles_away: "",
+        hours_opened_left: "",
+        free_wifi: "",
+        credit_card: "",
+        noise_level: "",
+      })
     }
 
+    update(field) {
+        return e => this.setState({
+            [field]: e.currentTarget.value
+        })
+    }
 
     render() {
         return (
@@ -169,56 +67,51 @@ class Profile extends React.Component {
                       <form>
                         <label className="filter">
                           <input
-                            // onClick={e => this.checkbox(e)}
-                            // onClick={() => this.checkboxes1(0)}
+                            className="checkbox"
                             onChange={this.update("miles_away")}
-                            className="checkbox-miles"
-                            type="checkbox"
-                            name="0.5 miles"
+                            type="radio"
+                            name="miles"
+                            value="0.5 miles"
                           />
                           0.5 miles
                         </label>
                         <label className="filter">
                           <input
-                            // onClick={e => this.checkbox(e)}
-                            // onClick={() => this.checkboxes1(1)}
+                            className="checkbox"
                             onChange={this.update("miles_away")}
-                            className="checkbox-miles"
-                            type="checkbox"
-                            name="1 mile"
+                            type="radio"
+                            name="miles"
+                            value="1 mile"
                           />
                           1 mile
                         </label>
                         <label className="filter">
                           <input
-                            // onClick={e => this.checkbox(e)}
-                            // onClick={() => this.checkboxes1(2)}
+                            className="checkbox"
                             onChange={this.update("miles_away")}
-                            className="checkbox-miles"
-                            type="checkbox"
-                            name="3 miles"
+                            type="radio"
+                            name="miles"
+                            value="3 miles"
                           />
                           3 miles
                         </label>
                         <label className="filter">
                           <input
-                            // onClick={e => this.checkbox(e)}
-                            // onClick={() => this.checkboxes1(3)}
+                            className="checkbox"
                             onChange={this.update("miles_away")}
-                            className="checkbox-miles"
-                            type="checkbox"
-                            name="5 miles"
+                            type="radio"
+                            name="miles"
+                            value="5 miles"
                           />
                           5 miles
                         </label>
                         <label className="filter">
                           <input
-                            // onClick={e => this.checkbox(e)}
-                            // onClick={() => this.checkboxes1(4)}
+                            className="checkbox"
                             onChange={this.update("miles_away")}
-                            className="checkbox-miles"
-                            type="checkbox"
-                            name="10 miles"
+                            type="radio"
+                            name="miles"
+                            value="10 miles"
                           />
                           10 miles
                         </label>
@@ -232,56 +125,51 @@ class Profile extends React.Component {
                       <form>
                         <label className="filter">
                           <input
-                            // onClick={e => this.checkbox(e)}
-                            // onClick={() => this.checkboxes2(5)}
+                            className="checkbox"
                             onChange={this.update("hours_opened_left")}
-                            className="checkbox-hours"
-                            type="checkbox"
-                            name="1 hour"
+                            type="radio"
+                            name="hours"
+                            value="1 hour"
                           />
                           1 hour
                         </label>
                         <label className="filter">
                           <input
-                            // onClick={e => this.checkbox(e)}
-                            // onClick={() => this.checkboxes2(6)}
+                            className="checkbox"
                             onChange={this.update("hours_opened_left")}
-                            className="checkbox-hours"
-                            type="checkbox"
-                            name="2 hours"
+                            type="radio"
+                            name="hours"
+                            value="2 hours"
                           />
                           2 hours
                         </label>
                         <label className="filter">
                           <input
-                            // onClick={e => this.checkbox(e)}
-                            // onClick={() => this.checkboxes2(7)}
+                            className="checkbox"
                             onChange={this.update("hours_opened_left")}
-                            className="checkbox-hours"
-                            type="checkbox"
-                            name="3 hours"
+                            type="radio"
+                            name="hours"
+                            value="3 hours"
                           />
                           3 hours
                         </label>
                         <label className="filter">
                           <input
-                            // onClick={e => this.checkbox(e)}
-                            // onClick={() => this.checkboxes2(8)}
+                            className="checkbox"
                             onChange={this.update("hours_opened_left")}
-                            className="checkbox-hours"
-                            type="checkbox"
-                            name="5 hours"
+                            type="radio"
+                            name="hours"
+                            value="5 hours"
                           />
                           5 hours
                         </label>
                         <label className="filter">
                           <input
-                            // onClick={e => this.checkbox(e)}
-                            // onClick={() => this.checkboxes2(9)}
+                            className="checkbox"
                             onChange={this.update("hours_opened_left")}
-                            className="checkbox-hours"
-                            type="checkbox"
-                            name="8 hours"
+                            type="radio"
+                            name="hours"
+                            value="8 hours"
                           />
                           8 hours
                         </label>
@@ -292,90 +180,51 @@ class Profile extends React.Component {
                   <div className="horizontal-line"></div>
                   <div className="bottom-row">
                     <div className="mini-1">
-                      {/* <div className="within-select-2">Free WiFi: </div> */}
                       <form>
                         <label className="filter">
                           <input
-                            // onClick={() => this.checkboxes2(10)}
+                            className="checkbox"
                             onChange={this.update("free_wifi")}
-                            className="checkbox-wifi"
-                            type="checkbox"
-                            name="true"
+                            type="radio"
+                            value="true"
                           />
                           Free WiFi
                         </label>
-                        {/* <label className="filter">
-                          <input
-                            onChange={this.update("free_wifi")}
-                            className="checkbox"
-                            type="checkbox"
-                            name="false"
-                          />
-                          No
-                        </label> */}
                       </form>
                     </div>
                     <div className="vertical-line"></div>
 
                     <div className="mini-2">
-                      {/* <div className="within-select-2">Takes Credit Card: </div> */}
                       <form>
                         <label className="filter">
                           <input
-                            // onClick={() => this.checkboxes2(11)}
+                            className="checkbox"
                             onChange={this.update("credit_card")}
-                            className="checkbox-credi"
-                            type="checkbox"
-                            name="true"
+                            type="radio"
+                            value="true"
                           />
                           Takes Credit Card
                         </label>
-                        {/* <label className="filter">
-                          <input
-                            onChange={this.update("noise_level")}
-                            className="checkbox"
-                            type="checkbox"
-                            name="false"
-                          />
-                          No
-                        </label> */}
                       </form>
                     </div>
 
                     <div className="vertical-line"></div>
                     <div className="mini-3">
-                      {/* <div className="within-select-2">Noise Level: </div> */}
                       <form>
                         <label className="filter">
                           <input
-                            // onClick={() => this.checkboxes2(12)}
+                            className="checkbox"
                             onChange={this.update("noise_level")}
-                            className="checkbox-noise"
-                            type="checkbox"
-                            name="true"
+                            type="radio"
+                            value="true"
                           />
                           Quiet Environment
                         </label>
-                        {/* <label className="filter">
-                          <input
-                            onChange={this.update("noise_level")}
-                            className="checkbox"
-                            type="checkbox"
-                            name="average"
-                          />
-                          Average
-                        </label>
-                        <label className="filter">
-                          <input
-                            onChange={this.update("noise_level")}
-                            className="checkbox"
-                            type="checkbox"
-                            name="loud"
-                          />
-                          Loud
-                        </label> */}
                       </form>
                     </div>
+                  </div>
+                  <div>
+                    <button onClick={() => this.clear()}>Clear All</button>
                   </div>
                 </div>
               </div>
