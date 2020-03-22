@@ -6,11 +6,10 @@ export const RECEIVE_CAFES = "RECEIVE_CAFES";
 export const RECEIVE_CLEAR_CAFES = "RECEIVE_CLEAR_CAFES";
 export const REROLL_CAFES = "REROLL_CAFES";
 
+export const START_LOADING_FILTERED_CAFES = "START_LOADING_FILTERED_CAFES";
+export const START_LOADING_SINGLE_CAFE = "START_LOADING_SINGLE_CAFE";
 
-// export const receiveCafeByZipcode = cafes => ({
-//     type: RECEIVE_CAFEBYZIPCODE,
-//     cafes,
-// });
+
 
 export const rerollCafes = cafes => ({
     type: REROLL_CAFES,
@@ -33,6 +32,17 @@ export const receiveCafes = cafes => ({
     cafes,
 });
 
+// Loading Actions
+
+export const startLoadingFilteredCafes = () => ({
+    type: START_LOADING_FILTERED_CAFES,
+});
+
+export const startLoadingSingleCafe = () => ({
+    type: START_LOADING_SINGLE_CAFE,
+
+});
+
 // API actions
 
 export const fetchCafes = () => dispatch => (
@@ -48,11 +58,15 @@ export const fetchCafeByZipcode = zipcode => dispatch => (
     .catch(err => console.log(err))
 );
 
-export const fetchCafeByFilters = filters => dispatch => (
-    getCafeByFilters(filters)
-        .then(cafes => dispatch(receiveCafes(cafes)))
-        .catch(err => console.log(err))
-);
+export const fetchCafeByFilters = filters => dispatch => {
+    dispatch(startLoadingFilteredCafes());
+
+    return getCafeByFilters(filters).then(cafes => {
+        dispatch(receiveCafes(cafes));
+        return cafes;
+    })
+    
+};
 
 
 export const fetchCafe = id => dispatch => (

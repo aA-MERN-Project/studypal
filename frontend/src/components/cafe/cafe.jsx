@@ -4,6 +4,7 @@ import distance from '../../util/distance_util'
 import ShowMap from "../map/show_map";
 import "../../stylesheets/map.scss";
 import "./cafe.scss"
+import LoadingPage from './loader';
 
 const apiKey = require("../../keys/keys").YELP_API_KEY;
 
@@ -137,6 +138,7 @@ class Cafe extends React.Component {
   }
 
   reRoll() {
+    this.props.startLoadingSingleCafe()
     this.props.rerollCafes(this.state.leftOverCafes);
   }
 
@@ -146,15 +148,23 @@ class Cafe extends React.Component {
   }
 
   render() {
-    if (!this.state.cafeFromYelpApi) return null;
 
+    const { loading } = this.props;
+    if (loading) { return <LoadingPage />; }
+
+
+
+    if (!this.state.cafeFromYelpApi) return null;
     let display_address = this.state.cafeFromYelpApi.location.display_address;
     let time = this.calculateTime(this.state.cafeFromYelpApi.hours);
     let lat = this.state.cafeFromYelpApi.coordinates.latitude;
     let lng = this.state.cafeFromYelpApi.coordinates.longitude;
 
     return (
+
+
       <div>
+        
         <h1>{this.state.cafeFromYelpApi.name}</h1>
         <br />
         <h1>Open until {time} Today</h1>
