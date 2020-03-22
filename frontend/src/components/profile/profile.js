@@ -3,6 +3,8 @@ import './profile.css'
 import React from 'react'
 import NavBar from '../navbar/navbar_container'
 import $ from "jquery";
+import coffee from './coffee.png'
+import edit from './edit.png'
 
 class Profile extends React.Component {
     constructor(props) {
@@ -41,7 +43,6 @@ class Profile extends React.Component {
 
     clear() {
       $("input[type=radio]:checked").prop("checked", false);
-      
 
       this.setState({
         miles_away: "",
@@ -77,14 +78,19 @@ class Profile extends React.Component {
       //  let zipcode = user ? user.zipcode : ""; 
 
         return (
-          <div className="page">
-            <NavBar/>
-              <div className="profile-info-div">
-                <div className="profile-info">
+        <div className="page">
+            <NavBar />
+            <div className="profile-info-div">
+              <div className="profile-info">
+                <div className="img-info-div">
+                  <img className="coffee-img" src={coffee}/>
+                  <div className="only-profile-info">
                     <div className="name">{username}</div>
                     <div className="email">{email}</div>
-                    <div>Current Zipcode {zipcode}</div>
+                    <div className="zipcode">Current Zipcode {zipcode}</div>
+                  </div>
                 </div>
+                {/* <img className="edit" src={edit}/> */}
               </div>
             <br/>
             <div className="outer-filter-box-div">
@@ -263,6 +269,7 @@ class Profile extends React.Component {
               <button className="find-cafe-profile">Find a Cafe</button>
             </div>
           </div>
+        </div>
         );
     }
 }

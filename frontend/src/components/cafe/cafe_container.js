@@ -1,23 +1,23 @@
 import { connect } from "react-redux";
-import { clearCafes, rerollCafes } from "../../actions/cafe_actions";
+import { clearCafes, rerollCafes, startLoadingSingleCafe } from "../../actions/cafe_actions";
 import Cafe from '../cafe/cafe';
 
-import {asArray} from '../../reducers/selectors'
+
 
 const mapStateToProps = state => {
-    // debugger
-    
+
     return {
         cafes: Object.values(state.entities.cafes),
-        filters: state.entities.filters
+        filters: state.entities.filters,
+        loading: state.loading.indexLoading,
+        reroll_loading: state.loading.detailLoading,
     };
-
-
 
 }
 const mapDispatchToProps = dispatch => ({
   clearCafes: () => dispatch(clearCafes()),
   rerollCafes: cafes => dispatch(rerollCafes(cafes)),
+  startLoadingSingleCafe: () => dispatch(startLoadingSingleCafe())
   
 });
 
