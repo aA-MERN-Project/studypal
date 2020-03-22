@@ -12,6 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     processForm: () => dispatch(logout())
+    // getPreferences: () => dispatch
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
