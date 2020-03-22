@@ -3,6 +3,8 @@ import './profile.css'
 import React from 'react'
 import NavBar from '../navbar/navbar_container'
 import $ from "jquery";
+import coffee from './coffee.png'
+import edit from './edit.png'
 
 class Profile extends React.Component {
     constructor(props) {
@@ -30,7 +32,6 @@ class Profile extends React.Component {
 
     clear() {
       $("input[type=radio]:checked").prop("checked", false);
-      
 
       this.setState({
         miles_away: "",
@@ -53,9 +54,15 @@ class Profile extends React.Component {
             <NavBar />
             <div className="profile-info-div">
               <div className="profile-info">
-                <div className="name">Name</div>
-                <div className="email">Email</div>
-                <div>Current Location</div>
+                <div className="img-info-div">
+                  <img className="coffee-img" src={coffee}/>
+                  <div className="only-profile-info">
+                    <div className="name">Name</div>
+                    <div className="email">Email</div>
+                    <div className="zipcode">Current Location</div>
+                  </div>
+                </div>
+                {/* <img className="edit" src={edit}/> */}
               </div>
             </div>
             <br />
