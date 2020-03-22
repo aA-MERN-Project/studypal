@@ -8,11 +8,13 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const RECEIVE_USER_SIGN_IN = 'RECEIVE_USER_SIGN_IN';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-const receiveCurrentUser = (currentUser) => ({
-    // debugger;
-    type: RECEIVE_CURRENT_USER,
-    currentUser
-});
+const receiveCurrentUser = (currentUser) => {
+    debugger;
+    return({
+        type: RECEIVE_CURRENT_USER,
+        currentUser
+    });
+};
 
 const logoutCurrentUser = () => ({
     type: LOGOUT_CURRENT_USER
@@ -88,10 +90,10 @@ export const login = (user) => dispatch => {
         //decoded contains all the data we get back from API
         //res.data.token is the => is the json web token we are passing into jwt decode function
         const decoded = jwt_decode(token);
-        //  ;
+        // debugger;
         dispatch(receiveCurrentUser(decoded));
     })
-    .catch(err => {dispatch(receiveErrors(err.response.data))
+    .catch(err => {dispatch(receiveErrors(err.response.data));
     });
 };
 

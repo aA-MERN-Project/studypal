@@ -16,8 +16,7 @@ export const login = (userData) => {
 }
 
 export const signup = (userData) => {
-    //  ;
-    return axios.post('api/users/register',userData);
+    return axios.post('api/users/register', userData);
 } 
 
 //not using 

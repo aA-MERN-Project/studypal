@@ -25,6 +25,26 @@ const UserSchema = new Schema({
     zipcode:{
         type:Number,
         required:true
+    },
+    miles_away: {
+        type:String,
+        default: ""
+    },
+    hours_opened_left: {
+        type:String,
+        default:""
+    },
+    free_wifi: {
+        type:String,
+        default: ""
+    },
+    credit_card: {
+        type: String,
+        default: "",
+    },
+    noise_level: {
+        type:String,
+        default: ""
     }
 });
 

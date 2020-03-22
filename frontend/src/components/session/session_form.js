@@ -1,7 +1,5 @@
 import React from 'react';
 import {withRouter, Redirect, Link} from 'react-router-dom';
-import './signup_form.css'
-import './login_form.css'
 import './session_form.css'
 
 class SessionForm extends React.Component {
@@ -64,8 +62,7 @@ class SessionForm extends React.Component {
             zipcode: this.state.zipcode
         };
         if(this.props.formType==="Log in"){   
-            
-            this.props.processForm(user)
+            this.props.processForm(user);
               // .then(this.checkErrors());
         }else{
             this.props.processForm(user);

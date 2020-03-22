@@ -5,8 +5,7 @@ import React from 'react';
 
 class NavBar extends React.Component {
     constructor(props) {
-        super(props)
-
+        super(props);
         this.loggedOut = this.loggedOut.bind(this)
         this.loggedIn = this.loggedIn.bind(this)
         this.handleLogout = this.handleLogout.bind(this);
@@ -36,10 +35,9 @@ class NavBar extends React.Component {
         if (this.props.loggedIn) {
             return (
                 <div className="button-div">
-                    <Link className="button" to="/login">Log Out</Link>
-                    <button onClick={this.handleLogout}>Log Out Button</button>
+                    {/* <Link className="button" to="/login">Log Out</Link> */}
+                    <button className="button2" onClick={this.handleLogout}>Log Out</button>
                 </div>
-                //needs to dispatch logout
             )
         }
     }

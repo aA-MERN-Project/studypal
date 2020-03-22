@@ -9,9 +9,8 @@ class Profile extends React.Component {
 
         // debugger;
         this.state = {
-            user: props.user
+          user: props.user,
             // handle: props.user.handle,          
-        }
           miles_away: "",
           hours_opened_left: "",
           free_wifi: "",
@@ -29,8 +28,13 @@ class Profile extends React.Component {
     }
 
     componentDidMount(){
-      // debugger;
+      debugger;
       this.setState({user:this.props.user});
+    }
+
+    componentWillReceiveProps(nextProps){
+      debugger;
+      this.setState({user:this.nextProps.user});
     }
 
   //   checkboxes1(num) {
@@ -149,10 +153,22 @@ class Profile extends React.Component {
 
 
     render() {
-       const {user} = this.props;
-       let username = user ? user.handle : "";
-       let email = user ? user.email : "";
-       let zipcode = user ? user.zipcode : ""; 
+      let username ;
+      let email;
+      let zipcode;
+      if (this.state.user){
+        username = this.state.user.handle;
+        email = this.state.user.email;
+        zipcode = this.state.user.zipcode;
+      }else{
+        username = "";
+        email = "";
+        zipcode = "";
+      }
+      //  const {user} = this.state.user;
+      //  let username = user ? user.handle : "";
+      //  let email = user ? user.email : "";
+      //  let zipcode = user ? user.zipcode : ""; 
 
         return (
           <div className="page">
@@ -164,8 +180,7 @@ class Profile extends React.Component {
                     <div>Current Zipcode {zipcode}</div>
                 </div>
               </div>
-            </div>
-            <br />
+            <br/>
             <div className="outer-filter-box-div">
               <div className="filter-box-div">
                 <div className="preferences">Saved Preferences</div>
@@ -201,6 +216,7 @@ class Profile extends React.Component {
                             className="checkbox-miles"
                             type="checkbox"
                             name="3 miles"
+                            
                           />
                           3 miles
                         </label>
