@@ -36,7 +36,7 @@ class Profile extends React.Component {
 
     componentWillReceiveProps(nextProps){
       debugger;
-      this.setState({user:this.nextProps.user});
+      this.setState({user:nextProps.user});
     }
 
     clear() {

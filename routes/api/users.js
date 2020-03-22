@@ -15,14 +15,22 @@ const validateLoginInput = require('../../validation/login');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
-//get single user by email
-router.get('/:email', (req,res) => {
-    User.findOne({email: req.params.email})
+router.get('/:id', (req,res) => {
+    User.findById(req.params.id)
         .then(user => res.json(user))
         .catch(err => 
             res.status(404).json({noUserFound: "no user found with that email"})
         );
 });
+
+//get single user by email
+// router.get('/:email', (req,res) => {
+//     User.findOne({email: req.params.email})
+//         .then(user => res.json(user))
+//         .catch(err => 
+//             res.status(404).json({noUserFound: "no user found with that email"})
+//         );
+// });
 
 //update single user preferences (not including zipcode) --> (find by email)
 router.patch('/:email', (req,res,next) => {
