@@ -12,13 +12,22 @@ router.get("/test", (req, res) => {
 
 
 router.get("/", (req,res) => {
-
+   
     Cafe
-        .find()
-        .sort({ zipCode: -1}) //finds newest inputted cafe
+        .find({noise_level: "loud"})
         .then(cafes => res.json(cafes))
         .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with that zipcode' }));
 });
+
+
+router.post("/filters", (req,res) => {
+    const filters = req.body;
+
+    Cafe.find({location_zip_code: req.body.location_zip_code, wifi: filters.wifi})
+        .then(cafes => res.json(cafes))
+        .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with that zipcode' }));
+
+})
 
 
 router.get("/yelp_id/:yelp_id", (req,res) => {  

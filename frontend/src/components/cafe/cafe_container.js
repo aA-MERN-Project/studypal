@@ -12,8 +12,6 @@ const mapStateToProps = state => {
         filters: state.entities.filters
     };
 
-
-
 }
 const mapDispatchToProps = dispatch => ({
   clearCafes: () => dispatch(clearCafes()),
