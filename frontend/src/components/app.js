@@ -2,7 +2,7 @@ import React from 'react';
 import NavBarContainer from './navbar/navbar_container'
 import ProfileContainer from './profile/profile_container'
 import "./app.css"
-import {AuthRoute, ProtectedRoute} from '../util/route_util';
+import {AuthRoute, ProtectedRoute, NavBarRedirect} from '../util/route_util';
 import SplashContainer from './splash/splash_container'
 import CafeContainer from './cafe/cafe_container'
 import LoginFormContainer from './session/login_form_container';
