@@ -78,7 +78,7 @@ class Profile extends React.Component {
       //  let zipcode = user ? user.zipcode : ""; 
 
         return (
-        <div className="page">
+          <div className="page">
             <NavBar />
             <div className="profile-info-div">
               <div className="profile-info">
@@ -92,6 +92,7 @@ class Profile extends React.Component {
                 </div>
                 {/* <img className="edit" src={edit}/> */}
               </div>
+            </div>
             <br/>
             <div className="outer-filter-box-div">
               <div className="filter-box-div">
@@ -269,7 +270,6 @@ class Profile extends React.Component {
               <button className="find-cafe-profile">Find a Cafe</button>
             </div>
           </div>
-        </div>
         );
     }
 }
