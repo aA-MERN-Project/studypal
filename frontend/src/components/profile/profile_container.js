@@ -3,7 +3,7 @@ import Profile from './profile';
 import {logout} from '../../actions/session_actions';
 
 const mapStateToProps = state => {
-    // debugger;
+     
     return({
     user: state.session.user,
     test: "test"

@@ -26,7 +26,7 @@ class SessionForm extends React.Component {
     }
     
     componentWillReceiveProps(nextProps){
-        // debugger;
+         
         let user = {
             email: this.state.email,
             password: this.state.password,
@@ -47,7 +47,7 @@ class SessionForm extends React.Component {
     }
 
     componentDidMount(){
-        // debugger;
+         
             this.props.clearErrors(); 
         }
         
@@ -73,7 +73,6 @@ class SessionForm extends React.Component {
     //   if(this.props.errors.length > 0){      
     //     console.log("login errors, like no user with that email");
     //   }else if(this.props.errors.length === 0 ){
-    //     debugger;
     //     this.props.history.push('user');
     //   }
     // }
@@ -270,7 +269,7 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        // debugger;
+         
         return this.props.formType === "Log in" ? this.login() : this.signup()
     }
 };

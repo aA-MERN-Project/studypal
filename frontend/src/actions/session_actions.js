@@ -9,7 +9,6 @@ export const RECEIVE_USER_SIGN_IN = 'RECEIVE_USER_SIGN_IN';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 const receiveCurrentUser = (currentUser) => {
-    debugger;
     return({
         type: RECEIVE_CURRENT_USER,
         currentUser
@@ -64,7 +63,7 @@ export const clearErrors = () => {
 
 //added by fei
 export const signup  = (user) => dispatch => {
-    // debugger;
+     
     return(
         SessionAPIUtil.signup(user)
             .then((user) => dispatch(receiveUserSignIn(user)),
@@ -76,7 +75,7 @@ export const signup  = (user) => dispatch => {
 
 //added by fei
 export const login = (user) => dispatch => {
-    // debugger;
+     
     return SessionAPIUtil.login(user).then(res => {
         //in axios, all of our json data is in data key of response
         //response carries lot of information
@@ -90,7 +89,7 @@ export const login = (user) => dispatch => {
         //decoded contains all the data we get back from API
         //res.data.token is the => is the json web token we are passing into jwt decode function
         const decoded = jwt_decode(token);
-        // debugger;
+         
         dispatch(receiveCurrentUser(decoded));
     })
     .catch(err => {dispatch(receiveErrors(err.response.data));
@@ -101,7 +100,7 @@ export const login = (user) => dispatch => {
 // 1) remove jwtkey from localstorage 2) need to take jwt authHeader off of axios as a default
 // 3) get user out of redux store
 export const logout = () => dispatch => {
-    // debugger;
+     
     localStorage.removeItem('jwtToken');
     SessionAPIUtil.setAuthToken(false);
     dispatch(logoutCurrentUser());

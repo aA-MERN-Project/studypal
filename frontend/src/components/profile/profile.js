@@ -10,7 +10,7 @@ class Profile extends React.Component {
     constructor(props) {
         super(props)
 
-        // debugger;
+         
         this.state = {
           user: props.user,
             // handle: props.user.handle,          
@@ -32,12 +32,10 @@ class Profile extends React.Component {
     }
 
     componentDidMount(){
-      debugger;
       this.setState({user:this.props.user});
     }
 
     componentWillReceiveProps(nextProps){
-      debugger;
       this.setState({user:nextProps.user});
     }
 

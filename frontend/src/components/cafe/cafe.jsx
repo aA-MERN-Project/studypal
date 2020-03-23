@@ -92,7 +92,6 @@ class Cafe extends React.Component {
   }
 
   render() {
-    debugger
     const { loading } = this.props;
     if (loading) { return <LoadingPage />; }
     

@@ -71,7 +71,6 @@ class Splash extends React.Component {
         state.credit_card ? state.credit_card = "yes" : state.credit_card = "no";
 
 
-        debugger
         this.props.fetchCafeByFilters(state)
         this.props.getFilters(state)
         this.props.history.push(`/cafe`);
