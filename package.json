@@ -2,6 +2,10 @@
   "name": "studypal",
   "version": "1.0.0",
   "description": "StudyPal Application",
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
+  },
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
