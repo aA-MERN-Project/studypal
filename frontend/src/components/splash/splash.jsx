@@ -10,11 +10,11 @@ class Splash extends React.Component {
         super(props)
         this.state = {
             // TOY DATA FOR FILTER CHANGE LATER
-            miles_away : 6, 
-            hours_opened_left : 3,
-            wifi : "yes",
-            credit_card : true,
-            noise_level : true,
+            miles_away : 100, 
+            hours_opened_left : 24,
+            wifi : true,
+            credit_card : false,
+            noise_level : false,
             location_zip_code: 94111,
             my_lat: null,
             my_lng: null,
@@ -24,20 +24,21 @@ class Splash extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.findCoordinates = this.findCoordinates.bind(this);
         this.getPosition = this.getPosition.bind(this);
+        this.clear = this.clear.bind(this);
     }
 
-    // matchFilterParams(filters){
-    //     //this matches filter params
-    //     let noiseMap = { true: 'average', false: 'loud'}
-    //     let creditMap = { true: 'yes', false: 'no'}
-    //     let wifiMap = { true: 'yes', false: 'no'}
+    clear() {
+      $("input[type=radio]:checked").prop("checked", false);
 
-    //     filters.noise_level = noiseMap[filters.noise_level];
-    //     filters.credit_card = creditMap[filters.credit_card];
-    //     filters.wifi = wifiMap[filters.wifi];
 
-    //     return filters
-    // }
+      this.setState({
+        miles_away: 100,
+        hours_opened_left: 24,
+        wifi: false,
+        credit_card: false,
+        noise_level: false,
+      })
+    }
 
     getPosition(position){
         
@@ -60,20 +61,28 @@ class Splash extends React.Component {
 
 
     handleSubmit(e) {
-        
+
         e.preventDefault();
-        // let filters = this.matchFilterParams(this.state)
-    
-        this.props.fetchCafeByFilters(this.state);
-        this.props.getFilters(this.state)
+       
+        let state = this.state;
+
+        state.wifi ? state.wifi = "yes" : state.wifi = "no";
+        state.noise_level ? state.noise_level = "average" : state.noise_level = "loud";
+        state.credit_card ? state.credit_card = "yes" : state.credit_card = "no";
+
+
+        debugger
+        this.props.fetchCafeByFilters(state)
+        this.props.getFilters(state)
         this.props.history.push(`/cafe`);
 
     };
 
 
     update(field) {
+        
         return e => this.setState({
-            [field] : e.currentTarget.value
+            [field] : JSON.parse(e.currentTarget.value)
         })
     }
 
@@ -81,7 +90,7 @@ class Splash extends React.Component {
 
          return (
           <div className="index">
-            <NavBar />
+            {/* <NavBar /> */}
             <div className="content">
               <div className="cta">Discover your cafe for today.</div>
 
@@ -90,112 +99,129 @@ class Splash extends React.Component {
               <div className="preferences">
                 
               </div>
-                <label className="filter">
-                          <input
-                            className="checkbox"
-                            onChange={this.update("miles_away")}
-                            type="radio"
-                            name="miles"
-                            value="0.5 miles"
-                          />
+
+
+               <form>
+                 <label className="filter">
+                   <input
+                     className="checkbox"
+                     onChange={this.update("miles_away")}
+                     type="radio"
+                     name="miles"
+                     value="0.5"
+                   />
                           0.5 miles
                         </label>
-                        <label className="filter">
-                          <input
-                            className="checkbox"
-                            onChange={this.update("miles_away")}
-                            type="radio"
-                            name="miles"
-                            value="1 mile"
-                          />
+                 <label className="filter">
+                   <input
+                     className="checkbox"
+                     onChange={this.update("miles_away")}
+                     type="radio"
+                     name="miles"
+                     value="1"
+                   />
                           1 mile
                         </label>
-                        <label className="filter">
-                          <input
-                            className="checkbox"
-                            onChange={this.update("miles_away")}
-                            type="radio"
-                            name="miles"
-                            value="3 miles"
-                          />
+                 <label className="filter">
+                   <input
+                     className="checkbox"
+                     onChange={this.update("miles_away")}
+                     type="radio"
+                     name="miles"
+                     value="3"
+                   />
                           3 miles
                         </label>
-                        <label className="filter">
-                          <input
-                            className="checkbox"
-                            onChange={this.update("miles_away")}
-                            type="radio"
-                            name="miles"
-                            value="5 miles"
-                          />
+                 <label className="filter">
+                   <input
+                     className="checkbox"
+                     onChange={this.update("miles_away")}
+                     type="radio"
+                     name="miles"
+                     value="5"
+                   />
                           5 miles
                         </label>
-                        <label className="filter">
-                          <input
-                            className="checkbox"
-                            onChange={this.update("miles_away")}
-                            type="radio"
-                            name="miles"
-                            value="10 miles"
-                          />
+                 <label className="filter">
+                   <input
+                     className="checkbox"
+                     onChange={this.update("miles_away")}
+                     type="radio"
+                     name="miles"
+                     value="10"
+                   />
                           10 miles
                         </label>
+               </form>
 
 
 
-                         <form>
-                        <label className="filter">
-                          <input
-                            className="checkbox"
-                            onChange={this.update("hours_opened_left")}
-                            type="radio"
-                            name="hours"
-                            value="1 hour"
-                          />
+
+               <form>
+                 <label className="filter">
+                   <input
+                     className="checkbox"
+                     onChange={this.update("hours_opened_left")}
+                     type="radio"
+                     name="hours"
+                     value="1"
+                   />
                           1 hour
                         </label>
-                        <label className="filter">
-                          <input
-                            className="checkbox"
-                            onChange={this.update("hours_opened_left")}
-                            type="radio"
-                            name="hours"
-                            value="2 hours"
-                          />
+                 <label className="filter">
+                   <input
+                     className="checkbox"
+                     onChange={this.update("hours_opened_left")}
+                     type="radio"
+                     name="hours"
+                     value="2"
+                   />
                           2 hours
                         </label>
-                        <label className="filter">
-                          <input
-                            className="checkbox"
-                            onChange={this.update("hours_opened_left")}
-                            type="radio"
-                            name="hours"
-                            value="3 hours"
-                          />
+                 <label className="filter">
+                   <input
+                     className="checkbox"
+                     onChange={this.update("hours_opened_left")}
+                     type="radio"
+                     name="hours"
+                     value="3"
+                   />
                           3 hours
                         </label>
-                        <label className="filter">
-                          <input
-                            className="checkbox"
-                            onChange={this.update("hours_opened_left")}
-                            type="radio"
-                            name="hours"
-                            value="5 hours"
-                          />
+                 <label className="filter">
+                   <input
+                     className="checkbox"
+                     onChange={this.update("hours_opened_left")}
+                     type="radio"
+                     name="hours"
+                     value="5"
+                   />
                           5 hours
                         </label>
-                        <label className="filter">
-                          <input
-                            className="checkbox"
-                            onChange={this.update("hours_opened_left")}
-                            type="radio"
-                            name="hours"
-                            value="8 hours"
-                          />
+                 <label className="filter">
+                   <input
+                     className="checkbox"
+                     onChange={this.update("hours_opened_left")}
+                     type="radio"
+                     name="hours"
+                     value="8"
+                   />
                           8 hours
                         </label>
-                      </form>
+               </form>
 
+
+               <form>
+                 <label className="filter">
+                   <input
+                     className="checkbox"
+                     onChange={this.update("wifi")}
+                     type="radio"
+                     value="true"
+                   />
+                          Free WiFi
+                        </label>
+               </form>
 
 
                <form>
@@ -209,10 +235,7 @@ class Splash extends React.Component {
                           Takes Credit Card
                         </label>
                </form>
-
-
-
-
+               
 
                <form>
                  <label className="filter">
@@ -227,8 +250,9 @@ class Splash extends React.Component {
                </form>
 
 
+               <button onClick={() => this.clear()}>Clear All</button>
+                
 
-              
 
               <div className="roll-cafe">
                 <input id="zip"

@@ -1,12 +1,14 @@
-import { RECEIVE_CAFES, RECEIVE_CAFE, RECEIVE_CLEAR_CAFES, REROLL_CAFES } from '../actions/cafe_actions';
+import { RECEIVE_CAFES, 
+    RECEIVE_CAFE, 
+    RECEIVE_CLEAR_CAFES, 
+    REROLL_CAFES,
+     } from '../actions/cafe_actions';
 
 
 const cafesReducer = (state = {}, action) => {
     Object.freeze(state);
     // let newState = Object.assign({}, state);
     
-     
-
     switch (action.type) {
         case RECEIVE_CAFES:
             return action.cafes.data

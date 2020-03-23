@@ -25,7 +25,7 @@ router.post("/filters", (req,res) => {
 
     Cafe.find({location_zip_code: req.body.location_zip_code, wifi: filters.wifi})
         .then(cafes => res.json(cafes))
-        .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with that zipcode' }));
+        .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with with those params' }));
 
 })
 
