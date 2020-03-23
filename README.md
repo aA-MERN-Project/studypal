@@ -1,1 +1,1 @@
-# wtfsigts
+# studypal
