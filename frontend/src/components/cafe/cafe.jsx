@@ -73,7 +73,9 @@ class Cafe extends React.Component {
 
   }
 
+  
   applyExtraFilters(cafes){
+        
     return cafes.filter(cafe => cafe.distance_away < this.props.filters.miles_away);
     
   }

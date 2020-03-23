@@ -3,12 +3,17 @@ import './profile.css'
 import React from 'react'
 import NavBar from '../navbar/navbar_container'
 import $ from "jquery";
+import coffee from './coffee.png'
+import edit from './edit.png'
 
 class Profile extends React.Component {
     constructor(props) {
         super(props)
 
+        // debugger;
         this.state = {
+          user: props.user,
+            // handle: props.user.handle,          
           miles_away: "",
           hours_opened_left: "",
           free_wifi: "",
@@ -23,14 +28,21 @@ class Profile extends React.Component {
     }
 
     handleSubmit(e) {
-       
-        this.props.processForm(this.state)
-        
+        this.props.processForm(this.state);
+    }
+
+    componentDidMount(){
+      debugger;
+      this.setState({user:this.props.user});
+    }
+
+    componentWillReceiveProps(nextProps){
+      debugger;
+      this.setState({user:nextProps.user});
     }
 
     clear() {
       $("input[type=radio]:checked").prop("checked", false);
-      
 
       this.setState({
         miles_away: "",
@@ -48,17 +60,40 @@ class Profile extends React.Component {
     }
 
     render() {
+      let username ;
+      let email;
+      let zipcode;
+      if (this.state.user){
+        username = this.state.user.handle;
+        email = this.state.user.email;
+        zipcode = this.state.user.zipcode;
+      }else{
+        username = "";
+        email = "";
+        zipcode = "";
+      }
+      //  const {user} = this.state.user;
+      //  let username = user ? user.handle : "";
+      //  let email = user ? user.email : "";
+      //  let zipcode = user ? user.zipcode : ""; 
+
         return (
           <div className="page">
             <NavBar />
             <div className="profile-info-div">
               <div className="profile-info">
-                <div className="name">Name</div>
-                <div className="email">Email</div>
-                <div>Current Location</div>
+                <div className="img-info-div">
+                  <img className="coffee-img" src={coffee}/>
+                  <div className="only-profile-info">
+                    <div className="name">{username}</div>
+                    <div className="email">{email}</div>
+                    <div className="zipcode">Current Zipcode {zipcode}</div>
+                  </div>
+                </div>
+                {/* <img className="edit" src={edit}/> */}
               </div>
             </div>
-            <br />
+            <br/>
             <div className="outer-filter-box-div">
               <div className="filter-box-div">
                 <div className="preferences">Saved Preferences</div>

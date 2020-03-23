@@ -9,7 +9,7 @@ module.exports = function validateRegisterInput(data){
     data.email = validText(data.email) ? data.email : "";
     data.password = validText(data.password) ? data.password : "";
     data.password2 = validText(data.password2) ? data.password2 : "";
-    data.zipcode = isNumber(data.zipcode) ? data.zipcode : "";
+    // data.zipcode = isNumber(data.zipcode) ? data.zipcode : "";
 
     if(!Validator.isLength(data.handle, {min:2, max:30})){
         errors.handle = "Handle must be between 2 and 30 characters";
@@ -28,7 +28,11 @@ module.exports = function validateRegisterInput(data){
     }
 
     if(Validator.isEmpty(data.zipcode)){
-        errors.zipcode = "Zipcode field is required";
+        errors.zipcode = "Zipcode field is required.";
+    }
+
+    if (!isNumber(data.zipcode)){
+        errors.zipcode = "Zipcode must be a number";
     }
     
     if(!Validator.isLength(data.password, {min: 6})){
