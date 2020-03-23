@@ -1,9 +1,8 @@
 // testing out yelp api fusion
 
-const apiKey = require('../../../config/keys').YELP_API_KEY;
 
 const yelp = require('yelp-fusion');
-const client = yelp.client(apiKey);
+const client = yelp.client("UZittz7h5GXfqGN6CtGVeBd9Slxryw_l5kvsV8fRpS4D3jT9Zk0GnLWhvUsziHOoI52fl290Sg3JqCmJXPFxk3ooFdqTgSzja1AtBMQjTRQbXz2bDNEoc6TqZVBwXnYx");
 
 
 let defaultSearchParams = {
@@ -13,13 +12,7 @@ let defaultSearchParams = {
 
 
 // testing out api 
-const getFusionYelpId = id => client.business(id)
-    .then(response => {
-        console.log(response.jsonBody);
-    })
-    .catch(error => {
-        console.log(e);
-    });
+export const getFusionYelpId = id => client.business(id);
 
 
 export default getFusionYelpId;

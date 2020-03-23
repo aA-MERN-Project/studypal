@@ -1,10 +1,13 @@
 import {getCafe, getCafeByZipcode, getCafes, getCafeByFilters} from '../util/cafe_api_util';
+import {getYelpCafeById} from '../util/yelp_api';
+import {getFusionYelpId} from '../util/yelp_fusion_api';
 
 export const RECEIVE_CAFEBYZIPCODE = "RECEIVE_CAFEBYZIPCODE";
 export const RECEIVE_CAFE = "RECEIVE_CAFE";
 export const RECEIVE_CAFES = "RECEIVE_CAFES";
 export const RECEIVE_CLEAR_CAFES = "RECEIVE_CLEAR_CAFES";
 export const REROLL_CAFES = "REROLL_CAFES";
+export const RECEIVE_YELP_CAFE = "RECEIVE_YELP_CAFE";
 
 export const START_LOADING_FILTERED_CAFES = "START_LOADING_FILTERED_CAFES";
 export const START_LOADING_SINGLE_CAFE = "START_LOADING_SINGLE_CAFE";
@@ -30,6 +33,11 @@ export const receiveCafe = cafe => ({
 export const receiveCafes = cafes => ({
     type: RECEIVE_CAFES,
     cafes,
+});
+
+export const receiveYelpCafe = cafe => ({
+    type: RECEIVE_YELP_CAFE,
+    cafe
 });
 
 // Loading Actions
@@ -58,6 +66,13 @@ export const fetchCafeByZipcode = zipcode => dispatch => (
     .catch(err => console.log(err))
 );
 
+export const fetchCafe = id => dispatch => (
+    getCafe(id)
+        .then(cafe => dispatch(receiveCafe(cafe)))
+        .catch(err => console.log(err)) 
+);
+
+
 export const fetchCafeByFilters = filters => dispatch => {
     dispatch(startLoadingFilteredCafes());
 
@@ -65,15 +80,20 @@ export const fetchCafeByFilters = filters => dispatch => {
         dispatch(receiveCafes(cafes));
         return cafes;
     })
-    
+
 };
 
 
-export const fetchCafe = id => dispatch => (
-    getCafe(id)
-        .then(cafe => dispatch(receiveCafe(cafe)))
-        .catch(err => console.log(err)) 
-);
+export const fetchYelpCafeById = (id) => dispatch => {
+    dispatch(startLoadingFilteredCafes());
+   
+    return getYelpCafeById(id).then(cafe => {
+        dispatch(receiveYelpCafe(cafe.data));
+        return cafe.data;
+    })
+
+};
+
 
 
 

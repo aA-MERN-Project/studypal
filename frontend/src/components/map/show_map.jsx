@@ -8,13 +8,13 @@ class ShowMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+
     }
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if (this.props.lat !== prevProps.lat){
-        this.setState()
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.lat !== prevProps.lat) {
+      this.setState()
     }
 
   }
@@ -39,7 +39,7 @@ class ShowMap extends React.Component {
     return (
       <div id="map-container" ref={map => (this.mapNode = map)}>
 
-        // this ref gives us access to the map dom node
+      // this ref gives us access to the map dom node
       </div>
     );
   }
