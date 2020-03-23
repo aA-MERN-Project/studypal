@@ -1,0 +1,147 @@
+.index {
+    // border: 1px solid red;
+    height: 100vh;
+    background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
+    font-family: "Open Sans";
+}
+
+.content {
+    // border: 1px solid red;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 350px;
+    top: 200px;
+    background: #ffffff;
+    color: #333333;
+}
+
+.cta {
+    // border: 1px solid red;
+    position: relative;
+    top: 50px;
+    text-align: center;
+    font-family: "Montserrat";
+    font-size: 28px;
+    font-weight: 600;
+}
+
+#looking-for {
+    position: relative;
+    top: 90px;
+    text-align: center;
+    // font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.preferences {
+    border: 1px solid rgba(65, 105, 225, 0.2);
+    background-color: rgba(65, 105, 225, 0.2);
+    border-radius: 10px;
+    position: relative;
+    top: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 18px;
+    padding-left: 35px;
+    padding-right: 35px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.divider {
+    color: rgba(65, 105, 225, 0.5);
+    position: relative;
+    top: 3px;
+}
+
+.distance-hours {
+    // border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.distance {
+    padding-right: 20px;
+}
+
+.hours {
+    padding-left: 20px;
+}
+
+.other-filters {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.wifi {
+    padding-right: 20px;
+}
+
+.card {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.noise {
+    padding-left: 20px;
+}
+
+.clear {
+    position: relative;
+    top: 14px;
+    margin-bottom: 8px;
+    width: 70px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 9px;
+    color: rgba(65, 105, 225, 0.8);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.roll-cafe {
+    // border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    top: 127px;
+    height: 35px;
+    width: 320px;
+    border-radius: 50px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#zip {
+    border: none;
+    position: relative;
+    height: 85%;
+    left: 12px;
+    font-size: 10px;
+}
+
+#cafe-submit {
+    height: 35px;
+    border: none;
+    width: 110px;
+    background-color: #FF7F50;
+    color: #ffffff;
+    border-radius: 50px;
+    font-size: 12px;
+}
+
+#cafe-submit:hover {
+    cursor: pointer;
+}
