@@ -7,7 +7,14 @@ const bodyParser = require('body-parser');
 // EXPRESS ROUTES
 const users = require("./routes/api/users");
 const cafes = require("./routes/api/cafes")
+const path = require('path');
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
 
 //MIDDLE WARE FOR BODY PARSER
 app.use(bodyParser.urlencoded({ extended: false }));
