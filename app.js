@@ -3,6 +3,9 @@ const app = express();
 const port = process.env.PORT || 5000;
 const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
+
+const db = "mongodb+srv://admin:ZugzL1CYuPmuGN7P@mern-m6q5y.mongodb.net/test?retryWrites=true&w=majority"
+
 const bodyParser = require('body-parser');
 // EXPRESS ROUTES
 const users = require("./routes/api/users");
