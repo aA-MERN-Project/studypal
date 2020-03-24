@@ -117,7 +117,7 @@ class Cafe extends React.Component {
      
 
       if (cafes.length === 1) this.props.history.push(`/retry`)
-      this.props.fetchYelpCafeById(randomCafe.id)
+      this.props.fetchYelpCafeById(randomCafe.id).then(cafe => console.log("THIS YELP REQUEST WORKED")).catch(err => console.log("failed"))
     }
 
     if (!this.props.yelp_cafe) return null;
