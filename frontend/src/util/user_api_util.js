@@ -9,7 +9,7 @@ export const getUser = id => {
 //     return axios.get(`/api/users/${email}`);
 // };
 
-export const updateUserPreferences = (email, data) => {
+export const updateUserPreferences = (id, data) => {
     return axios.post(`api/users/${email}`, data);
 };
 
