@@ -1,9 +1,14 @@
 // This is API route for our inputted data
+
+const {
+  getYelpCafeById
+} = require("../../util/yelp_api");
+
 const mongoose = require('mongoose');
 const express = require("express");
 const router = express.Router();
-
 const Cafe = require("../../models/Cafe");
+
 
 
 router.get("/test", (req, res) => {
@@ -20,6 +25,27 @@ router.get("/", (req,res) => {
 });
 
 
+//Making request to YELP API
+router.get("/yelp_id/:id", (req,res) =>  {
+
+    const yelpId = req.params.id;
+    getYelpCafeById(yelpId)
+        .then((cafe) => {
+
+            res.json(cafe.data);
+        })
+        .catch(err => console.log('Error searching for Cafe in Yelp Database'));
+
+})
+
+router.get("/:yelp_id", (req, res) => {
+    Cafe.find({ id: req.params.yelp_id })
+        .then(cafe => res.json(cafe))
+        .catch(err => res.status(404).json({ nocafefound: 'No cafe found with that yelp id' }));
+
+})
+
+
 router.post("/filters", (req,res) => {
     const filters = req.body;
 
@@ -30,12 +56,6 @@ router.post("/filters", (req,res) => {
 })
 
 
-router.get("/yelp_id/:yelp_id", (req,res) => {  
-    Cafe.find({id: req.params.yelp_id})
-        .then(cafe => res.json(cafe))
-        .catch(err => res.status(404).json({ nocafefound: 'No cafe found with that yelp id'}));
-
-})
 
 router.get("/noise_level/:noise_level", (req,res) => {
     Cafe.find({noise_level: req.params.noise_level})

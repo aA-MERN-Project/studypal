@@ -1,9 +1,7 @@
-import axios from 'axios';
+const axios = require("axios");
+const apiKey = require("../config/keys").YELP_API_KEY;
 
-const apiKey = require("../keys/keys").YELP_API_KEY;
-//${'https://cors-anywhere.herokuapp.com/'}
-//
-export const getYelpCafeById = (id) => {
+const getYelpCafeById = (id) => {
     return axios.get(`https://api.yelp.com/v3/businesses/${id}`,
       {
         headers: {
@@ -15,4 +13,4 @@ export const getYelpCafeById = (id) => {
 };
 
 
-export default getYelpCafeById;
+module.exports.getYelpCafeById = getYelpCafeById;
