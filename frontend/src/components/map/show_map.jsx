@@ -21,7 +21,7 @@ class ShowMap extends React.Component {
 
   componentDidMount() {
     const mapOptions = {
-      center: { lat: this.props.lat, lng: this.props.lng }, // this is SF
+      center: { lat: this.props.lat, lng: this.props.lng }, 
       zoom: 13
     };
 
