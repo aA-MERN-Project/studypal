@@ -28,6 +28,7 @@ class Profile extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.update = this.update.bind(this)
         this.clear = this.clear.bind(this)
+        this.updatePreferences = this.updatePreferences.bind(this)
     }
 
     handleSubmit(e) {
@@ -83,6 +84,19 @@ class Profile extends React.Component {
         })
     }
 
+    updatePreferences() {
+      const updatedUser = this.state.user;
+      if (updatedUser) {
+        updatedUser.miles_away = this.state.miles_away;
+        updatedUser.hours_opened_left = this.state.hours_opened_left;
+        updatedUser.free_wifi = this.state.free_wifi;
+        updatedUser.credit_card = this.state.credit_card;
+        updatedUser.noise_level = this.state.noise_level;
+      }
+
+      this.props.updateUserPreferences(this.state.user.id, updatedUser);
+    }
+
     render() {
       let username ;
       let email;
@@ -100,15 +114,6 @@ class Profile extends React.Component {
       //  let username = user ? user.handle : "";
       //  let email = user ? user.email : "";
       //  let zipcode = user ? user.zipcode : ""; 
-
-      const updatedUser = this.state.user ;
-      if (updatedUser) {
-        updatedUser.miles_away = this.state.miles_away;
-        updatedUser.hours_opened_left = this.state.hours_opened_left;
-        updatedUser.free_wifi = this.state.free_wifi;
-        updatedUser.credit_card = this.state.credit_card;
-        updatedUser.noise_level = this.state.noise_level;
-      }
 
         return (
           <div className="page">
@@ -313,7 +318,7 @@ class Profile extends React.Component {
               </div>
             </div>
             <div className="find-cafe-profile-div">
-              <button onClick={() => this.props.updateUserPreferences(this.state.user.id, updatedUser)} className="find-cafe-profile">Find a Cafe</button>
+              <button onClick={() => this.updatePreferences()} className="find-cafe-profile">Find a Cafe</button>
             </div>
           </div>
         );
