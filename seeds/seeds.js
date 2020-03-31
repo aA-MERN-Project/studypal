@@ -5,14 +5,13 @@ mongoose.Promise = require("bluebird");
 mongoose.connect(db);
 
 const Cafe = require('../models/Cafe');
-const yelpData = require('../data/yelp_test_data.json')
-const moreYelpData = require('../data/yelp_more_data.json')
+const yelpData = require('../data/cafe_data_complete.json')
 
 
 Cafe.collection.drop();
 
 
-Cafe.create(moreYelpData)
+Cafe.create(yelpData)
   .then(cafe => {
     console.log(`${cafe.length} cafes created`);
   })
