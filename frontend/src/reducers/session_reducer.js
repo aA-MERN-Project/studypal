@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const sessionReducer = (state = initialState, action) => {
-    // debugger
+    debugger
     switch(action.type){
         case RECEIVE_CURRENT_USER:
          
@@ -29,7 +29,7 @@ const sessionReducer = (state = initialState, action) => {
                 user: action.currentUser.data
             };
         case RECEIVE_PREFERENCES:
-            return Object.assign({}, state, { preferences: action.preferences.data })
+            return Object.assign({}, state)
         default: 
             return state;
     }

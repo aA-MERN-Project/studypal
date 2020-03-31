@@ -17,8 +17,7 @@ class Profile extends React.Component {
           hours_opened_left: "",
           free_wifi: "false",
           credit_card: "false",
-          noise_level: "false"
-          // user: this.props.user,       
+          noise_level: "false"    
           // miles_away: this.props.user.miles_away,
           // hours_opened_left: this.props.user.hours_opened_left,
           // free_wifi: this.props.user.free_wifi,
@@ -35,13 +34,13 @@ class Profile extends React.Component {
         this.props.processForm(this.state);
     }
 
-    // componentDidMount(){
-    //   this.setState({user:this.props.user});
-    // }
+    componentDidMount(){
+      this.setState({user:this.props.user});
+    }
 
-    // componentWillReceiveProps(nextProps){
-    //   this.setState({user:nextProps.user});
-    // }
+    componentWillReceiveProps(nextProps){
+      this.setState({user:nextProps.user});
+    }
 
     clear() {
       // debugger
@@ -51,12 +50,22 @@ class Profile extends React.Component {
         hours_opened_left: "",
         free_wifi: "false",
         credit_card: "false",
-        noise_level: "false",
+        noise_level: "false"
       })
-      
-      this.props.updateUserPreferences(this.state.user.id, 
-        this.state.session.preferences
-      )
+      debugger
+      this.props.updateUserPreferences(this.state.user.id, {
+        miles_away: "",
+        hours_opened_left: "",
+        free_wifi: "false",
+        credit_card: "false",
+        noise_level: "false"
+      });
+
+      // this.props.updateUserPreferences(
+      //   this.state.user.id,
+      //   this.state.session.preferences
+      // );
+
       // this.props.updateUserPreferences(this.state.user.id, 
       //   {
       //     miles_away: "",
@@ -91,6 +100,15 @@ class Profile extends React.Component {
       //  let username = user ? user.handle : "";
       //  let email = user ? user.email : "";
       //  let zipcode = user ? user.zipcode : ""; 
+
+      const updatedUser = this.state.user ;
+      if (updatedUser) {
+        updatedUser.miles_away = this.state.miles_away;
+        updatedUser.hours_opened_left = this.state.hours_opened_left;
+        updatedUser.free_wifi = this.state.free_wifi;
+        updatedUser.credit_card = this.state.credit_card;
+        updatedUser.noise_level = this.state.noise_level;
+      }
 
         return (
           <div className="page">
@@ -295,7 +313,7 @@ class Profile extends React.Component {
               </div>
             </div>
             <div className="find-cafe-profile-div">
-              <button onClick={() => this.props.updateUserPreferences(this.state.user.id ,this.state)} className="find-cafe-profile">Find a Cafe</button>
+              <button onClick={() => this.props.updateUserPreferences(this.state.user.id, updatedUser)} className="find-cafe-profile">Find a Cafe</button>
             </div>
           </div>
         );
