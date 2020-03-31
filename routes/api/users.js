@@ -33,45 +33,38 @@ router.get('/:id', (req,res) => {
 // });
 
 //update single user preferences (not including zipcode) --> (find by email)
-router.patch('/:email', (req,res,next) => {
-    
-    // User.findById(req.user.id, function(err,user){
-    // User.findOne({email: req.body.email}, function(err,user){
-    //     if(!user){
-            // req.flash('error', 'No account found');
-            // return res.redirect('/login');
-    User.findOne({email: req.body.email})
+
+router.patch('/:id', (req, res, next) => {
+    const userId = req.params.id
+    User.findOne({ _id: userId })
         .then(user => {
-            if(!user){
-            errors.email = 'No user exists with this email';
-            return res.status(400).json(errors);
-        }else{
+            // return res.json(user.miles_away)
+            let miles_away = req.body.miles_away;
+            let hours_opened_left = req.body.hours_opened_left;
+            let free_wifi = req.body.free_wifi;
+            let credit_card = req.body.credit_card;
+            let noise_level = req.body.noise_level;
 
-        var miles_away = req.body.miles_away.trim();
-        var hours_opened_left = req.body.hours.opened_left.trim();
-        var free_wifi = req.body.free_wifi.trim();
-        var credit_card = req.body.credit_card.trim();
-        var noise_level = req.body.noise_level.trim();
+            // let miles_away = req.params.id
+            // let hours_opened_left = req.params.id
+            // let free_wifi = req.params.id;
+            // let credit_card = req.params.id;
+            // let noise_level = req.params.id;
 
-        //I think all of them will be auto populated
-        //if user doesn't click something, then it will be an empty string
+            user.miles_away = miles_away;
+            user.hours_opened_left = hours_opened_left;
+            user.free_wifi = free_wifi;
+            user.credit_card = credit_card;
+            user.noise_level = noise_level;
 
-        user.miles_away = miles_away;
-        user.hours_opened_left = hours_opened_left;
-        user.free_wifi = free_wifi;
-        user.credit_card = credit_card;
-        user.noise_level = noise_level;
-
-        user.save()
-            .then(user => res.json(user))
+            user.save()
+                .then(user => res.json(user))
                 .catch(err => console.log(err));
-        }
-        // user.save((err)=> {
-            // res.redirect('/profile');
-            // });
-    });
-});
-
+        })
+        .catch(err =>
+            res.status(404).json({ noUserFound: "no user found with that id" })
+        );
+})
 
 router.post('/register', (req,res) => {
     //  ; 
@@ -120,7 +113,7 @@ router.post('/login', (req, res) => {
 
     User.findOne({email})
         .then(user => {
-             
+            //  debugger
             if(!user){
                 errors.email = "User not found";
                 return res.status(404).json(errors);
@@ -132,7 +125,12 @@ router.post('/login', (req, res) => {
                             id: user.id,
                             handle: user.handle,
                             email: user.email,
-                            zipcode: user.zipcode
+                            zipcode: user.zipcode,
+                            miles_away: user.miles_away,
+                            hours_opened_left: user.hours_opened_left,
+                            free_wifi: user.free_wifi,
+                            credit_card: user.credit_card,
+                            noise_level: user.noise_level
                         };
                          
                         jwt.sign(

@@ -19,6 +19,10 @@ export const signup = (userData) => {
     return axios.post('api/users/register', userData);
 } 
 
+export const updateUserPreferences = (id, preferences) => {
+    return axios.patch(`api/users/${id}`, preferences);
+};
+
 //not using 
 // export const logout = () => {
 //     return null

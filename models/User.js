@@ -21,30 +21,29 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
-
     zipcode:{
         type:Number,
         required:true
     },
     miles_away: {
-        type:String,
+        type: String,
         default: ""
     },
     hours_opened_left: {
-        type:String,
-        default:""
+        type: String,
+        default: ""
     },
     free_wifi: {
-        type:String,
-        default: ""
+        type: String,
+        default: "false"
     },
     credit_card: {
         type: String,
-        default: "",
+        default: "false"
     },
     noise_level: {
-        type:String,
-        default: ""
+        type: String,
+        default: "false"
     }
 });
 

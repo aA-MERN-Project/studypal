@@ -12,14 +12,18 @@ class Profile extends React.Component {
 
          
         this.state = {
-          user: props.user,
-            // handle: props.user.handle,          
-          miles_away: "",
+          user: this.props.user,       
+          miles_away:"",
           hours_opened_left: "",
-          free_wifi: "",
-          credit_card: "",
-          noise_level: "",
-          user: props.user
+          free_wifi: "false",
+          credit_card: "false",
+          noise_level: "false"
+          // user: this.props.user,       
+          // miles_away: this.props.user.miles_away,
+          // hours_opened_left: this.props.user.hours_opened_left,
+          // free_wifi: this.props.user.free_wifi,
+          // credit_card: this.props.user.credit_card,
+          // noise_level: this.props.user.noise_level
         };
 
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -31,24 +35,37 @@ class Profile extends React.Component {
         this.props.processForm(this.state);
     }
 
-    componentDidMount(){
-      this.setState({user:this.props.user});
-    }
+    // componentDidMount(){
+    //   this.setState({user:this.props.user});
+    // }
 
-    componentWillReceiveProps(nextProps){
-      this.setState({user:nextProps.user});
-    }
+    // componentWillReceiveProps(nextProps){
+    //   this.setState({user:nextProps.user});
+    // }
 
     clear() {
+      // debugger
       $("input[type=radio]:checked").prop("checked", false);
-
       this.setState({
         miles_away: "",
         hours_opened_left: "",
-        free_wifi: "",
-        credit_card: "",
-        noise_level: "",
+        free_wifi: "false",
+        credit_card: "false",
+        noise_level: "false",
       })
+      
+      this.props.updateUserPreferences(this.state.user.id, 
+        this.state.session.preferences
+      )
+      // this.props.updateUserPreferences(this.state.user.id, 
+      //   {
+      //     miles_away: "",
+      //     hours_opened_left: "",
+      //     free_wifi: "false",
+      //     credit_card: "false",
+      //     noise_level: "false"
+      //   }
+      // )
     }
 
     update(field) {
@@ -103,50 +120,55 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.miles_away === "0.5"}
                             onChange={this.update("miles_away")}
                             type="radio"
                             name="miles"
-                            value="0.5 miles"
+                            value="0.5"
                           />
                           0.5 miles
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.miles_away === "1"}
                             onChange={this.update("miles_away")}
                             type="radio"
                             name="miles"
-                            value="1 mile"
+                            value="1 "
                           />
                           1 mile
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.miles_away === "3"}
                             onChange={this.update("miles_away")}
                             type="radio"
                             name="miles"
-                            value="3 miles"
+                            value="3 "
                           />
                           3 miles
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.miles_away === "5"}
                             onChange={this.update("miles_away")}
                             type="radio"
                             name="miles"
-                            value="5 miles"
+                            value="5 "
                           />
                           5 miles
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.miles_away === "10"}
                             onChange={this.update("miles_away")}
                             type="radio"
                             name="miles"
-                            value="10 miles"
+                            value="10 "
                           />
                           10 miles
                         </label>
@@ -161,50 +183,55 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.hours_opened_left === "1"}
                             onChange={this.update("hours_opened_left")}
                             type="radio"
                             name="hours"
-                            value="1 hour"
+                            value="1 "
                           />
                           1 hour
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.hours_opened_left === "2"}
                             onChange={this.update("hours_opened_left")}
                             type="radio"
                             name="hours"
-                            value="2 hours"
+                            value="2 "
                           />
                           2 hours
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.hours_opened_left === "3"}
                             onChange={this.update("hours_opened_left")}
                             type="radio"
                             name="hours"
-                            value="3 hours"
+                            value="3 "
                           />
                           3 hours
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.hours_opened_left === "5"}
                             onChange={this.update("hours_opened_left")}
                             type="radio"
                             name="hours"
-                            value="5 hours"
+                            value="5 "
                           />
                           5 hours
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.hours_opened_left === "8"}
                             onChange={this.update("hours_opened_left")}
                             type="radio"
                             name="hours"
-                            value="8 hours"
+                            value="8"
                           />
                           8 hours
                         </label>
@@ -219,6 +246,7 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.free_wifi === "true"}
                             onChange={this.update("free_wifi")}
                             type="radio"
                             value="true"
@@ -234,6 +262,7 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.credit_card === "true"}
                             onChange={this.update("credit_card")}
                             type="radio"
                             value="true"
@@ -249,6 +278,7 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
+                            // checked={this.state.noise_level === "true"}
                             onChange={this.update("noise_level")}
                             type="radio"
                             value="true"
@@ -265,7 +295,7 @@ class Profile extends React.Component {
               </div>
             </div>
             <div className="find-cafe-profile-div">
-              <button className="find-cafe-profile">Find a Cafe</button>
+              <button onClick={() => this.props.updateUserPreferences(this.state.user.id ,this.state)} className="find-cafe-profile">Find a Cafe</button>
             </div>
           </div>
         );

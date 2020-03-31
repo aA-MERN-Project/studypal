@@ -8,6 +8,8 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const RECEIVE_USER_SIGN_IN = 'RECEIVE_USER_SIGN_IN';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
+export const RECEIVE_PREFERENCES = "RECEIVE_PREFERENCES"
+
 const receiveCurrentUser = (currentUser) => {
     return({
         type: RECEIVE_CURRENT_USER,
@@ -38,30 +40,12 @@ export const clearErrors = () => {
     })
 }
 
-//Fei added different login function
-//Wilson's login function
-// export const login = user => dispatch => (
-//     SessionAPIUtil.login(user) 
-//         .then(user => dispatch(receiveCurrentUser(user))),
-//         err => dispatch(receiveErrors(err.responseJSON))
-// );
+const receivePreferences = (preferences) => {
+    return ({
+    type: RECEIVE_PREFERENCES,
+    preferences})
+}
 
-//Wilson's sighup function
-// export const signup = () => dispatch =>  (
-//     SessionAPIUTil.signup(user)
-//         .then(user => dispatch(receiveCurrentUser(user))),
-//         err => dispatch(receiveErrors(err.responseJSON))
-// );
-
-//Fei added a different logout function
-//Wilson's logout function
-// export const logout = user => (
-//     SessionAPIUtil.logout(user) 
-//         .then(() => dispatch(logoutCurrentUser())),
-//         err => dispatch(receiveErrors(err.responseJSON))
-// );
-
-//added by fei
 export const signup  = (user) => dispatch => {
      
     return(
@@ -105,3 +89,19 @@ export const logout = () => dispatch => {
     SessionAPIUtil.setAuthToken(false);
     dispatch(logoutCurrentUser());
 };
+
+export const updateUserPreferences = (id, preferences) => dispatch => {
+    debugger
+    return (
+        SessionAPIUtil.updateUserPreferences(id, preferences)
+            .then((preferences) => dispatch(receivePreferences(preferences)),
+                err => dispatch(receiveErrors(err.response.data))
+            ))
+}
+
+// miles_away: 100,
+//     hours_opened_left: 24,
+//         wifi: true,
+//             credit_card: false,
+//                 noise_level: false,
+//                     location_zip_code: 94111 }

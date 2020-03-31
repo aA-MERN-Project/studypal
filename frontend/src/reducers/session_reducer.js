@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_USER_SIGN_IN } from '../actions/session_actions'
+import { RECEIVE_PREFERENCES ,RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_USER_SIGN_IN } from '../actions/session_actions'
 
 const initialState = {
     isAuthenticated: false,
@@ -6,8 +6,8 @@ const initialState = {
 };
 
 const sessionReducer = (state = initialState, action) => {
+    // debugger
     switch(action.type){
-      
         case RECEIVE_CURRENT_USER:
          
           return{
@@ -28,6 +28,8 @@ const sessionReducer = (state = initialState, action) => {
                 isSignedIn: true,
                 user: action.currentUser.data
             };
+        case RECEIVE_PREFERENCES:
+            return Object.assign({}, state, { preferences: action.preferences.data })
         default: 
             return state;
     }
