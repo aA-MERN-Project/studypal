@@ -68,8 +68,10 @@ class Splash extends React.Component {
       state.noise_level ? state.noise_level = "average" : state.noise_level = "loud";
       state.credit_card ? state.credit_card = "yes" : state.credit_card = "no";
 
+       
 
       this.props.fetchCafeByFilters(state)
+       
       this.props.getFilters(state)
       this.props.history.push(`/cafe`);
 
