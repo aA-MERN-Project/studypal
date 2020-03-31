@@ -20,7 +20,7 @@ export const distance = (lat1, lon1, lat2, lon2, unit)  => {
     }
 }
 
-const applyExtraFilters = (cafe_array) => {
+export const applyExtraFilters = (cafe_array) => {
 
       // Matches filters coming in from data to match filter params
       let loudMap = { "loud": false, "average": true, "quiet": true };
@@ -38,4 +38,3 @@ const applyExtraFilters = (cafe_array) => {
       
   }
 
-export default distance;
