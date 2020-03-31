@@ -1,6 +1,6 @@
 import {getCafe, getCafeByZipcode, getCafes, getCafeByFilters} from '../util/cafe_api_util';
-import {getYelpCafeById} from '../util/yelp_api';
-import {getFusionYelpId} from '../util/yelp_fusion_api';
+import {getYelpCafeById} from '../util/cafe_api_util'
+
 
 export const RECEIVE_CAFEBYZIPCODE = "RECEIVE_CAFEBYZIPCODE";
 export const RECEIVE_CAFE = "RECEIVE_CAFE";
