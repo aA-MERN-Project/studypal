@@ -113,7 +113,6 @@ class Cafe extends React.Component {
         
         
         if (this.props.cafes.length === 0) return null;
-        debugger
 
         // If no curr yelpcafe exist, request from API
         if (!this.props.yelpCafe) {

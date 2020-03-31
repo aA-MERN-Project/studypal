@@ -1,10 +1,6 @@
 const mongoose =  require('mongoose');
 const Schema = mongoose.Schema;
 
-//import data
-let json = require('../data/yelp_test_data.json')
-
-
 const CafeSchema = new Schema({
   id: {
     type: String,
