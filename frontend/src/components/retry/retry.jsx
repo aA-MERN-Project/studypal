@@ -9,7 +9,7 @@ class Retry extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      miles_away: 1,
+      miles_away:null,
       hours_opened_left: 24,
       wifi: false,
       credit_card: false,
@@ -30,10 +30,10 @@ class Retry extends React.Component {
 
 
     this.setState({
-      miles_away: 100,
+      miles_away: null,
       hours_opened_left: 24,
-      wifi: true,
-      credit_card: true,
+      wifi: false,
+      credit_card: false,
       noise_level: false,
     })
   }

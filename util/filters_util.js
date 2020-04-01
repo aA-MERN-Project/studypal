@@ -43,8 +43,13 @@ const applyAllFilters = (cafes, filters) => {
                 }
         })
         .filter(
-            cafe => cafe.distance_away < filters.miles_away
-        )
+            cafe => {
+                if (filters.miles_away) {
+                    return cafe.distance_away < filters.miles_away
+                } else {
+                    return cafe;
+                }
+            })
 
 
 
@@ -84,6 +89,14 @@ const applyAllFilters = (cafes, filters) => {
                     return cafe;
                 }
             })
+        .filter(
+            cafe => {
+                if (filters.miles_away){
+                    return cafe.distance_away < filters.miles_away
+                } else {
+                    return cafe;
+                }
+            })
 
 
 
@@ -92,8 +105,6 @@ const applyAllFilters = (cafes, filters) => {
     } else {
         return firstFilter;
     }
-
-
 
 
 
