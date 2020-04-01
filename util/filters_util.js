@@ -6,14 +6,14 @@ const applyAllFilters = (cafes, filters) => {
     const noise_level = filters.noise_level;
 
 
-    return cafes.filter(
+    let firstFilter = cafes.filter(
         cafe => {
         if (location_zip_code) {
             return cafe.location_zip_code === location_zip_code
         } 
 
         if (!location_zip_code){
-            return true
+            return cafe
         }
     })
     .filter(
@@ -21,7 +21,7 @@ const applyAllFilters = (cafes, filters) => {
             if (wifi === "yes"){
                 return cafe.wifi === "yes"
             } else {
-                return true;
+                return cafe;
             }
            
         })
@@ -30,7 +30,7 @@ const applyAllFilters = (cafes, filters) => {
                 if (credit_card === "yes") {
                     return cafe.credit_card === "yes"
                 } else {
-                    return true;
+                    return cafe;
                 }
 
         })
@@ -39,13 +39,59 @@ const applyAllFilters = (cafes, filters) => {
                 if (noise_level === "quiet" || noise_level === "average") {
                     return cafe.noise_level === "average" || cafe.noise_level === "quiet"
                 } else {
-                    return true;
+                    return cafe;
                 }
         })
         .filter(
             cafe => cafe.distance_away < filters.miles_away
         )
 
+
+
+    let secondFilter = cafes.filter(
+        cafe => {
+            if (location_zip_code) {
+                return cafe.location_zip_code === location_zip_code
+            }
+
+            if (!location_zip_code) {
+                return cafe
+            }
+        })
+        .filter(
+            cafe => {
+                if (wifi === "yes") {
+                    return cafe.wifi === "yes"
+                } else {
+                    return cafe;
+                }
+
+            })
+        .filter(
+            cafe => {
+                if (credit_card === "yes") {
+                    return cafe.credit_card === "yes"
+                } else {
+                    return cafe;
+                }
+
+            })
+        .filter(
+            cafe => {
+                if (noise_level === "quiet" || noise_level === "average") {
+                    return cafe.noise_level === "average" || cafe.noise_level === "quiet"
+                } else {
+                    return cafe;
+                }
+            })
+
+
+
+    if (firstFilter.length === 0){
+        return secondFilter;
+    } else {
+        return firstFilter;
+    }
 
 
 

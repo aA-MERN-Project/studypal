@@ -9,7 +9,7 @@ class Splash extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-          miles_away: 1,
+          miles_away: 5000,
           hours_opened_left: 24,
           wifi: false,
           credit_card: false,
