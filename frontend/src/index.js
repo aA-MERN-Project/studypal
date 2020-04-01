@@ -12,6 +12,10 @@ import jwt_decode from 'jwt-decode';
 import {setAuthToken} from './util/session_api_util';
 import {logout} from './actions/session_actions';
 
+import { getUser } from './util/user_api_util'
+// import { updateUserPreferences } from './util/session_api_util'
+import { updateUserPreferences, login } from './actions/session_actions'
+
 document.addEventListener("DOMContentLoaded", () => {
     // let store = configureStore({});
     let store;
@@ -35,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }else{
         store = configureStore();
     }
-
+    window.store = store
     window.getState = store.getState
 
     const root = document.getElementById("root");
@@ -49,6 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
     window.testId = "WavvLdfdP6g8aZTtbBQHTw";
   
     window.getYelpCafeById = getYelpCafeById
+
+    window.updateUserPreferences = updateUserPreferences
+    window.getUser = getUser
+    window.login = login
 })
 
 
