@@ -2,7 +2,7 @@
 
 
 import {RECEIVE_CURRENT_USER, RECEIVE_USER_SIGN_IN} from '../actions/session_actions';
-import {RECEIVE_USER} from '../actions/user_actions';
+import {RECEIVE_USER, RECEIVE_PREFERENCES} from '../actions/user_actions';
 
 const usersReducer = (state={}, action) => {
     Object.freeze({},state);
@@ -13,7 +13,6 @@ const usersReducer = (state={}, action) => {
         case RECEIVE_CURRENT_USER:
             return Object.assign({}, state, {[action.currentUser.id]: action.currentUser});
         case RECEIVE_USER_SIGN_IN:
-             
             // return Object.assign({}, state, {[action.currentUser.id]: action.currentUser});
             return Object.assign({}, state, {[action.currentUser.data._id]: action.currentUser.data});
             //at this point, action.currentUser is much more complex
@@ -25,7 +24,6 @@ const usersReducer = (state={}, action) => {
                     // config: {url: "api/users/register", method: "post", data: "{"email":"user16@gmail.com","handle":"user16","pas…ssword","password2":"password","zipcode":"32343"}", headers: {…}, transformRequest: Array(1), …}
                     // request: XMLHttpRequest {readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, onreadystatechange: ƒ, …}
                     // __proto__: Object
-
         default:
             return state;
     }
