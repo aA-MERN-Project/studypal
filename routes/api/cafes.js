@@ -1,4 +1,11 @@
 // This is API route for our inputted data
+const {
+    applyAllFilters
+} = require("../../util/filters_util")
+
+const {
+    calculateDistance
+} =  require("../../util/distance_util")
 
 const {
   getYelpCafeById
@@ -17,10 +24,17 @@ router.get("/test", (req, res) => {
 
 
 router.get("/", (req,res) => {
-   
+    // testing distance
+    let my_lat = 37.79001;
+    let my_lng = -122.41177;
     Cafe
-        .find({noise_level: "loud"})
-        .then(cafes => res.json(cafes))
+        .find({})
+        .then(cafes => {
+            let cafesArr = JSON.parse(JSON.stringify(cafes))
+            let addDist = calculateDistance(cafesArr, my_lat, my_lng)
+            res.json(addDist);
+
+        })
         .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with that zipcode' }));
 });
 
@@ -48,11 +62,21 @@ router.get("/:yelp_id", (req, res) => {
 
 router.post("/filters", (req,res) => {
     const filters = req.body;
+    const my_lat = req.body.my_lat;
+    const my_lng = req.body.my_lng;
 
-    Cafe.find({location_zip_code: req.body.location_zip_code, wifi: filters.wifi})
-        .then(cafes => res.json(cafes))
-        .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with with those params' }));
+    debugger
 
+    Cafe.find({})
+        .then(cafes => {
+            let cafesArr = JSON.parse(JSON.stringify(cafes))
+            let addDist = calculateDistance(cafesArr, my_lat, my_lng)
+            let filteredCafes = applyAllFilters(addDist,filters)
+            debugger
+            res.json(filteredCafes);
+
+        })
+        .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with that zipcode' }));
 })
 
 

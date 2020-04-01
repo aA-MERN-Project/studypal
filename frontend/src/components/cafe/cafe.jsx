@@ -121,16 +121,12 @@ class Cafe extends React.Component {
         if (!this.props.yelpCafe) return null 
         
 
-
-        
-     
-
         let display_address = this.props.yelpCafe.location.display_address;
         let time = this.calculateTime(this.props.yelpCafe.hours);
         let lat = this.props.yelpCafe.coordinates.latitude;
         let lng = this.props.yelpCafe.coordinates.longitude;
         let distance = this.props.randomCafe.distance_away;
-
+        let noiseLevel = this.props.randomCafe.noise_level;
 
 
         return (
@@ -150,15 +146,25 @@ class Cafe extends React.Component {
                 </h1>
                 <br />
                 <h1>
+                    Noise Level : {noiseLevel}
+                </h1>
+                
+                <h1>
                     <a href={this.props.yelpCafe.url}>View on Yelp</a>
                 </h1>
                 <br />
+
+                <h1>
+                    ** Shelter in Place May Affect Hours **
+
+                </h1>
                 <div>
                     <span><img src={this.props.yelpCafe.image_url}></img></span>
                     
                     <span><ShowMap key={lat} lat={lat} lng={lng} /></span>
                     
                 </div>
+
     
                 <br/>
             

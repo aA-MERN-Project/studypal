@@ -9,13 +9,12 @@ class Splash extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            // TOY DATA FOR FILTER CHANGE LATER
-          miles_away: 100,
+          miles_away: 1,
           hours_opened_left: 24,
-          wifi: true,
+          wifi: false,
           credit_card: false,
           noise_level: false,
-          location_zip_code: 94111,
+          location_zip_code: null,
           my_lat: null,
           my_lng: null,
         }
@@ -31,7 +30,7 @@ class Splash extends React.Component {
 
 
       this.setState({
-        miles_away: 100,
+        miles_away: 1,
         hours_opened_left: 24,
         wifi: false,
         credit_card: false,
@@ -63,15 +62,15 @@ class Splash extends React.Component {
       e.preventDefault();
 
       let state = this.state;
-
+      debugger
+      //Mapping state to search params
       state.wifi ? state.wifi = "yes" : state.wifi = "no";
       state.noise_level ? state.noise_level = "average" : state.noise_level = "loud";
       state.credit_card ? state.credit_card = "yes" : state.credit_card = "no";
 
-       
+      debugger
 
       this.props.fetchCafeByFilters(state)
-       
       this.props.getFilters(state)
       this.props.history.push(`/cafe`);
 
@@ -257,9 +256,9 @@ class Splash extends React.Component {
               <div className="roll-cafe">
                 <input id="zip"
                   type="text"
-                  value={this.state.zipcode}
+                  value={this.state.location_zip_code}
                   placeholder="Enter your zip code"
-                  onChange={this.update("zipcode")}
+                  onChange={this.update("location_zip_code")}
                 />
                 <input id="cafe-submit" onClick={this.handleSubmit}type="submit" value="Find a Cafe" />
               </div>
