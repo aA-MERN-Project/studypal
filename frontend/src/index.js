@@ -1,4 +1,3 @@
-import { Stitch, AnonymousCredential } from "mongodb-stitch-browser-sdk";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -20,14 +19,12 @@ import { updateUserPreferences, login } from './actions/session_actions'
 document.addEventListener("DOMContentLoaded", () => {
     // let store = configureStore({});
     let store;
-    Stitch.initializeDefaultAppClient("studypal-vfqka");
 
     if(localStorage.jwtToken){
         setAuthToken(localStorage.jwtToken);
         const decodedUser = jwt_decode(localStorage.jwtToken);
         const preloadedState = {session: {isAuthenticated: true, user: decodedUser}};
-        
-        // const client = Stitch.defaultAppClient;
+    
 
         store = configureStore(preloadedState);
         //checking if jwt passed its configuration
@@ -39,19 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
             store.dispatch(logout());
             window.location.href = 'login';
         }
-        const client = Stitch.defaultAppClient;
-        client.auth.loginWithCredential(new AnonymousCredential());
-        // client.auth.loginWithCredential(new AnonymousCredential());
     }else{
         store = configureStore();
     }
-
-    // function initializeAndLogin() {
-    //   const client = Stitch.defaultAppClient;
-    //   client.auth.loginWithCredential(new AnonymousCredential())
-    // }
-
-    // window.onload = initializeAndLogin;
 
     window.store = store
     window.getState = store.getState
