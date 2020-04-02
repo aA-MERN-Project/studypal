@@ -7,10 +7,12 @@ import Cafe from '../cafe/cafe';
 
 const mapStateToProps = state => {
 
+  debugger
+
   let cafes = Object.values(state.entities.cafes);
   let filters = state.entities.filters;
-  let cafesDistance = calculateDistance(cafes, filters)
-  let filteredCafes = applyExtraFilters(cafesDistance, filters)
+
+  let filteredCafes = applyExtraFilters(cafes, filters);
 
   //Get random Yelp Cafe before coming into Props
   let randomCafe = selectRandomCafe(Object.values(state.entities.cafes))
