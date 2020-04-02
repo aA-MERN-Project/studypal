@@ -91,7 +91,6 @@ export const logout = () => dispatch => {
 };
 
 export const updateUserPreferences = (id, preferences) => dispatch => {
-    debugger
     return (
         SessionAPIUtil.updateUserPreferences(id, preferences)
             .then((preferences) => dispatch(receivePreferences(preferences)),

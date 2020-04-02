@@ -139,7 +139,7 @@ class Cafe extends React.Component {
                             <div className="profile">
                                 <div className="title">
                                     <div className="name">{this.props.yelpCafe.name}</div>
-                                    <a className="yelp" href={this.props.yelpCafe.url}>
+                                    <a className="yelp" href={this.props.yelpCafe.url} target="_blank">
                                         <div id="yelp-text">View on Yelp</div>
                                     </a>
                                 </div>

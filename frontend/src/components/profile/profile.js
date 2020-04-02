@@ -54,7 +54,6 @@ class Profile extends React.Component {
         credit_card: "false",
         noise_level: "false"
       })
-      debugger
       this.props.updateUserPreferences(this.state.user.id, {
         miles_away: "",
         hours_opened_left: "",
@@ -149,7 +148,7 @@ class Profile extends React.Component {
                   {/* {client.auth.loginWithCredential(new stitch.AnonymousCredential())}
                   {client.callFunction("getPicture", ["studypal-dev", "coffee.png"])} */}
                   <div className="only-profile-info">
-                    <div className="name">{username}</div>
+                    <div className="profile-name">{username}</div>
                     <div className="email">{email}</div>
                     <div className="zipcode">Current Zipcode {zipcode}</div>
                   </div>

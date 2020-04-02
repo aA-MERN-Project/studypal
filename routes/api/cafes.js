@@ -65,14 +65,12 @@ router.post("/filters", (req,res) => {
     const my_lat = req.body.my_lat;
     const my_lng = req.body.my_lng;
 
-    debugger
-
     Cafe.find({})
         .then(cafes => {
             let cafesArr = JSON.parse(JSON.stringify(cafes))
             let addDist = calculateDistance(cafesArr, my_lat, my_lng)
             let filteredCafes = applyAllFilters(addDist,filters)
-            debugger
+
             res.json(filteredCafes);
 
         })

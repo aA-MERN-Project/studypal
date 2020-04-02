@@ -40,10 +40,11 @@
     border-radius: 5px;
     border: 1px solid rgba(51, 51, 51, 0.5);
     font-size: 13px;
+    margin-top: 100px;
 }
 
 .title {
-    /* // border: 1px solid red; */
+    /* // border: 1px solid r≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈ed; */
     display: flex;
     justify-content: space-between;
 }
@@ -52,7 +53,6 @@
     /* // border: 1px solid red; */
     font-size: 24px;
     margin-bottom: -40px;
-    margin-left: -18px;
 }
 
 .yelp {
@@ -66,7 +66,7 @@
     font-size: 12px;
     box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25);
     text-align: center;
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-weight: 600;
 }
 
@@ -117,20 +117,23 @@
     margin-left: 5px;
     border-radius: 5px;
     border: 1px solid rgba(51, 51, 51, 0.5);
+    margin-top: 100px;
 }
 
 .all {
     /* // border: 1px solid red; */
+
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     align-self: center;
+    height: 100vh;
 }
 
 .new-cafe {
     /* // border: 1px solid red; */
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-size: 14px;
     position: relative;
     text-align: center;
