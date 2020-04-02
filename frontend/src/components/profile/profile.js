@@ -1,4 +1,3 @@
-import { Stitch, AnonymousCredential } from "mongodb-stitch-browser-sdk";
 import '../../reset.css'
 import './profile.css'
 import React from 'react'
@@ -98,8 +97,6 @@ class Profile extends React.Component {
     }
 
     render() {
-      const client = Stitch.defaultAppClient;
-      client.auth.loginWithCredential(new AnonymousCredential());
       let username ;
       let email;
       let zipcode;
