@@ -4,75 +4,214 @@
     background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
     font-family: "Open Sans";
 }
-​
-.content {
+
+.index img {
+    position: relative;
+    height: 140px;
+    left: 45vw;
+    top: 40vh;
+}
+// ​
+// .content {
+//     // border: 1px solid red;
+//     position: absolute;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     width: 100vw;
+//     height: 350px;
+//     top: 200px;
+//     background: #ffffff;
+//     color: #333333;
+// }
+// ​
+// .cta {
+//     // border: 1px solid red;
+//     position: relative;
+//     top: 55px;
+//     text-align: center;
+//     font-family: "Montserrat";
+//     font-size: 28px;
+//     font-weight: 600;
+// }
+// ​
+// #looking-for {
+//     position: relative;
+//     top: 95px;
+//     text-align: center;
+//     // font-family: "Open Sans";
+//     font-size: 14px;
+//     font-weight: 600;
+// }
+// ​
+// .preferences {
+//     position: relative;
+//     top: 120px;
+// }
+// ​
+// .roll-cafe {
+//     // border: 1px solid red;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     position: relative;
+//     top: 160px;
+//     height: 35px;
+//     width: 320px;
+//     border-radius: 50px;
+//     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+// }
+// ​
+// #zip {
+//     border: none;
+//     position: relative;
+//     height: 85%;
+//     left: 12px;
+//     font-size: 10px;
+// }
+// ​
+// #cafe-submit {
+//     height: 35px;
+//     border: none;
+//     width: 110px;
+//     background-color: #FF7F50;
+//     color: #ffffff;
+//     border-radius: 50px;
+//     font-size: 12px;
+// }
+// ​
+// #cafe-submit:hover {
+//     cursor: pointer;
+// }
+
+.page {
+    background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%);
+    font-family: "Open Sans";
+    display: flex;
+    justify-content: space-around;
+}
+
+.photo {
+    position: relative;
+    width: 610px;
+    height: 344px;
+    border-radius: 5px;
+    border: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+.profile {
+    position: relative;
+    width: 550px;
+    margin-bottom: 5px;
+    padding-top: 30px;
+    padding-bottom: 28px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid rgba(51, 51, 51, 0.5);
+    font-size: 13px;
+}
+
+.title {
     // border: 1px solid red;
-    position: absolute;
+    display: flex;
+    justify-content: space-between;
+}
+
+.name {
+    // border: 1px solid red;
+    font-size: 24px;
+    margin-bottom: -40px;
+    margin-left: -18px;
+}
+
+.yelp {
+    height: 35px;
+    // border: 1px solid red;
+    width: 120px;
+    background-color: #FF7F50;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 12px;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-family: Montserrat;
+    font-weight: 600;
+}
+
+.yelp:hover {
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+    box-shadow: none;
+}
+
+#yelp-text {
+    position: relative;
+    top: 12px;
+}
+
+.time {
+    color: rgba(51, 51, 51, 0.5);
+    margin-top: -8px;
+}
+
+.address {
+    margin-top: 20px;
+}
+
+.shelter {
+    margin-top: 6px;
+    color: red;
+}
+
+.cafe {
+    // border: 1px solid red;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.left-right {
+    // border: 1px solid red;
+    width: 1120px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.map {
+    width: 500px;
+    margin-left: 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+.all {
+    // border: 1px solid red;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-    height: 350px;
-    top: 200px;
-    background: #ffffff;
-    color: #333333;
+    position: relative;
+    align-self: center;
 }
-​
-.cta {
+
+.new-cafe {
     // border: 1px solid red;
-    position: relative;
-    top: 55px;
-    text-align: center;
-    font-family: "Montserrat";
-    font-size: 28px;
-    font-weight: 600;
-}
-​
-#looking-for {
-    position: relative;
-    top: 95px;
-    text-align: center;
-    // font-family: "Open Sans";
+    font-family: Montserrat;
     font-size: 14px;
-    font-weight: 600;
-}
-​
-.preferences {
     position: relative;
-    top: 120px;
+    text-align: center;
+    margin-top: 10px;
 }
-​
-.roll-cafe {
-    // border: 1px solid red;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    top: 160px;
-    height: 35px;
-    width: 320px;
-    border-radius: 50px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+
+.new-cafe span {
+    color: #4169E1;
 }
-​
-#zip {
-    border: none;
-    position: relative;
-    height: 85%;
-    left: 12px;
-    font-size: 10px;
-}
-​
-#cafe-submit {
-    height: 35px;
-    border: none;
-    width: 110px;
-    background-color: #FF7F50;
-    color: #ffffff;
-    border-radius: 50px;
-    font-size: 12px;
-}
-​
-#cafe-submit:hover {
+
+.new-cafe span:hover {
     cursor: pointer;
 }
