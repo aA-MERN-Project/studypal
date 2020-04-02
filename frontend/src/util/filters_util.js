@@ -7,8 +7,9 @@ export const selectRandomCafe = (cafe_array) => {
 };
 
 
-export const calculateDistance = (cafes, filters) => {
+export const calculateDistance = (cafes, filters = {}) => {
     
+
     let addedDistance = cafes.map(cafe => {
         cafe.distance_away = distance(
             filters.my_lat,

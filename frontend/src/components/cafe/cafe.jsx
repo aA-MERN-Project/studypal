@@ -98,6 +98,13 @@ class Cafe extends React.Component {
         this.reRoll();
     }
 
+    componentDidMount(){
+        // debugger
+        if (Object.keys(this.props.filters).length === 0){
+            this.props.history.push(`/`);
+        }
+    }
+
     componentDidUpdate(prevProps, prevState) {
         if (this.props.cafes.length === 0) {
             this.props.history.push(`/retry`)
@@ -162,7 +169,7 @@ class Cafe extends React.Component {
                         </div>
 
                         <div className="map">
-                            <ShowMap key={lat} lat={lat} lng={lng} />
+                            <ShowMap key={lat} lat={lat} lng={lng} my_lat={this.props.filters.my_lat} my_lng={this.props.filters.my_lng} />
                         </div>
                     </div>
 
