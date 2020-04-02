@@ -24,8 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setAuthToken(localStorage.jwtToken);
         const decodedUser = jwt_decode(localStorage.jwtToken);
         const preloadedState = {session: {isAuthenticated: true, user: decodedUser}};
-        
-        // const client = Stitch.defaultAppClient;
+    
 
         store = configureStore(preloadedState);
         //checking if jwt passed its configuration
@@ -37,17 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
             store.dispatch(logout());
             window.location.href = 'login';
         }
+<<<<<<< HEAD
         // client.auth.loginWithCredential(new AnonymousCredential());
+=======
+>>>>>>> cc2bb3100c20abad0a47c7d121735f2b99f5cb97
     }else{
         store = configureStore();
     }
-
-    // function initializeAndLogin() {
-    //   const client = Stitch.defaultAppClient;
-    //   client.auth.loginWithCredential(new AnonymousCredential())
-    // }
-
-    // window.onload = initializeAndLogin;
 
     window.store = store
     window.getState = store.getState

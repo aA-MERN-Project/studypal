@@ -97,7 +97,11 @@ class Profile extends React.Component {
     }
 
     render() {
+<<<<<<< HEAD
       let username;
+=======
+      let username ;
+>>>>>>> cc2bb3100c20abad0a47c7d121735f2b99f5cb97
       let email;
       let zipcode;
       if (this.state.user){
