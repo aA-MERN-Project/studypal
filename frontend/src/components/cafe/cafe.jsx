@@ -5,6 +5,7 @@ import ShowMap from "../map/show_map";
 import "../../stylesheets/map.scss";
 import "./cafe.scss"
 import LoadingPage from './loader';
+import NavBar from "../navbar/navbar_container";
 
 const apiKey = require("../../keys/keys").YELP_API_KEY;
 
@@ -97,29 +98,29 @@ class Cafe extends React.Component {
         this.reRoll();
     }
 
-    componentDidUpdate(prevProps, prevState){
-        if (this.props.cafes.length === 0){
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.cafes.length === 0) {
             this.props.history.push(`/retry`)
         }
-        
+
     }
 
 
     render() {
 
-         
+
         const { loading } = this.props;
-        if (loading) { return <LoadingPage />; } 
-        
-        
+        if (loading) { return <LoadingPage />; }
+
+
         if (this.props.cafes.length === 0) return null;
 
         // If no curr yelpcafe exist, request from API
         if (!this.props.yelpCafe) {
             this.props.fetchYelpCafeById(this.props.randomCafe.id)
         }
-        if (!this.props.yelpCafe) return null 
-        
+        if (!this.props.yelpCafe) return null
+
 
         let display_address = this.props.yelpCafe.location.display_address;
         let time = this.calculateTime(this.props.yelpCafe.hours);
@@ -130,50 +131,51 @@ class Cafe extends React.Component {
 
 
         return (
-            <div>
+            <div className="page">
+                <NavBar />
+                <div className="all">
+                    <div className="left-right">
+                        <div className="cafe">
+                            <div className="profile">
+                                <div className="title">
+                                    <div className="name">{this.props.yelpCafe.name}</div>
+                                    <a className="yelp" href={this.props.yelpCafe.url}>
+                                        <div id="yelp-text">View on Yelp</div>
+                                    </a>
+                                </div>
 
-                <h1>{this.props.yelpCafe.name}</h1>
-                <button onClick={this.handleClick}>Show me another cafe!</button>
-                <br />
-                <h1>Open until {time} Today</h1>
-                <br />
-                <h1>
-                    {display_address[0]}, {display_address[1]}
-                </h1>
-                <br />
-                <h1>
-                    Distance Away : {distance} Miles
-                </h1>
-                <br />
-                <h1>
-                    Noise Level : {noiseLevel}
-                </h1>
-                
-                <h1>
-                    <a href={this.props.yelpCafe.url}>View on Yelp</a>
-                </h1>
-                <br />
+                                <div className="time">Open until {time} Today</div>
 
-                <h1>
-                    ** Shelter in Place May Affect Hours **
+                                <div className="address">
+                                    {display_address[0]}, {display_address[1]}
+                                </div>
 
-                </h1>
-                <div>
-                    <span><img src={this.props.yelpCafe.image_url}></img></span>
-                    
-                    <span><ShowMap key={lat} lat={lat} lng={lng} /></span>
-                    
+                                <div className="shelter">
+                                    ** Shelter in Place May Affect Hours **
+                    </div>
+                            </div>
+
+                            <img
+                                className="photo"
+                                src={this.props.yelpCafe.image_url}
+                            ></img>
+                        </div>
+
+                        <div className="map">
+                            <ShowMap key={lat} lat={lat} lng={lng} />
+                        </div>
+                    </div>
+
+                    <span className="new-cafe">
+                        I'm not sold. &nbsp;
+                <span onClick={this.handleClick}>Show me another cafe!</span>
+                    </span>
                 </div>
-
-    
-                <br/>
-            
             </div>
         );
 
 
     }
 }
-
 
 export default Cafe;

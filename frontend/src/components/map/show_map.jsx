@@ -26,11 +26,13 @@ class ShowMap extends React.Component {
     };
 
     // this.MarkerManager = new MarkerManager(this.map);
-
     this.map = new google.maps.Map(this.mapNode, mapOptions);
+
+    
 
     const marker = new google.maps.Marker({
       position: { lat: this.props.lat, lng: this.props.lng },
+      icon: 'https://studypal-dev.s3-us-west-1.amazonaws.com/Coffee_3.png',
       map: this.map
     });
   }
