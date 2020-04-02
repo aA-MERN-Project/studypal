@@ -341,8 +341,8 @@ class Profile extends React.Component {
                       </form>
                     </div>
                   </div>
-                  <div>
-                    <button onClick={() => this.clear()}>Clear All</button>
+                  <div className="profile-clear-div">
+                    <button className="profile-clear" onClick={() => this.clear()}>Clear All</button>
                   </div>
                 </div>
               </div>
