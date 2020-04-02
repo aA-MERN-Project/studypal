@@ -125,11 +125,13 @@ button:hover {
 }
 
 #zip {
+    outline: none;
     border: none;
     position: relative;
     height: 85%;
     left: 12px;
     font-size: 10px;
+    font-family: "Montserrat";
 }
 
 #cafe-submit {

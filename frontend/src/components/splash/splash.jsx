@@ -254,7 +254,8 @@ class Splash extends React.Component {
           </div>
 
           <div className="roll-cafe">
-            <input id="zip"
+            <input 
+              id="zip"
               type="text"
               value={this.state.location_zip_code}
               placeholder="Enter your zip code"

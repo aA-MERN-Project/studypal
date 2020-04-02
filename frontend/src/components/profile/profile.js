@@ -119,7 +119,7 @@ class Profile extends React.Component {
       //  let zipcode = user ? user.zipcode : ""; 
 
         return (
-          <div className="page">
+          <div className="profile-page">
             {/* <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.8/stitch.js"></script> */}
             <NavBar />
             <div className="profile-info-div">
