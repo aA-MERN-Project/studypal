@@ -23,6 +23,9 @@ class NavBar extends React.Component {
         if (!this.props.loggedIn) {
             return (
                 <div className="button-div">
+                    <Link className="button" onClick={() => this.props.login({ email: "ryan@gmail.com", password: "password" })}>Demo</Link>
+                    {/* <Link className="button" to="/signup">Demo</Link> */}
+                    <div className="vertical-line-navbar"></div>
                     <Link className="button" to="/login">Log In</Link>
                     <div className="vertical-line-navbar"></div>
                     <Link className="button" to="/signup">Sign Up</Link>
@@ -36,6 +39,8 @@ class NavBar extends React.Component {
             return (
                 <div className="button-div">
                     {/* <Link className="button" to="/login">Log Out</Link> */}
+                    <Link className="button" to="/user">Profile</Link>
+                    <div className="vertical-line-navbar"></div>
                     <button className="button2" onClick={this.handleLogout}>Log Out</button>
                 </div>
             )
