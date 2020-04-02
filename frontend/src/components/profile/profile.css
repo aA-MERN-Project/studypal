@@ -112,7 +112,7 @@
 .profile-info-div {
     display: flex;
     justify-content: space-around;
-    padding-top: 10%;
+    padding-top: 7%;
     /* top: 216px; */
 
 }
@@ -256,3 +256,22 @@ top: 216px; */
     background-color: rgba(65, 105, 225, 0.5)
 }
 
+.profile-clear {
+    position: relative;
+    top: 14px;
+    margin-bottom: 8px;
+    width: 70px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+    background-color: #ffffff;
+    border: rgba(65, 105, 225, 0.5) 2px solid;
+    border-radius: 5px;
+    font-size: 9px;
+    color: rgba(65, 105, 225, 0.5);
+    font-weight: 900;
+}
+
+.profile-clear-div {
+    display: flex;
+    justify-content: center;
+}
