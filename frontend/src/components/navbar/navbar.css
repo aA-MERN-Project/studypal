@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap');
 
 .navbar {
+    position: absolute;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 50px;
     width: 100%;
     background-color: #4169E1;
-    position: absolute;
 }
 
 .button {
