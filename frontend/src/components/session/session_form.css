@@ -155,15 +155,11 @@ padding-top: 4%
 }
 
 .top-left {
-    height: 470px;
-    width: 740px;
+    height: 50VH;
 }
 
 .top-right {
     position: absolute;
-    left: 57.3%;
-    top: 16%;
-    /* height: 50%; */
-    width: 740px;
-    transform: rotate(90deg)
+    right: 0;
+    width: 28VW;
 }

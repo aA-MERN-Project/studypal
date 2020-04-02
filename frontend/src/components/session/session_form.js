@@ -174,7 +174,7 @@ class SessionForm extends React.Component {
                 </div>
               </form>
               <div className="nevermind">
-                Never mind, <Link>just help me find a cafe.</Link>
+                Never mind, <Link to="/">just help me find a cafe.</Link>
               </div>
             </div>
           </div>
@@ -262,7 +262,7 @@ class SessionForm extends React.Component {
                 </div>
               </form>
               <div className="nevermind">
-                Never mind, <Link>just help me find a cafe.</Link>
+                Never mind, <Link to="/">just help me find a cafe.</Link>
               </div>
             </div>
 
