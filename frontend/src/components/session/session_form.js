@@ -126,7 +126,12 @@ class SessionForm extends React.Component {
         return (
           <div className="signup-page-div">
             <div className="left-div-signup">
-              <div>image</div>
+              <img
+                className="top-left"
+                src={
+                  "https://studypal-dev.s3-us-west-1.amazonaws.com/top-left.png"
+                }
+              />
             </div>
             <div className="signup-div">
               <form className="signup-form-div" onSubmit={this.handleSubmit}>
@@ -262,7 +267,12 @@ class SessionForm extends React.Component {
             </div>
 
             <div className="right-div-signup">
-              <div>image</div>
+              <img
+                className="top-right"
+                src={
+                  "https://studypal-dev.s3-us-west-1.amazonaws.com/top-right.png"
+                }
+              />
             </div>
           </div>
         );

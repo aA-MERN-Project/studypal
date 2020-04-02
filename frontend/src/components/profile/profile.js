@@ -1,3 +1,4 @@
+import { Stitch, AnonymousCredential } from "mongodb-stitch-browser-sdk";
 import '../../reset.css'
 import './profile.css'
 import React from 'react'
@@ -98,6 +99,8 @@ class Profile extends React.Component {
     }
 
     render() {
+      const client = Stitch.defaultAppClient;
+      client.auth.loginWithCredential(new AnonymousCredential());
       let username ;
       let email;
       let zipcode;
@@ -117,24 +120,52 @@ class Profile extends React.Component {
 
         return (
           <div className="page">
+            {/* <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.8/stitch.js"></script> */}
             <NavBar />
             <div className="profile-info-div">
               <div className="profile-info">
                 <div className="img-info-div">
-                  <img className="coffee-img" src={coffee}/>
+                  {/* <img className="coffee-img" src={coffee} /> */}
+                  <img
+                    // src={client.callFunction("getPicture", [
+                    //   "studypal-dev",
+                    //   "coffee.png"
+                    // ])}
+                    // src={client
+                    // .callFunction("getPicture", ["studypal-dev", "coffee.png"])
+                    // .then(echoedResult => {
+                    //   console.log(`Echoed result: ${echoedResult}`);
+                    // })}
+                    className="coffee-img"
+                    src={
+                      "https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"
+                    }
+                  />
+                  {/* {client
+                    .callFunction("getPicture", ["studypal-dev", "coffee.png"])
+                    .then(echoedResult => {
+                      console.log(`Echoed result: ${echoedResult}`);
+                    })} */}
+                  {/* {client.auth.loginWithCredential(new stitch.AnonymousCredential())}
+                  {client.callFunction("getPicture", ["studypal-dev", "coffee.png"])} */}
                   <div className="only-profile-info">
                     <div className="name">{username}</div>
                     <div className="email">{email}</div>
                     <div className="zipcode">Current Zipcode {zipcode}</div>
                   </div>
                 </div>
-                {/* <img className="edit" src={edit}/> */}
+                {/* <img
+                  className="edit"
+                  src={
+                    "https://studypal-dev.s3-us-west-1.amazonaws.com/edit.png"
+                  }
+                /> */}
               </div>
             </div>
-            <br/>
+            <br />
             <div className="outer-filter-box-div">
               <div className="filter-box-div">
-                <div className="preferences">Saved Preferences</div>
+                <div className="profile-preferences">Saved Preferences</div>
                 <div>
                   <div className="top-row">
                     <div className="top-mini-1">
@@ -318,7 +349,12 @@ class Profile extends React.Component {
               </div>
             </div>
             <div className="find-cafe-profile-div">
-              <button onClick={() => this.updatePreferences()} className="find-cafe-profile">Find a Cafe</button>
+              <button
+                onClick={() => this.updatePreferences()}
+                className="find-cafe-profile"
+              >
+                Find a Cafe
+              </button>
             </div>
           </div>
         );
