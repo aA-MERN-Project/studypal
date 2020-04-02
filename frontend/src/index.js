@@ -1,4 +1,3 @@
-import { Stitch, AnonymousCredential } from "mongodb-stitch-browser-sdk";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -20,7 +19,6 @@ import { updateUserPreferences, login } from './actions/session_actions'
 document.addEventListener("DOMContentLoaded", () => {
     // let store = configureStore({});
     let store;
-    Stitch.initializeDefaultAppClient("studypal-vfqka");
 
     if(localStorage.jwtToken){
         setAuthToken(localStorage.jwtToken);
@@ -39,8 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
             store.dispatch(logout());
             window.location.href = 'login';
         }
-        const client = Stitch.defaultAppClient;
-        client.auth.loginWithCredential(new AnonymousCredential());
         // client.auth.loginWithCredential(new AnonymousCredential());
     }else{
         store = configureStore();
