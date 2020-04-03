@@ -11,8 +11,10 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 * ReactJS
 * NodeJS
 * [Yelp Fusion API](https://www.yelp.com/fusion)
-* [Google Maps API] (https://cloud.google.com/maps-platform/)
-* [Figma] (https://www.figma.com/)
+* [Google Maps API](https://cloud.google.com/maps-platform/)
+* [Figma](https://www.figma.com/)
 
 ## Features
-* User profile and saved preferences
+* User profile
+* Preference filters
+* Saved preferences
