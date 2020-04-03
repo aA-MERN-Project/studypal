@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from "axios";
 import { distance } from '../../util/distance_util'
 import ShowMap from "../map/show_map";
 import "../../stylesheets/map.scss";

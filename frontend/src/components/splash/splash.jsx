@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from "react-redux";
-import { Route, Redirect, withRouter } from "react-router-dom";
 import './splash.scss';
 import NavBar from '../navbar/navbar_container';
 import $ from "jquery";
@@ -271,7 +269,7 @@ class Splash extends React.Component {
             <input 
               id="zip"
               type="text"
-              value={this.state.location_zip_code}
+              value={this.state.location_zip_code || ""}
               placeholder="Enter your zip code"
               onChange={this.update("location_zip_code")}
             />

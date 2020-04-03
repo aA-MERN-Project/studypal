@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from "react-redux";
-import { Route, Redirect, withRouter } from "react-router-dom";
 import './retry.scss';
 import NavBar from '../navbar/navbar_container';
 import $ from "jquery";

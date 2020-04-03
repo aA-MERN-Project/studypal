@@ -1,6 +1,6 @@
 import '../../reset.css';
 import './navbar.css';
-import { Link, Redirect, withRouter} from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
 import React from 'react';
 // import LoginLoadingPage from './login_loading'
 
@@ -20,27 +20,6 @@ class NavBar extends React.Component {
         this.props.history.push('/');
         
     }
-
-    // demoLogin(idx){
-    //     let inputEmail = document.getElementsByClassName("input-box-email");
-    //     let inputEmailText = "ryan@gmail.com";
-    //     let indexEmail = idx;
-    //     // let inputPassword = document.getElementsByClassName("input-box-password");
-    //     // let inputPasswordText = "password";
-    //     // let indexPassword = 0;
-
-    //     if (indexEmail <= inputEmailText.length) {
-    //         inputEmail.value = inputEmailText.substr(0, indexEmail++);
-    //         setTimeout(this.demoLogin(indexEmail), 50);
-    //     }
-
-    //     // if (indexPassword <= inputPasswordText.length) {
-    //     //     inputPassword.value = inputPasswordText.substr(0, indexPassword++);
-    //     //     setTimeout(this.demoLogin(), 50);
-    //     // }
-
-    //     // this.props.login({ email: "ryan@gmail.com", password: "password" });
-    // }
                 
     loggedOut() {
         if (!this.props.loggedIn) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter, Redirect, Link} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import './session_form.css'
 
 class SessionForm extends React.Component {
