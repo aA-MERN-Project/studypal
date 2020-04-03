@@ -11,7 +11,7 @@ const yelpCafeReducer = (state = {}, action) => {
         case RECEIVE_YELP_CAFE:
             return action.cafe;
         default:
-            return null;
+            return state;
     }
 }
 
