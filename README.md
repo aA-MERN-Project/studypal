@@ -20,4 +20,4 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 * Cafe suggestions filtered by cafe preferences and user geolocation
 * Cafe location displayed via the Google Maps API
 
-![StudyPal Demo](https://studypal-dev.s3-us-west-1.amazonaws.com/Animated+GIF-original.mp4)
+![StudyPal Demo](<iframe src="https://giphy.com/embed/RLQQLfgpfL10NKOGCL" width="480" height="280" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/RLQQLfgpfL10NKOGCL">via GIPHY</a></p>)
