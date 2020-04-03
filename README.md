@@ -14,7 +14,7 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 * [Google Maps API](https://cloud.google.com/maps-platform/)
 * [Figma](https://www.figma.com/)
 
-# Features
+## Features
 * Secure user authentication with password digests
 * Yelp cafe data fetched by the Yelp Fusion API
 * Cafe suggestions filtered by cafe preferences and user geolocation
