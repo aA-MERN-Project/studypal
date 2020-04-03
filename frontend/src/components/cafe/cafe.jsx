@@ -56,7 +56,6 @@ class Cafe extends React.Component {
         } else {
             return this.formatTime(hours[0].open[day].end);
         }
-
     }
 
     calculateDistance(cafes) {

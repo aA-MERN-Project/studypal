@@ -1,4 +1,5 @@
 import * as SessionAPIUtil from "../util/session_api_util";
+import * as UserAPIUtil from "../util/user_api_util";
 import jwt_decode from 'jwt-decode';
 // import SessionErrorsReducer from "../reducers/session_errors_reducer";
 
@@ -32,6 +33,7 @@ const receiveErrors = errors => ({
 
 //added by Fei
 const receiveUserSignIn = (currentUser) => {
+    // debugger; 
     return({
     type: RECEIVE_USER_SIGN_IN,
     currentUser
@@ -84,6 +86,17 @@ export const logout = () => dispatch => {
     dispatch(logoutCurrentUser());
 };
 
+export const updateProfileAct = (id, data) => dispatch => {
+    // debugger;
+    return(
+        UserAPIUtil.updateProfile(id, data)
+            .then((user) => dispatch(receiveUserSignIn(user)))
+            // .then(user => dispatch(login({email:user.currentUser.data.email, password: user.currentUser.data.password})))
+            .catch(err=> dispatch(receiveErrors(err.response.data)))
+            // err => (dispatch(receiveErrors(err.response.data))))
+    );
+   
+};
 export const updateUserPreferences = (id, preferences) => dispatch => {
     return (
         SessionAPIUtil.updateUserPreferences(id, preferences)

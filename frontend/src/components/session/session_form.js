@@ -25,6 +25,28 @@ class SessionForm extends React.Component {
         // this.checkErrors = this.checkErrors.bind(this);
     }
     
+    componentWillUpdate(nextProps, nextState){
+      
+      let user = {
+        email: this.state.email,
+        password: this.state.password,
+        handle: this.state.handle,
+        zipcode: this.state.zipcode
+    };
+    //checking if user registered successfully, then log them in
+    if(nextProps.signedIn === true){
+        // debugger;
+        console.log("SUCCESS");
+        this.props.logInNewUser(user)
+            .then(this.props.history.push("user"));
+   
+    }else if(nextProps.isAuthenticated ===true){
+      // debugger;
+      this.props.history.push("user");
+    }
+    
+    }
+
     componentWillReceiveProps(nextProps){
          
         let user = {
@@ -35,12 +57,14 @@ class SessionForm extends React.Component {
         };
         //checking if user registered successfully, then log them in
         if(nextProps.signedIn === true){
+            // debugger;
             console.log("SUCCESS");
             this.props.logInNewUser(user)
                 .then(this.props.history.push("user"));
        
         }else if(nextProps.isAuthenticated ===true){
-          this.props.history.push("user");
+          // debugger;
+          this.props.history.push("/user");
         }
         
         this.setState({errors: nextProps.errors});
@@ -118,8 +142,7 @@ class SessionForm extends React.Component {
             return(
                 <div></div>
             )
-        }
-        
+        } 
     }
 
     login() {
