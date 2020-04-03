@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from "react-redux";
-import { Route, Redirect, withRouter } from "react-router-dom";
 import './splash.scss';
 import NavBar from '../navbar/navbar_container';
 import $ from "jquery";
@@ -22,6 +20,8 @@ class Splash extends React.Component {
     this.findCoordinates = this.findCoordinates.bind(this);
     this.getPosition = this.getPosition.bind(this);
     this.clear = this.clear.bind(this);
+    // this.loggedIn = this.loggedIn.bind(this);
+    
 
   }
 
@@ -37,6 +37,18 @@ class Splash extends React.Component {
       noise_level: false,
     })
   }
+
+  // loggedIn() {
+  //   if (!this.props.user) {
+  //     return (
+  //       <div id="looking-for">What are you looking for, {this.props.handle}?</div>
+  //     )
+  //   } else {
+  //     return (
+  //       <div id="looking-for">What are you looking for?</div>
+  //     )
+  //   }
+  // }
 
   getPosition(position) {
 
@@ -89,10 +101,10 @@ class Splash extends React.Component {
       <div className="index">
         <NavBar />
         <div className="content">
-          <div className="cta">Discover your cafe for today.</div>
+    <div className="cta">Discover your cafe for today.</div>
 
-          <div id="looking-for">What are you looking for?</div>
-
+      {/* {this.loggedIn()} */}
+      <div id="looking-for">What are you looking for?</div>
           <div className="preferences">
 
             <div className="distance-hours">
@@ -257,7 +269,7 @@ class Splash extends React.Component {
             <input 
               id="zip"
               type="text"
-              value={this.state.location_zip_code}
+              value={this.state.location_zip_code || ""}
               placeholder="Enter your zip code"
               onChange={this.update("location_zip_code")}
             />

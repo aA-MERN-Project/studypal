@@ -3,8 +3,6 @@ import './profile.css'
 import React from 'react'
 import NavBar from '../navbar/navbar_container'
 import $ from "jquery";
-import coffee from './coffee.png'
-import edit from './edit.png'
 
 class Profile extends React.Component {
     constructor(props) {
@@ -12,12 +10,7 @@ class Profile extends React.Component {
 
          
         this.state = {
-          user: this.props.user,       
-          // miles_away:"",
-          // hours_opened_left: "",
-          // free_wifi: "false",
-          // credit_card: "false",
-          // noise_level: "false"    
+          user: this.props.user,        
           miles_away: this.props.user.miles_away,
           hours_opened_left: this.props.user.hours_opened_left,
           free_wifi: this.props.user.free_wifi,
@@ -44,7 +37,6 @@ class Profile extends React.Component {
     }
 
     clear() {
-      // debugger
       $("input[type=radio]:checked").prop("checked", false);
       this.setState({
         miles_away: "",
@@ -60,21 +52,6 @@ class Profile extends React.Component {
         credit_card: "false",
         noise_level: "false"
       });
-
-      // this.props.updateUserPreferences(
-      //   this.state.user.id,
-      //   this.state.session.preferences
-      // );
-
-      // this.props.updateUserPreferences(this.state.user.id, 
-      //   {
-      //     miles_away: "",
-      //     hours_opened_left: "",
-      //     free_wifi: "false",
-      //     credit_card: "false",
-      //     noise_level: "false"
-      //   }
-      // )
     }
 
     update(field) {
@@ -97,11 +74,7 @@ class Profile extends React.Component {
     }
 
     render() {
-<<<<<<< HEAD
       let username;
-=======
-      let username ;
->>>>>>> cc2bb3100c20abad0a47c7d121735f2b99f5cb97
       let email;
       let zipcode;
       if (this.state.user){
@@ -113,53 +86,25 @@ class Profile extends React.Component {
         email = "";
         zipcode = "";
       }
-      //  const {user} = this.state.user;
-      //  let username = user ? user.handle : "";
-      //  let email = user ? user.email : "";
-      //  let zipcode = user ? user.zipcode : ""; 
 
         return (
           <div className="profile-page">
-            {/* <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.8/stitch.js"></script> */}
             <NavBar />
             <div className="profile-info-div">
               <div className="profile-info">
                 <div className="img-info-div">
-                  {/* <img className="coffee-img" src={coffee} /> */}
                   <img
-                    // src={client.callFunction("getPicture", [
-                    //   "studypal-dev",
-                    //   "coffee.png"
-                    // ])}
-                    // src={client
-                    // .callFunction("getPicture", ["studypal-dev", "coffee.png"])
-                    // .then(echoedResult => {
-                    //   console.log(`Echoed result: ${echoedResult}`);
-                    // })}
                     className="coffee-img"
                     src={
                       "https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"
                     }
                   />
-                  {/* {client
-                    .callFunction("getPicture", ["studypal-dev", "coffee.png"])
-                    .then(echoedResult => {
-                      console.log(`Echoed result: ${echoedResult}`);
-                    })} */}
-                  {/* {client.auth.loginWithCredential(new stitch.AnonymousCredential())}
-                  {client.callFunction("getPicture", ["studypal-dev", "coffee.png"])} */}
                   <div className="only-profile-info">
                     <div className="profile-name">{username}</div>
                     <div className="email">{email}</div>
                     <div className="zipcode">Current Zipcode {zipcode}</div>
                   </div>
                 </div>
-                {/* <img
-                  className="edit"
-                  src={
-                    "https://studypal-dev.s3-us-west-1.amazonaws.com/edit.png"
-                  }
-                /> */}
               </div>
             </div>
             <br />
