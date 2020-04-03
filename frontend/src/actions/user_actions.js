@@ -24,7 +24,7 @@ const receiveErrors = errors => ({
 });
 
 export const getUser = (id) => dispatch => {
-    // debugger;
+
     return(
         UserAPIUtil.getUser(id)
             .then((user) => dispatch(receiveUser(user)),
@@ -36,7 +36,7 @@ export const getUser = (id) => dispatch => {
 
 
 export const updateProfileAct = (id, data) => dispatch => {
-    debugger;
+    // debugger;
     return(
         UserAPIUtil.updateProfile(id, data)
             .then((user) => dispatch(receiveUser(user)),

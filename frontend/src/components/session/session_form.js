@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter, Redirect, Link} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import './session_form.css'
 
 class SessionForm extends React.Component {
@@ -35,20 +35,20 @@ class SessionForm extends React.Component {
     };
     //checking if user registered successfully, then log them in
     if(nextProps.signedIn === true){
-        debugger;
+        // debugger;
         console.log("SUCCESS");
         this.props.logInNewUser(user)
             .then(this.props.history.push("user"));
    
     }else if(nextProps.isAuthenticated ===true){
-      debugger;
+      // debugger;
       this.props.history.push("user");
     }
     
     }
 
     componentWillReceiveProps(nextProps){
-        debugger;
+         
         let user = {
             email: this.state.email,
             password: this.state.password,
@@ -57,13 +57,13 @@ class SessionForm extends React.Component {
         };
         //checking if user registered successfully, then log them in
         if(nextProps.signedIn === true){
-            debugger;
+            // debugger;
             console.log("SUCCESS");
             this.props.logInNewUser(user)
                 .then(this.props.history.push("user"));
        
         }else if(nextProps.isAuthenticated ===true){
-          debugger;
+          // debugger;
           this.props.history.push("/user");
         }
         
@@ -71,7 +71,7 @@ class SessionForm extends React.Component {
     }
 
     componentDidMount(){
-        debugger;
+         
             this.props.clearErrors(); 
         }
         
@@ -97,7 +97,6 @@ class SessionForm extends React.Component {
     //   if(this.props.errors.length > 0){      
     //     console.log("login errors, like no user with that email");
     //   }else if(this.props.errors.length === 0 ){
-    //     debugger;
     //     this.props.history.push('user');
     //   }
     // }
@@ -150,7 +149,12 @@ class SessionForm extends React.Component {
         return (
           <div className="signup-page-div">
             <div className="left-div-signup">
-              <div>image</div>
+              <img
+                className="top-left"
+                src={
+                  "https://studypal-dev.s3-us-west-1.amazonaws.com/top-left.png"
+                }
+              />
             </div>
             <div className="signup-div">
               <form className="signup-form-div" onSubmit={this.handleSubmit}>
@@ -163,7 +167,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Email
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="text"
                       value={this.state.email}
                       onChange={this.update("email")}
@@ -175,7 +179,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Password
                     <input
-                      className="input-box"
+                      className="input-box-password"
                       type="password"
                       value={this.state.password}
                       onChange={this.update("password")}
@@ -192,9 +196,9 @@ class SessionForm extends React.Component {
                   </button>
                 </div>
               </form>
-              <div className="nevermind">
-                Never mind, <Link>just help me find a cafe.</Link>
-              </div>
+                <div className="nevermind">
+                  Never mind, <Link to="/">just help me find a cafe</Link>
+                </div>
             </div>
           </div>
         );
@@ -211,7 +215,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Username
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="text"
                       value={this.state.handle}
                       onChange={this.update("handle")}
@@ -224,7 +228,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Email
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="text"
                       value={this.state.email}
                       onChange={this.update("email")}
@@ -237,7 +241,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Password
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="password"
                       value={this.state.password}
                       onChange={this.update("password")}
@@ -250,7 +254,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Confirm Password
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="password"
                       value={this.state.password2}
                       onChange={this.update("password2")}
@@ -263,7 +267,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Zipcode
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="zipcode"
                       value={this.state.zipcode}
                       onChange={this.update("zipcode")}
@@ -272,7 +276,7 @@ class SessionForm extends React.Component {
                   </label>
                 </div>
                 <div className="errors">
-                  <ul>{this.renderErrors()}</ul>
+                  <ul className="session-errors">{this.renderErrors()}</ul>
                 </div>
                 <div className="l-s-button-div">
                   <button className="login-signup-button">
@@ -281,19 +285,24 @@ class SessionForm extends React.Component {
                 </div>
               </form>
               <div className="nevermind">
-                Never mind, <Link>just help me find a cafe.</Link>
+                Never mind, <Link to="/">just help me find a cafe.</Link>
               </div>
             </div>
 
             <div className="right-div-signup">
-              <div>image</div>
+              <img
+                className="top-right"
+                src={
+                  "https://studypal-dev.s3-us-west-1.amazonaws.com/top-right.png"
+                }
+              />
             </div>
           </div>
         );
     }
 
     render() {
-        // debugger;
+         
         return this.props.formType === "Log in" ? this.login() : this.signup()
     }
 };

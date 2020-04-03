@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap');
 
 .navbar {
+    position: absolute;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 68px;
+    height: 50px;
     width: 100%;
     background-color: #4169E1;
-    position: absolute;
 }
 
 .button {
@@ -19,7 +19,7 @@
     color: white;
     text-decoration: none;
     padding-left: 7%;
-    width: 25%
+    width: 20%
 }
 
 .button2{
@@ -42,22 +42,22 @@
     font-size: 20px;
     color: white;
     padding-left: 4%;
-    padding-top: .5%
+    text-decoration: none;
 }
 
 .button-div {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     padding-bottom: .5%;
     padding-right: 6%;
     width: 300px;
-    padding-top: 1.9%;
+    padding-top: 0.5%;
 }
 
 .vertical-line-navbar {
     width: 6%;
     height: .1px;
     border: .5px solid white;
-    transform: rotate(90deg)
+    transform: rotate(90deg);
 }

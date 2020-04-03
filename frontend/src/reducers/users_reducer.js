@@ -27,7 +27,6 @@ const usersReducer = (state={}, action) => {
                     // config: {url: "api/users/register", method: "post", data: "{"email":"user16@gmail.com","handle":"user16","pas…ssword","password2":"password","zipcode":"32343"}", headers: {…}, transformRequest: Array(1), …}
                     // request: XMLHttpRequest {readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, onreadystatechange: ƒ, …}
                     // __proto__: Object
-
         default:
             return state;
     }

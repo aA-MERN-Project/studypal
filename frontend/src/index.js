@@ -37,6 +37,7 @@ import {updateProfile, getUser} from './util/user_api_util';
 //     }
 // }
 
+
 document.addEventListener("DOMContentLoaded", () => {
     // let store = configureStore({});
     let store;
@@ -46,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setAuthToken(localStorage.jwtToken);
         const decodedUser = jwt_decode(localStorage.jwtToken);
         const preloadedState = {session: {isAuthenticated: true, user: decodedUser}};
+    
         store = configureStore(preloadedState);
         // store = configureStore(persistedState);
         //checking if jwt passed its configuration
@@ -60,25 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }else{
         store = configureStore();
     }
-    //this will give us a way (every time store changes) to save to localStorage
-    // store.subscribe(()=> saveToLocalStorage(store.getState()));
     
-    
-    
-    // window.getState = store.getState();
-
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store}/>, root);
 
-    // window.axios = axios;
-
-    // // TESTING APIS
-    // window.testId = "WavvLdfdP6g8aZTtbBQHTw";
   
-    // window.getYelpCafeById = getYelpCafeById;
-    
-    // window.updateProfile = updateProfile; 
-    // window.getUser = getUser;
 })
 
 

@@ -15,26 +15,24 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
 
-        // debugger;
+         
         this.state = {
-          user: props.user,
-          updated_user: props.updatedUser,
-          // user2: props.getUser(props.user.id),
-            // handle: props.user.handle,          
-          miles_away: "",
-          hours_opened_left: "",
-          free_wifi: "",
-          credit_card: "",
-          noise_level: "",
-          updatedProf: "false"
+          updated_user: props.updatedUser,       
+          updatedProf: "false",
+          user: this.props.user,        
+          miles_away: this.props.user.miles_away,
+          hours_opened_left: this.props.user.hours_opened_left,
+          free_wifi: this.props.user.free_wifi,
+          credit_card: this.props.user.credit_card,
+          noise_level: this.props.user.noise_level
         };
-        // debugger;
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.update = this.update.bind(this);
-        this.clear = this.clear.bind(this);
+    
         this.handler = this.handler.bind(this);
 
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.update = this.update.bind(this)
+        this.clear = this.clear.bind(this)
+        this.updatePreferences = this.updatePreferences.bind(this)
     }
 
     //to change the state once the profile gets updated
@@ -53,7 +51,6 @@ class Profile extends React.Component {
     }
 
     componentDidMount(){
-      debugger;
       //session should populate with logged in user 
       //info once the component has mounted
       this.setState({user:this.props.user});
@@ -66,7 +63,7 @@ class Profile extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-      debugger;
+      // debugger;
       if(prevProps.user !== this.props.user){
          this.props.getUpdatedUser(this.props.user._id);
       }
@@ -76,18 +73,21 @@ class Profile extends React.Component {
     componentWillUpdate(nextProps, nextState){
       // if (nextState.updated ==="true"  && this.state.user !== nextState.user ) {
       //   this.props.getUser();
-      debugger;
+  
       if (!nextState.user === this.state.user){
         this.props.getUser(nextProps.user.id);
         this.props.updateProfileAct(nextProps.user.id, nextProps.user);
         // this.props.updatedUser(this.props.user.id);
       }
       if (!nextState.updatedUser === this.state.updatedUser){
-        debugger;
+
         this.props.getUpdatedUser(nextProps.user.id);
         
       }
+    }
   
+    componentWillReceiveProps(nextProps){
+      this.setState({user:nextProps.user});
     }
 
     // componentDidUpdate(prevProps){
@@ -107,14 +107,19 @@ class Profile extends React.Component {
 
     clear() {
       $("input[type=radio]:checked").prop("checked", false);
-      
-
       this.setState({
         miles_away: "",
         hours_opened_left: "",
-        free_wifi: "",
-        credit_card: "",
-        noise_level: "",
+        free_wifi: "false",
+        credit_card: "false",
+        noise_level: "false"
+      })
+      this.props.updateUserPreferences(this.state.user.id, {
+        miles_away: "",
+        hours_opened_left: "",
+        free_wifi: "false",
+        credit_card: "false",
+        noise_level: "false"
       });
     }
 
@@ -124,9 +129,21 @@ class Profile extends React.Component {
         })
     }
 
+    updatePreferences() {
+      const updatedUser = this.state.user;
+      if (updatedUser) {
+        updatedUser.miles_away = this.state.miles_away;
+        updatedUser.hours_opened_left = this.state.hours_opened_left;
+        updatedUser.free_wifi = this.state.free_wifi;
+        updatedUser.credit_card = this.state.credit_card;
+        updatedUser.noise_level = this.state.noise_level;
+      }
+
+      this.props.updateUserPreferences(this.state.user.id, updatedUser);
+    }
+
     render() {
-      
-      let username ;
+      let username;
       let email;
       let zipcode;
       if (this.props.updatedUser){
@@ -137,20 +154,14 @@ class Profile extends React.Component {
         username = "";
         email = "";
         zipcode = "";
-      };
+      }
 
-
-      //  const {user} = this.state.user;
-      //  let username = user ? user.handle : "";
-      //  let email = user ? user.email : "";
-      //  let zipcode = user ? user.zipcode : ""; 
-        debugger;
         return (
-          <div className="page">
-            <NavBar/>
-              <div className="profile-info-div">
-                <div className="profile-info">
-                  <div className="halfProfile1">
+          <div className="profile-page">
+            <NavBar />
+            <div className="profile-info-div">
+              <div className="profile-info">
+              <div className="halfProfile1">
                       <div className="name">{username}</div>
                       <div className="email">{email}</div>
                       <div>Current Zipcode {zipcode}</div>
@@ -158,16 +169,29 @@ class Profile extends React.Component {
                   <div className="halfProfile2">
                     {/* <Test user={this.props.user} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler}/> */}
                     <TestContainer user={this.props.user} updatedUser = {this.props.updatedUser} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler}/>
-
                   </div>
+                <div className="img-info-div">
+                  <img
+                    className="coffee-img"
+                    src={
+                      "https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"
+                    }
+                  />
+                  {/* <div className="only-profile-info">
+                    <div className="profile-name">{username}</div>
+                    <div className="email">{email}</div>
+                    <div className="zipcode">Current Zipcode {zipcode}</div>
+                  </div> */}
+
                 </div>
                 
 
               </div>
-            <br/>
+            </div>
+            <br />
             <div className="outer-filter-box-div">
               <div className="filter-box-div">
-                <div className="preferences">Saved Preferences</div>
+                <div className="profile-preferences">Saved Preferences</div>
                 <div>
                   <div className="top-row">
                     <div className="top-mini-1">
@@ -176,50 +200,55 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.miles_away === "0.5"}
                             onChange={this.update("miles_away")}
                             type="radio"
                             name="miles"
-                            value="0.5 miles"
+                            value="0.5"
                           />
                           0.5 miles
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.miles_away === "1"}
                             onChange={this.update("miles_away")}
                             type="radio"
                             name="miles"
-                            value="1 mile"
+                            value="1"
                           />
                           1 mile
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.miles_away === "3"}
                             onChange={this.update("miles_away")}
                             type="radio"
                             name="miles"
-                            value="3 miles"
+                            value="3"
                           />
                           3 miles
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.miles_away === "5"}
                             onChange={this.update("miles_away")}
                             type="radio"
                             name="miles"
-                            value="5 miles"
+                            value="5"
                           />
                           5 miles
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.miles_away === "10"}
                             onChange={this.update("miles_away")}
                             type="radio"
                             name="miles"
-                            value="10 miles"
+                            value="10"
                           />
                           10 miles
                         </label>
@@ -234,50 +263,55 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.hours_opened_left === "1"}
                             onChange={this.update("hours_opened_left")}
                             type="radio"
                             name="hours"
-                            value="1 hour"
+                            value="1"
                           />
                           1 hour
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.hours_opened_left === "2"}
                             onChange={this.update("hours_opened_left")}
                             type="radio"
                             name="hours"
-                            value="2 hours"
+                            value="2"
                           />
                           2 hours
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.hours_opened_left === "3"}
                             onChange={this.update("hours_opened_left")}
                             type="radio"
                             name="hours"
-                            value="3 hours"
+                            value="3"
                           />
                           3 hours
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.hours_opened_left === "5"}
                             onChange={this.update("hours_opened_left")}
                             type="radio"
                             name="hours"
-                            value="5 hours"
+                            value="5"
                           />
                           5 hours
                         </label>
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.hours_opened_left === "8"}
                             onChange={this.update("hours_opened_left")}
                             type="radio"
                             name="hours"
-                            value="8 hours"
+                            value="8"
                           />
                           8 hours
                         </label>
@@ -292,6 +326,7 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.free_wifi === "true"}
                             onChange={this.update("free_wifi")}
                             type="radio"
                             value="true"
@@ -307,6 +342,7 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.credit_card === "true"}
                             onChange={this.update("credit_card")}
                             type="radio"
                             value="true"
@@ -322,6 +358,7 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
+                            checked={this.state.noise_level === "true"}
                             onChange={this.update("noise_level")}
                             type="radio"
                             value="true"
@@ -331,14 +368,19 @@ class Profile extends React.Component {
                       </form>
                     </div>
                   </div>
-                  <div>
-                    <button onClick={() => this.clear()}>Clear All</button>
+                  <div className="profile-clear-div">
+                    <button className="profile-clear" onClick={() => this.clear()}>Clear All</button>
                   </div>
                 </div>
               </div>
             </div>
             <div className="find-cafe-profile-div">
-              <button className="find-cafe-profile">Find a Cafe</button>
+              <button
+                onClick={() => this.updatePreferences()}
+                className="find-cafe-profile"
+              >
+                Find a Cafe
+              </button>
             </div>
           </div>
         );

@@ -1,9 +1,21 @@
 // This is API route for our inputted data
+const {
+    applyAllFilters
+} = require("../../util/filters_util")
+
+const {
+    calculateDistance
+} =  require("../../util/distance_util")
+
+const {
+  getYelpCafeById
+} = require("../../util/yelp_api");
+
 const mongoose = require('mongoose');
 const express = require("express");
 const router = express.Router();
-
 const Cafe = require("../../models/Cafe");
+
 
 
 router.get("/test", (req, res) => {
@@ -12,21 +24,65 @@ router.get("/test", (req, res) => {
 
 
 router.get("/", (req,res) => {
-
+    // testing distance
+    let my_lat = 37.79001;
+    let my_lng = -122.41177;
     Cafe
-        .find()
-        .sort({ zipCode: -1}) //finds newest inputted cafe
-        .then(cafes => res.json(cafes))
+        .find({})
+        .then(cafes => {
+            let cafesArr = JSON.parse(JSON.stringify(cafes))
+            let addDist = calculateDistance(cafesArr, my_lat, my_lng)
+            res.json(addDist);
+
+        })
         .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with that zipcode' }));
 });
 
 
-router.get("/yelp_id/:yelp_id", (req,res) => {  
-    Cafe.find({id: req.params.yelp_id})
-        .then(cafe => res.json(cafe))
-        .catch(err => res.status(404).json({ nocafefound: 'No cafe found with that yelp id'}));
+//Making request to YELP API
+router.get("/yelp_id/:id", (req,res) =>  {
+
+    const yelpId = req.params.id;
+    getYelpCafeById(yelpId)
+        .then((cafe) => {
+
+            res.json(cafe.data);
+        })
+        .catch(err => {
+            res
+              .status(404)
+              .json({ error: "Error searching for Cafe in Yelp Database"});
+
+            console.log('Error searching for Cafe in Yelp Database')});
 
 })
+
+router.get("/:yelp_id", (req, res) => {
+    Cafe.find({ id: req.params.yelp_id })
+        .then(cafe => res.json(cafe))
+        .catch(err => res.status(404).json({ nocafefound: 'No cafe found with that yelp id' }));
+
+})
+
+
+router.post("/filters", (req,res) => {
+    const filters = req.body;
+    const my_lat = req.body.my_lat;
+    const my_lng = req.body.my_lng;
+
+    Cafe.find({})
+        .then(cafes => {
+            let cafesArr = JSON.parse(JSON.stringify(cafes))
+            let addDist = calculateDistance(cafesArr, my_lat, my_lng)
+            let filteredCafes = applyAllFilters(addDist,filters)
+
+            res.json(filteredCafes);
+
+        })
+        .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with that zipcode' }));
+})
+
+
 
 router.get("/noise_level/:noise_level", (req,res) => {
     Cafe.find({noise_level: req.params.noise_level})

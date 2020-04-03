@@ -1,152 +1,188 @@
 import React from 'react';
-import axios from "axios";
+import { distance } from '../../util/distance_util'
 import ShowMap from "../map/show_map";
 import "../../stylesheets/map.scss";
+import "./cafe.scss"
+import LoadingPage from './loader';
+import NavBar from "../navbar/navbar_container";
+
 const apiKey = require("../../keys/keys").YELP_API_KEY;
-const yelp = require("yelp-fusion");
-const client = yelp.client(apiKey);
+
+// DELETE KEY LATER!!
+const TAKEOUTLATER = "UZittz7h5GXfqGN6CtGVeBd9Slxryw_l5kvsV8fRpS4D3jT9Zk0GnLWhvUsziHOoI52fl290Sg3JqCmJXPFxk3ooFdqTgSzja1AtBMQjTRQbXz2bDNEoc6TqZVBwXnYx"
 
 
 
 class Cafe extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      randomCafe: "", // USE THIS FOR MAIN PHOTO
-      cafeFromYelpApi: "", //THIS HAS YELP API DATA
-      leftOverCafes: ""
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-    this.reRoll = this.reRoll.bind(this);
-  }
-
-  applyFilters(cafe_array){
-
-
-
-  }
-
-  selectRandomCafe(cafe_array) {
-    let applyFilters = cafe_array;
-
-    return cafe_array[Math.floor(Math.random() * cafe_array.length)];
-  }
-
-  getYelpCafeById = id => {
-    axios
-      .get(
-        `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${apiKey}`
-          }
+    constructor(props) {
+        super(props);
+        this.state = {
+            randomCafe: "", // USE THIS FOR MAIN PHOTO
+            cafeFromYelpApi: "", //THIS HAS YELP API DATA
+            leftOverCafes: [],
         }
-      )
-      .then(res => {
-        console.log(res.data);
-        this.setState({ cafeFromYelpApi: res.data });
-      })
-      .catch(error => console.log(error));
-  };
 
-  //chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
-  // run this command if top many apicalls
-
-  // getYelpCafeById = id => {
-  //   client
-  //     .business(id)
-  //     .then(response => {
-  //       console.log(response.jsonBody);
-  //       this.setState({ cafeFromYelpApi: response.jsonBody });
-  //     })
-  //     .catch(e => {
-  //       console.log(e);
-  //     });
-  // };
-
-
-  formatTime(fourDigitTime) {
-    let hours24 = parseInt(fourDigitTime.substring(0, 2));
-    let hours = ((hours24 + 11) % 12) + 1;
-    let amPm = hours24 > 11 ? "pm" : "am";
-    let minutes = fourDigitTime.substring(2);
-    return hours + ":" + minutes + amPm;
-  }
-  calculateTime(hours) {
-    
-    let dateApi = new Date();
-    let day = dateApi.getDay();
-
-   
-    if (!hours) return null
-
-    if (!hours[0].open[day]) {
-      // debugger
-      return "Unavailable Time For This Day"
-    } else{
-      return this.formatTime(hours[0].open[day].end);
+        this.handleClick = this.handleClick.bind(this);
+        this.reRoll = this.reRoll.bind(this);
+        this.calculateDistance = this.calculateDistance.bind(this);
+        this.calculateTime = this.calculateTime.bind(this);
+        this.applyExtraFilters = this.applyExtraFilters.bind(this);
     }
-      
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.cafes !== prevProps.cafes) {
 
 
-        let randomCafe = this.selectRandomCafe(this.props.cafes);
-        let leftOverCafes = this.props.cafes.filter(ele => {
-            return ele.id !== randomCafe.id;
+
+
+    selectRandomCafe(cafe_array) {
+        // Lets filter cafes before we select a random cafe
+        return cafe_array[Math.floor(Math.random() * cafe_array.length)];
+
+    }
+
+
+    formatTime(fourDigitTime) {
+        let hours24 = parseInt(fourDigitTime.substring(0, 2));
+        let hours = ((hours24 + 11) % 12) + 1;
+        let amPm = hours24 > 11 ? "pm" : "am";
+        let minutes = fourDigitTime.substring(2);
+        return hours + ":" + minutes + amPm;
+    }
+
+    calculateTime(hours) {
+        let dateApi = new Date();
+        let day = dateApi.getDay();
+        if (!hours) return null
+        if (!hours[0].open[day]) {
+            return "Unavailable Time For This Day"
+        } else {
+            return this.formatTime(hours[0].open[day].end);
+        }
+    }
+
+    calculateDistance(cafes) {
+        //Return array with cafes distance
+        let addedDistance = cafes.map(cafe => {
+            cafe.distance_away = distance(
+                this.props.filters.my_lat,
+                this.props.filters.my_lng,
+                cafe.coordinates_latitude,
+                cafe.coordinates_longitude,
+            );
+            return cafe;
+        })
+
+        return addedDistance
+
+    }
+
+
+    applyExtraFilters(cafes) {
+        return cafes.filter(cafe => cafe.distance_away < this.props.filters.miles_away);
+    }
+
+
+    reRoll() {
+
+        // Removes current YelpCafe from array
+        let leftOverCafes = this.props.cafes.filter(cafe => {
+            return cafe.id !== this.props.yelpCafe.id;
         });
 
-       ;
-      this.setState(
-        {
-          randomCafe: randomCafe,
-          leftOverCafes: leftOverCafes
-        },
-        () => this.getYelpCafeById(randomCafe.id)
-      );
+        // Puts into Redux cycle again
+        this.props.rerollCafes(leftOverCafes);
     }
-  }
 
-  reRoll() {
-    this.props.rerollCafes(this.state.leftOverCafes);
-  }
+    handleClick(e) {
+        e.preventDefault();
+        this.reRoll();
+    }
 
-  handleClick(e) {
-    e.preventDefault();
-    this.reRoll();
-  }
+    componentDidMount(){
+        // debugger
+        if (Object.keys(this.props.filters).length === 0){
+            this.props.history.push(`/`);
+        }
+    }
 
-  render() {
-    if (!this.state.cafeFromYelpApi) return null;
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.cafes.length === 0) {
+            this.props.history.push(`/retry`)
+        }
 
-    let display_address = this.state.cafeFromYelpApi.location.display_address;
-    let time = this.calculateTime(this.state.cafeFromYelpApi.hours);
-    let lat = this.state.cafeFromYelpApi.coordinates.latitude;
-    let lng = this.state.cafeFromYelpApi.coordinates.longitude;
+    }
 
-    return (
-      <div>
-        <h1>{this.state.cafeFromYelpApi.name}</h1>
-        <br />
-        <h1>Open until {time} Today</h1>
-        <br />
-        <h1>
-          {display_address[0]}, {display_address[1]}
-        </h1>
-        <h1>
-          <a href={this.state.cafeFromYelpApi.url}>View on Yelp</a>
-        </h1>
-        <br />
-        <img src={this.state.cafeFromYelpApi.image_url}></img>
-        <ShowMap key={lat} lat={lat} lng={lng} />
-        <button onClick={this.handleClick}>Show me another cafe!</button>
-      </div>
-    );
-  }
+
+    render() {
+
+
+        const { loading } = this.props;
+        if (loading) { return <LoadingPage />; }
+
+
+        if (this.props.cafes.length === 0) return null;
+
+        // If no curr yelpcafe exist, request from API
+        if (!this.props.yelpCafe) {
+            this.props
+              .fetchYelpCafeById(this.props.randomCafe.id)
+              .catch(err => this.props.history.push(`/errors`));
+        }
+        if (!this.props.yelpCafe) return null
+
+
+        let display_address = this.props.yelpCafe.location.display_address;
+        let time = this.calculateTime(this.props.yelpCafe.hours);
+        let lat = this.props.yelpCafe.coordinates.latitude;
+        let lng = this.props.yelpCafe.coordinates.longitude;
+        let distance = this.props.randomCafe.distance_away;
+        let noiseLevel = this.props.randomCafe.noise_level;
+
+
+        return (
+            <div className="page">
+                <NavBar />
+                <div className="all">
+                    <div className="left-right">
+                        <div className="cafe">
+                            <div className="profile">
+                                <div className="title">
+                                    <div className="name">{this.props.yelpCafe.name}</div>
+                                    <a className="yelp" href={this.props.yelpCafe.url} target="_blank">
+                                        <div id="yelp-text">View on Yelp</div>
+                                    </a>
+                                </div>
+
+                                <div className="time">Open until {time} Today</div>
+
+                                <div className="address">
+                                    {display_address[0]}, {display_address[1]}
+                                </div>
+
+                                <div className="shelter">
+                                    ** Shelter in Place May Affect Hours **
+                    </div>
+                            </div>
+
+                            <img
+                                className="photo"
+                                src={this.props.yelpCafe.image_url}
+                            ></img>
+                        </div>
+
+                        <div className="map">
+                            <ShowMap key={lat} lat={lat} lng={lng} my_lat={this.props.filters.my_lat} my_lng={this.props.filters.my_lng} />
+                        </div>
+                    </div>
+
+                    <span className="new-cafe">
+                        I'm not sold. &nbsp;
+                <span onClick={this.handleClick}>Show me another cafe!</span>
+                    </span>
+                </div>
+            </div>
+        );
+
+
+    }
 }
-
 
 export default Cafe;

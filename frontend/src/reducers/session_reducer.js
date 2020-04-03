@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_USER_SIGN_IN } from '../actions/session_actions'
+import {RECEIVE_PREFERENCES, RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_USER_SIGN_IN } from '../actions/session_actions'
 import {UPDATE_USER} from '../actions/user_actions';
 import {UPDATED_USER} from '../actions/updated_user_actions'
 
@@ -9,9 +9,7 @@ const initialState = {
 
 const sessionReducer = (state = initialState, action) => {
     switch(action.type){
-        //LOGIN
         case RECEIVE_CURRENT_USER:
-        debugger;
           return{
                 ...state,
                 isAuthenticated: !!action.currentUser,
@@ -26,7 +24,7 @@ const sessionReducer = (state = initialState, action) => {
         //     };
 
         case LOGOUT_CURRENT_USER:
-            // debugger;
+             
             return{
                 isAuthenticated: false,
                 user:undefined
@@ -43,6 +41,8 @@ const sessionReducer = (state = initialState, action) => {
                 ...state,
                 updatedUser: action.user.data
             }
+        case RECEIVE_PREFERENCES:
+            return Object.assign({}, state)
         default: 
             return state;
     }

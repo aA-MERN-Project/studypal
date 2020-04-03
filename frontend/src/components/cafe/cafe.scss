@@ -1,0 +1,138 @@
+.index {
+    height: 100vh;
+    background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
+    font-family: "Open Sans";
+}
+
+.index img {
+    position: relative;
+    height: 140px;
+    left: 45vw;
+    top: 40vh;
+}
+
+.page {
+    background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%);
+    font-family: "Open Sans";
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+.photo {
+    position: relative;
+    width: 610px;
+    height: 344px;
+    border-radius: 5px;
+    border: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+.profile {
+    position: relative;
+    width: 550px;
+    margin-bottom: 5px;
+    padding-top: 30px;
+    padding-bottom: 28px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid rgba(51, 51, 51, 0.5);
+    font-size: 13px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name {
+    font-size: 24px;
+    margin-bottom: -40px;
+}
+
+.yelp {
+    height: 35px;
+    width: 120px;
+    background-color: #FF7F50;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 12px;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-family: "Montserrat";
+    font-weight: 600;
+}
+
+.yelp:hover {
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+    box-shadow: none;
+}
+
+#yelp-text {
+    position: relative;
+    top: 12px;
+}
+
+.time {
+    color: rgba(51, 51, 51, 0.5);
+    margin-top: -8px;
+}
+
+.address {
+    margin-top: 20px;
+}
+
+.shelter {
+    margin-top: 6px;
+    color: red;
+}
+
+.cafe {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.left-right {
+    width: 1120px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.map {
+    width: 500px;
+    margin-left: 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+.all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    align-self: center;
+}
+
+.new-cafe {
+    font-family: "Montserrat";
+    font-size: 14px;
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.new-cafe span {
+    color: #4169E1;
+}
+
+.new-cafe span:hover {
+    cursor: pointer;
+}
