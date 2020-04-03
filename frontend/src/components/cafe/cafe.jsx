@@ -124,7 +124,9 @@ class Cafe extends React.Component {
 
         // If no curr yelpcafe exist, request from API
         if (!this.props.yelpCafe) {
-            this.props.fetchYelpCafeById(this.props.randomCafe.id)
+            this.props
+              .fetchYelpCafeById(this.props.randomCafe.id)
+              .catch(err => this.props.history.push(`/errors`));
         }
         if (!this.props.yelpCafe) return null
 

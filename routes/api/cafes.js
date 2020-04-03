@@ -48,7 +48,12 @@ router.get("/yelp_id/:id", (req,res) =>  {
 
             res.json(cafe.data);
         })
-        .catch(err => console.log('Error searching for Cafe in Yelp Database'));
+        .catch(err => {
+            res
+              .status(404)
+              .json({ error: "Error searching for Cafe in Yelp Database"});
+
+            console.log('Error searching for Cafe in Yelp Database')});
 
 })
 
