@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { selectRandomCafe, calculateDistance, applyExtraFilters } from "../../util/filters_util"
+import { selectRandomCafe, applyExtraFilters } from "../../util/filters_util"
 import { clearCafes, rerollCafes, fetchYelpCafeById } from "../../actions/cafe_actions";
 import { openModal } from "../../actions/modal_actions";
 import Cafe from '../cafe/cafe';
@@ -8,10 +8,10 @@ import Cafe from '../cafe/cafe';
 
 const mapStateToProps = state => {
 
+
   let cafes = Object.values(state.entities.cafes);
   let filters = state.entities.filters;
   let filteredCafes = applyExtraFilters(cafes, filters);
-  //Get random Yelp Cafe before coming into Props
   let randomCafe = selectRandomCafe(Object.values(state.entities.cafes))
 
    

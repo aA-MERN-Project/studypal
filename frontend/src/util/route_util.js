@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {Route, Redirect, withRouter} from 'react-router-dom';
 
@@ -10,7 +10,7 @@ const Auth = ({component: Component, path, loggedIn, exact
             <Component {...props} /> 
         ) : (
             //Redirect to some page if user if authenticated
-            <Redirect to="/login" />
+            <Redirect to="/" />
         )
     )} />
 );

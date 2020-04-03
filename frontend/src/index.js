@@ -11,22 +11,45 @@ import getYelpCafeById from './util/yelp_api';
 import jwt_decode from 'jwt-decode';
 import {setAuthToken} from './util/session_api_util';
 import {logout} from './actions/session_actions';
+import {updateProfile, getUser} from './util/user_api_util';
 
-import { getUser } from './util/user_api_util'
-// import { updateUserPreferences } from './util/session_api_util'
-import { updateUserPreferences, login } from './actions/session_actions'
+
+// function saveToLocalStorage(state){
+//     //wrap because won't save to localStorage is private mode
+//         try{
+//             const serializedState= JSON.stringify(state)
+//             //give key state
+//             localStorage.setItem('state',serializedState)
+    
+//         }catch(e){
+//             console.log(e);
+//         }
+//     }
+
+// function loadFromLocalStorage(){
+//     try{
+//         const serializedState = localStorage.getItem('state')
+//         if(serializedState === null)return undefined;
+//         return JSON.parse(serializedState)
+//     }catch(e){
+//         console.log(e);
+//         return undefined;
+//     }
+// }
+
 
 document.addEventListener("DOMContentLoaded", () => {
     // let store = configureStore({});
     let store;
+    // const persistedState = loadFromLocalStorage();
 
     if(localStorage.jwtToken){
         setAuthToken(localStorage.jwtToken);
         const decodedUser = jwt_decode(localStorage.jwtToken);
         const preloadedState = {session: {isAuthenticated: true, user: decodedUser}};
     
-
         store = configureStore(preloadedState);
+        // store = configureStore(persistedState);
         //checking if jwt passed its configuration
         //getting it in seconds
         const currentTime = Date.now()/1000;
@@ -36,29 +59,15 @@ document.addEventListener("DOMContentLoaded", () => {
             store.dispatch(logout());
             window.location.href = 'login';
         }
-        // client.auth.loginWithCredential(new AnonymousCredential());
+
     }else{
         store = configureStore();
     }
-
-    window.store = store
-    window.getState = store.getState
-
+    
     const root = document.getElementById("root");
-
-    //  ;
     ReactDOM.render(<Root store={store}/>, root);
 
-    window.axios = axios;
-
-    // TESTING APIS
-    window.testId = "WavvLdfdP6g8aZTtbBQHTw";
   
-    window.getYelpCafeById = getYelpCafeById
-
-    window.updateUserPreferences = updateUserPreferences
-    window.getUser = getUser
-    window.login = login
 })
 
 

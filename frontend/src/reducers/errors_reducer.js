@@ -1,11 +1,11 @@
 import {combineReducers } from 'redux';
 import SessionErrorsReducer from './session_errors_reducer';
 import modalReducer from "./modal_reducer";
+import UpdatedUserErrorsReducer from './updated_user_errors_reducer';
 
 const errorsReducer = combineReducers({
-  session: SessionErrorsReducer,
-  
+    session: SessionErrorsReducer,
+    updatedUser: UpdatedUserErrorsReducer
 });
 
 export default errorsReducer;
-

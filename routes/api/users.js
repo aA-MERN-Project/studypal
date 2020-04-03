@@ -5,22 +5,60 @@ const User = require('../../models/User');
 const keys = require('../../config/keys');
 const passport = require("../../config/passport");
 const jwt = require("jsonwebtoken");
-
 const mongoose = require('mongoose');
 
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
-
+const updateProfile = require('../../validation/update_profile');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
 router.get('/:id', (req,res) => {
-    User.findById(req.params.id)
+    User.findById(req.params.id) //returns user
         .then(user => res.json(user))
         .catch(err => 
             res.status(404).json({noUserFound: "no user found with that email"})
         );
+});
+
+
+router.patch('/:id/profile', (req,res,next)=> {
+
+    const {errors, isValid} = updateProfile(req.body);
+    if(!isValid){
+        return res.status(400).json(errors);
+    }
+    const userId = req.params.id;
+    // debugger;
+
+    User.findOne({email: req.body.email})
+    .then(user => {
+        if(user){
+            // debugger;
+            errors.email = 'Email already exists';
+            return res.status(400).json(errors);
+        }else{
+            User.findOne({_id: userId})
+                .then(user => {
+                    let handle = req.body.handle;
+                    let email = req.body.email;
+                    let zipcode = req.body.zipcode;
+
+                    user.handle = handle;
+                    user.email = email;
+                    user.zipcode = zipcode;
+
+                    user.save()
+                        .then(user => res.json(user))
+                        .catch(err => console.log(err));
+                })
+                .catch(err => 
+                    res.status(404).json({noUserFound: "no user found with that ID"})
+                );
+        }
+});
+
 });
 
 //get single user by email

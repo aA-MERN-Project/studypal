@@ -1,29 +1,33 @@
-import '../../reset.css'
-import './profile.css'
-import React from 'react'
-import NavBar from '../navbar/navbar_container'
+import '../../reset.css';
+import './profile.css';
+import React from 'react';
+
+import NavBar from '../navbar/navbar_container';
+// import Test from '../updateProfile/test_container';
+import Test from '../updateProfile/test';
+import TestContainer from '../updateProfile/test_container';
 import $ from "jquery";
-import coffee from './coffee.png'
-import edit from './edit.png'
+
+
+
 
 class Profile extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
          
         this.state = {
-          user: this.props.user,       
-          // miles_away:"",
-          // hours_opened_left: "",
-          // free_wifi: "false",
-          // credit_card: "false",
-          // noise_level: "false"    
+          updated_user: props.updatedUser,       
+          updatedProf: "false",
+          user: this.props.user,        
           miles_away: this.props.user.miles_away,
           hours_opened_left: this.props.user.hours_opened_left,
           free_wifi: this.props.user.free_wifi,
           credit_card: this.props.user.credit_card,
           noise_level: this.props.user.noise_level
         };
+    
+        this.handler = this.handler.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.update = this.update.bind(this)
@@ -31,20 +35,77 @@ class Profile extends React.Component {
         this.updatePreferences = this.updatePreferences.bind(this)
     }
 
+    //to change the state once the profile gets updated
+    handler(){
+      // debugger;
+      this.setState({updatedProf: "true"});
+      // debugger;
+      // this.props.getUser(this.state.user.id)
+      //   .then(user => this.props.login(user));
+      // this.setState({user:this.props.user});
+
+    };
+
     handleSubmit(e) {
         this.props.processForm(this.state);
     }
 
     componentDidMount(){
+      //session should populate with logged in user 
+      //info once the component has mounted
       this.setState({user:this.props.user});
+      if(this.props.user ){
+        this.props.getUpdatedUser(this.props.user.id);
+      }
+      // debugger;
+      // this.props.getUser(this.props.user.id);
+      
     }
 
+    componentDidUpdate(prevProps, prevState){
+      // debugger;
+      if(prevProps.user !== this.props.user){
+         this.props.getUpdatedUser(this.props.user._id);
+      }
+    }
+
+
+    componentWillUpdate(nextProps, nextState){
+      // if (nextState.updated ==="true"  && this.state.user !== nextState.user ) {
+      //   this.props.getUser();
+  
+      if (!nextState.user === this.state.user){
+        this.props.getUser(nextProps.user.id);
+        this.props.updateProfileAct(nextProps.user.id, nextProps.user);
+        // this.props.updatedUser(this.props.user.id);
+      }
+      if (!nextState.updatedUser === this.state.updatedUser){
+
+        this.props.getUpdatedUser(nextProps.user.id);
+        
+      }
+    }
+  
     componentWillReceiveProps(nextProps){
       this.setState({user:nextProps.user});
     }
 
+    // componentDidUpdate(prevProps){
+    //   if(this.props.user2 !== prevProps.user2){
+    //     this.getUser(this.props.user.id)
+    //   }
+    //   debugger;
+    // }
+
+    // componentWillReceiveProps(nextProps){
+    //   debugger;
+    //   // this.setState({user:nextProps.user});
+    //   this.setState({user:nextProps.user});
+    //   debugger;
+    //   this.props.login({email:nextProps.user.email, password:nextProps.user.password} );
+    // }
+
     clear() {
-      // debugger
       $("input[type=radio]:checked").prop("checked", false);
       this.setState({
         miles_away: "",
@@ -60,21 +121,6 @@ class Profile extends React.Component {
         credit_card: "false",
         noise_level: "false"
       });
-
-      // this.props.updateUserPreferences(
-      //   this.state.user.id,
-      //   this.state.session.preferences
-      // );
-
-      // this.props.updateUserPreferences(this.state.user.id, 
-      //   {
-      //     miles_away: "",
-      //     hours_opened_left: "",
-      //     free_wifi: "false",
-      //     credit_card: "false",
-      //     noise_level: "false"
-      //   }
-      // )
     }
 
     update(field) {
@@ -100,62 +146,46 @@ class Profile extends React.Component {
       let username;
       let email;
       let zipcode;
-      if (this.state.user){
-        username = this.state.user.handle;
-        email = this.state.user.email;
-        zipcode = this.state.user.zipcode;
+      if (this.props.updatedUser){
+        username = this.props.updatedUser.handle;
+        email = this.props.updatedUser.email;
+        zipcode = this.props.updatedUser.zipcode;
       }else{
         username = "";
         email = "";
         zipcode = "";
       }
-      //  const {user} = this.state.user;
-      //  let username = user ? user.handle : "";
-      //  let email = user ? user.email : "";
-      //  let zipcode = user ? user.zipcode : ""; 
 
         return (
           <div className="profile-page">
-            {/* <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.8/stitch.js"></script> */}
             <NavBar />
             <div className="profile-info-div">
               <div className="profile-info">
+              <div className="halfProfile1">
+                      <div className="name">{username}</div>
+                      <div className="email">{email}</div>
+                      <div>Current Zipcode {zipcode}</div>
+                  </div>
+                  <div className="halfProfile2">
+                    {/* <Test user={this.props.user} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler}/> */}
+                    <TestContainer user={this.props.user} updatedUser = {this.props.updatedUser} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler}/>
+                  </div>
                 <div className="img-info-div">
-                  {/* <img className="coffee-img" src={coffee} /> */}
                   <img
-                    // src={client.callFunction("getPicture", [
-                    //   "studypal-dev",
-                    //   "coffee.png"
-                    // ])}
-                    // src={client
-                    // .callFunction("getPicture", ["studypal-dev", "coffee.png"])
-                    // .then(echoedResult => {
-                    //   console.log(`Echoed result: ${echoedResult}`);
-                    // })}
                     className="coffee-img"
                     src={
                       "https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"
                     }
                   />
-                  {/* {client
-                    .callFunction("getPicture", ["studypal-dev", "coffee.png"])
-                    .then(echoedResult => {
-                      console.log(`Echoed result: ${echoedResult}`);
-                    })} */}
-                  {/* {client.auth.loginWithCredential(new stitch.AnonymousCredential())}
-                  {client.callFunction("getPicture", ["studypal-dev", "coffee.png"])} */}
-                  <div className="only-profile-info">
+                  {/* <div className="only-profile-info">
                     <div className="profile-name">{username}</div>
                     <div className="email">{email}</div>
                     <div className="zipcode">Current Zipcode {zipcode}</div>
-                  </div>
+                  </div> */}
+
                 </div>
-                {/* <img
-                  className="edit"
-                  src={
-                    "https://studypal-dev.s3-us-west-1.amazonaws.com/edit.png"
-                  }
-                /> */}
+                
+
               </div>
             </div>
             <br />

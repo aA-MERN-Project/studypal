@@ -91,8 +91,18 @@ padding-top: 4%
     width: 75%
 }
 
-.input-box {
-        font-family: "Open Sans";
+.input-box-email {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    border: none;
+    width: 100%;
+    outline: none;
+}
+
+.input-box-password {
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
@@ -138,7 +148,6 @@ padding-top: 4%
 }
 
 .nevermind {
-    /* text-align: center; */
     padding-left: 36%;
     font-family: "Open Sans";
     font-style: normal;
@@ -155,11 +164,20 @@ padding-top: 4%
 }
 
 .top-left {
-    height: 50VH;
+    height: 58VH;
 }
 
 .top-right {
     position: absolute;
     right: 0;
-    width: 28VW;
+    /* width: 28VW; */
+    width: 31vw;
+}
+
+.session-errors {
+    font-family: "Montserrat";
+    color: red;
+    font-size: 15px;
+    padding-left: 10%;
+    padding-bottom: 2%
 }

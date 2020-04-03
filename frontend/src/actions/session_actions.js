@@ -1,4 +1,5 @@
 import * as SessionAPIUtil from "../util/session_api_util";
+import * as UserAPIUtil from "../util/user_api_util";
 import jwt_decode from 'jwt-decode';
 // import SessionErrorsReducer from "../reducers/session_errors_reducer";
 
@@ -7,8 +8,12 @@ export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const RECEIVE_USER_SIGN_IN = 'RECEIVE_USER_SIGN_IN';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const START_LOADING_LOGIN = "START_LOADING_LOGIN";
+export const RECEIVE_PREFERENCES = "RECEIVE_PREFERENCES";
 
-export const RECEIVE_PREFERENCES = "RECEIVE_PREFERENCES"
+export const startLoadingLogin = () => ({
+    type: START_LOADING_LOGIN
+})
 
 const receiveCurrentUser = (currentUser) => {
     return({
@@ -28,6 +33,7 @@ const receiveErrors = errors => ({
 
 //added by Fei
 const receiveUserSignIn = (currentUser) => {
+    // debugger; 
     return({
     type: RECEIVE_USER_SIGN_IN,
     currentUser
@@ -61,17 +67,10 @@ export const signup  = (user) => dispatch => {
 export const login = (user) => dispatch => {
      
     return SessionAPIUtil.login(user).then(res => {
-        //in axios, all of our json data is in data key of response
-        //response carries lot of information
         const {token} = res.data;
-        //localStorage allows us to save something on client side, so if user refreshes page, loads it in from localStor
-        // if close page, jwtToken still stores there
         localStorage.setItem('jwtToken', token);
 
-        //set header for future axios requests to pass along that json web token to backend to be authenticated
         SessionAPIUtil.setAuthToken(token); 
-        //decoded contains all the data we get back from API
-        //res.data.token is the => is the json web token we are passing into jwt decode function
         const decoded = jwt_decode(token);
          
         dispatch(receiveCurrentUser(decoded));
@@ -80,9 +79,6 @@ export const login = (user) => dispatch => {
     });
 };
 
-//added by fei
-// 1) remove jwtkey from localstorage 2) need to take jwt authHeader off of axios as a default
-// 3) get user out of redux store
 export const logout = () => dispatch => {
      
     localStorage.removeItem('jwtToken');
@@ -90,6 +86,17 @@ export const logout = () => dispatch => {
     dispatch(logoutCurrentUser());
 };
 
+export const updateProfileAct = (id, data) => dispatch => {
+    // debugger;
+    return(
+        UserAPIUtil.updateProfile(id, data)
+            .then((user) => dispatch(receiveUserSignIn(user)))
+            // .then(user => dispatch(login({email:user.currentUser.data.email, password: user.currentUser.data.password})))
+            .catch(err=> dispatch(receiveErrors(err.response.data)))
+            // err => (dispatch(receiveErrors(err.response.data))))
+    );
+   
+};
 export const updateUserPreferences = (id, preferences) => dispatch => {
     return (
         SessionAPIUtil.updateUserPreferences(id, preferences)
@@ -98,9 +105,20 @@ export const updateUserPreferences = (id, preferences) => dispatch => {
             ))
 }
 
-// miles_away: 100,
-//     hours_opened_left: 24,
-//         wifi: true,
-//             credit_card: false,
-//                 noise_level: false,
-//                     location_zip_code: 94111 }
+// export const demoLogin = (user) => dispatch => {
+//     dispatch(startLoadingLogin());
+
+// return SessionAPIUtil.login(user)
+//   .then(res => {
+//     const { token } = res.data;
+//     localStorage.setItem("jwtToken", token);
+
+//     SessionAPIUtil.setAuthToken(token);
+//     const decoded = jwt_decode(token);
+
+//     dispatch(receiveCurrentUser(decoded));
+//   })
+//   .catch(err => {
+//     dispatch(receiveErrors(err.response.data));
+//   });
+// }

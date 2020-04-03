@@ -15,6 +15,7 @@ const mapDispatchToProps = dispatch => ({
     processForm: user => dispatch(login(user)),
     clearErrors: () => dispatch(clearErrors()),
     logout: () => dispatch(logout()),
+    logInNewUser: user => dispatch(login(user))
     
 })
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter, Redirect, Link} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import './session_form.css'
 
 class SessionForm extends React.Component {
@@ -25,6 +25,28 @@ class SessionForm extends React.Component {
         // this.checkErrors = this.checkErrors.bind(this);
     }
     
+    componentWillUpdate(nextProps, nextState){
+      
+      let user = {
+        email: this.state.email,
+        password: this.state.password,
+        handle: this.state.handle,
+        zipcode: this.state.zipcode
+    };
+    //checking if user registered successfully, then log them in
+    if(nextProps.signedIn === true){
+        // debugger;
+        console.log("SUCCESS");
+        this.props.logInNewUser(user)
+            .then(this.props.history.push("user"));
+   
+    }else if(nextProps.isAuthenticated ===true){
+      // debugger;
+      this.props.history.push("user");
+    }
+    
+    }
+
     componentWillReceiveProps(nextProps){
          
         let user = {
@@ -35,12 +57,14 @@ class SessionForm extends React.Component {
         };
         //checking if user registered successfully, then log them in
         if(nextProps.signedIn === true){
+            // debugger;
             console.log("SUCCESS");
             this.props.logInNewUser(user)
                 .then(this.props.history.push("user"));
        
         }else if(nextProps.isAuthenticated ===true){
-          this.props.history.push("user");
+          // debugger;
+          this.props.history.push("/user");
         }
         
         this.setState({errors: nextProps.errors});
@@ -118,8 +142,7 @@ class SessionForm extends React.Component {
             return(
                 <div></div>
             )
-        }
-        
+        } 
     }
 
     login() {
@@ -144,7 +167,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Email
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="text"
                       value={this.state.email}
                       onChange={this.update("email")}
@@ -156,7 +179,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Password
                     <input
-                      className="input-box"
+                      className="input-box-password"
                       type="password"
                       value={this.state.password}
                       onChange={this.update("password")}
@@ -173,9 +196,9 @@ class SessionForm extends React.Component {
                   </button>
                 </div>
               </form>
-              <div className="nevermind">
-                Never mind, <Link to="/">just help me find a cafe.</Link>
-              </div>
+                <div className="nevermind">
+                  Never mind, <Link to="/">just help me find a cafe</Link>
+                </div>
             </div>
           </div>
         );
@@ -192,7 +215,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Username
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="text"
                       value={this.state.handle}
                       onChange={this.update("handle")}
@@ -205,7 +228,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Email
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="text"
                       value={this.state.email}
                       onChange={this.update("email")}
@@ -218,7 +241,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Password
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="password"
                       value={this.state.password}
                       onChange={this.update("password")}
@@ -231,7 +254,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Confirm Password
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="password"
                       value={this.state.password2}
                       onChange={this.update("password2")}
@@ -244,7 +267,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Zipcode
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="zipcode"
                       value={this.state.zipcode}
                       onChange={this.update("zipcode")}
@@ -253,7 +276,7 @@ class SessionForm extends React.Component {
                   </label>
                 </div>
                 <div className="errors">
-                  <ul>{this.renderErrors()}</ul>
+                  <ul className="session-errors">{this.renderErrors()}</ul>
                 </div>
                 <div className="l-s-button-div">
                   <button className="login-signup-button">

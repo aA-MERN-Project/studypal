@@ -13,7 +13,8 @@ export const getUser = id => {
 //     return axios.patch(`api/users/${id}`, data);
 // };
 
-export const updateZipcode = (email, zipcode) => {
-    return axios.post(`api/users/${email}/zipcode`, zipcode);
+export const updateProfile = (id, data) => {
+    // debugger;
+    return axios.patch(`api/users/${id}/profile`, data);
 };
 
