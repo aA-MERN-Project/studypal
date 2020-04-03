@@ -88,11 +88,22 @@
     border: 1px solid white;
     background-color: white;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 61%;
     height: 40%;
     padding: 40px;
+    /* align-content: space-between; */
+}
 
+.halfProfile1{
+    margin-right:7%;
+    margin-left:7%;
+
+}
+
+.halfProfile2{
+    margin-right:7%;
+    margin-left:7%;
 }
 
 .profile-info-div {

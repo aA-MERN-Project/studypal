@@ -1,4 +1,5 @@
 import * as SessionAPIUtil from "../util/session_api_util";
+import * as UserAPIUtil from "../util/user_api_util";
 import jwt_decode from 'jwt-decode';
 // import SessionErrorsReducer from "../reducers/session_errors_reducer";
 
@@ -27,6 +28,7 @@ const receiveErrors = errors => ({
 
 //added by Fei
 const receiveUserSignIn = (currentUser) => {
+    // debugger; 
     return({
     type: RECEIVE_USER_SIGN_IN,
     currentUser
@@ -76,7 +78,7 @@ export const signup  = (user) => dispatch => {
 
 //added by fei
 export const login = (user) => dispatch => {
-    // debugger;
+    debugger;
     return SessionAPIUtil.login(user).then(res => {
         //in axios, all of our json data is in data key of response
         //response carries lot of information
@@ -90,7 +92,7 @@ export const login = (user) => dispatch => {
         //decoded contains all the data we get back from API
         //res.data.token is the => is the json web token we are passing into jwt decode function
         const decoded = jwt_decode(token);
-        // debugger;
+        debugger;
         dispatch(receiveCurrentUser(decoded));
     })
     .catch(err => {dispatch(receiveErrors(err.response.data));
@@ -105,4 +107,16 @@ export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken');
     SessionAPIUtil.setAuthToken(false);
     dispatch(logoutCurrentUser());
+};
+
+export const updateProfileAct = (id, data) => dispatch => {
+    // debugger;
+    return(
+        UserAPIUtil.updateProfile(id, data)
+            .then((user) => dispatch(receiveUserSignIn(user)))
+            // .then(user => dispatch(login({email:user.currentUser.data.email, password: user.currentUser.data.password})))
+            .catch(err=> dispatch(receiveErrors(err.response.data)))
+            // err => (dispatch(receiveErrors(err.response.data))))
+    );
+   
 };

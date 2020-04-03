@@ -82,7 +82,7 @@ class Cafe extends React.Component {
     if (!hours) return null
 
     if (!hours[0].open[day]) {
-      debugger
+      // debugger
       return "Unavailable Time For This Day"
     } else{
       return this.formatTime(hours[0].open[day].end);
