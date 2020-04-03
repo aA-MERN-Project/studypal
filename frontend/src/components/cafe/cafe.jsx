@@ -7,10 +7,7 @@ import "./cafe.scss"
 import LoadingPage from './loader';
 import NavBar from "../navbar/navbar_container";
 
-const apiKey = require("../../keys/keys").YELP_API_KEY;
-
-// DELETE KEY LATER!!
-const TAKEOUTLATER = "UZittz7h5GXfqGN6CtGVeBd9Slxryw_l5kvsV8fRpS4D3jT9Zk0GnLWhvUsziHOoI52fl290Sg3JqCmJXPFxk3ooFdqTgSzja1AtBMQjTRQbXz2bDNEoc6TqZVBwXnYx"
+import Modal from "../modal/modal_container";
 
 
 
@@ -90,6 +87,9 @@ class Cafe extends React.Component {
         });
 
         // Puts into Redux cycle again
+        this.props
+          .fetchYelpCafeById(this.props.randomCafe.id)
+          .catch(err => this.props.history.push(`/errors`))
         this.props.rerollCafes(leftOverCafes);
     }
 
@@ -99,36 +99,41 @@ class Cafe extends React.Component {
     }
 
     componentDidMount(){
-        // debugger
         if (Object.keys(this.props.filters).length === 0){
             this.props.history.push(`/`);
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
+
         if (this.props.cafes.length === 0) {
             this.props.history.push(`/retry`)
         }
-
-    }
+      }
 
 
     render() {
+        
+
+        
+
+
 
 
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
-
-
         if (this.props.cafes.length === 0) return null;
 
         // If no curr yelpcafe exist, request from API
-        if (!this.props.yelpCafe) {
-            this.props
-              .fetchYelpCafeById(this.props.randomCafe.id)
-              .catch(err => this.props.history.push(`/errors`));
-        }
-        if (!this.props.yelpCafe) return null
+        if (Object.keys(this.props.yelpCafe).length === 0) {
+              this.props
+                .fetchYelpCafeById(this.props.randomCafe.id)
+                .catch(err => this.props.history.push(`/errors`));
+          }
+
+        if (Object.keys(this.props.yelpCafe).length === 0) return null
+
+        if (!this.props.randomCafe) return null;
 
 
         let display_address = this.props.yelpCafe.location.display_address;
@@ -140,47 +145,59 @@ class Cafe extends React.Component {
 
 
         return (
-            <div className="page">
-                <NavBar />
-                <div className="all">
-                    <div className="left-right">
-                        <div className="cafe">
-                            <div className="profile">
-                                <div className="title">
-                                    <div className="name">{this.props.yelpCafe.name}</div>
-                                    <a className="yelp" href={this.props.yelpCafe.url} target="_blank">
-                                        <div id="yelp-text">View on Yelp</div>
-                                    </a>
-                                </div>
-
-                                <div className="time">Open until {time} Today</div>
-
-                                <div className="address">
-                                    {display_address[0]}, {display_address[1]}
-                                </div>
-
-                                <div className="shelter">
-                                    ** Shelter in Place May Affect Hours **
-                    </div>
-                            </div>
-
-                            <img
-                                className="photo"
-                                src={this.props.yelpCafe.image_url}
-                            ></img>
-                        </div>
-
-                        <div className="map">
-                            <ShowMap key={lat} lat={lat} lng={lng} my_lat={this.props.filters.my_lat} my_lng={this.props.filters.my_lng} />
-                        </div>
+          <div className="page">
+            <NavBar />
+            <div className="all">
+              <div className="left-right">
+                <div className="cafe">
+                  <div className="profile">
+                    <div className="title">
+                      <div className="name">{this.props.yelpCafe.name}</div>
+                      <a
+                        className="yelp"
+                        href={this.props.yelpCafe.url}
+                        target="_blank"
+                      >
+                        <div id="yelp-text">View on Yelp</div>
+                      </a>
                     </div>
 
-                    <span className="new-cafe">
-                        I'm not sold. &nbsp;
-                <span onClick={this.handleClick}>Show me another cafe!</span>
-                    </span>
+                    <div className="time">Open until {time} Today</div>
+
+                    <div className="address">
+                      {display_address[0]}, {display_address[1]}
+                    </div>
+
+                    <div className="shelter">
+                      ** Shelter in Place May Affect Hours **
+                    </div>
+                  </div>
+
+                  <img
+                    className="photo"
+                    onClick={() => this.props.openModal("cafe")}
+                    src={this.props.yelpCafe.image_url}
+                  ></img>
                 </div>
+
+                <div className="map">
+                  <ShowMap
+                    key={lat}
+                    lat={lat}
+                    lng={lng}
+                    my_lat={this.props.filters.my_lat}
+                    my_lng={this.props.filters.my_lng}
+                    yelp_link={this.props.yelpCafe.url}
+                  />
+                </div>
+              </div>
+
+              <span className="new-cafe">
+                I'm not sold. &nbsp;
+                <span onClick={this.handleClick}>Show me another cafe!</span>
+              </span>
             </div>
+          </div>
         );
 
 

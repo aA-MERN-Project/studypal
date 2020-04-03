@@ -36,10 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             store.dispatch(logout());
             window.location.href = 'login';
         }
-<<<<<<< HEAD
         // client.auth.loginWithCredential(new AnonymousCredential());
-=======
->>>>>>> cc2bb3100c20abad0a47c7d121735f2b99f5cb97
     }else{
         store = configureStore();
     }

@@ -40,6 +40,12 @@ class ShowMap extends React.Component {
       map: this.map
     });
 
+    marker.linkUrl = this.props.yelp_link;
+
+    marker.addListener("click", function() {
+      window.location = this.linkUrl;
+    });
+
     // const marker_person = new google.maps.Marker({
     //   position: { lat: this.props.my_lat, lng: this.props.my_lng },
     //   map: this.map
