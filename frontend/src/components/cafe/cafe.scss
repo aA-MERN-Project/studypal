@@ -1,5 +1,4 @@
 .index {
-    /* // border: 1px solid red; */
     height: 100vh;
     background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
     font-family: "Open Sans";
@@ -12,12 +11,12 @@
     top: 40vh;
 }
 
-
 .page {
     background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%);
     font-family: "Open Sans";
     display: flex;
     justify-content: space-around;
+    height: 100vh
 }
 
 .photo {
@@ -26,7 +25,6 @@
     height: 344px;
     border-radius: 5px;
     border: 1px solid rgba(51, 51, 51, 0.5);
-    // top: 100px;
 }
 
 .profile {
@@ -41,25 +39,20 @@
     border-radius: 5px;
     border: 1px solid rgba(51, 51, 51, 0.5);
     font-size: 13px;
-    // margin-top: 100px;
-    // top: 100px;
 }
 
 .title {
-    /* // border: 1px solid r≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈ed; */
     display: flex;
     justify-content: space-between;
 }
 
 .name {
-    /* // border: 1px solid red; */
     font-size: 24px;
     margin-bottom: -40px;
 }
 
 .yelp {
     height: 35px;
-    /* // border: 1px solid red; */
     width: 120px;
     background-color: #FF7F50;
     color: #ffffff;
@@ -99,7 +92,6 @@
 }
 
 .cafe {
-    /* // border: 1px solid red; */
     position: relative;
     display: flex;
     align-items: center;
@@ -108,7 +100,6 @@
 }
 
 .left-right {
-    /* // border: 1px solid red; */
     width: 1120px;
     display: flex;
     justify-content: space-between;
@@ -120,24 +111,19 @@
     margin-left: 5px;
     border-radius: 5px;
     border: 1px solid rgba(51, 51, 51, 0.5);
-    // margin-top: 100px;
-    // top: 100px;
 }
 
 .all {
-    /* // border: 1px solid red; */
+
 
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     align-self: center;
-    top: 100px;
-    height: 100vh;
 }
 
 .new-cafe {
-    /* // border: 1px solid red; */
     font-family: "Montserrat";
     font-size: 14px;
     position: relative;

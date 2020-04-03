@@ -10,7 +10,7 @@ const Auth = ({component: Component, path, loggedIn, exact
             <Component {...props} /> 
         ) : (
             //Redirect to some page if user if authenticated
-            <Redirect to="/login" />
+            <Redirect to="/" />
         )
     )} />
 );

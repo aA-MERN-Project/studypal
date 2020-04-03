@@ -144,7 +144,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Email
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="text"
                       value={this.state.email}
                       onChange={this.update("email")}
@@ -156,7 +156,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Password
                     <input
-                      className="input-box"
+                      className="input-box-password"
                       type="password"
                       value={this.state.password}
                       onChange={this.update("password")}
@@ -173,9 +173,9 @@ class SessionForm extends React.Component {
                   </button>
                 </div>
               </form>
-              <div className="nevermind">
-                Never mind, <Link to="/">just help me find a cafe.</Link>
-              </div>
+                <div className="nevermind">
+                  Never mind, <Link to="/">just help me find a cafe</Link>
+                </div>
             </div>
           </div>
         );
@@ -192,7 +192,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Username
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="text"
                       value={this.state.handle}
                       onChange={this.update("handle")}
@@ -205,7 +205,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Email
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="text"
                       value={this.state.email}
                       onChange={this.update("email")}
@@ -218,7 +218,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Password
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="password"
                       value={this.state.password}
                       onChange={this.update("password")}
@@ -231,7 +231,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Confirm Password
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="password"
                       value={this.state.password2}
                       onChange={this.update("password2")}
@@ -244,7 +244,7 @@ class SessionForm extends React.Component {
                   <label className="form-labels">
                     Zipcode
                     <input
-                      className="input-box"
+                      className="input-box-email"
                       type="zipcode"
                       value={this.state.zipcode}
                       onChange={this.update("zipcode")}
@@ -253,7 +253,7 @@ class SessionForm extends React.Component {
                   </label>
                 </div>
                 <div className="errors">
-                  <ul>{this.renderErrors()}</ul>
+                  <ul className="session-errors">{this.renderErrors()}</ul>
                 </div>
                 <div className="l-s-button-div">
                   <button className="login-signup-button">
