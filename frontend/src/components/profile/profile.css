@@ -51,7 +51,8 @@
     font-size: 24px;
     color: #333333;
     padding-left: 3%;
-    padding-bottom: 10%
+    padding-bottom: 10%;
+    padding-top:20px
 }
 
 .email {
@@ -102,7 +103,7 @@
     border: 1px solid white;
     background-color: white;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 65%;
     height: 40%;
     padding: 40px;
@@ -110,14 +111,14 @@
 }
 
 .halfProfile1{
-    margin-right:7%;
-    margin-left:7%;
-
+    /* margin-right:7%; */
+    /* margin-left:7%; */
+    /* display: inline-block */
 }
 
 .halfProfile2{
-    margin-right:7%;
-    margin-left:7%;
+    /* margin-right:7%; */
+    /* margin-left:7%; */
 }
 
 .profile-info-div {
@@ -247,17 +248,18 @@ top: 216px; */
 
 .coffee-img {
     width: 22%;
-    height: 1%;
+    height: 100%;
     background-color: rgba(255, 127, 80, 0.8);
     border-radius: 42%
 }
 
 .img-info-div {
     display: flex;
+    
 }
 
 .only-profile-info {
-    padding: 8px;
+    padding-top: 8px;
 }
 
 .edit {
@@ -285,4 +287,13 @@ top: 216px; */
 .profile-clear-div {
     display: flex;
     justify-content: center;
+}
+
+.halfP1-Pinfo {
+    display: flex;
+    /* justify-content: row; */
+}
+
+.profile-container {
+    display: flex;
 }

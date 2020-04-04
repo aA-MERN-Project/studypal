@@ -161,28 +161,23 @@ class Profile extends React.Component {
             <NavBar />
             <div className="profile-info-div">
               <div className="profile-info">
-              <div className="halfProfile1">
-                      <div className="name">{username}</div>
+                <div className="profile-container">
+                  <div className="img-info-div">
+                    <img
+                      className="coffee-img"
+                      src={
+                        "https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"
+                      }
+                    />
+                    <div className="only-profile-info">
+                      <div className="profile-name">{username}</div>
                       <div className="email">{email}</div>
-                      <div>Current Zipcode {zipcode}</div>
-                  </div>
+                      <div className="zipcode">Current Zipcode {zipcode}</div>
+                    </div>
+                  </div>  
                   <div className="halfProfile2">
-                    {/* <Test user={this.props.user} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler}/> */}
                     <TestContainer user={this.props.user} updatedUser = {this.props.updatedUser} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler}/>
                   </div>
-                <div className="img-info-div">
-                  <img
-                    className="coffee-img"
-                    src={
-                      "https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"
-                    }
-                  />
-                  {/* <div className="only-profile-info">
-                    <div className="profile-name">{username}</div>
-                    <div className="email">{email}</div>
-                    <div className="zipcode">Current Zipcode {zipcode}</div>
-                  </div> */}
-
                 </div>
                 
 
