@@ -175,37 +175,23 @@ class Profile extends React.Component {
            
             <div className="profile-info-div">
               <div className="profile-info">
-                
-              {/* <button classname="updateProfileButton"><img src="https://studypal-dev.s3-us-west-1.amazonaws.com/edit.png"/></button> */}
-              
-
-              
-              <div className="halfProfile1">
-                      <div className="name">{username}</div>
+                <div className="profile-container">
+                  <div className="img-info-div">
+                    <img
+                      className="coffee-img"
+                      src={
+                        "https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"
+                      }
+                    />
+                    <div className="only-profile-info">
+                      <div className="profile-name">{username}</div>
                       <div className="email">{email}</div>
-                      <div>Current Zipcode {zipcode}</div>
-                  </div>
+                      <div className="zipcode">Current Zipcode {zipcode}</div>
+                    </div>
+                  </div>  
                   <div className="halfProfile2">
-                    
-                      {/* <Test user={this.props.user} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler}/> */}
-                      <TestContainer user={this.props.user} updatedUser = {this.props.updatedUser} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler} />
+                    <TestContainer user={this.props.user} updatedUser = {this.props.updatedUser} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler}/>
                   </div>
-                  {/* <div >
-                      <button classname="updateProfile" onClick={this.openUpdate} >test text</button>
-                  </div> */}
-                <div className="img-info-div">
-                  <img
-                    className="coffee-img"
-                    src={
-                      "https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"
-                    }
-                  />
-                  {/* <div className="only-profile-info">
-                    <div className="profile-name">{username}</div>
-                    <div className="email">{email}</div>
-                    <div className="zipcode">Current Zipcode {zipcode}</div>
-                  </div> */}
-
                 </div>
                 
 

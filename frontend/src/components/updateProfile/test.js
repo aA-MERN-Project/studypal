@@ -85,7 +85,7 @@ class Test extends React.Component {
             return(
                 <div>
                     <div className="editProfileButtonDiv" >
-                            <button  className="editProfileButton" onClick={this.closeUpdate} > x </button>
+                            <button  className="editProfileButton" onClick={this.closeUpdate} >x</button>
                     </div>
                     <div className="updateProfileForm">
                         
