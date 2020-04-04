@@ -4,7 +4,8 @@ import Test from './test';
 
 const mapStateToProps = state => {
     return {
-        errors: state.errors.updatedUser,
+        errors: state.errors.session,
+        // errors: state.errors.updatedUser
     };
 };
 

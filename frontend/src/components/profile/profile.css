@@ -289,6 +289,15 @@ top: 216px; */
     justify-content: center;
 }
 
+
+.editProfileButton{
+    width: 50px;
+    margin-left:80%;
+    display:block;    
+
+}
+
+
 .halfP1-Pinfo {
     display: flex;
     /* justify-content: row; */

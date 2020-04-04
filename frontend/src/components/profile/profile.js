@@ -33,6 +33,8 @@ class Profile extends React.Component {
         this.update = this.update.bind(this)
         this.clear = this.clear.bind(this)
         this.updatePreferences = this.updatePreferences.bind(this)
+        // this.openUpdate = this.openUpdate.bind(this);
+        // this.closeUpdate= this.closeUpdate.bind(this);
     }
 
     //to change the state once the profile gets updated
@@ -142,6 +144,17 @@ class Profile extends React.Component {
       this.props.updateUserPreferences(this.state.user.id, updatedUser);
     }
 
+    // openUpdate(){
+    //     document.getElementById("halfProfile2").style.width = "300px";
+
+    // }
+
+    // closeUpdate(){
+    //   document.getElementById("halfProfile2").style.width = "0px";
+      
+    // }
+
+
     render() {
       let username;
       let email;
@@ -159,6 +172,7 @@ class Profile extends React.Component {
         return (
           <div className="profile-page">
             <NavBar />
+           
             <div className="profile-info-div">
               <div className="profile-info">
                 <div className="profile-container">
