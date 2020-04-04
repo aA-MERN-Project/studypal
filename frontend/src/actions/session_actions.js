@@ -97,11 +97,21 @@ export const updateProfileAct = (id, data) => dispatch => {
     );
    
 };
+
+export const RECEIVE_UPDATED_USER_ERRORS = 'RECEIVE_UPDATED_USER_ERRORS';
+const receiveUpdatedUserErrors = errors => ({
+    type: RECEIVE_UPDATED_USER_ERRORS,
+    errors
+});
+
+
 export const updateUserPreferences = (id, preferences) => dispatch => {
     return (
         SessionAPIUtil.updateUserPreferences(id, preferences)
             .then((preferences) => dispatch(receivePreferences(preferences)),
-                err => dispatch(receiveErrors(err.response.data))
+                // err => dispatch(receiveErrors(err.response.data))
+                err => dispatch(receiveUpdatedUserErrors(err.response.data))
+
             ))
 }
 

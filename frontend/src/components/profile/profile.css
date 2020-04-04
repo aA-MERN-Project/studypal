@@ -286,3 +286,23 @@ top: 216px; */
     display: flex;
     justify-content: center;
 }
+
+
+.editProfileButton{
+    width: 50px;
+    margin-left:80%;
+    display:block;    
+
+}
+
+/* .halfProfile2 .closebtn{
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+} */
+
+.halfProfile2{
+    width:0px;
+}
