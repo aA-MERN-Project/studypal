@@ -16,6 +16,8 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 
 ## Features
 * Secure user authentication with password digests
+* User profile page prepopulates with user info and cafe preferences
+* User can update profile and preferences
 * Yelp cafe data fetched by the Yelp Fusion API
 * Cafe suggestions filtered by cafe preferences and user geolocation
 * Cafe location displayed via the Google Maps API
