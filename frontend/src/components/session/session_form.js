@@ -38,11 +38,11 @@ class SessionForm extends React.Component {
         //  ;
         console.log("SUCCESS");
         this.props.logInNewUser(user)
-            .then(this.props.history.push("user"));
+            .then(this.props.history.push("/"));
    
     }else if(nextProps.isAuthenticated ===true){
       //  ;
-      this.props.history.push("user");
+      this.props.history.push("/");
     }
     
     }
@@ -83,13 +83,8 @@ class SessionForm extends React.Component {
             password: this.state.password,
             password2: this.state.password2,
             zipcode: this.state.zipcode
-        };
-        if(this.props.formType==="Log in"){   
-            this.props.processForm(user);
-              // .then(this.checkErrors());
-        }else{
-            this.props.processForm(user);
-        }   
+        }; 
+        this.props.processForm(user);
     }
 
     // checkErrors(){

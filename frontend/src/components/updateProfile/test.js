@@ -125,8 +125,8 @@ class Test extends React.Component {
                             <br/>
                             <button className="update-profile-button">Update profile</button>
                             <button className="update-profile-close" onClick={this.closeUpdate}>Close</button>
+                            <ul className="update-errors" onClick={this.closeUpdate}>{this.renderErrors()}</ul>
                         </form>
-                        <ul className="update-errors" onClick={this.closeUpdate}>{this.renderErrors()}</ul>
                         
                     </div>  
                 </div>   

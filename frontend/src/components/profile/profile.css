@@ -228,6 +228,7 @@
     display: flex;
     justify-content: center;
     padding-top: 2%;  
+    padding-bottom: 3%;
 }
 
 .coffee-img {
@@ -299,7 +300,12 @@
     position: relative;
     left: 90%;
     top: 2px;
-    width: 90%
+    width: 90%;
+    color: rgb(64, 64, 64)
+}
+
+.update-input:focus {
+    background: rgb(255, 235, 230)
 }
 
 .updateProfileImg {
@@ -311,6 +317,11 @@
     padding: 1%;
     position: relative;
     left: 95%;
+}
+
+.updateProfileImg:hover {
+    cursor: pointer;
+    background: rgb(56, 98, 224)
 }
 
 .halfProfile2 {
@@ -328,7 +339,9 @@
     font-family: "Open Sans";
     color: red;
     font-size: 15px;
-    padding-left: 10%;
+    position: relative;
+    left: 97%;
+    padding-top: 3px;
     /* padding-bottom: % */
 }
 
@@ -336,22 +349,24 @@
     position: relative;
     left: 90%;
     top: 2px;
+    outline: none
 }
 
 .update-profile-close {
     position: relative;
     left: 90%;
     top: 2px;
+    outline: none
 }
 
 .vertical-line-profile {
-    width: 180px;
+    max-width: 190px;
     height: .1px;
     border: 1px solid rgba(65, 105, 225, 0.5);
     transform: rotate(90deg);
     position: relative;
     left: 25%;
-    top: 53%
+    top: 55%
 }
 
 .profile-labels {
