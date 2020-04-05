@@ -111,12 +111,7 @@ class Cafe extends React.Component {
 
 
     render() {
-        
-
-        
-
-
-
+      
 
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
@@ -140,6 +135,12 @@ class Cafe extends React.Component {
         let lng = this.props.yelpCafe.coordinates.longitude;
         let distance = this.props.randomCafe.distance_away;
         let noiseLevel = this.props.randomCafe.noise_level;
+
+        let modalData = {yelpData: this.props.yelpCafe, 
+          distance, 
+          noiseLevel, 
+          studyPalCafe: this.props.randomCafe,
+          filters: this.props.filters}
 
 
         return (
@@ -173,7 +174,7 @@ class Cafe extends React.Component {
 
                   <img
                     className="photo"
-                    onClick={() => this.props.openModal("cafe")}
+                    onClick={() => this.props.openModal("cafe", modalData)}
                     src={this.props.yelpCafe.image_url}
                   ></img>
                 </div>
@@ -195,6 +196,8 @@ class Cafe extends React.Component {
                 <span onClick={this.handleClick}>Show me another cafe!</span>
               </span>
             </div>
+
+            <Modal/>
           </div>
         );
 
