@@ -9,8 +9,6 @@ import TestContainer from '../updateProfile/test_container';
 import $ from "jquery";
 
 
-
-
 class Profile extends React.Component {
     constructor(props) {
         super(props);
@@ -57,7 +55,12 @@ class Profile extends React.Component {
       //info once the component has mounted
       this.setState({user:this.props.user});
       if(this.props.user ){
-        this.props.getUpdatedUser(this.props.user.id);
+        if(this.props.user.id){
+          this.props.getUpdatedUser(this.props.user.id);
+        }else{
+          this.props.getUpdatedUser(this.props.user._id);
+        }
+        
       }
       // debugger;
       // this.props.getUser(this.props.user.id);
@@ -67,26 +70,32 @@ class Profile extends React.Component {
     componentDidUpdate(prevProps, prevState){
       // debugger;
       if(prevProps.user !== this.props.user){
-         this.props.getUpdatedUser(this.props.user._id);
+         if(this.props.user.id){
+            this.props.getUpdatedUser(this.props.user.id);
+         }else{
+            this.props.getUpdatedUser(this.props.user._id);
+         }   
       }
+      
+      // if(prevProps.user !== this.props.user){
+      //    this.props.getUpdatedUser(this.props.user._id);
+      // }
     }
 
 
-    componentWillUpdate(nextProps, nextState){
-      // if (nextState.updated ==="true"  && this.state.user !== nextState.user ) {
-      //   this.props.getUser();
+    // componentWillUpdate(nextProps, nextState){
+    //   // if (nextState.updated ==="true"  && this.state.user !== nextState.user ) {
+    //   //   this.props.getUser();
   
-      if (!nextState.user === this.state.user){
-        this.props.getUser(nextProps.user.id);
-        this.props.updateProfileAct(nextProps.user.id, nextProps.user);
-        // this.props.updatedUser(this.props.user.id);
-      }
-      if (!nextState.updatedUser === this.state.updatedUser){
-
-        this.props.getUpdatedUser(nextProps.user.id);
-        
-      }
-    }
+    //   if (!nextState.user === this.state.user){
+    //     this.props.getUser(nextProps.user.id);
+    //     this.props.updateProfileAct(nextProps.user.id, nextProps.user);
+    //     // this.props.updatedUser(this.props.user.id);
+    //   }
+    //   if (!nextState.updatedUser === this.state.updatedUser){
+    //     this.props.getUpdatedUser(nextProps.user.id);
+    //   }
+    // }
   
     componentWillReceiveProps(nextProps){
       this.setState({user:nextProps.user});

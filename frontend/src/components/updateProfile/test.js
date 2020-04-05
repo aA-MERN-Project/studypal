@@ -11,7 +11,8 @@ class Test extends React.Component {
             handle: this.props.user.handle,
             email: this.props.user.email,
             zipcode: this.props.user.zipcode,
-            updateProfile: "false"
+            updateProfile: "false",
+            errors:"false"
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,6 +41,7 @@ class Test extends React.Component {
         
         //this added so that when user updates Profile, it will setstate
         //in profile page to trigger rerender of profile component
+        this.props.clearErrors();
         this.props.handler();
     }
 
@@ -66,14 +68,22 @@ class Test extends React.Component {
         } 
     }
 
-    openUpdate(){
-        this.setState({updatedProfile:"true"})
+    
 
+    openUpdate(){
+        // debugger;
+        this.setState({updatedProfile:"true"});
+        this.setState({handle:this.props.updatedUser.handle});
+        this.setState({email:this.props.updatedUser.email});
+        this.setState({zipcode:this.props.updatedUser.zipcode});
+        
     }
 
     closeUpdate(){
-      this.setState({updatedProfile:"false"})
-      
+      this.setState({updatedProfile:"false"});
+      this.props.clearErrors();
+    
+
     }
     
 
@@ -103,6 +113,7 @@ class Test extends React.Component {
                             <button className="update-profile-close" onClick={this.closeUpdate}>Close</button>
                         </form>
                         <ul className="update-errors" onClick={this.closeUpdate}>{this.renderErrors()}</ul>
+                        
                     </div>  
                 </div>   
             )

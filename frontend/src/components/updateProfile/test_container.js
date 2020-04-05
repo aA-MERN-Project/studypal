@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {updateProfileAct} from '../../actions/session_actions';
+import {clearErrors} from '../../actions/session_actions';
 import Test from './test';
 
 const mapStateToProps = state => {
@@ -10,8 +10,8 @@ const mapStateToProps = state => {
     };
 };
 
-// const mapDispatchToProps = dispatch => ({
-//     updateProfileAct: (id,user) => dispatch(updateProfileAct(id, user))
-// });
+const mapDispatchToProps = dispatch => ({
+    clearErrors: () => dispatch(clearErrors())
+});
 
-export default connect(mapStateToProps, null)(Test);
+export default connect(mapStateToProps, mapDispatchToProps)(Test);
