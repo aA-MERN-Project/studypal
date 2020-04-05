@@ -1,5 +1,5 @@
 import {RECEIVE_UPDATED_USER_ERRORS} from '../actions/updated_user_actions';
-
+import {RECEIVE_UPDATE_PROFILE_ERRORS} from '../actions/user_actions'
 const _nullErrors = []; 
 
 const UpdatedUserErrorsReducer = (state = _nullErrors, action) => {
