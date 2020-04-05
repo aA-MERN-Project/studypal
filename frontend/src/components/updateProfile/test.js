@@ -6,6 +6,7 @@ class Test extends React.Component {
     
     constructor(props) {
         super(props);
+        //  ;
         this.state = {
             id: this.props.user.id,
             handle: this.props.user.handle,
@@ -30,6 +31,18 @@ class Test extends React.Component {
         }else if(this.props.user._id){
             this.props.updateProfileAct(this.props.user._id, this.state);
         }
+    // componentWillUpdate(nextProps,nextState){
+    //      ;
+    //     if (!nextProps.user.email === this.state.user.email){
+    //         this.props.updateProfileAct(nextProps.user.id, nextProps.user);
+    //       }
+    // }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        //  ;
+        this.props.updateProfileAct(this.props.user.id, this.state);
+        this.props.handler();
 
         // this.setState({updateProfile:"true"});
         // // also check if no errors 
@@ -52,6 +65,7 @@ class Test extends React.Component {
     };
 
     renderErrors() {
+        //  ;
         if (this.props.errors){
             return(
                 Object.values(this.props.errors).map((err) => (

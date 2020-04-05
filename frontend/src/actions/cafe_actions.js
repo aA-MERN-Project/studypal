@@ -1,5 +1,5 @@
 import {getCafe, getCafeByZipcode, getCafes, getCafeByFilters} from '../util/cafe_api_util';
-import {getYelpCafeById} from '../util/cafe_api_util'
+import {getYelpCafeById, updateCafe} from '../util/cafe_api_util'
 
 
 export const RECEIVE_CAFEBYZIPCODE = "RECEIVE_CAFEBYZIPCODE";
@@ -8,7 +8,6 @@ export const RECEIVE_CAFES = "RECEIVE_CAFES";
 export const RECEIVE_CLEAR_CAFES = "RECEIVE_CLEAR_CAFES";
 export const REROLL_CAFES = "REROLL_CAFES";
 export const RECEIVE_YELP_CAFE = "RECEIVE_YELP_CAFE";
-
 export const START_LOADING_FILTERED_CAFES = "START_LOADING_FILTERED_CAFES";
 export const START_LOADING_SINGLE_CAFE = "START_LOADING_SINGLE_CAFE";
 
@@ -87,10 +86,16 @@ export const fetchCafeByFilters = filters => dispatch => {
 export const fetchYelpCafeById = (id) => dispatch => {
     dispatch(startLoadingFilteredCafes());
    
+    updateCafe(id, {updateType: "randomlyRolled"}).then(
+        () => console.log("Roll +1")
+    )
+
     return getYelpCafeById(id).then(cafe => {
+        debugger
         dispatch(receiveYelpCafe(cafe.data));
         return cafe.data;
     })
+
 
 };
 

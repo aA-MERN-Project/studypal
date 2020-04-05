@@ -14,7 +14,7 @@ export const getUser = id => {
 // };
 
 export const updateProfile = (id, data) => {
-    // debugger;
+    //  ;
     return axios.patch(`api/users/${id}/profile`, data);
 };
 

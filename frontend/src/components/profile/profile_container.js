@@ -6,7 +6,7 @@ import {getUser} from '../../actions/user_actions'
 import {updatedUser} from '../../actions/updated_user_actions';
 
 const mapStateToProps = state => {
-    // debugger
+    //  
     return({
     user: state.session.user,
     updatedUser: state.session.updatedUser,

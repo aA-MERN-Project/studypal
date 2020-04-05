@@ -10,7 +10,7 @@ module.exports = function validateUpdateProfile(data){
     // data.zipcode = isNumber(data.zipcode) ? data.zipcode : "";
     
 
-    // debugger; 
+    //  ; 
     if(!Validator.isLength(data.handle, {min:2, max:30})){
         errors.handle = "Handle must be between 2 and 30 characters";
     }
@@ -23,7 +23,7 @@ module.exports = function validateUpdateProfile(data){
         errors.email = "Email is invalid";
     }
 
-    // debugger;
+    //  ;
     // if(Validator.isEmpty(data.zipcode.toString())){
     //     errors.zipcode = "Zipcode field is required.";
     // }

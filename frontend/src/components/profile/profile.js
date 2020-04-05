@@ -37,9 +37,9 @@ class Profile extends React.Component {
 
     //to change the state once the profile gets updated
     handler(){
-      // debugger;
+      //  ;
       this.setState({updatedProf: "true"});
-      // debugger;
+      //  ;
       // this.props.getUser(this.state.user.id)
       //   .then(user => this.props.login(user));
       // this.setState({user:this.props.user});
@@ -62,13 +62,13 @@ class Profile extends React.Component {
         }
         
       }
-      // debugger;
+      //  ;
       // this.props.getUser(this.props.user.id);
       
     }
 
     componentDidUpdate(prevProps, prevState){
-      // debugger;
+      //  ;
       if(prevProps.user !== this.props.user){
          if(this.props.user.id){
             this.props.getUpdatedUser(this.props.user.id);
@@ -105,14 +105,14 @@ class Profile extends React.Component {
     //   if(this.props.user2 !== prevProps.user2){
     //     this.getUser(this.props.user.id)
     //   }
-    //   debugger;
+    //    ;
     // }
 
     // componentWillReceiveProps(nextProps){
-    //   debugger;
+    //    ;
     //   // this.setState({user:nextProps.user});
     //   this.setState({user:nextProps.user});
-    //   debugger;
+    //    ;
     //   this.props.login({email:nextProps.user.email, password:nextProps.user.password} );
     // }
 

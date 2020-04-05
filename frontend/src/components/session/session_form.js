@@ -35,13 +35,13 @@ class SessionForm extends React.Component {
     };
     //checking if user registered successfully, then log them in
     if(nextProps.signedIn === true){
-        // debugger;
+        //  ;
         console.log("SUCCESS");
         this.props.logInNewUser(user)
             .then(this.props.history.push("user"));
    
     }else if(nextProps.isAuthenticated ===true){
-      // debugger;
+      //  ;
       this.props.history.push("user");
     }
     
@@ -57,13 +57,13 @@ class SessionForm extends React.Component {
         };
         //checking if user registered successfully, then log them in
         if(nextProps.signedIn === true){
-            // debugger;
+            //  ;
             console.log("SUCCESS");
             this.props.logInNewUser(user)
                 .then(this.props.history.push("user"));
        
         }else if(nextProps.isAuthenticated ===true){
-          // debugger;
+          //  ;
           this.props.history.push("/user");
         }
         

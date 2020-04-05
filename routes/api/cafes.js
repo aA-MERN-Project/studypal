@@ -45,7 +45,7 @@ router.get("/yelp_id/:id", (req,res) =>  {
     const yelpId = req.params.id;
     getYelpCafeById(yelpId)
         .then((cafe) => {
-
+            //also add count to database
             res.json(cafe.data);
         })
         .catch(err => {
@@ -54,7 +54,6 @@ router.get("/yelp_id/:id", (req,res) =>  {
               .json({ error: "Error searching for Cafe in Yelp Database"});
 
             console.log('Error searching for Cafe in Yelp Database')});
-
 })
 
 router.get("/:yelp_id", (req, res) => {
@@ -83,43 +82,47 @@ router.post("/filters", (req,res) => {
 })
 
 
+router.patch("/update/:id", (req, res) => {
+    const id = req.params.id;
+    Cafe.findOne({id:id})
+        .then(
+            cafe => {
+                let updateType = req.body.updateType;
 
-router.get("/noise_level/:noise_level", (req,res) => {
-    Cafe.find({noise_level: req.params.noise_level})
-        .then(cafes => res.json(cafes))
-        .catch(err => res.status(404).json({ nocafesfound: 'No cafe found with that noise level'}));
+                if (updateType === "randomlyRolled"){
+                    if (!cafe.rolled_amount) {
+                        cafe.rolled_amount = 1;
+                    } else {
+                        cafe.rolled_amount += 1;
+                    }
+                }
+
+                if (updateType === "selected") {
+                    if (!cafe.selected_amount) {
+                        cafe.selected_amount = 1;
+                    } else {
+                        cafe.selected_amount += 1;
+                    }
+                }
+
+                cafe.save()
+                    .then(cafe => {
+                        res.json(cafe)
+                        console.log("Cafe Updated")
+                    
+                    })
+                    .catch(err => console.log(err))
+
+            })
+        .catch( err => res.status(404).json({nothingAdded: "No update to StudyPal database"})
+
+            )
 
 })
 
 
-router.get("/zip_code/:zip_code", (req,res) => {
-    Cafe.find({location_zip_code: req.params.zip_code})
-        .then(cafes => res.json(cafes))
-        .catch(err => res.status(404).json({nocafesfound : 'No cafes found with that zipcode'}))
-})
-
-router.get("/credit_card/:credit_card", (req, res) => {
-    Cafe.find({ credit_card: req.params.credit_card })
-        .then(cafes => res.json(cafes))
-        .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with that credit card status' }))
-
-})
 
 
-router.get("/good_working/:good_for_working", (req, res) => {
-    Cafe.find({ good_for_working: req.params.good_for_working })
-        .then(cafes => res.json(cafes))
-        .catch(err => res.status(404).json({ nocafesfound: 'No cafes are good for working' }))
-
-})
-
-
-router.get("/wifi/:wifi", (req, res) => {
-    Cafe.find({ wifi: req.params.wifi })
-        .then(cafes => res.json(cafes))
-        .catch(err => res.status(404).json({ nocafesfound: 'No cafes with wifi' }))
-
-})
 
 
 

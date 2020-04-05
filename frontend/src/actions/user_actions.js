@@ -39,6 +39,10 @@ export const getUser = (id) => dispatch => {
 
 
 export const updateProfileAct = (id, data) => dispatch => {
+<<<<<<< HEAD
+=======
+    //  ;
+>>>>>>> newFeatures
     return(
         UserAPIUtil.updateProfile(id, data)
             .then((user) => dispatch(receiveUser(user)),

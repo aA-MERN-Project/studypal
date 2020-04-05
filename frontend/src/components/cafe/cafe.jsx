@@ -5,8 +5,9 @@ import "../../stylesheets/map.scss";
 import "./cafe.scss"
 import LoadingPage from './loader';
 import NavBar from "../navbar/navbar_container";
-
 import Modal from "../modal/modal_container";
+import {updateCafe} from "../../util/cafe_api_util"
+import {selectRandomCafe} from "../../util/filters_util"
 
 
 
@@ -14,8 +15,8 @@ class Cafe extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            randomCafe: "", // USE THIS FOR MAIN PHOTO
-            cafeFromYelpApi: "", //THIS HAS YELP API DATA
+            studyPalCafe: this.props.randomCafe, 
+            cafeFromYelpApi: "", 
             leftOverCafes: [],
         }
 
@@ -24,6 +25,7 @@ class Cafe extends React.Component {
         this.calculateDistance = this.calculateDistance.bind(this);
         this.calculateTime = this.calculateTime.bind(this);
         this.applyExtraFilters = this.applyExtraFilters.bind(this);
+        this.addSelected = this.addSelected.bind(this);
     }
 
 
@@ -71,7 +73,6 @@ class Cafe extends React.Component {
 
     }
 
-
     applyExtraFilters(cafes) {
         return cafes.filter(cafe => cafe.distance_away < this.props.filters.miles_away);
     }
@@ -85,8 +86,10 @@ class Cafe extends React.Component {
         });
 
         // Puts into Redux cycle again
+        let randomCafe = selectRandomCafe(leftOverCafes)
+        this.setState({ studyPalCafe: randomCafe })
         this.props
-          .fetchYelpCafeById(this.props.randomCafe.id)
+          .fetchYelpCafeById(randomCafe.id)
           .catch(err => this.props.history.push(`/errors`))
         this.props.rerollCafes(leftOverCafes);
     }
@@ -100,6 +103,10 @@ class Cafe extends React.Component {
         if (Object.keys(this.props.filters).length === 0){
             this.props.history.push(`/`);
         }
+
+        if (this.state.studyPalCafe){
+          this.props.fetchYelpCafeById(this.state.studyPalCafe.id)
+        }
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -107,25 +114,36 @@ class Cafe extends React.Component {
         if (this.props.cafes.length === 0) {
             this.props.history.push(`/retry`)
         }
+
       }
+
+    componentWillUnmount(){
+      this.setState({studyPalCafe: null})
+      debugger
+
+    }
+
+    addSelected(id) {
+      updateCafe(id, { updateType: "selected" }).then(
+        () => console.log("Selected +1")
+      )
+    }
 
 
     render() {
-        
-
-        
-
-
-
-
+      
+        debugger
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
         if (this.props.cafes.length === 0) return null;
 
         // If no curr yelpcafe exist, request from API
         if (Object.keys(this.props.yelpCafe).length === 0) {
+              debugger
+              let randomCafe = selectRandomCafe(this.props.cafes);
+              this.setState({studyPalCafe: randomCafe})
               this.props
-                .fetchYelpCafeById(this.props.randomCafe.id)
+                .fetchYelpCafeById(randomCafe.id)
                 .catch(err => this.props.history.push(`/errors`));
           }
 
@@ -141,6 +159,12 @@ class Cafe extends React.Component {
         let distance = this.props.randomCafe.distance_away;
         let noiseLevel = this.props.randomCafe.noise_level;
 
+        let modalData = {yelpData: this.props.yelpCafe, 
+          distance, 
+          noiseLevel, 
+          studyPalCafe: this.state.studyPalCafe,
+          filters: this.props.filters}
+
 
         return (
           <div className="page">
@@ -154,6 +178,7 @@ class Cafe extends React.Component {
                       <a
                         className="yelp"
                         href={this.props.yelpCafe.url}
+                        onClick={() => this.addSelected(this.props.yelpCafe.id)}
                         target="_blank"
                       >
                         <div id="yelp-text">View on Yelp</div>
@@ -173,7 +198,7 @@ class Cafe extends React.Component {
 
                   <img
                     className="photo"
-                    onClick={() => this.props.openModal("cafe")}
+                    onClick={() => this.props.openModal("cafe", modalData)}
                     src={this.props.yelpCafe.image_url}
                   ></img>
                 </div>
@@ -195,6 +220,8 @@ class Cafe extends React.Component {
                 <span onClick={this.handleClick}>Show me another cafe!</span>
               </span>
             </div>
+
+            <Modal/>
           </div>
         );
 

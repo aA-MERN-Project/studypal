@@ -30,6 +30,7 @@ router.patch('/:id/profile', (req,res,next)=> {
         return res.status(400).json(errors);
     }
     const userId = req.params.id;
+    //  ;
 
     User.findOne({email: req.body.email})
     .then(user => {
@@ -59,6 +60,9 @@ router.patch('/:id/profile', (req,res,next)=> {
                 }).catch(err => 
                     res.status(404).json({noUserFound: "no user found with that ID"})
                 );
+            //  ;
+            errors.email = 'Email already exists';
+            return res.status(400).json(errors);
         }else{
             User.findOne({_id:req.params.id})
                 .then(userOrig => {
@@ -171,7 +175,7 @@ router.post('/login', (req, res) => {
 
     User.findOne({email})
         .then(user => {
-            //  debugger
+            //   
             if(!user){
                 errors.email = "User not found";
                 return res.status(404).json(errors);
