@@ -35,31 +35,51 @@ router.patch('/:id/profile', (req,res,next)=> {
     User.findOne({email: req.body.email})
     .then(user => {
         if(user){
-            // debugger;
-            errors.email = 'Email already exists';
-            return res.status(400).json(errors);
+            debugger;
+            //find user with _id and check if email belongs to user with _id
+            //if it matches, then send up data, if not, then send email taken error
+            //User should be able to keep their old email and only change username
+            User.findOne({_id:req.params.id})
+                .then(userOrig => {
+                    if (userOrig.email === user.email){
+                        let handle = req.body.handle;
+                        let email = req.body.email;
+                        let zipcode = req.body.zipcode;
+
+                        userOrig.handle = handle;
+                        userOrig.email = email;
+                        userOrig.zipcode = zipcode;
+
+                        userOrig.save()
+                            .then(user => res.json(user))
+                            .catch(err => console.log(err));
+                    }else{
+                        errors.email = 'Email already exists';
+                        return res.status(400).json(errors);
+                    }
+                }).catch(err => 
+                    res.status(404).json({noUserFound: "no user found with that ID"})
+                );
         }else{
-            User.findOne({_id: userId})
-                .then(user => {
-                    debugger;
+            User.findOne({_id:req.params.id})
+                .then(userOrig => {
                     let handle = req.body.handle;
                     let email = req.body.email;
                     let zipcode = req.body.zipcode;
 
-                    user.handle = handle;
-                    user.email = email;
-                    user.zipcode = zipcode;
+                    userOrig.handle = handle;
+                    userOrig.email = email;
+                    userOrig.zipcode = zipcode;
 
-                    user.save()
+                    userOrig.save()
                         .then(user => res.json(user))
                         .catch(err => console.log(err));
-                })
-                .catch(err => 
+                    }
+                ).catch(err => 
                     res.status(404).json({noUserFound: "no user found with that ID"})
                 );
         }
-});
-
+    });
 });
 
 //get single user by email

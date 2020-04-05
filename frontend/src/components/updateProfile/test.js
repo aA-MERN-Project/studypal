@@ -24,18 +24,23 @@ class Test extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.setState({updateProfile:"true"});
-        debugger;
-        if(this.state.updateProfile==="false"){
+        if(this.props.user.id){
             this.props.updateProfileAct(this.props.user.id, this.state);
-        }else{
+        }else if(this.props.user._id){
             this.props.updateProfileAct(this.props.user._id, this.state);
         }
-        this.props.handler();
 
+        // this.setState({updateProfile:"true"});
+        // // also check if no errors 
+        // if(this.state.updateProfile==="false"){
+        //     this.props.updateProfileAct(this.props.user.id, this.state);
+        // }else{
+        //     this.props.updateProfileAct(this.props.user._id, this.state);
+        // }
+        
         //this added so that when user updates Profile, it will setstate
         //in profile page to trigger rerender of profile component
-        // this.props.handler();
+        this.props.handler();
     }
 
     update(field){

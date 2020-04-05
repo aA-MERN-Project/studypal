@@ -11,7 +11,7 @@ const receiveUpdatedUser = (user)  => {
 }
 
 
-const receiveErrors = errors => ({
+const receivehmmErrors = errors => ({
     type: RECEIVE_UPDATED_USER_ERRORS,
     errors
 });
@@ -21,5 +21,5 @@ export const updatedUser = (id) => dispatch => {
     debugger;
     UserAPIUtil.getUser(id)
         .then(user => dispatch(receiveUpdatedUser(user)),
-        err => (dispatch(receiveErrors(err.reponse.data))))
+        err => (dispatch(receiveErrors(err.reponse.data))));
 };
