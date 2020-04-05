@@ -33,7 +33,7 @@ const receiveErrors = errors => ({
 
 //added by Fei
 const receiveUserSignIn = (currentUser) => {
-    // debugger; 
+    //  ; 
     return({
     type: RECEIVE_USER_SIGN_IN,
     currentUser
@@ -87,7 +87,7 @@ export const logout = () => dispatch => {
 };
 
 export const updateProfileAct = (id, data) => dispatch => {
-    // debugger;
+    //  ;
     return(
         UserAPIUtil.updateProfile(id, data)
             .then((user) => dispatch(receiveUserSignIn(user)))

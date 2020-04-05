@@ -146,6 +146,13 @@ const CafeSchema = new Schema({
     type: String,
    
   },
+  rolled_amount: {
+    type: Number,
+  },
+
+  selected_amount: {
+    type: Number,
+  }
   
 });
 

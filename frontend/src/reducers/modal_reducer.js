@@ -8,7 +8,7 @@ const initialState = {
 const modalReducer = (state = initialState, action) => {
   Object.freeze(state);
   let nextState = state;
-  debugger
+   
   switch (action.type) {
     case OPEN_MODAL:
 

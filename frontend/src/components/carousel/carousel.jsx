@@ -6,9 +6,6 @@ function Carousel(props) {
 
 
     const [counter, setCounter] = useState(0);
-
-
-
     function handleBefore(e){
         e.preventDefault();
         const carouselSlide = document.querySelector(".carousel-slide")

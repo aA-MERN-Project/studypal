@@ -25,7 +25,7 @@ function Carousel(props) {
     
     function handleSnap() {
         const {_data, itemWidth, itemSideOffsets} = props;
-        debugger
+         
         const carousel = cref.current;
 
         
@@ -33,13 +33,13 @@ function Carousel(props) {
         // reset carousel
         setDown(false);
 
-        debugger
+         
         carousel.classList.remove('active');
 
         //Threshold
         // getting transvalue
 
-        debugger
+         
         const tempThresholdOffset = giveMeIntValOf(carousel.firstChild.style.transform)
         const end = _data.length * (itemWidth + (2 * itemSideOffsets)) - 30 - carousel.offsetWidth
         
@@ -58,12 +58,12 @@ function Carousel(props) {
 
 
     function handleMouseDown(event) {
-        debugger
+         
         const carousel = cref.current;
         event.persist()
-        debugger
+         
         carousel.classList.add('active');
-        debugger
+         
         const _startX = event.pageX - carousel.offsetLeft;
         const _transLeftOffset = giveMeIntValOf(carousel.firstChild.style.transform)
         
@@ -73,17 +73,17 @@ function Carousel(props) {
 
         //Reset transition
 
-        debugger
+         
 
         const x = event.pageX - carousel.offsetLeft;
         const walk = (x- startX) * dragSpeed;
-        debugger
+         
         carousel.firstChild.style.cssText = `
         transform: translateX(${transLeftOffset + walk}px);
         transition: transform 0.0s ease-in-out;
       `;
 
-      debugger
+       
 
 
     }
@@ -91,7 +91,7 @@ function Carousel(props) {
 
     // mouse Leave
     function handleMouseLeave(e) {
-        debugger
+         
         handleSnap()
     }
 

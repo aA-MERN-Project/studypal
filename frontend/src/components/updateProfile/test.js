@@ -4,7 +4,7 @@ class Test extends React.Component {
     
     constructor(props) {
         super(props);
-        // debugger;
+        //  ;
         this.state = {
             id: "",
             handle: "",
@@ -21,7 +21,7 @@ class Test extends React.Component {
     }
 
     // componentWillUpdate(nextProps,nextState){
-    //     debugger;
+    //      ;
     //     if (!nextProps.user.email === this.state.user.email){
     //         this.props.updateProfileAct(nextProps.user.id, nextProps.user);
     //       }
@@ -29,7 +29,7 @@ class Test extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // debugger;
+        //  ;
         this.props.updateProfileAct(this.props.user.id, this.state);
         this.props.handler();
 
@@ -45,7 +45,7 @@ class Test extends React.Component {
     };
 
     renderErrors() {
-        // debugger;
+        //  ;
         if (this.props.errors){
             return(
                 Object.values(this.props.errors).map((err) => (
