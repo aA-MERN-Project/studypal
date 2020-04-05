@@ -33,7 +33,7 @@ class Map extends Component {
             {
                 origin: origin,
                 destination: destination,
-                travelMode: google.maps.TravelMode.DRIVING
+                travelMode: google.maps.TravelMode.WALKING
             },
             (result, status) => {
                 if (status === google.maps.DirectionsStatus.OK) {
