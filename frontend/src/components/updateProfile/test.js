@@ -37,6 +37,7 @@ class Test extends React.Component {
     //         this.props.updateProfileAct(nextProps.user.id, nextProps.user);
     //       }
     // }
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -65,7 +66,6 @@ class Test extends React.Component {
     };
 
     renderErrors() {
-        //  ;
         if (this.props.errors){
             return(
                 Object.values(this.props.errors).map((err) => (
