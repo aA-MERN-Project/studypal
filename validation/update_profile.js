@@ -33,7 +33,7 @@ module.exports = function validateUpdateProfile(data){
     }
 
     //don't know why min of 4 puts 
-    if(Validator.isLength(data.zipcode.toString(), {min: 4, max: 4})){
+    if(!Validator.isLength(data.zipcode.toString(), {min: 5, max: 5})){
         errors.zipcode = "Please enter a 5 digit zipcode";
     }
 
