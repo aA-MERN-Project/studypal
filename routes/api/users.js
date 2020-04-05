@@ -30,12 +30,11 @@ router.patch('/:id/profile', (req,res,next)=> {
         return res.status(400).json(errors);
     }
     const userId = req.params.id;
-    debugger;
 
     User.findOne({email: req.body.email})
     .then(user => {
         if(user){
-            debugger;
+            // debugger;
             //find user with _id and check if email belongs to user with _id
             //if it matches, then send up data, if not, then send email taken error
             //User should be able to keep their old email and only change username

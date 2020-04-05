@@ -39,7 +39,6 @@ export const getUser = (id) => dispatch => {
 
 
 export const updateProfileAct = (id, data) => dispatch => {
-    debugger;
     return(
         UserAPIUtil.updateProfile(id, data)
             .then((user) => dispatch(receiveUser(user)),
