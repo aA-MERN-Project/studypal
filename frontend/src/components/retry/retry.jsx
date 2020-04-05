@@ -69,7 +69,7 @@ class Retry extends React.Component {
   }
 
   componentDidMount() {
-    // debugger
+    //  
     if (Object.keys(this.props.filters).length === 0) {
       this.props.history.push(`/`);
     }

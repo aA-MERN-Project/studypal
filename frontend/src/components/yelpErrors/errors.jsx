@@ -6,7 +6,10 @@ class Errors extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    
   }
+
+  
 
   componentWillUnmount() {
       this.props.history.push(`/`);
@@ -16,9 +19,16 @@ class Errors extends React.Component {
     return (
       <div className="index">
         <div className="errors">
-          <div>Oops, something went wrong with the Yelp request. </div>
-          <br />
-          <div>Sorry, please try again in a few moments!</div>
+          <div className="sorry">SORRY :( </div>
+          <br/>
+          <div id="yellow">Something went wrong on our end</div>
+          <div>Please go back and try again</div>
+          <div id="doggos">
+            <img id="study-img" src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/study_dog.png"></img>
+
+            {/* <div id="doggos-2">Meet Thomas & Jones</div> */}
+
+          </div>
         </div>
       </div>
     );

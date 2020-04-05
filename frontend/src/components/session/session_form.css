@@ -146,7 +146,7 @@
 }
 
 .nevermind {
-    padding-left: 36%;
+    padding-left: 39%;
     font-family: "Open Sans";
     font-style: normal;
     font-weight: normal;
@@ -162,7 +162,8 @@
 }
 
 .top-left {
-    height: 58VH;
+    height: 62%;
+    min-height: 300px;
 }
 
 .top-right {

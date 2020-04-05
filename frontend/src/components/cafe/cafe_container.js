@@ -26,7 +26,7 @@ const mapStateToProps = state => {
 
 }
 const mapDispatchToProps = dispatch => ({
-  openModal: (modal) => dispatch(openModal(modal)),
+  openModal: (modal, data) => dispatch(openModal(modal, data)),
   clearCafes: () => dispatch(clearCafes()),
   rerollCafes: cafes => dispatch(rerollCafes(cafes)),
   fetchYelpCafeById: id => dispatch(fetchYelpCafeById(id))

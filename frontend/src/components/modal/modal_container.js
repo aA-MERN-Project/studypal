@@ -3,8 +3,12 @@ import Modal from "./modal";
 import { closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = state => {
+   ;
   return {
-    modal: state.modal.modal
+    
+    modal: state.modal.modal,
+    data: state.modal.data
+
   };
 };
 

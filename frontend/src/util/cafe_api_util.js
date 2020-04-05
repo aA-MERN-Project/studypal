@@ -22,3 +22,7 @@ export const getCafeByZipcode = zipcode => {
 export const getCafeByFilters = filters => {
     return axios.post(`/api/cafes/filters`, filters)
 };
+
+export const updateCafe = (id, data) => {
+    return axios.patch(`api/cafes/update/${id}`, data);
+}

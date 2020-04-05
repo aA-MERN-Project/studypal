@@ -1,0 +1,48 @@
+
+.modal-backdrop {
+   position: fixed;
+   display: flex;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   background: rgba(44, 44, 44, 0.671);
+   z-index: 9999;
+   overflow: auto;
+   align-items: center;
+}
+
+
+.carousel-modal {
+    top: -20px;
+    flex-flow: column nowrap;
+    max-height: 700px;
+    justify-content: space-around;
+    margin: auto;
+    position: relative;
+    width: 1000px;
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 2px solid #EBEBEB;
+    box-shadow: 0 0 10px #EBEBEB;
+    overflow-y: scroll;
+}
+
+
+
+.carousel-container {
+    display: flex;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    height: 400px;
+    position: relative;
+}
+
+.carousel-img {
+    height: 400px;
+    width: 300px;
+}
