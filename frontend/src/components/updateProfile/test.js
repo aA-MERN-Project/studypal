@@ -6,13 +6,11 @@ class Test extends React.Component {
     
     constructor(props) {
         super(props);
-        // debugger;
         this.state = {
-            id: "",
-            handle: "",
-            email: "",
-            zipcode: "",
-            password: '',
+            id: this.props.user.id,
+            handle: this.props.user.handle,
+            email: this.props.user.email,
+            zipcode: this.props.user.zipcode,
             updateProfile: "false"
         };
 
@@ -23,13 +21,6 @@ class Test extends React.Component {
         this.openUpdate = this.openUpdate.bind(this);
         this.closeUpdate= this.closeUpdate.bind(this);
     }
-
-    // componentWillUpdate(nextProps,nextState){
-    //     debugger;
-    //     if (!nextProps.user.email === this.state.user.email){
-    //         this.props.updateProfileAct(nextProps.user.id, nextProps.user);
-    //       }
-    // }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -54,7 +45,6 @@ class Test extends React.Component {
     };
 
     renderErrors() {
-        // debugger;
         if (this.props.errors){
             return(
                 Object.values(this.props.errors).map((err) => (
@@ -81,42 +71,39 @@ class Test extends React.Component {
       
     }
     
-    // componentWillReceiveProps(nextProps){
-    //     this.setState({user:nextProps.user});
-    // }
 
     render(){
         if (this.state.updatedProfile==="true"){
             return(
                 <div>
-                    <div className="editProfileButtonDiv" >
+                    {/* <div className="editProfileButtonDiv" >
                             <button  className="editProfileButton" onClick={this.closeUpdate} >x</button>
-                    </div>
-                    <div className="updateProfileForm">
-                        
-                        <form onSubmit={this.handleSubmit}>
-                            <input type="text" placeholder="New username" value={this.state.handle} onChange= {this.update("handle")}></input>
+                    </div> */}
+                    <div className="update-profile-div">
+                        <form className="update-profile-form"onSubmit={this.handleSubmit}>
+                            <div className="vertical-line-profile"></div>
+                            <label className="profile-labels">Username:</label>
                             <br/>
-                            <input type="text" placeholder="New email" value={this.state.email} onChange={this.update("email")}></input>
+                            <input className="update-input" type="text" placeholder="New username" value={this.state.handle} onChange= {this.update("handle")}></input>
                             <br/>
-                            <input type="text" placeholder="Change zipcode" value={this.state.zipcode} onChange={this.update("zipcode")}></input>
+                            <label className="profile-labels">Email:</label>
+                            <br />
+                            <input className="update-input" type="text" placeholder="New email" value={this.state.email} onChange={this.update("email")}></input>
                             <br/>
-                            {/* <input type="password" placeholder="Enter password to update" value={this.state.password} onChange={this.update("password")}></input> */}
-                            <button>Update profile</button>
+                            <label className="profile-labels">Zipcode:</label>
+                            <br />
+                            <input className="update-input" type="text" placeholder="Change zipcode" value={this.state.zipcode} onChange={this.update("zipcode")}></input>
+                            <br/>
+                            <button className="update-profile-button">Update profile</button>
+                            <button className="update-profile-close" onClick={this.closeUpdate}>Close</button>
                         </form>
+                        <ul className="update-errors" onClick={this.closeUpdate}>{this.renderErrors()}</ul>
                     </div>  
-                    <div className="errors">
-                      <ul>{this.renderErrors()}</ul>
-                    </div>
                 </div>   
             )
         }else{
             return(
-                <div>
-                    <div className="updateButton">
-                        <button classname="updateProfile" onClick={this.openUpdate} >test text</button>
-                    </div>
-                </div>
+                <img className="updateProfileImg" src="https://studypal-dev.s3-us-west-1.amazonaws.com/edit.png" onClick={this.openUpdate}/>
             )   
         }
     

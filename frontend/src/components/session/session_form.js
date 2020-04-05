@@ -188,7 +188,7 @@ class SessionForm extends React.Component {
                   </label>
                 </div>
                 <div className="errors">
-                  <ul>{this.renderErrors()}</ul>
+                  <ul className="session-errors">{this.renderErrors()}</ul>
                 </div>
                 <div className="l-s-button-div">
                   <button className="login-signup-button">
