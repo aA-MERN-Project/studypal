@@ -33,8 +33,13 @@ class Test extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // debugger;
-        this.props.updateProfileAct(this.props.user.id, this.state);
+        this.setState({updateProfile:"true"});
+        debugger;
+        if(this.state.updateProfile==="false"){
+            this.props.updateProfileAct(this.props.user.id, this.state);
+        }else{
+            this.props.updateProfileAct(this.props.user._id, this.state);
+        }
         this.props.handler();
 
         //this added so that when user updates Profile, it will setstate

@@ -30,7 +30,7 @@ router.patch('/:id/profile', (req,res,next)=> {
         return res.status(400).json(errors);
     }
     const userId = req.params.id;
-    // debugger;
+    debugger;
 
     User.findOne({email: req.body.email})
     .then(user => {
@@ -41,6 +41,7 @@ router.patch('/:id/profile', (req,res,next)=> {
         }else{
             User.findOne({_id: userId})
                 .then(user => {
+                    debugger;
                     let handle = req.body.handle;
                     let email = req.body.email;
                     let zipcode = req.body.zipcode;
