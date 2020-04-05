@@ -3,7 +3,7 @@
 .signup-page-div {
     display: flex;
     justify-content: space-around;
-    height: 100vh;
+    min-height: 100%
 }
 
 .signup-div {
@@ -11,6 +11,7 @@
     justify-content: center;
     flex-direction: column;
     width: 50%;
+    min-width: 200px;
     align-items: center;
 }
 
@@ -23,7 +24,9 @@
     border: 2px solid rgba(65, 105, 225, 0.5);
     box-sizing: border-box;
     border-radius: 10px;
-    width: 70%;
+    width: 80%;
+    /* min-width: 200px; */
+    min-width: 200px;
     padding-top: 25px;
     padding-bottom: 25px;
     /* padding-right: 25px */
@@ -36,12 +39,8 @@
     font-weight: 600;
     font-size: 34px;
     color: #4169E1;
-    /* min-width: 100%; */
     padding-left: 11%;
-    padding-right: 15%;
-    /* margin-right:30%; */
     padding-top: 4%;
-    /* padding: 10px; */
     text-align: left;
 }
 
@@ -56,27 +55,26 @@
 .right-div-signup {
     display: flex;
     width: 50%;
+    min-width: 320px;
     background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%); 
 }
 
 .left-div-signup {
     display: flex;
     width: 50%;
+    min-width: 320px;
     background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
 }
 
-
-
 .create-account-login {
-font-family: "Open Sans";
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-color: #333333;
-/* padding-left: 12%; */
-padding-left: 11%;
-padding-bottom: 8%;
-padding-top: 4%
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: #333333;
+    padding-left: 11%;
+    padding-bottom: 8%;
+    padding-top: 4%
 }
 
 .form-labels {
@@ -170,8 +168,10 @@ padding-top: 4%
 .top-right {
     position: absolute;
     right: 0;
+    width: 33%;
+    min-width: 300px
     /* width: 28VW; */
-    width: 31vw;
+    /* width: 31vw; */
 }
 
 .session-errors {
