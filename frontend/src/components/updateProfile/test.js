@@ -76,13 +76,13 @@ class Test extends React.Component {
         this.setState({handle:this.props.updatedUser.handle});
         this.setState({email:this.props.updatedUser.email});
         this.setState({zipcode:this.props.updatedUser.zipcode});
+        this.props.clearErrors();
         
     }
 
     closeUpdate(){
       this.setState({updatedProfile:"false"});
       this.props.clearErrors();
-    
 
     }
     
