@@ -49,21 +49,20 @@
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 26px;
     color: #333333;
-    padding-left: 3%;
+    padding-left: 8%;
     padding-bottom: 10%;
     padding-top:20px
 }
 
 .email {
-    /* padding-bottom: 1.5%; */
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 18px;
     color: rgba(51, 51, 51, 0.5);
-    padding-left: 3%;
+    padding-left: 8%;
     padding-bottom: 10%
 }
 
@@ -71,9 +70,9 @@
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 18px;
     color: rgba(51, 51, 51, 0.5);
-    padding-left: 3%;
+    padding-left: 8%;
     padding-bottom: 10%
 }
 
@@ -106,16 +105,16 @@
     display: flex;
     flex-direction: column;
     width: 65%;
+    /* width: 100%; */
+    min-width: 827px;
     height: 40%;
     padding: 40px;
-    /* align-content: space-between; */
 }
 
 .profile-info-div {
     display: flex;
     justify-content: space-around;
     padding-top: 7%;
-
 }
 
 .filter-box-div{
@@ -125,6 +124,7 @@
     flex-direction: column;
     padding: 40px;
     width: 65%;
+    min-width: 827px;
     height: 40%;
     background-color: white;
 }
@@ -142,9 +142,12 @@
     padding-top: 1%;
 }
 
-.profile-page {     
-    height: 100%;
-    width: 100%;
+.profile-page {    
+    position: absolute; 
+    top: 0;
+    left: 0; 
+    min-height: 100%;
+    min-width: 100%;
     margin: 0;
     padding: 0;
     background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%); 
@@ -228,10 +231,13 @@
 }
 
 .coffee-img {
-    width: 22%;
+    width: 130px;
     height: 100%;
     background-color: rgba(255, 127, 80, 0.8);
-    border-radius: 42%
+    border-radius: 50%;
+    padding-right: 10px;
+    padding-left: 15px;
+    padding-bottom: 5px;
 }
 
 .img-info-div {
@@ -286,30 +292,32 @@
 }
 
 .update-input {
-    /* border-radius: 40%; */
     font-family: 'Open Sans';
     outline: none;
     padding: 1%;
     font-size: 13px;
     position: relative;
-    left: 52%;
+    left: 90%;
     top: 2px;
-    /* margin-bottom: 1%; */
     width: 90%
 }
 
 .updateProfileImg {
-    width: 20%;
+    max-width: 50px;
+    width: 14%;
+    min-width: 26px;
     background: rgba(65, 105, 225, 0.5);
     border-radius: 10%;
     padding: 1%;
     position: relative;
-    left: 75%
+    left: 95%;
 }
 
 .halfProfile2 {
     width: 50%;
-    height: 50%
+    height: 50%;
+    /* padding-left: 10% */
+
 }
 
 .update-profile-div {
@@ -326,30 +334,30 @@
 
 .update-profile-button {
     position: relative;
-    left: 52%;
+    left: 90%;
     top: 2px;
 }
 
 .update-profile-close {
     position: relative;
-    left: 52%;
+    left: 90%;
     top: 2px;
 }
 
 .vertical-line-profile {
-    width: 150px;
+    width: 180px;
     height: .1px;
     border: 1px solid rgba(65, 105, 225, 0.5);
     transform: rotate(90deg);
     position: relative;
-    right: 35%;
+    left: 25%;
     top: 53%
 }
 
 .profile-labels {
     font-family: 'Open Sans';
     position: relative;
-    left: 52%;
+    left: 90%;
     top: 2px;
     font-size: 14px;
     width: 60%;

@@ -193,9 +193,9 @@ class Profile extends React.Component {
                       }
                     />
                     <div className="only-profile-info">
-                      <div className="profile-name">{username}USERNAME</div>
-                      <div className="email">{email}EMAIL</div>
-                      <div className="zipcode">Current Zipcode {zipcode}9411</div>
+                      <div className="profile-name">{username}</div>
+                      <div className="email">{email}</div>
+                      <div className="zipcode">Current Zipcode: {zipcode}</div>
                     </div>
                   </div>  
                   <div className="halfProfile2">
