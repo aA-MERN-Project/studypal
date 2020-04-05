@@ -11,7 +11,7 @@ const receiveUpdatedUser = (user)  => {
 }
 
 
-const receivehmmErrors = errors => ({
+const receiveErrors = errors => ({
     type: RECEIVE_UPDATED_USER_ERRORS,
     errors
 });
