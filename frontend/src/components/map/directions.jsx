@@ -19,10 +19,6 @@ class Map extends Component {
         }
     }
 
-    
-
-
-
     componentDidMount() {
         const directionsService = new google.maps.DirectionsService();
         const origin_default = { lat: 37.7074108, lng: - 122.4127466 }

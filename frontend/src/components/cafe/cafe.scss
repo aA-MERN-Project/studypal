@@ -114,8 +114,10 @@
 .map {
     width: 500px;
     margin-left: 5px;
-    border-radius: 5px;
+    
     border: 1px solid rgba(51, 51, 51, 0.5);
+    height:500px;
+    border-radius: 5px;
 }
 
 .all {
@@ -141,3 +143,82 @@
 .new-cafe span:hover {
     cursor: pointer;
 }
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .map{
+        height:470px;
+    }
+
+    .cafe{
+        justify-content: none;
+        max-height:470px;
+    }
+
+    .all{
+        padding-top: 7%;
+    }
+
+    .profile{
+        padding-top:24px;
+        padding-bottom:24px;
+    }
+
+    .photo{
+        height:320px;
+    }
+  } 
+
+
+  /* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .map{
+        height:470px;
+    }
+
+    .cafe{
+        justify-content: none;
+        max-height:475px;
+
+    }
+
+    .all{
+        padding-top: 7%;
+    }
+
+    .profile{
+        padding-top:24px;
+        padding-bottom:24px;
+    }
+
+    .photo{
+        height:320px;
+    }
+  } 
+
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+// @media only screen and (min-width: 1200px){
+//     .map{
+//         height:500px;
+//     }
+
+//     .cafe{
+//         justify-content: space-between;
+//         max-height:500px;
+//     }
+
+//     .all{
+//         padding-top: 11%;
+//     }
+
+//     .profile{
+//         padding-top:30px;
+//         padding-bottom:28px;
+//     }
+
+//     .photo{
+//         height:344px;
+//     }
+// }
