@@ -1,7 +1,6 @@
 import '../../reset.css';
 import './profile.css';
 import React from 'react';
-
 import NavBar from '../navbar/navbar_container';
 // import Test from '../updateProfile/test_container';
 import Test from '../updateProfile/test';

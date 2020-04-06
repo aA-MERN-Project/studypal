@@ -1,0 +1,36 @@
+.favorites-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%)
+}
+
+.favorites-div {
+    background: white;
+    display: flex;
+    /* align-items: center; */
+    position: relative;
+    margin-top: 12%;
+    width: 70%;
+    min-width: 800px;
+    left: 14.5%;
+    flex-direction: column;
+    border-radius: 5%;
+}
+
+.back-profile-div {
+    display: flex;
+}
+
+.modal-arrow {
+    transform: (90deg);
+    width: 20%
+}
+
+.back-profile-header {
+    color: rgba(255, 127, 80, 0.8);
+}
