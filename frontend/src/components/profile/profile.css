@@ -211,7 +211,7 @@
 
 .find-cafe-profile {
     outline: none;
-    width: 65%;
+    width: 20%;
     height: 40px;
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.25);
     background: rgba(255, 127, 80, 0.8);
@@ -222,6 +222,14 @@
     font-size: 16px;
     text-align: center;
     color: #FFFFFF;
+}
+
+.find-cafe-profile:hover {
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+    box-shadow: none;
+    color:white;
 }
 
 .find-cafe-profile-div {
@@ -266,9 +274,24 @@
     background-color: #ffffff;
     border: rgba(65, 105, 225, 0.5) 2px solid;
     border-radius: 5px;
-    font-size: 9px;
+    font-size: 10.5px;
     color: rgba(65, 105, 225, 0.5);
     font-weight: 900;
+    outline:none;
+}
+
+.profile-clear:hover{
+    color:black;
+    cursor: pointer;
+    font-weight:700;
+    color:#4169E1;
+    outline:none;
+    
+    border: #4169E1 2px solid;
+
+    
+    /* background-color:#4169E1;
+    color:white; */
 }
 
 .profile-clear-div {
@@ -331,6 +354,11 @@
 
 }
 
+.update-profile-div *{
+    margin-bottom:3px;
+    margin-top:3px;
+}
+
 .update-profile-div {
     display: flex
 }
@@ -349,7 +377,7 @@
     position: relative;
     left: 90%;
     top: 2px;
-    outline: none
+    outline: none;
 }
 
 .update-profile-close {
@@ -381,3 +409,41 @@
 .update-profile-form {
     width: 60%
 }
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .profile-info{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .filter-box-div{
+        padding-top:25px;
+        padding-bottom:25px;
+    }
+
+    .find-cafe-profile-div {
+        padding-top:1.7%
+    }
+
+  } 
+
+
+  /* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .profile-info{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .filter-box-div{
+        padding-top:25px;
+        padding-bottom:25px;
+    }
+
+    .find-cafe-profile-div {
+        padding-top:1.7%
+    }
+  } 
+
+
