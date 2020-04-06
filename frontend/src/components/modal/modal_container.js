@@ -7,7 +7,8 @@ const mapStateToProps = state => {
   return {
     
     modal: state.modal.modal,
-    data: state.modal.data
+    data: state.modal.data,
+    yelpCafe: state.entities.yelpCafe
 
   };
 };
