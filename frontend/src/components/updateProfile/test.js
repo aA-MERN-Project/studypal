@@ -41,8 +41,12 @@ class Test extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        //  ;
-        this.props.updateProfileAct(this.props.user.id, this.state);
+        if(this.props.user.id){
+            this.props.updateProfileAct(this.props.user.id, this.state);
+        }else{
+            this.props.updateProfileAct(this.props.user._id, this.state);
+        }
+        
         this.props.handler();
 
         // this.setState({updateProfile:"true"});
@@ -124,6 +128,7 @@ class Test extends React.Component {
                             <input className="update-input" type="text" placeholder="Change zipcode" value={this.state.zipcode} onChange={this.update("zipcode")}></input>
                             <br/>
                             <button className="update-profile-button">Update profile</button>
+                            &ensp;
                             <button className="update-profile-close" onClick={this.closeUpdate}>Close</button>
                             <ul className="update-errors" onClick={this.closeUpdate}>{this.renderErrors()}</ul>
                         </form>

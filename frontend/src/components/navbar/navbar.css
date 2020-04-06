@@ -20,7 +20,7 @@
     color: white;
     text-decoration: none;
     padding-left: 7%;
-    width: 20%
+    width: 25%
 }
 
 .button2{
@@ -33,7 +33,20 @@
     background-color:#4169E1;
     color:white;
     border:none;
+    /* Fei changed width to 30% */
+    width:30%;
 
+}
+
+.button:hover{
+    font-size:16px;
+    font-weight:bold;
+    
+}
+
+.button2:hover{
+    font-size:16px;
+    font-weight:bold;
 }
 
 .logo {

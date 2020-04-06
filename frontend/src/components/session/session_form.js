@@ -66,7 +66,6 @@ class SessionForm extends React.Component {
           //  ;
           this.props.history.push("/user");
         }
-        
         this.setState({errors: nextProps.errors});
     }
 
