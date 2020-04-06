@@ -4,6 +4,8 @@ import Profile from './profile';
 import {logout, login, updateProfileAct, updateUserPreferences} from '../../actions/session_actions';
 import {getUser} from '../../actions/user_actions'
 import {updatedUser} from '../../actions/updated_user_actions';
+import { fetchCafeByFilters } from '../../actions/cafe_actions';
+import { getFilters } from '../../actions/filter_actions';
 
 const mapStateToProps = state => {
     //  
@@ -22,7 +24,9 @@ const mapDispatchToProps = dispatch => ({
     updateProfileAct: (id,user)=> dispatch(updateProfileAct(id,user)),
     getUpdatedUser: (id) => dispatch(updatedUser(id)),
     // getPreferences: () => dispatch
-    updateUserPreferences: (id, preferences) => dispatch(updateUserPreferences(id, preferences))
+    updateUserPreferences: (id, preferences) => dispatch(updateUserPreferences(id, preferences)),
+    fetchCafeByFilters: filters => dispatch(fetchCafeByFilters(filters)),
+    getFilters: filters => dispatch(getFilters(filters)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

@@ -25,15 +25,16 @@ class Map extends Component {
 
     componentDidMount() {
         const directionsService = new google.maps.DirectionsService();
-        
-        
+        const origin_default = { lat: 37.7074108, lng: - 122.4127466 }
 
         const origin = { lat: this.props.my_lat, lng: this.props.my_lng };
         const destination = { lat: this.props.cafe_lat, lng: this.props.cafe_lng };
 
+
+
         directionsService.route(
             {
-                origin: origin,
+                origin: this.props.my_lat ? origin : origin_default,
                 destination: destination,
                 travelMode: google.maps.TravelMode.WALKING
             },

@@ -84,14 +84,20 @@ class Cafe extends React.Component {
         let leftOverCafes = this.props.cafes.filter(cafe => {
             return cafe.id !== this.props.yelpCafe.id;
         });
-
+        
         // Puts into Redux cycle again
         let randomCafe = selectRandomCafe(leftOverCafes)
-        this.setState({ studyPalCafe: randomCafe })
-        this.props
-          .fetchYelpCafeById(randomCafe.id)
-          .catch(err => this.props.history.push(`/errors`))
-        this.props.rerollCafes(leftOverCafes);
+
+        if (randomCafe){
+          this.setState({ studyPalCafe: randomCafe })
+          this.props
+            .fetchYelpCafeById(randomCafe.id)
+            .catch(err => this.props.history.push(`/errors`))
+          this.props.rerollCafes(leftOverCafes);
+        } else {
+          this.props.history.push(`/retry`)
+        }
+       
     }
 
     handleClick(e) {
@@ -110,17 +116,12 @@ class Cafe extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-
-        if (this.props.cafes.length === 0) {
-            this.props.history.push(`/retry`)
-        }
+       
 
       }
 
     componentWillUnmount(){
-      this.setState({studyPalCafe: null})
-      debugger
-
+      this.props.clearCafes();
     }
 
     addSelected(id) {
@@ -132,20 +133,25 @@ class Cafe extends React.Component {
 
     render() {
       
-        debugger
+       
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
-        if (this.props.cafes.length === 0) return null;
+
+        if (this.props.cafes.length === 0) this.props.history.push(`/retry`)
 
         // If no curr yelpcafe exist, request from API
         if (Object.keys(this.props.yelpCafe).length === 0) {
-              debugger
-              let randomCafe = selectRandomCafe(this.props.cafes);
+          let randomCafe = selectRandomCafe(this.props.cafes);
+          if (randomCafe){
               this.setState({studyPalCafe: randomCafe})
               this.props
                 .fetchYelpCafeById(randomCafe.id)
                 .catch(err => this.props.history.push(`/errors`));
+            }
           }
+
+
+
 
         if (Object.keys(this.props.yelpCafe).length === 0) return null
 
