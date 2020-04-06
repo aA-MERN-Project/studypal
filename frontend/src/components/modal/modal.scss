@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap');
 
 .modal-backdrop {
    position: fixed;
@@ -14,15 +15,15 @@
 
 
 .carousel-modal {
-    top: -20px;
+    // top: -20px;
     flex-flow: column nowrap;
     max-height: 700px;
     justify-content: space-around;
     margin: auto;
     position: relative;
-    width: 1000px;
+    width: 850px;
     align-items: center;
-    background-color: #FFFFFF;
+    background-color: white;
     border: 2px solid #EBEBEB;
     box-shadow: 0 0 10px #EBEBEB;
     overflow-y: scroll;
@@ -45,4 +46,123 @@
 .carousel-img {
     height: 400px;
     width: 300px;
+}
+
+.business-misc {
+    padding-bottom: 10%;
+}
+
+.modal-name {
+    padding: 30px;
+    font-family: "Montserrat";
+    font-size: 30px;
+}
+
+.modal-horizontal-line {
+    position: relative;
+    bottom: 20px;
+    left: 32px;
+    // width: 100%;
+    width: 769px;
+    height: .01px;
+    // margin-left: auto;
+    // margin-right: auto;
+    border: 1px solid black;
+    // margin-bottom:15px;
+    // padding: 50px;
+}
+
+.modal-distance-duration {
+    // color: rgba(51, 51, 51, 0.5);
+    color: black;
+    font-family: "Open Sans";
+    font-size: 15px;
+    position: relative;
+    padding-left: 30px;
+    padding-bottom: 7px;
+    position: relative;
+    right: 30px;
+}
+
+.modal-left {
+    padding-left: 23px;
+}
+
+.modal-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rolled-favorited {
+    font-family: "Open Sans";
+    font-size: 15px;
+    position: relative;
+    // left: 20px;
+    top: 10px;
+
+}
+
+.vertical-line-modal {
+    max-width: 190px;
+    height: .1px;
+    border: 1px solid black;
+    transform: rotate(90deg);
+    position: relative;
+    left: 25%;
+    top: 55%
+}
+
+.business-misc-flex {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    right: 15px;
+}
+
+.time-modal {
+    // color: rgba(51, 51, 51, 0.5);
+    color: black;
+    margin-top: -8px;
+    font-family: "Open Sans";
+    font-size: 15px;
+    padding-bottom: 7px;
+    position: relative;
+    left: 25px;
+}
+
+.modal-address {
+    color: black;
+    // color: rgba(51, 51, 51, 0.5);
+    font-family: "Open Sans";
+    font-size: 15px;
+    padding-bottom: 7px;
+    position: relative;
+    left: 25px;
+}
+
+.noun-espresso {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 7px;
+}
+
+.modal-bottom {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.modal-horizontal-info {
+    width: 500px;
+    height: .01px;
+    margin-left: auto;
+    margin-right: auto;
+    border: .5px solid black;
+    margin-bottom:15px;
+    position: relative;
+    // left: 15px;
+    top: 10px;
 }

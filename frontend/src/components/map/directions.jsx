@@ -19,10 +19,6 @@ class Map extends Component {
         }
     }
 
-    
-
-
-
     componentDidMount() {
         const directionsService = new google.maps.DirectionsService();
         

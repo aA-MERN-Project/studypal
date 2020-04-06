@@ -12,11 +12,11 @@ module.exports = function validateRegisterInput(data){
     // data.zipcode = isNumber(data.zipcode) ? data.zipcode : "";
 
     if(!Validator.isLength(data.handle, {min:2, max:30})){
-        errors.handle = "Handle must be between 2 and 30 characters";
+        errors.handle = "Username must be between 2 and 30 characters";
     }
 
     if(Validator.isEmpty(data.handle)){
-        errors.handle = "Handle field is required";
+        errors.handle = "Username field is required";
     }
 
     if(!Validator.isEmail(data.email)){

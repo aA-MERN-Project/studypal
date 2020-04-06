@@ -91,7 +91,6 @@ export const fetchYelpCafeById = (id) => dispatch => {
     )
 
     return getYelpCafeById(id).then(cafe => {
-        debugger
         dispatch(receiveYelpCafe(cafe.data));
         return cafe.data;
     })

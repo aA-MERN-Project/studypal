@@ -20,23 +20,68 @@ const Modal = (props) => {
     let my_lng = props.data.filters.my_lng;
     let cafe_lat = studyPalCafe.coordinates_latitude;
     let cafe_lng = studyPalCafe.coordinates_longitude;
-
+    let phone_num = props.data.yelpData.display_phone;
+    let address = props.data.yelpData.location.display_address;
     // Put in after setting up user model
     // let saved = studyPalCafe.saved_amount;
+    debugger
+    let formatTime = function(fourDigitTime) {
+      let hours24 = parseInt(fourDigitTime.substring(0, 2));
+      let hours = ((hours24 + 11) % 12) + 1;
+      let amPm = hours24 > 11 ? "pm" : "am";
+      let minutes = fourDigitTime.substring(2);
+      return hours + ":" + minutes + amPm;
+    }
+
+    let calculateTime = function(hours) {
+      let dateApi = new Date();
+      let day = dateApi.getDay();
+      if (!hours) return null
+      if (!hours[0].open[day]) {
+        return "Unavailable Time For This Day"
+      } else {
+        return formatTime(hours[0].open[day].end);
+      }
+    }
     
+    let time = calculateTime(props.yelpCafe.hours)
+
     const carouselModal = (
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
         <div className="carousel-container">
           <Carousel photos={photos} />
         </div>
         <div className="business-misc">
-          <h1> {name} </h1>
-          <div>
-            Distance <b>{distance_away}</b> | Duration <b>{duration}</b> 
+          <h1 className="modal-name"> {name} </h1>
+          <div className="modal-horizontal-line"></div>
+          <div className="business-misc-flex">
+            <div className="modal-left">
+              <div className="time-modal">Open until {time} Today</div>
+              <div className="modal-address">{address[0]}, {address[1]}</div>
+              <div className="modal-address">{phone_num}</div>
+            </div>
+            {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
+            <div className="modal-mid">
+              <div className="modal-distance-duration">{distance_away} miles away</div>
+              <div className="modal-distance-duration">{duration} minutes</div>
+            </div>
+          </div>
+          <div className="modal-bottom">
+            <div className="modal-horizontal-info"></div>
+            {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
+            <div className="modal-right">
+              <div className="rolled-favorited">Number of Times Randomly Rolled: {rolled}</div>
+              {/* <div>Selected: {selected}</div> */}
+              <div className="rolled-favorited">Favorited by TWO others </div>
+            </div>
+          </div>
+          {/* <div className="modal-distance-duration">
+            Distance <b>{distance_away}</b>  |  Duration <b>{duration}</b> 
           </div>
           <div>
-            Numbers of Times Randomly Rolled <b>{rolled}</b> | Selected <b>{selected}</b> | Studyer Favorites <b>0</b>
-          </div>
+            Numbers of Times Randomly Rolled <b>{rolled}</b> | Selected <b>{selected}</b> 
+            | Studier Favorites <b>0</b>
+          </div> */}
          
         </div>
         <Map 
@@ -44,7 +89,6 @@ const Modal = (props) => {
           cafe_lng = {cafe_lng}
           my_lat = {my_lat}
           my_lng = {my_lng}
-          
         />
       </div>
     );

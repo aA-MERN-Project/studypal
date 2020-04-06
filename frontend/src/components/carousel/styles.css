@@ -19,6 +19,8 @@
     margin: 0 auto;
     overflow: hidden;
     position: relative;
+    height: 100%;
+    max-height: 700px
 }
 
 .carousel-slide {
@@ -42,21 +44,25 @@
 }
 
 #prev {
-
+    position: relative;
+    top: 70px;
+    left: 20px;
     font-size: 50px;
-    width: 100px;
-    height: 100px;
-
-    color: white;
+    width: 70px;
+    height: 70px;
+    opacity: .7;
+    /* color: rgb(139, 123, 123); */
     text-align: center;
 }
 #next {
-
+    position: relative;
+    top: 70px;
+    right: 20px;
     font-size: 50px;
-    width: 100px;
-    height: 100px;
-
-    color: white;
+    width: 70px;
+    height: 70px;
+    opacity: .7;
+    /* color: white; */
     text-align: center;
 
 }

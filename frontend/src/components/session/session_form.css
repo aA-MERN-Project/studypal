@@ -3,7 +3,7 @@
 .signup-page-div {
     display: flex;
     justify-content: space-around;
-    min-height: 100%
+    min-height: 100%;
 }
 
 .signup-div {
@@ -129,7 +129,7 @@
 
 .login-signup-button {
     outline: none;
-    width: 70%;
+    width: 40%;
     height: 40px;
     background: rgba(255, 127, 80, 0.8);
     border-radius: 50px;
@@ -138,22 +138,34 @@
     font-weight: 600;
     font-size: 16px;
     color: #FFFFFF;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-left:13.5%;
+    
 }
+
+.login-signup-button:hover{
+    cursor: pointer;
+    box-shadow:none;
+}
+
+
 
 .l-s-button-div {
     width: 110%;
-    padding-left: 11%
+    padding-left: 11%;
 }
 
 .nevermind {
-    padding-left: 39%;
+    /* padding-left: 39%; */
     font-family: "Open Sans";
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 19px;
     color: #333333;
-    width: 36%;
+    /* width: 36%; */    
+    /* added by Fei */
+    padding-top:4px;
 }
 
 .errors {
@@ -182,3 +194,65 @@
     padding-left: 10%;
     padding-bottom: 2%
 }
+
+
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .signup-form-div {
+        padding-top:5px;
+        padding-bottom:15px;
+    }
+
+    
+    .form-labels{
+        padding-top:0px;
+        padding-bottom:0px;
+    }
+
+    .signup-div{
+        margin-top:2%;
+        margin-bottom:2%;
+        width:45%;
+    }
+  } 
+
+
+  /* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .signup-form-div {
+        padding-top:5px;
+        padding-bottom:15px;
+    }
+
+    .form-labels{
+        padding-top:0px;
+        padding-bottom:0px;
+    }
+
+    .signup-div{
+        margin-top:2%;
+        margin-bottom:2%;
+        width:45%;
+    }
+   
+  }
+  
+      /* Extra large devices (large laptops and desktops, 1200px and up)
+@media only screen and (min-width: 1200px){
+    .signup-form-div {
+        padding-top:25px;
+        padding-bottom:25px;
+    }
+
+    .form-labels{
+        padding-top:5px;
+        padding-bottom:5px;
+    }
+
+    .signup-div{
+        width:50%;
+    }
+
+} */

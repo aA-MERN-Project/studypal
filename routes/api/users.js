@@ -35,7 +35,6 @@ router.patch('/:id/profile', (req,res,next)=> {
     User.findOne({email: req.body.email})
     .then(user => {
         if(user){
-            // debugger;
             //find user with _id and check if email belongs to user with _id
             //if it matches, then send up data, if not, then send email taken error
             //User should be able to keep their old email and only change username
@@ -60,10 +59,7 @@ router.patch('/:id/profile', (req,res,next)=> {
                 }).catch(err => 
                     res.status(404).json({noUserFound: "no user found with that ID"})
                 );
-            //  ;
-            errors.email = 'Email already exists';
-            return res.status(400).json(errors);
-        }else{
+            }else{
             User.findOne({_id:req.params.id})
                 .then(userOrig => {
                     let handle = req.body.handle;
