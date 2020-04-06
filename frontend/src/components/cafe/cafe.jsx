@@ -119,7 +119,7 @@ class Cafe extends React.Component {
 
     componentWillUnmount(){
       this.setState({studyPalCafe: null})
-      debugger
+      // debugger
 
     }
 
@@ -131,15 +131,13 @@ class Cafe extends React.Component {
 
 
     render() {
-      
-        debugger
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
         if (this.props.cafes.length === 0) return null;
 
         // If no curr yelpcafe exist, request from API
         if (Object.keys(this.props.yelpCafe).length === 0) {
-              debugger
+              // debugger
               let randomCafe = selectRandomCafe(this.props.cafes);
               this.setState({studyPalCafe: randomCafe})
               this.props
@@ -177,11 +175,9 @@ class Cafe extends React.Component {
                       <div className="name">{this.props.yelpCafe.name}</div>
                       <a
                         className="yelp"
-                        href={this.props.yelpCafe.url}
-                        onClick={() => this.addSelected(this.props.yelpCafe.id)}
-                        target="_blank"
+                        onClick={() => this.props.openModal("cafe", modalData)}
                       >
-                        <div id="yelp-text">View on Yelp</div>
+                        <div id="yelp-text">View</div>
                       </a>
                     </div>
 
@@ -198,7 +194,6 @@ class Cafe extends React.Component {
 
                   <img
                     className="photo"
-                    onClick={() => this.props.openModal("cafe", modalData)}
                     src={this.props.yelpCafe.image_url}
                   ></img>
                 </div>
@@ -221,7 +216,7 @@ class Cafe extends React.Component {
               </span>
             </div>
 
-            <Modal/>
+            <Modal />
           </div>
         );
 

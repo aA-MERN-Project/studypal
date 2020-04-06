@@ -30,7 +30,7 @@ const Modal = (props) => {
           <Carousel photos={photos} />
         </div>
         <div className="business-misc">
-          <h1> {name} </h1>
+          <h1 className="modal-name"> {name} </h1>
           <div>
             Distance <b>{distance_away}</b> | Duration <b>{duration}</b> 
           </div>

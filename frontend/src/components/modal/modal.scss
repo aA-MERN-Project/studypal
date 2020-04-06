@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap');
 
 .modal-backdrop {
    position: fixed;
@@ -22,7 +23,7 @@
     position: relative;
     width: 1000px;
     align-items: center;
-    background-color: #FFFFFF;
+    background-color: white;
     border: 2px solid #EBEBEB;
     box-shadow: 0 0 10px #EBEBEB;
     overflow-y: scroll;
@@ -45,4 +46,14 @@
 .carousel-img {
     height: 400px;
     width: 300px;
+}
+
+.business-misc {
+    padding-bottom: 25%
+}
+
+.modal-name {
+    padding: 30px;
+    font-family: "Montserrat";
+    font-size: 30px;
 }
