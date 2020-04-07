@@ -6,6 +6,7 @@ import NavBar from '../navbar/navbar_container';
 import Test from '../updateProfile/test';
 import TestContainer from '../updateProfile/test_container';
 import $ from "jquery";
+import { Link } from "react-router-dom"
 
 
 class Profile extends React.Component {
@@ -196,6 +197,7 @@ class Profile extends React.Component {
                       <div className="email">{email}</div>
                       <div className="zipcode">Current Zipcode: {zipcode}</div>
                     </div>
+                    <Link to="/favorites">Favorite Cafes</Link>
                   </div>  
                   <div className="halfProfile2">
                     <TestContainer user={this.props.user} updatedUser = {this.props.updatedUser} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler}/>
