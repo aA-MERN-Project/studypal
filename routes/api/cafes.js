@@ -105,13 +105,24 @@ router.patch("/update/:id", (req, res) => {
                     }
                 }
 
+                if (updateType === "favorite"){
+
+                    cafe.favorite_amount += 1;
+                }
+
+                if (updateType === "unfavorite") {
+
+                    if (cafe.favorite_amount > 0) cafe.favorite_amount -= 1;
+
+                }
+
                 cafe.save()
                     .then(cafe => {
                         res.json(cafe)
                         console.log("Cafe Updated")
                     
                     })
-                    .catch(err => console.log(err))
+                    .catch(err => console.log("Save did not work :("))
 
             })
         .catch( err => res.status(404).json({nothingAdded: "No update to StudyPal database"})

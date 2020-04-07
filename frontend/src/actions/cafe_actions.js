@@ -10,8 +10,14 @@ export const REROLL_CAFES = "REROLL_CAFES";
 export const RECEIVE_YELP_CAFE = "RECEIVE_YELP_CAFE";
 export const START_LOADING_FILTERED_CAFES = "START_LOADING_FILTERED_CAFES";
 export const START_LOADING_SINGLE_CAFE = "START_LOADING_SINGLE_CAFE";
+export const RECEIVE_CURR_CAFE = "RECEIVE_CURR_CAFE"
 
 
+export const receiveCurrCafe = cafe => ({
+    type: RECEIVE_CURR_CAFE,
+    cafe,
+
+})
 
 export const rerollCafes = cafes => ({
     type: REROLL_CAFES,
@@ -95,8 +101,14 @@ export const fetchYelpCafeById = (id) => dispatch => {
         return cafe.data;
     })
 
-
 };
+
+export const fetchCurrCafe = (id) => dispatch => {
+    getCafe(id)
+        .then(cafe => dispatch(receiveCurrCafe(cafe)))
+        .catch(err => console.log(err)) 
+
+}
 
 
 

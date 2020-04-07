@@ -20,9 +20,8 @@ class Splash extends React.Component {
     this.findCoordinates = this.findCoordinates.bind(this);
     this.getPosition = this.getPosition.bind(this);
     this.clear = this.clear.bind(this);
-    // this.loggedIn = this.loggedIn.bind(this);
     
-
+  
   }
 
   clear() {
@@ -38,17 +37,6 @@ class Splash extends React.Component {
     })
   }
 
-  // loggedIn() {
-  //   if (!this.props.user) {
-  //     return (
-  //       <div id="looking-for">What are you looking for, {this.props.handle}?</div>
-  //     )
-  //   } else {
-  //     return (
-  //       <div id="looking-for">What are you looking for?</div>
-  //     )
-  //   }
-  // }
 
   getPosition(position) {
 
@@ -56,7 +44,6 @@ class Splash extends React.Component {
       my_lat: position.coords.latitude,
       my_lng: position.coords.longitude
     });
-    console.log(position.coords.latitude, position.coords.longitude);
 
   }
 
@@ -79,8 +66,8 @@ class Splash extends React.Component {
     state.wifi ? state.wifi = "yes" : state.wifi = "no";
     state.noise_level ? state.noise_level = "average" : state.noise_level = "loud";
     state.credit_card ? state.credit_card = "yes" : state.credit_card = "no";
+    state.location_zip_code = JSON.parse(state.location_zip_code);
 
-    //  
 
     this.props.fetchCafeByFilters(state)
     this.props.getFilters(state)
@@ -92,11 +79,12 @@ class Splash extends React.Component {
   update(field) {
 
     return e => this.setState({
-      [field]: JSON.parse(e.currentTarget.value)
+      [field]: e.currentTarget.value
     })
   }
 
   render() {
+    debugger
     return (
       <div className="index">
         <NavBar />
@@ -269,7 +257,7 @@ class Splash extends React.Component {
             <input 
               id="zip"
               type="text"
-              value={this.state.location_zip_code || ""}
+              value={this.state.location_zip_code}
               placeholder="Enter your zip code"
               onChange={this.update("location_zip_code")}
             />

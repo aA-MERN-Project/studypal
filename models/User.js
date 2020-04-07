@@ -34,16 +34,20 @@ const UserSchema = new Schema({
         default: ""
     },
     free_wifi: {
-        type: String,
-        default: "false"
+        type: Boolean,
+        default: false
     },
     credit_card: {
-        type: String,
-        default: "false"
+        type: Boolean,
+        default: false
     },
     noise_level: {
-        type: String,
-        default: "false"
+        type: Boolean,
+        default: false
+    },
+    favorites: {
+        type: Array,
+        default: []
     }
 });
 

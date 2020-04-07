@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
+const Cafe = require("../../models/Cafe");
 const keys = require('../../config/keys');
 const passport = require("../../config/passport");
 const jwt = require("jsonwebtoken");
@@ -11,6 +12,8 @@ const mongoose = require('mongoose');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const updateProfile = require('../../validation/update_profile');
+
+
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
@@ -94,7 +97,10 @@ router.patch('/:id/profile', (req,res,next)=> {
 
 router.patch('/:id', (req, res, next) => {
     const userId = req.params.id
+
+  
     User.findOne({ _id: userId })
+
         .then(user => {
             // return res.json(user.miles_away)
             let miles_away = req.body.miles_away;
@@ -122,6 +128,81 @@ router.patch('/:id', (req, res, next) => {
         .catch(err =>
             res.status(404).json({ noUserFound: "no user found with that id" })
         );
+})
+
+
+router.patch('/favorites/:id', (req,res, next) => {
+
+    const id = req.params.id;
+    const type = req.body.type;
+    const newCafe = req.body.cafe;
+
+    
+    User.findOne({ _id: id})
+      .then((user) => {
+
+        // Creates an array for current users on db
+        if (!user.favorites) {
+          user.favorites = [];
+        }
+
+        if (type === "unfavorite") {
+            let deletedFavorite = user.favorites.filter(
+                cafe => cafe.id !== newCafe.id
+            );
+            user.favorites = deletedFavorite;
+        } else {
+            // check if favorite is already in array  
+            const existingFavorites = user.favorites.map(
+                cafe => cafe.id
+            )
+            if (! existingFavorites.includes(newCafe.id)){
+                user.favorites.push(newCafe);
+            }
+        }
+
+        user
+          .save()
+          .then((user) => {
+              res.json(user.favorites)
+              console.log("Added or deleted to user favorite array")
+        })
+          .catch((err) => console.log("Not delete or added to favorites"));
+      })
+      .catch((err) => {
+        res.status(404).json({ noUserFound: "no user found with that id" });
+        console.log("No user found with that id");
+      });
+
+   
+
+    //   Cafe.findOne({ id: newCafe.id })
+    //     .then((cafe) => {
+
+    //       if (type === "favorite") {
+    //         cafe.favorite += 1;
+    //       }
+
+    //       if (type === "unfavorite") {
+    //         cafe.favorite -= 1;
+    //       }
+    //       debugger
+
+    //       cafe
+    //         .save()
+    //         .then((cafe) => {
+    //           res.json(cafe);
+    //           console.log("Cafe backend favorites updated");
+    //         })
+    //         .catch((err) => console.log("Cafe save did not work :("));
+    //     })
+    //     .catch((err) =>
+    //       res
+    //         .status(404)
+    //         .json({ nothingAdded: "No update to StudyPal database" })
+    //     );
+
+
 })
 
 router.post('/register', (req,res) => {
