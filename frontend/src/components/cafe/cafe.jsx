@@ -191,7 +191,11 @@ class Cafe extends React.Component {
                       <div className="name">{this.props.yelpCafe.name}</div>
                       <a
                         className="yelp"
-                        onClick={() => this.props.openModal("cafe", modalData)}
+                        onClick={() => {
+                          this.props.openModal("cafe", modalData)
+                          this.props.fetchCurrCafe(this.props.yelpCafe.id)
+                        
+                        }}
                       >
                         <div id="yelp-text">View</div>
                       </a>

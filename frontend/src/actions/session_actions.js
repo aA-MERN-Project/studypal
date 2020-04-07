@@ -124,9 +124,11 @@ const receiveFavorites = favorites => ({
 })
 
 export const fetchFavorites = userId => dispatch => {
-
+    debugger
      return UserAPIUtil.getUser(userId)
-       .then((user) => dispatch(receiveFavorites(user.favorites)))
+       .then((user) => {
+           dispatch(receiveFavorites(user.data.favorites))
+        })
        .catch((err) => console.log(err));
     
 

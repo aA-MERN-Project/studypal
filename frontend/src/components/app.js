@@ -10,7 +10,7 @@ import RetryContainer from './retry/retry_container';
 import Carousel from './carousel/carousel';
 import Errors from './yelpErrors/errors_container';
 import {Switch, Route} from 'react-router-dom';
-import FavoritesContainer from './favorites/favorites'
+import FavoritesContainer from './favorites/favorites_container'
 
 
 const App = () => {
