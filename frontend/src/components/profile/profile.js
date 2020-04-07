@@ -1,12 +1,12 @@
 import '../../reset.css';
 import './profile.css';
 import React from 'react';
-
 import NavBar from '../navbar/navbar_container';
 // import Test from '../updateProfile/test_container';
 import Test from '../updateProfile/test';
 import TestContainer from '../updateProfile/test_container';
 import $ from "jquery";
+import { Link } from "react-router-dom"
 
 
 class Profile extends React.Component {
@@ -458,6 +458,10 @@ class Profile extends React.Component {
                 className="find-cafe-profile"
               >
                 Find a Cafe
+              </button>
+              <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" />
+              <button className="favorite-cafe-profiles">
+                <Link to="/favorites" className="favorite-cafes"> Favorite Cafes</Link>
               </button>
             </div>
           </div>

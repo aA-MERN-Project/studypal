@@ -10,19 +10,19 @@ import RetryContainer from './retry/retry_container';
 import Carousel from './carousel/carousel';
 import Errors from './yelpErrors/errors_container';
 import {Switch, Route} from 'react-router-dom';
+import FavoritesContainer from './favorites/favorites'
 
 
 const App = () => {
   return (
     <div className="app">
-      {/* <LoginFormContainer/> */}
-
       <Switch>
         <Route exact path="/retry" component={RetryContainer} />
         <Route exact path="/errors" component={Errors} />
         <Route exact path="/" component={SplashContainer} />
         <Route path="/cafe" component={CafeContainer} />
         <Route path="/carousel" component={Carousel}/>
+        <ProtectedRoute exact path="/favorites" component={FavoritesContainer} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <ProtectedRoute exact path="/user" component={ProfileContainer}/>
