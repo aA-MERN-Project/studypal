@@ -8,19 +8,16 @@ import { Link } from 'react-router-dom'
         constructor(props) {
             super(props);
             this.state = {
-
             }
 
-            this.props.handleUnfavorite = this.handleUnfavorite.bind(this)
-            this.props.handleFavorite = this.handleUnfavorite.bind(this)
-      
+            this.handleUnfavorite = this.handleUnfavorite.bind(this)
+            this.handleFavorite = this.handleFavorite.bind(this)
         }
 
         componentDidMount(){
           
             this.props.fetchFavorites(this.props.user.id);
-
-
+            debugger
         }
 
         handleFavorite(userId, cafe) {
@@ -37,20 +34,18 @@ import { Link } from 'react-router-dom'
             const favoriteData = new Object();
             favoriteData.type = "unfavorite";
             favoriteData.cafe = cafe;
-
             this.props.updateFavorites(userId, favoriteData);
-            
+            // this.state.switch ? this.state.switch = false : this.state.switch = true
         }
 
-        
-    
-
         render() {
-        
             if (!this.props.favorites) return null;
-            let favorites = this.props.favorites;
-
-         
+            let favorites;
+            if (Array.isArray(this.props.favorites)) {
+                favorites = this.props.favorites;
+            } else {
+                favorites = this.props.favorites.data
+            }
 
             return (
                 <div className="favorites-page">  
@@ -77,9 +72,9 @@ import { Link } from 'react-router-dom'
                                                 {cafe.name}
                                             </div>
                                             <div className="modal-cafe-address">
-                                                {cafe.location_display_address_0}
+                                                {cafe.location.address1}
                                             </div>
-                                            <div className="favorite-remove">Remove</div>
+                                            <div onClick={() => this.handleUnfavorite(this.props.user.id, cafe)} className="favorite-remove">Remove</div>
                                         </div>
                                         <img className="fav-cafe-img" src={cafe.image_url}/>
                                     </div>

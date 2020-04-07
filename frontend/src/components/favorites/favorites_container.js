@@ -3,12 +3,13 @@ import Favorites from './favorites'
 import { updateFavorites, fetchFavorites } from "../../actions/session_actions";
 
 
-const mSTP = (state) => ({
-    
-    user: state.session.user,
-    favorites: state.session.favorites,
- 
-});
+const mSTP = (state) => {
+  debugger
+    return({
+      user: state.session.user,
+      favorites: state.session.favorites,
+    })
+};
 
 const mDTP = (dispatch) => {
 
