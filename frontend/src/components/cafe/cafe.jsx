@@ -135,7 +135,7 @@ class Cafe extends React.Component {
 
 
     render() {
-        debugger;
+        // debugger;
 
        
         const { loading } = this.props;
@@ -192,7 +192,7 @@ class Cafe extends React.Component {
                       <a
                         className="yelp"
                         onClick={() => {
-                          this.props.openModal("cafe", modalData)
+                          this.props.openModal("cafeModal", modalData)
                           this.props.fetchCurrCafe(this.props.yelpCafe.id)
                         
                         }}
