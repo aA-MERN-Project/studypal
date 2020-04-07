@@ -64,5 +64,12 @@
     opacity: .7;
     /* color: white; */
     text-align: center;
+}
 
+#next:hover {
+    cursor: pointer
+}
+
+#prev:hover {
+    cursor: pointer
 }

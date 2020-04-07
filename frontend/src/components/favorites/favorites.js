@@ -171,11 +171,12 @@ import { Link } from 'react-router-dom'
         render() {
             return (
                 <div className="favorites-page">  
-                    <NavBar />
+                    <NavBar 
+                        status={true}
+                    />
                     <div className="favorites-div">
                         <div className="back-profile-div">
                             {/* <img className="modal-arrow" src="https://studypal-dev.s3-us-west-1.amazonaws.com/arrow.png"/> */}
-                            {/* <div className="back-profile-header">Back to Profile</div> */}
                             <Link className="back-profile-header" to="/user">Back to Profile</Link>
                         </div>
                         <div className="favorites-and-pick">

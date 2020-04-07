@@ -6,21 +6,25 @@
     left: 0;
     min-height: 100%;
     min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%)
 }
 
 .favorites-div {
     background: white;
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    /* position: relative; */
-    margin-top: 12%;
+    /* margin-top: 12%; */
     width: 70%;
     min-width: 890px;
-    flex-direction: column;
+    /* flex-direction: column; */
     border-radius: 5px;
     padding: 20px;
+    /* position: relative;
+    left: 14% */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-content: center; */
 }
 
 .back-profile-div {
@@ -87,6 +91,8 @@
     font-weight: 900;
     padding-top: 20px;
     padding-left: 20px;
+    position: relative;
+    bottom: 6px;
 }
 
 .pick-random {
