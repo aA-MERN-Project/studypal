@@ -22,9 +22,10 @@ const Modal = (props) => {
     let cafe_lng = studyPalCafe.coordinates_longitude;
     let phone_num = props.data.yelpData.display_phone;
     let address = props.data.yelpData.location.display_address;
+    let favorite_amount = studyPalCafe.favorite_amount;
     // Put in after setting up user model
     // let saved = studyPalCafe.saved_amount;
-    debugger
+   
     let formatTime = function(fourDigitTime) {
       let hours24 = parseInt(fourDigitTime.substring(0, 2));
       let hours = ((hours24 + 11) % 12) + 1;
@@ -46,6 +47,26 @@ const Modal = (props) => {
     
     let time = calculateTime(props.yelpCafe.hours)
 
+    let handleDeleteFavorite = function (userId, cafe) {
+      const favorites = new Object();
+      favorites.type = "unfavorite";
+      favorites.cafe = cafe;
+      props.updateFavorites(userId, favorites);
+      props.fetchCurrCafe(cafe.id);
+    };
+
+    let handleAddFavorite = function(userId, cafe){
+        const favorites = new Object();
+        favorites.type = "favorite";
+        favorites.cafe = cafe;
+        debugger;
+        props.updateFavorites(userId, favorites);
+        props.fetchCurrCafe(cafe.id);
+        
+    }
+
+
+
     const carouselModal = (
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
         <div className="carousel-container">
@@ -57,12 +78,16 @@ const Modal = (props) => {
           <div className="business-misc-flex">
             <div className="modal-left">
               <div className="time-modal">Open until {time} Today</div>
-              <div className="modal-address">{address[0]}, {address[1]}</div>
+              <div className="modal-address">
+                {address[0]}, {address[1]}
+              </div>
               <div className="modal-address">{phone_num}</div>
             </div>
             {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
             <div className="modal-mid">
-              <div className="modal-distance-duration">{distance_away} miles away</div>
+              <div className="modal-distance-duration">
+                {distance_away} miles away
+              </div>
               <div className="modal-distance-duration">{duration} minutes</div>
             </div>
           </div>
@@ -70,9 +95,28 @@ const Modal = (props) => {
             <div className="modal-horizontal-info"></div>
             {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
             <div className="modal-right">
-              <div className="rolled-favorited">Number of Times Randomly Rolled: {rolled}</div>
+              <div className="rolled-favorited">
+                Number of Times Randomly Rolled: {rolled}
+              </div>
               {/* <div>Selected: {selected}</div> */}
-              <div className="rolled-favorited">Favorited by TWO others </div>
+              <div className="rolled-favorited">Favorited by {props.currCafe.favorite_amount} others </div>
+              <a
+                className="yelp"
+                onClick={() =>
+                  handleAddFavorite(props.data.user.id, props.data.yelpData)
+                }
+              >
+                <div id="yelp-text">Favorite</div>
+              </a>
+
+              <a
+                className="yelp"
+                onClick={() =>
+                  handleDeleteFavorite(props.data.user.id, props.data.yelpData)
+                }
+              >
+                <div id="yelp-text">Unfavorite </div>
+              </a>
             </div>
           </div>
           {/* <div className="modal-distance-duration">
@@ -82,24 +126,22 @@ const Modal = (props) => {
             Numbers of Times Randomly Rolled <b>{rolled}</b> | Selected <b>{selected}</b> 
             | Studier Favorites <b>0</b>
           </div> */}
-         
         </div>
-        <Map 
-          cafe_lat = {cafe_lat} 
-          cafe_lng = {cafe_lng}
-          my_lat = {my_lat}
-          my_lng = {my_lng}
+          <Map
+            cafe_lat={cafe_lat}
+            cafe_lng={cafe_lng}
+            my_lat={my_lat}
+            my_lng={my_lng}
         />
+       
       </div>
     );
 
 
     return (
-    
-        <div className="modal-backdrop" onClick={props.closeModal}>
-            {carouselModal}
-        </div>
-
+      <div className="modal-backdrop" onClick={props.closeModal}>
+        {carouselModal}
+      </div>
     );
 
 
