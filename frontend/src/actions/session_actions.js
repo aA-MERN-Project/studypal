@@ -1,6 +1,7 @@
 import * as SessionAPIUtil from "../util/session_api_util";
 import * as UserAPIUtil from "../util/user_api_util";
 import jwt_decode from 'jwt-decode';
+import { updateCafe } from "../util/cafe_api_util";
 // import SessionErrorsReducer from "../reducers/session_errors_reducer";
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -124,6 +125,14 @@ const receiveFavorites = favorites => ({
 })
 
 export const updateFavorites = (id, favorites) => dispatch => {
+    debugger;
+    let cafeId = favorites.cafe.id;
+    let type = favorites.type;
+
+    updateCafe(cafeId, { updateType: type }).then(() =>
+        console.log("Favorites Updated")
+    );
+
     return (
         SessionAPIUtil.updateFavorites(id, favorites)
             .then( favorites => dispatch(receiveFavorites(favorites))

@@ -45,8 +45,10 @@ const sessionReducer = (state = initialState, action) => {
         case RECEIVE_FAVORITES:
             return {
                 ...state,
-                favorites: action.favorites
+                favorites: action.favorites.data
             }
+
+    
         
         case RECEIVE_PREFERENCES:
             return Object.assign({}, state)
