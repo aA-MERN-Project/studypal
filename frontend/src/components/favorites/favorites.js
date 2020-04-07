@@ -176,8 +176,10 @@ import { Link } from 'react-router-dom'
                     />
                     <div className="favorites-div">
                         <div className="back-profile-div">
-                            {/* <img className="modal-arrow" src="https://studypal-dev.s3-us-west-1.amazonaws.com/arrow.png"/> */}
-                            <Link className="back-profile-header" to="/user">Back to Profile</Link>
+                            <Link className="back-profile-header" to="/user">
+                                <div className="back-arrow">&larr;</div> 
+                                Back to Profile
+                            </Link>
                         </div>
                         <div className="favorites-and-pick">
                             <div className="favorites-header">Favorites</div>
