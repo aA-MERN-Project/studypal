@@ -124,6 +124,40 @@ router.patch('/:id', (req, res, next) => {
         );
 })
 
+
+router.patch('/favorites/:id', (req,res) => {
+
+    const id = req.params.id;
+    const type = req.body.type;
+    const newCafe = req.body.cafe;
+
+
+    User.findOne({_id:id})
+        .then(user => {
+            
+            if (!user.favorites){
+                user.favorites = [];
+            }
+
+            if (type === "delete"){
+                user.favorites.filter(cafe => {
+                    return cafe.id !== newCafe.id
+                })
+            } else {
+                user.favorties.push(newCafe);
+            }
+            user
+              .save()
+              .then((user) => res.json(user.favorites))
+              .catch((err) => console.log(err));
+        }) 
+        .catch(err =>
+            res.status(404).json({ noUserFound: "no user found with that id" })
+        );
+
+
+})
+
 router.post('/register', (req,res) => {
     //  ; 
     const {errors, isValid} = validateRegisterInput(req.body);

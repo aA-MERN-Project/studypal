@@ -10,6 +10,7 @@ export const RECEIVE_USER_SIGN_IN = 'RECEIVE_USER_SIGN_IN';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const START_LOADING_LOGIN = "START_LOADING_LOGIN";
 export const RECEIVE_PREFERENCES = "RECEIVE_PREFERENCES";
+export const RECEIVE_FAVORITES = "RECEIVE_FAVORITES";
 
 export const startLoadingLogin = () => ({
     type: START_LOADING_LOGIN
@@ -113,6 +114,23 @@ export const updateUserPreferences = (id, preferences) => dispatch => {
                 err => dispatch(receiveUpdatedUserErrors(err.response.data))
 
             ))
+}
+
+
+const receiveFavorites = favorites => ({
+    type: RECEIVE_FAVORITES,
+    favorites
+
+})
+
+export const updateFavorites = (id, favorites) => dispatch => {
+    return (
+        SessionAPIUtil.updateFavorites(id, favorites)
+            .then( favorites => dispatch(receiveFavorites(favorites))
+            )
+            .catch(err => console.log(err))
+    )
+    
 }
 
 // export const demoLogin = (user) => dispatch => {

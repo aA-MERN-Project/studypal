@@ -88,7 +88,7 @@ class Retry extends React.Component {
         <NavBar />
         <div className="content">
           <div className="cta">
-            Sorry, there are no more cafes for those search paramters
+            Sorry, there are no more cafes for those search parameters
           </div>
 
           <div id="looking-for">Let's try some other other parameters :)</div>

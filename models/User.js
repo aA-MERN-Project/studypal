@@ -44,6 +44,10 @@ const UserSchema = new Schema({
     noise_level: {
         type: Boolean,
         default: false
+    },
+    favorites: {
+        type: Array,
+        default: []
     }
 });
 
