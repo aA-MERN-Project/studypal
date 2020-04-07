@@ -127,6 +127,14 @@ const Modal = (props) => {
             | Studier Favorites <b>0</b>
           </div> */}
         </div>
+       
+      </div>
+    );
+
+
+    return (
+      <div className="modal-backdrop" onClick={props.closeModal}>
+        {carouselModal}
         <Map
           cafe_lat={cafe_lat}
           cafe_lng={cafe_lng}
@@ -134,15 +142,6 @@ const Modal = (props) => {
           my_lng={my_lng}
         />
       </div>
-    );
-
-
-    return (
-    
-        <div className="modal-backdrop" onClick={props.closeModal}>
-            {carouselModal}
-        </div>
-
     );
 
 

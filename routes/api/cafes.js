@@ -107,11 +107,13 @@ router.patch("/update/:id", (req, res) => {
 
                 if (updateType === "favorite"){
 
-                    cafe.favorite += 1;
+                    cafe.favorite_amount += 1;
                 }
 
                 if (updateType === "unfavorite") {
-                    cafe.favorite > 0 ? cafe.favorite -= 1
+
+                    if (cafe.favorite_amount > 0) cafe.favorite_amount -= 1;
+
                 }
 
                 cafe.save()
