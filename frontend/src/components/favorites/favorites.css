@@ -1,25 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap');
+
 .favorites-page {
     position: absolute;
     top: 0;
     left: 0;
     min-height: 100%;
     min-width: 100%;
-    margin: 0;
-    padding: 0;
     background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%)
 }
 
 .favorites-div {
     background: white;
     display: flex;
+    justify-content: center;
     /* align-items: center; */
-    position: relative;
+    /* position: relative; */
     margin-top: 12%;
     width: 70%;
-    min-width: 800px;
-    left: 14.5%;
+    min-width: 890px;
     flex-direction: column;
-    border-radius: 5%;
+    border-radius: 5px;
+    padding: 20px;
 }
 
 .back-profile-div {
@@ -33,4 +34,86 @@
 
 .back-profile-header {
     color: rgba(255, 127, 80, 0.8);
+    text-decoration: none;
+    font-family: "Open Sans"
+}
+
+.fav-cafe-img {
+    width: 90px;
+    height: 70px;
+    border-radius: 5px;
+}
+
+.cafe-box {
+    background-color: rgb(242, 242, 242);
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    width: 250px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.cafe-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cafe-text-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.favorite-remove {
+    padding-top: 10px;
+    color: rgb(140, 140, 140);
+    display: inline-block;
+    width: 52px;
+}
+
+.favorite-remove:hover {
+    cursor: pointer
+}
+
+.favorites-and-pick {
+    display: flex;
+    justify-content: space-between;
+}
+
+.favorites-header{ 
+    font-family: "Montserrat";
+    font-size: 20px;
+    font-weight: 900;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.pick-random {
+    height: 35px;
+    border: none;
+    width: 180px;
+    background-color: #FF7F50;
+    color: #ffffff;
+    border-radius: 50px;
+    font-size: 12px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-right: 20px
+}
+
+.pick-random:hover {
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.modal-cafe-name {
+    font-family: "Montserrat";
+    font-weight: 900;
+}
+
+.modal-cafe-address {
+    font-family: "Open Sans";
+    font-size: 14.7px;
+    padding-top: 5px;
+    font-weight: lighter;
 }
