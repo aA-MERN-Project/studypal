@@ -20,26 +20,34 @@
     /* flex-direction: column; */
     border-radius: 5px;
     padding: 20px;
-    /* position: relative;
-    left: 14% */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-content: center; */
+    height: 400px;
+    overflow: auto;
 }
 
 .back-profile-div {
-    display: flex;
+    width: 230px;
+    padding-left: 15px;
 }
 
-.modal-arrow {
-    transform: (90deg);
-    width: 20%
+.back-arrow {
+   padding-right: .5%;
+   color: rgba(255, 127, 80, 0.8);
+   font-family: "Open Sans";
+   padding-left: 2%
 }
 
 .back-profile-header {
     color: rgba(255, 127, 80, 0.8);
     text-decoration: none;
-    font-family: "Open Sans"
+    font-family: "Open Sans";
+    padding-left: .5%;
+    width: 130px;
+    display: flex;
+    justify-content: space-between
+}
+
+.back-profile-header:hover {
+    cursor: pointer
 }
 
 .fav-cafe-img {

@@ -13,7 +13,6 @@ const mapStateToProps = state => {
     data: state.modal.data,
     yelpCafe: state.entities.yelpCafe,
     currCafe: state.entities.currCafe,
-
   };
 };
 
