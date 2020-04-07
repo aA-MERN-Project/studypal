@@ -197,7 +197,6 @@ class Profile extends React.Component {
                       <div className="email">{email}</div>
                       <div className="zipcode">Current Zipcode: {zipcode}</div>
                     </div>
-                    <Link to="/favorites">Favorite Cafes</Link>
                   </div>  
                   <div className="halfProfile2">
                     <TestContainer user={this.props.user} updatedUser = {this.props.updatedUser} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler}/>
@@ -394,11 +393,12 @@ class Profile extends React.Component {
               </div>
             </div>
             <div className="find-cafe-profile-div">
-              <button
-                onClick={() => this.updatePreferences()}
-                className="find-cafe-profile"
-              >
+              <button onClick={() => this.updatePreferences()} className="find-cafe-profile">
                 Find a Cafe
+              </button>
+              <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" />
+              <button className="favorite-cafe-profiles">
+                <Link to="/favorites" className="favorite-cafes"> Favorite Cafes</Link>
               </button>
             </div>
           </div>
