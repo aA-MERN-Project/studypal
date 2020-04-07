@@ -20,12 +20,16 @@ const App = () => {
         <Route exact path="/retry" component={RetryContainer} />
         <Route exact path="/errors" component={Errors} />
         <Route exact path="/" component={SplashContainer} />
-        <Route path="/cafe" component={CafeContainer} />
-        <Route path="/carousel" component={Carousel}/>
-        <ProtectedRoute exact path="/favorites" component={FavoritesContainer} />
+        <Route exact path="/cafe" component={CafeContainer} />
+        <Route path="/carousel" component={Carousel} />
+        <ProtectedRoute
+          exact
+          path="/favorites"
+          component={FavoritesContainer}
+        />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
-        <ProtectedRoute exact path="/user" component={ProfileContainer}/>
+        <ProtectedRoute exact path="/user" component={ProfileContainer} />
       </Switch>
     </div>
   );
