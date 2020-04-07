@@ -2,6 +2,8 @@ import React from "react";
 import "./modal.scss";
 import Carousel from "../carousel/carousel"
 import Map from '../map/directions';
+import FavButton from '../favorite_button/fav_button'
+
 
 
 const Modal = (props) => {
@@ -47,24 +49,6 @@ const Modal = (props) => {
     
     let time = calculateTime(props.yelpCafe.hours)
 
-    let handleDeleteFavorite = function (userId, cafe) {
-      const favorites = new Object();
-      favorites.type = "unfavorite";
-      favorites.cafe = cafe;
-      props.updateFavorites(userId, favorites);
-      props.fetchCurrCafe(cafe.id);
-    };
-
-    let handleAddFavorite = function(userId, cafe){
-        const favorites = new Object();
-        favorites.type = "favorite";
-        favorites.cafe = cafe;
-        debugger;
-        props.updateFavorites(userId, favorites);
-        props.fetchCurrCafe(cafe.id);
-        
-    }
-
 
 
     const carouselModal = (
@@ -99,41 +83,20 @@ const Modal = (props) => {
                 Number of Times Randomly Rolled: {rolled}
               </div>
               {/* <div>Selected: {selected}</div> */}
-              <div className="rolled-favorited">Favorited by {props.currCafe.favorite_amount} others </div>
-              <a
-                className="yelp"
-                onClick={() =>
-                  handleAddFavorite(props.data.user.id, props.data.yelpData)
-                }
-              >
-                <div id="yelp-text">Favorite</div>
-              </a>
-
-              <a
-                className="yelp"
-                onClick={() =>
-                  handleDeleteFavorite(props.data.user.id, props.data.yelpData)
-                }
-              >
-                <div id="yelp-text">Unfavorite </div>
-              </a>
+              <div className="rolled-favorited">
+                Favorited by {props.currCafe.favorite_amount} others
+                <FavButton />
+              </div>
             </div>
           </div>
-          {/* <div className="modal-distance-duration">
-            Distance <b>{distance_away}</b>  |  Duration <b>{duration}</b> 
-          </div>
-          <div>
-            Numbers of Times Randomly Rolled <b>{rolled}</b> | Selected <b>{selected}</b> 
-            | Studier Favorites <b>0</b>
-          </div> */}
         </div>
-          <Map
-            cafe_lat={cafe_lat}
-            cafe_lng={cafe_lng}
-            my_lat={my_lat}
-            my_lng={my_lng}
+
+        <Map
+          cafe_lat={cafe_lat}
+          cafe_lng={cafe_lng}
+          my_lat={my_lat}
+          my_lng={my_lng}
         />
-       
       </div>
     );
 

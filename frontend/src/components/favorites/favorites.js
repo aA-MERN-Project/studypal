@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom'
 
             }
 
-            this.props.handleUnfavorite = this.handleUnfavorite.bind(this)
-            this.props.handleFavorite = this.handleUnfavorite.bind(this)
+            this.handleUnfavorite = this.handleUnfavorite.bind(this)
+            this.handleFavorite = this.handleUnfavorite.bind(this)
       
         }
 
