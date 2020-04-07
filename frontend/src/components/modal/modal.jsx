@@ -65,7 +65,7 @@ const Modal = (props) => {
         
     }
 
-    debugger
+
 
     const carouselModal = (
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
@@ -127,6 +127,12 @@ const Modal = (props) => {
             | Studier Favorites <b>0</b>
           </div> */}
         </div>
+          <Map
+            cafe_lat={cafe_lat}
+            cafe_lng={cafe_lng}
+            my_lat={my_lat}
+            my_lng={my_lng}
+        />
        
       </div>
     );
@@ -135,12 +141,6 @@ const Modal = (props) => {
     return (
       <div className="modal-backdrop" onClick={props.closeModal}>
         {carouselModal}
-        <Map
-          cafe_lat={cafe_lat}
-          cafe_lng={cafe_lng}
-          my_lat={my_lat}
-          my_lng={my_lng}
-        />
       </div>
     );
 

@@ -121,8 +121,16 @@ export const updateUserPreferences = (id, preferences) => dispatch => {
 const receiveFavorites = favorites => ({
     type: RECEIVE_FAVORITES,
     favorites
-
 })
+
+export const fetchFavorites = userId => dispatch => {
+
+     return UserAPIUtil.getUser(userId)
+       .then((user) => dispatch(receiveFavorites(user.favorites)))
+       .catch((err) => console.log(err));
+    
+
+}
 
 export const updateFavorites = (id, favorites) => dispatch => {
     debugger;

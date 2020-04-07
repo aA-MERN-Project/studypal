@@ -168,7 +168,15 @@ import { Link } from 'react-router-dom'
             ]
         }
 
+        componentDidMount(){
+
+            debugger
+
+
+        }
+
         render() {
+            debugger
             return (
                 <div className="favorites-page">  
                     <NavBar 
