@@ -1,4 +1,4 @@
-import {RECEIVE_PREFERENCES, RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_USER_SIGN_IN } from '../actions/session_actions'
+import {RECEIVE_PREFERENCES, RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_USER_SIGN_IN, RECEIVE_FAVORITES } from '../actions/session_actions'
 import {UPDATE_USER} from '../actions/user_actions';
 import {UPDATED_USER} from '../actions/updated_user_actions'
 
@@ -41,6 +41,15 @@ const sessionReducer = (state = initialState, action) => {
                 ...state,
                 updatedUser: action.user.data
             }
+        
+        case RECEIVE_FAVORITES:
+            return {
+                ...state,
+                favorites: action.favorites.data
+            }
+
+    
+        
         case RECEIVE_PREFERENCES:
             return Object.assign({}, state)
         default: 

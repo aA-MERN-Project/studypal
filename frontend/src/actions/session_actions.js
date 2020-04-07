@@ -1,6 +1,7 @@
 import * as SessionAPIUtil from "../util/session_api_util";
 import * as UserAPIUtil from "../util/user_api_util";
 import jwt_decode from 'jwt-decode';
+import { updateCafe } from "../util/cafe_api_util";
 // import SessionErrorsReducer from "../reducers/session_errors_reducer";
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -10,6 +11,7 @@ export const RECEIVE_USER_SIGN_IN = 'RECEIVE_USER_SIGN_IN';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const START_LOADING_LOGIN = "START_LOADING_LOGIN";
 export const RECEIVE_PREFERENCES = "RECEIVE_PREFERENCES";
+export const RECEIVE_FAVORITES = "RECEIVE_FAVORITES";
 
 export const startLoadingLogin = () => ({
     type: START_LOADING_LOGIN
@@ -113,6 +115,31 @@ export const updateUserPreferences = (id, preferences) => dispatch => {
                 err => dispatch(receiveUpdatedUserErrors(err.response.data))
 
             ))
+}
+
+
+const receiveFavorites = favorites => ({
+    type: RECEIVE_FAVORITES,
+    favorites
+
+})
+
+export const updateFavorites = (id, favorites) => dispatch => {
+    debugger;
+    let cafeId = favorites.cafe.id;
+    let type = favorites.type;
+
+    updateCafe(cafeId, { updateType: type }).then(() =>
+        console.log("Favorites Updated")
+    );
+
+    return (
+        SessionAPIUtil.updateFavorites(id, favorites)
+            .then( favorites => dispatch(receiveFavorites(favorites))
+            )
+            .catch(err => console.log(err))
+    )
+    
 }
 
 // export const demoLogin = (user) => dispatch => {

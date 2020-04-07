@@ -16,6 +16,7 @@ const mapStateToProps = state => {
 
    
   return {
+    user: state.session.user,
     cafes: cafes,
     filteredCafes: filteredCafes,
     filters: filters,

@@ -24,6 +24,11 @@ export const updateUserPreferences = (id, preferences) => {
     return axios.patch(`api/users/${id}`, preferences);
 };
 
+
+export const updateFavorites = (id, data) => {
+  return axios.patch(`/api/users/favorites/${id}`, data);
+};
+
 //not using 
 // export const logout = () => {
 //     return null

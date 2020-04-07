@@ -135,7 +135,8 @@ class Cafe extends React.Component {
 
 
     render() {
-      
+        debugger;
+
        
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
@@ -173,9 +174,11 @@ class Cafe extends React.Component {
         let modalData = {yelpData: this.props.yelpCafe, 
           distance, 
           noiseLevel, 
+          user: this.props.user,
           studyPalCafe: this.state.studyPalCafe,
           filters: this.props.filters}
 
+        
 
         return (
           <div className="page">
