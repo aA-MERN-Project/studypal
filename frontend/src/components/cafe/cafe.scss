@@ -15,6 +15,11 @@
 //     border: 5px solid blue;
 // }
 
+.gifImgDiv{
+    height: 100vh;
+    background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
+    font-family: "Open Sans";
+}
 
 .gifImgDiv img{
     position: relative;

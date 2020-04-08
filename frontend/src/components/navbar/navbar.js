@@ -64,7 +64,7 @@ class NavBar extends React.Component {
                 </button>
                 <div className="vertical-line-navbar"></div>
                     <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
-                    <img className="gitIconLink" alt="studypal github repo" src="https://www.pngitem.com/pimgs/m/128-1280311_github-icon-white-png-github-icon-black-background.png"/>
+                    <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"/>
                     </a>
               </div>
             );
@@ -78,7 +78,7 @@ class NavBar extends React.Component {
                     <button className="button2" onClick={this.handleLogout}>Log Out</button>
                     &nbsp;
                     <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
-                        <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white_github.jpg"/>
+                        <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"/>
                     </a>
                 </div>
             )
