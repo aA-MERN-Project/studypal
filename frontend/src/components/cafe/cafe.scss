@@ -180,7 +180,6 @@
     .cafe{
         justify-content: none;
         max-height:475px;
-
     }
 
     .all{
@@ -198,27 +197,27 @@
   } 
 
 
-    /* Extra large devices (large laptops and desktops, 1200px and up) */
-// @media only screen and (min-width: 1200px){
-//     .map{
-//         height:500px;
-//     }
+    /* Extra large devices (large laptops and desktops, 1370px and up) */
+@media only screen and (min-width: 1370px){
+    .map{
+        height:500px;
+    }
 
-//     .cafe{
-//         justify-content: space-between;
-//         max-height:500px;
-//     }
+    .cafe{
+        justify-content: space-between;
+        max-height:500px;
+    }
 
-//     .all{
-//         padding-top: 11%;
-//     }
+    .all{
+        padding-top: 11%;
+    }
 
-//     .profile{
-//         padding-top:30px;
-//         padding-bottom:28px;
-//     }
+    .profile{
+        padding-top:30px;
+        padding-bottom:28px;
+    }
 
-//     .photo{
-//         height:344px;
-//     }
-// }
+    .photo{
+        height:344px;
+    }
+}

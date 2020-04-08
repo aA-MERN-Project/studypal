@@ -59,7 +59,10 @@
     background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%); 
 }
 
+
+
 .left-div-signup {
+    
     display: flex;
     width: 50%;
     min-width: 320px;
@@ -146,6 +149,7 @@
 .login-signup-button:hover{
     cursor: pointer;
     box-shadow:none;
+    color:white;
 }
 
 
@@ -239,20 +243,20 @@
    
   }
   
-      /* Extra large devices (large laptops and desktops, 1200px and up)
-@media only screen and (min-width: 1200px){
-    .signup-form-div {
-        padding-top:25px;
-        padding-bottom:25px;
-    }
+      /* Extra large devices (large laptops and desktops, 1370px and up) */
+    @media only screen and (min-width: 1370px){
+        .signup-form-div {
+            padding-top:25px;
+            padding-bottom:25px;
+        }
 
-    .form-labels{
-        padding-top:5px;
-        padding-bottom:5px;
-    }
+        .form-labels{
+            padding-top:5px;
+            padding-bottom:5px;
+        }
 
-    .signup-div{
-        width:50%;
-    }
+        .signup-div{
+            width:50%;
+        }
 
-} */
+    }
