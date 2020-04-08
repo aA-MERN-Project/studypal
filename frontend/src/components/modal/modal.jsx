@@ -3,7 +3,7 @@ import "./modal.scss";
 import Carousel from "../carousel/carousel"
 import Map from '../map/directions';
 import FavButton from '../favorite_button/fav_button'
-
+// import PopUpContainer from "../popUp/pop_up_container";
 
 
 const Modal = (props) => {
@@ -108,9 +108,11 @@ const Modal = (props) => {
             {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
             <div className="modal-mid">
               <div className="modal-distance-duration">
-                {distance_away} miles away
+                {Math.ceil(distance_away / 1609)} miles away
               </div>
-              <div className="modal-distance-duration">{duration} minutes</div>
+              <div className="modal-distance-duration">
+                {Math.ceil((duration / 3600) / 3)} minutes
+              </div>
             </div>
           </div>
           <div className="modal-bottom">
@@ -123,8 +125,9 @@ const Modal = (props) => {
               {/* <div>Selected: {selected}</div> */}
               <div className="rolled-favorited">
                 Favorited by {props.currCafe.favorite_amount} others
-                <FavButton />
               </div>
+              <FavButton />
+              {/* <PopUpContainer /> */}
             </div>
           </div>
         </div>
@@ -144,7 +147,7 @@ const Modal = (props) => {
   let favTime = calculateTime(props.yelpCafe.hours);
   let favAddress = props.yelpCafe.location.display_address
 
-  debugger
+  // debugger
   const favoriteModal = (
     <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
       <div className="carousel-container">

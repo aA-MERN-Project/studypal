@@ -359,7 +359,6 @@
 }
 
 .update-profile-div *{
-    margin-bottom:3px;
     margin-top:3px;
 }
 
@@ -406,7 +405,7 @@ button.update-profile-close:hover{
 
 .vertical-line-profile {
     max-width: 190px;
-    max-width:170px;
+    max-width:160px;
     height: .1px;
     border: 1px solid rgba(65, 105, 225, 0.5);
     transform: rotate(90deg);

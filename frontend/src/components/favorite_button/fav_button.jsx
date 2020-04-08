@@ -6,6 +6,7 @@ import { cafeIncludes } from "../../util/button_util"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import "./button.css"
+import { openPopUp } from '../../actions/pop_up_actions'
 
 const mSTP = state => {
     
@@ -22,11 +23,9 @@ const mDTP = dispatch => {
     return {
         updateFavorites: (id, data) => dispatch(updateFavorites(id, data)),
         fetchCurrCafe: id => dispatch(fetchCurrCafe(id)),
+        openPopUp: () => dispatch(openPopUp())
     }
 }
-
-
-
 
 const FavButton = (props) => {
 
@@ -48,7 +47,10 @@ const FavButton = (props) => {
 
         props.updateFavorites(userId, favorites);
         props.fetchCurrCafe(cafe.id);
+        props.openPopUp()
     }
+
+
 
     const FavoriteBold = (
 

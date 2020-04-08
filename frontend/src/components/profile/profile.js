@@ -241,7 +241,7 @@ class Profile extends React.Component {
         return (
           <div className="profile-page">
             <NavBarContainer />
-           
+
             <div className="profile-info-div">
               <div className="profile-info">
                 <div className="profile-container">
@@ -257,13 +257,17 @@ class Profile extends React.Component {
                       <div className="email">{email}</div>
                       <div className="zipcode">Current Zipcode: {zipcode}</div>
                     </div>
-                  </div>  
+                  </div>
                   <div className="halfProfile2">
-                    <TestContainer user={this.props.user} updatedUser = {this.props.updatedUser} errors={this.props.errors} updateProfileAct ={this.props.updateProfileAct} handler={this.handler}/>
+                    <TestContainer
+                      user={this.props.user}
+                      updatedUser={this.props.updatedUser}
+                      errors={this.props.errors}
+                      updateProfileAct={this.props.updateProfileAct}
+                      handler={this.handler}
+                    />
                   </div>
                 </div>
-                
-
               </div>
             </div>
             <br />
@@ -447,7 +451,12 @@ class Profile extends React.Component {
                     </div>
                   </div>
                   <div className="profile-clear-div">
-                    <button className="profile-clear" onClick={() => this.clear()}>Clear All</button>
+                    <button
+                      className="profile-clear"
+                      onClick={() => this.clear()}
+                    >
+                      Clear All
+                    </button>
                   </div>
                 </div>
               </div>
@@ -459,10 +468,15 @@ class Profile extends React.Component {
               >
                 Find a Cafe
               </button>
-              <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" />
-              <button onClick={this.props.history.push('/favorites')} className="favorite-cafe-profiles">
+              <img
+                className="noun-espresso"
+                src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png"
+              />
+              <button
+                onClick={() => this.props.history.push("/favorites")}
+                className="favorite-cafe-profiles"
+              >
                 Favorite Cafes
-                {/* onClick={this.props.history.push('/favorites')} */}
                 {/* <Link to="/favorites" className="favorite-cafes"> Favorite Cafes</Link> */}
               </button>
             </div>

@@ -30,10 +30,11 @@ class ShowMap extends React.Component {
 
     let icon = {
       url: "https://studypal-dev.s3-us-west-1.amazonaws.com/Coffee_3.png", // url
-      scaledSize: new google.maps.Size(70,70), // scaled size
+      scaledSize: new google.maps.Size(70,70),
+      target: "_blank" // scaled size
     };
-
-
+    
+    
     const marker = new google.maps.Marker({
       position: { lat: this.props.lat, lng: this.props.lng },
       icon: icon,
@@ -43,7 +44,7 @@ class ShowMap extends React.Component {
     marker.linkUrl = this.props.yelp_link;
 
     marker.addListener("click", function() {
-      window.location = this.linkUrl;
+      window.open(this.linkUrl, "_blank");
     });
 
     // const marker_person = new google.maps.Marker({
