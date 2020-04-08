@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from './google_maps_style'
+import styles from './google_maps_style';
 import {
     withGoogleMap,
     withScriptjs,

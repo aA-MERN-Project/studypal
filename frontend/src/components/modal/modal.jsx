@@ -2,6 +2,8 @@ import React from "react";
 import "./modal.scss";
 import Carousel from "../carousel/carousel"
 import Map from '../map/directions';
+import FavButton from '../favorite_button/fav_button'
+
 
 
 const Modal = (props) => {
@@ -119,66 +121,52 @@ const Modal = (props) => {
                 Number of Times Randomly Rolled: {rolled}
               </div>
               {/* <div>Selected: {selected}</div> */}
-              <div className="rolled-favorited">Favorited by {props.currCafe.favorite_amount} others </div>
-              <a
-                className="yelp"
-                onClick={() =>
-                  handleAddFavorite(props.data.user.id, props.data.yelpData)
-                }
-              >
-                <div id="yelp-text">Favorite</div>
-              </a>
-
-              <a
-                className="yelp"
-                onClick={() =>
-                  handleDeleteFavorite(props.data.user.id, props.data.yelpData)
-                }
-              >
-                <div id="yelp-text">Unfavorite </div>
-              </a>
+              <div className="rolled-favorited">
+                Favorited by {props.currCafe.favorite_amount} others
+                <FavButton />
+              </div>
             </div>
           </div>
-          {/* <div className="modal-distance-duration">
-            Distance <b>{distance_away}</b>  |  Duration <b>{duration}</b> 
-          </div>
-          <div>
-            Numbers of Times Randomly Rolled <b>{rolled}</b> | Selected <b>{selected}</b> 
-            | Studier Favorites <b>0</b>
-          </div> */}
         </div>
-          <Map
-            cafe_lat={cafe_lat}
-            cafe_lng={cafe_lng}
-            my_lat={my_lat}
-            my_lng={my_lng}
+
+        <Map
+          cafe_lat={cafe_lat}
+          cafe_lng={cafe_lng}
+          my_lat={my_lat}
+          my_lng={my_lng}
         />
-       
       </div>
     );
+
+
+
   let favoriteData = props.yelpCafe
+  let favTime = calculateTime(props.yelpCafe.hours);
+  let favAddress = props.yelpCafe.location.display_address
+
+  debugger
   const favoriteModal = (
     <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
       <div className="carousel-container">
-        <Carousel photos={photos} />
+        <Carousel photos={favoriteData.photos} />
       </div>
       <div className="business-misc">
-        <h1 className="modal-name"> {name} </h1>
+        <h1 className="modal-name"> {favoriteData.name} </h1>
         <div className="modal-horizontal-line"></div>
         <div className="business-misc-flex">
           <div className="modal-left">
-            <div className="time-modal">Open until {time} Today</div>
+            <div className="time-modal">Open until {favTime} Today</div>
             <div className="modal-address">
-              {favoriteData.location.display_address[0]}, {favoriteData.location.display_address[1]}
+              {favAddress[0]}, {favAddress[1]}
             </div>
             <div className="modal-address">{favoriteData.display_phone}</div>
           </div>
           {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
           <div className="modal-mid">
             <div className="modal-distance-duration">
-              {distance_away} miles away
+              {/* {distance_away} miles away */}
               </div>
-            <div className="modal-distance-duration">{duration} minutes</div>
+            {/* <div className="modal-distance-duration">{duration} minutes</div> */}
           </div>
         </div>
         <div className="modal-bottom">
@@ -186,11 +174,11 @@ const Modal = (props) => {
           {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
           <div className="modal-right">
             <div className="rolled-favorited">
-              Number of Times Randomly Rolled: {rolled}
+              {/* Number of Times Randomly Rolled: {rolled} */}
             </div>
             {/* <div>Selected: {selected}</div> */}
             <div className="rolled-favorited">Favorited by {props.currCafe.favorite_amount} others </div>
-            <a
+            {/* <a
               className="yelp"
               onClick={() =>
                 handleAddFavorite(props.data.user.id, props.data.yelpData)
@@ -206,7 +194,7 @@ const Modal = (props) => {
               }
             >
               <div id="yelp-text">Unfavorite </div>
-            </a>
+            </a> */}
           </div>
         </div>
         {/* <div className="modal-distance-duration">

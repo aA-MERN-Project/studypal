@@ -194,7 +194,7 @@ class Cafe extends React.Component {
                         onClick={() => {
                           this.props.openModal("cafeModal", modalData)
                           this.props.fetchCurrCafe(this.props.yelpCafe.id)
-                        
+                          this.props.fetchFavorites(this.props.user.id)
                         }}
                       >
                         <div id="yelp-text">View</div>

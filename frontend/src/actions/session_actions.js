@@ -145,7 +145,7 @@ export const updateFavorites = (id, favorites) => dispatch => {
 
     return (
         SessionAPIUtil.updateFavorites(id, favorites)
-            .then( favorites => dispatch(receiveFavorites(favorites))
+            .then( favorites => dispatch(receiveFavorites(favorites.data))
             )
             .catch(err => console.log(err))
     )

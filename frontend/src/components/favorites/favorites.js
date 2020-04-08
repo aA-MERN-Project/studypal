@@ -58,19 +58,18 @@ import Modal from '../modal/modal_container'
 
         cafeClick(cafe) {
             debugger
-            this.props.fetchFavoriteCafeById(cafe.id)
-                .then(() => this.props.openModal("favoriteModal", this.modalData))
+            this.props
+              .fetchFavoriteCafeById(cafe.id)
+              .then(() => this.props.fetchCurrCafe(cafe.id))
+              .then(() =>
+                this.props.openModal("favoriteModal", this.modalData)
+              );
             debugger
         }
 
         render() {
             if (!this.props.favorites) return null;
-            let favorites;
-            if (Array.isArray(this.props.favorites)) {
-                favorites = this.props.favorites;
-            } else {
-                favorites = this.props.favorites.data
-            }
+            let favorites = this.props.favorites;
 
             return (
                 <div className="favorites-page">  
