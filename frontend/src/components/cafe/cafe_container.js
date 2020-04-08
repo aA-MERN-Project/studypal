@@ -36,7 +36,6 @@ const mapDispatchToProps = dispatch => ({
   clearCafes: () => dispatch(clearCafes()),
   rerollCafes: cafes => dispatch(rerollCafes(cafes)),
   fetchYelpCafeById: id => dispatch(fetchYelpCafeById(id))
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cafe);

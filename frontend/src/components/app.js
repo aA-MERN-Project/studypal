@@ -10,6 +10,7 @@ import RetryContainer from './retry/retry_container';
 import Carousel from './carousel/carousel';
 import Errors from './yelpErrors/errors_container';
 import {Switch, Route} from 'react-router-dom';
+import CrewPage from './team/team_page';
 import FavoritesContainer from './favorites/favorites_container'
 import ReactDOM from "react-dom";
 
@@ -27,6 +28,7 @@ const App = () => {
         <Route exact path="/retry" component={RetryContainer} />
         <Route exact path="/errors" component={Errors} />
         <Route exact path="/" component={SplashContainer} />
+        <Route exact path="/crew" component={CrewPage}/>
         <Route exact path="/cafe" component={CafeContainer} />
         <Route path="/carousel" component={Carousel} />
         <ProtectedRoute

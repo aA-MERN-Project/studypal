@@ -57,8 +57,15 @@ function Carousel(props) {
             }, 0)
 
     }
-
-    const {photos} = props;
+    let photos
+    if (Array.isArray(props.photos)) {
+      photos = props.photos
+    } else {
+      photos = ['https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png',
+        'https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png',
+        'https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png' ]
+    }
+    
 
     const testPhotos = [
         "https://s3-media2.fl.yelpcdn.com/bphoto/CPc91bGzKBe95aM5edjhhQ/o.jpg",

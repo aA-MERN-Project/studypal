@@ -21,45 +21,79 @@ class NavBar extends React.Component {
                 
     loggedOut() {
         if (!this.props.loggedIn) {
-            // debugger
-            return (
-              <div className="button-div">
-                <Link 
-                  onClick={() => this.props.login({ email: "ryan@gmail.com", password: "password" })}
-                  className="button" 
-                  >
-                  Demo
-                </Link>
-                <div className="vertical-line-navbar"></div>
-                <Link className="button" to="/login">
-                  Log In
-                </Link>
-                <div className="vertical-line-navbar"></div>
-                <Link className="button" to="/signup">
-                  Sign Up
-                </Link>
-              </div>
-            );
-        }
+          return (
+            <div className="button-div">
+              <Link
+                onClick={() =>
+                  this.props.login({
+                    email: "ryan@gmail.com",
+                    password: "password",
+                  })
+                }
+                className="button"
+              >
+                Demo
+              </Link>
+              <div className="vertical-line-navbar"></div>
+              <Link className="buttonCrew" to="/crew">
+                The Crew
+              </Link>
+              <div className="vertical-line-navbar"></div>
+              <Link className="button" to="/login">
+                Log In
+              </Link>
+              <div className="vertical-line-navbar"></div>
+              <Link className="button" to="/signup">
+                Sign Up
+              </Link>
+
+              {/* &emsp; */}
+            </div>
+          );
+        } 
     }
 
     loggedIn() {
         if ((this.props.loggedIn && this.props.location.pathname === "/user") || (this.props.loggedIn && this.props.location.pathname === "/favorites")) {
-            // debugger
             return (
-                <div className="button-div">
-                    <button className="button2" onClick={this.handleLogout}>Log Out</button>
-                </div>
-            )
+              <div className="button-div">
+                <Link className="buttonCrew" to="/crew">
+                  The Crew
+                </Link>
+                <div className="vertical-line-navbar"></div>
+                <button className="button2" onClick={this.handleLogout}>
+                  Log Out
+                </button>
+              </div>
+            );
         } else if (this.props.loggedIn) {
             return (
                 <div className="button-div">
                     <Link className="button" to="/user">Profile</Link>
                     <div className="vertical-line-navbar"></div>
+                    <Link className="buttonCrew" to="/crew">The Crew</Link>
+                    <div className="vertical-line-navbar"></div>
                     <button className="button2" onClick={this.handleLogout}>Log Out</button>
                 </div>
             )
-        }
+        } else if (
+                 (this.props.loggedIn &&
+                   this.props.location.pathname === "/crew") ||
+                 (this.props.loggedIn &&
+                   this.props.location.pathname === "/cafe")
+               ) {
+                 return (
+                   <div className="button-div">
+                     <Link className="button" to="/user">
+                       Profile
+                     </Link>
+                     <div className="vertical-line-navbar"></div>
+                     <button className="button2" onClick={this.handleLogout}>
+                       Log Out
+                     </button>
+                   </div>
+                 );
+               }
 
 
     }

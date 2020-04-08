@@ -3,7 +3,7 @@ import "./modal.scss";
 import Carousel from "../carousel/carousel"
 import Map from '../map/directions';
 import FavButton from '../favorite_button/fav_button'
-
+// import PopUpContainer from "../popUp/pop_up_container";
 
 //Helper Functions
 
@@ -51,6 +51,7 @@ const Modal = (props) => {
 
   }
 
+
   let findCoordinates = () => {
     navigator.geolocation.getCurrentPosition(getPosition);
   }
@@ -86,6 +87,7 @@ const Modal = (props) => {
     
 
     const favoriteModal = (
+
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
         <div className="carousel-container">
           <Carousel photos={photos} />
@@ -104,9 +106,11 @@ const Modal = (props) => {
             {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
             <div className="modal-mid">
               <div className="modal-distance-duration">
+
                 {/* {distance_away} miles away */}
               </div>
               {/* <div className="modal-distance-duration">{duration} minutes</div> */}
+
             </div>
           </div>
           <div className="modal-bottom">
@@ -118,6 +122,7 @@ const Modal = (props) => {
               </div>
               {/* <div>Selected: {selected}</div> */}
               <div className="rolled-favorited">
+
                 <div>
                   <b>{favorite_amount}</b> other <b>StudyPallers</b> have
                   favorited this cafe
@@ -149,7 +154,10 @@ const Modal = (props) => {
                   }}
                   value="Remove"
                 />
+
               </div>
+              <FavButton />
+              {/* <PopUpContainer /> */}
             </div>
           </div>
         </div>
@@ -170,6 +178,7 @@ const Modal = (props) => {
     );
 
 
+
     const cafeModal = (
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
         <div className="carousel-container">
@@ -185,6 +194,7 @@ const Modal = (props) => {
               <div className="modal-address">{location.display_address[1]}</div>
               <div className="modal-address">{location.display_address[2]}</div>
               <div className="modal-address">{display_phone}</div>
+
             </div>
             {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
             <div className="modal-mid">

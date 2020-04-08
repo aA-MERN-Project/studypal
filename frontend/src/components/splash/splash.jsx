@@ -20,7 +20,7 @@ class Splash extends React.Component {
     this.findCoordinates = this.findCoordinates.bind(this);
     this.getPosition = this.getPosition.bind(this);
     this.clear = this.clear.bind(this);
-    
+    this.update = this.update.bind(this);
   
   }
 
@@ -57,7 +57,7 @@ class Splash extends React.Component {
   }
 
   handleSubmit(e) {
-
+    debugger
     e.preventDefault();
 
     let state = this.state;
@@ -77,19 +77,21 @@ class Splash extends React.Component {
 
 
   update(field) {
-
     return e => this.setState({
       [field]: e.currentTarget.value
     })
   }
 
   render() {
-    debugger
+    
     return (
       <div className="index">
         <NavBar />
         <div className="content">
-    <div className="cta">Discover your cafe for today.</div>
+          <div id="welcomeName">
+             Welcome, {this.props.user.handle}!
+          </div>
+        <div className="cta">Discover your cafe for today.</div>
 
       {/* {this.loggedIn()} */}
       <div id="looking-for">What are you looking for?</div>
