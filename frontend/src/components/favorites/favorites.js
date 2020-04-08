@@ -99,29 +99,45 @@ import Modal from '../modal/modal_container'
                         <ul className="cafe-list">
                             {favorites.map(cafe => {
                                 return (
-                                    <div className="cafe-box">
-                                        <div className="cafe-text-info">
-                                            <div 
-                                                className="modal-cafe-name"
-                                                onClick={() => {
-                                                   
-                                                    this.cafeClick(cafe)
-                                                    // this.props.openModal("cafe", this.modalData)
-                                                    //     .then(() => this.cafeClick(cafe))
-
-                                                    // this.props.fetchCurrCafe(this.props.yelpCafe.id)
-                                                }}
-                                            >
-                                                {cafe.name}
-                                            </div>
-                                            <div className="modal-cafe-address">
-                                                {cafe.location_display_address_0}
-                                            </div>
-                                            <div onClick={() => this.handleUnfavorite(this.props.user.id, cafe)} className="favorite-remove">Remove</div>
-                                        </div>
-                                        <img className="fav-cafe-img" src={cafe.image_url}/>
+                                  <div className="cafe-box">
+                                    <div className="cafe-text-info">
+                                      <div
+                                        className="modal-cafe-name"
+                                        onClick={() => {
+                                          this.cafeClick(cafe);
+                                        }}
+                                      >
+                                        {cafe.name}
+                                      </div>
+                                      <div
+                                        className="modal-cafe-address"
+                                        onClick={() => {
+                                          this.cafeClick(cafe);
+                                        }}
+                                      >
+                                        {cafe.location_display_address_0}
+                                      </div>
+                                      <div
+                                        onClick={() =>
+                                          this.handleUnfavorite(
+                                            this.props.user.id,
+                                            cafe
+                                          )
+                                        }
+                                        className="favorite-remove"
+                                      >
+                                        Remove
+                                      </div>
                                     </div>
-                                )
+                                    <img
+                                      className="fav-cafe-img"
+                                      onClick={() => {
+                                        this.cafeClick(cafe);
+                                      }}
+                                      src={cafe.image_url}
+                                    />
+                                  </div>
+                                );
                             })}
                         </ul>
                     </div>
