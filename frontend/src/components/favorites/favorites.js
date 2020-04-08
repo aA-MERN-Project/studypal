@@ -77,9 +77,12 @@ import Modal from '../modal/modal_container'
 
         }
 
+        
+
         render() {
             if (!this.props.favorites) return null;
             let favorites = this.props.favorites;
+
 
             return (
                 <div className="favorites-page">  
@@ -129,13 +132,20 @@ import Modal from '../modal/modal_container'
                                         Remove
                                       </div>
                                     </div>
-                                    <img
-                                      className="fav-cafe-img"
-                                      onClick={() => {
-                                        this.cafeClick(cafe);
-                                      }}
-                                      src={cafe.image_url}
-                                    />
+                                    {cafe.image_url ? (
+                                      <img
+                                        className="fav-cafe-img"
+                                        onClick={() => {
+                                            this.cafeClick(cafe);
+                                        }}
+                                        src={cafe.image_url}
+                                      />
+                                    ) : (
+                                      <img
+                                        className="fav-cafe-img"
+                                        src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/sparephoto.png"
+                                      ></img>
+                                    )}
                                   </div>
                                 );
                             })}

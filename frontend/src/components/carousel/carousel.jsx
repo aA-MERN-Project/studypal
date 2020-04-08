@@ -57,8 +57,12 @@ function Carousel(props) {
             }, 0)
 
     }
+
+
     let photos
-    if (Array.isArray(props.photos)) {
+    
+    debugger
+    if (props.photos.length > 0) {
       photos = props.photos
     } else {
       photos = ['https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png',
