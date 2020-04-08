@@ -1,4 +1,4 @@
-import NavBar from '../navbar/navbar'
+import NavBarContainer from '../navbar/navbar_container'
 import React from 'react'
 import './favorites.css'
 import { Link } from 'react-router-dom'
@@ -57,14 +57,14 @@ import Modal from '../modal/modal_container'
         }
 
         cafeClick(cafe) {
-            debugger
+            // debugger
             this.props
               .fetchFavoriteCafeById(cafe.id)
               .then(() => this.props.fetchCurrCafe(cafe.id))
               .then(() =>
                 this.props.openModal("favoriteModal", this.modalData)
               );
-            debugger
+            // debugger
         }
 
         render() {
@@ -74,9 +74,7 @@ import Modal from '../modal/modal_container'
             return (
                 <div className="favorites-page">  
                     <Modal/>
-                    <NavBar 
-                        status={true}
-                    />
+                    <NavBarContainer />
                     <div className="favorites-div">
                         <div className="back-profile-div">
                             <Link className="back-profile-header" to="/user">

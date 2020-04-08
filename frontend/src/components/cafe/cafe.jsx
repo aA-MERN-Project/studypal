@@ -26,9 +26,16 @@ class Cafe extends React.Component {
         this.calculateTime = this.calculateTime.bind(this);
         this.applyExtraFilters = this.applyExtraFilters.bind(this);
         this.addSelected = this.addSelected.bind(this);
+        this.shortenName = this.shortenName.bind(this)
     }
 
-
+    shortenName(name) {
+      if (name.length > 28) {
+        return name.slice(0, 28)+ "..."
+      } else {
+        return name
+      }
+    }
 
 
     selectRandomCafe(cafe_array) {
@@ -188,7 +195,7 @@ class Cafe extends React.Component {
                 <div className="cafe">
                   <div className="profile">
                     <div className="title">
-                      <div className="name">{this.props.yelpCafe.name}</div>
+                      <div className="name">{this.shortenName(this.props.yelpCafe.name)}</div>
                       <a
                         className="yelp"
                         onClick={() => {
