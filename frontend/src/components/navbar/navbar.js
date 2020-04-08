@@ -26,15 +26,15 @@ class NavBar extends React.Component {
         ) {
           return (
             <div className="button-div-logout">
-                <Link className="buttonCrew" to="/crew">The Crew</Link>
-                &emsp;
-                <div className="vertical-line-navbar"></div>
+                {/* &emsp; */}
                 <Link 
                   onClick={() => this.props.login({ email: "ryan@gmail.com", password: "password" })}
                   className="button" 
                   >
                   Demo
                 </Link>
+                <div className="vertical-line-navbar"></div>
+                <Link className="buttonCrew" to="/crew">The Crew</Link>
                 <div className="vertical-line-navbar"></div>
                 <Link className="button" to="/login">
                   Log In
@@ -43,12 +43,12 @@ class NavBar extends React.Component {
                 <Link className="button" to="/signup">
                   Sign Up
                 </Link>
-                &emsp;
+                {/* &emsp; */}
                 <div className="vertical-line-navbar"></div>
                     &emsp;
-                    <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
-                    <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"/>
-                    </a>
+                <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
+                  <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"/>
+                </a>
               </div>
           );
         } else if (
@@ -76,7 +76,19 @@ class NavBar extends React.Component {
               <Link className="button" to="/signup">
                 Sign Up
               </Link>
-
+              <div className="vertical-line-navbar"></div>
+              &emsp;
+              <a
+                target="_blank"
+                className="gitIconLink"
+                href="https://github.com/aA-MERN-Project/studypal"
+              >
+                <img
+                  className="gitIconLink"
+                  alt="studypal github repo"
+                  src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"
+                />
+              </a>
               {/* &emsp; */}
             </div>
           );
@@ -102,18 +114,34 @@ class NavBar extends React.Component {
             );
         } else if (this.props.loggedIn) {
             return (
-                <div className="button-div">
-                    <Link className="button" to="/user">Profile</Link>
-                    <div className="vertical-line-navbar"></div>
-                    <Link className="buttonCrew" to="/crew">The Crew</Link>
-                    <div className="vertical-line-navbar"></div>
-                    <button className="button2" onClick={this.handleLogout}>Log Out</button>
-                    &nbsp;
-                    <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
-                        <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"/>
-                    </a>
-                </div>
-            )
+              <div className="button-div">
+                <Link className="button" to="/user">
+                  Profile
+                </Link>
+                <div className="vertical-line-navbar"></div>
+                <Link className="buttonCrew" to="/crew">
+                  The Crew
+                </Link>
+                <div className="vertical-line-navbar"></div>
+                <button className="button2" onClick={this.handleLogout}>
+                  Log Out
+                </button>
+                {/* &nbsp; */}
+                <div className="vertical-line-navbar"></div>
+                &emsp;
+                <a
+                  target="_blank"
+                  className="gitIconLink"
+                  href="https://github.com/aA-MERN-Project/studypal"
+                >
+                  <img
+                    className="gitIconLink"
+                    alt="studypal github repo"
+                    src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"
+                  />
+                </a>
+              </div>
+            );
         } else if (
                  (this.props.loggedIn &&
                    this.props.location.pathname === "/crew") ||

@@ -120,8 +120,17 @@
 
 .gitIconLink{
     width:30px;
-    
 }
+
+.gitIconLink:hover{
+    /* width:31px; */
+    /* border-radius: 50%; */
+    /* margin-top: 2px; */
+    margin-bottom: 1.5px;
+    border-radius:  10px 10px 10px 10px;
+    /* background-color: #FF7F50; */
+}
+
 /* a.gitIconLink{
     position:absolute;
     z-index:10;

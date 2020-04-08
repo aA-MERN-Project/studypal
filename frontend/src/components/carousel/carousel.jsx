@@ -61,7 +61,6 @@ function Carousel(props) {
 
     let photos
     
-    debugger
     if (props.photos.length > 0) {
       photos = props.photos
     } else {

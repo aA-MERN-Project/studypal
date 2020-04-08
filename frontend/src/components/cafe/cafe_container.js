@@ -25,7 +25,7 @@ const mapStateToProps = state => {
     loading: state.loading.indexLoading,
     randomCafe: randomCafe,
     yelpCafe: state.entities.yelpCafe,
-
+    loggedIn: state.session.isAuthenticated
   };
 
 }
