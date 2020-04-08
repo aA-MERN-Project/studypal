@@ -83,8 +83,12 @@ const Modal = (props) => {
     const time = calculateTime(hours);
     const isOpen = <div className="time-modal">Open until {time}</div>;
     const isClosed = <div className="time-modal-red">Currently Closed</div>;
-    const openRightNow = hours[0].is_open_now;
+
+
+    let openRightNow = false;
     
+
+    if (props.yelpCafe.hours) openRightNow = hours[0].is_open_now;
 
     const favoriteModal = (
 
