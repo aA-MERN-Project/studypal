@@ -86,8 +86,6 @@ class Test extends React.Component {
         } 
     }
 
-    
-
     openUpdate(){
         // debugger;
         this.setState({updatedProfile:"true"});
@@ -95,7 +93,6 @@ class Test extends React.Component {
         this.setState({email:this.props.updatedUser.email});
         this.setState({zipcode:this.props.updatedUser.zipcode});
         this.props.clearErrors();
-        
     }
 
     closeUpdate(){
@@ -112,7 +109,7 @@ class Test extends React.Component {
                     {/* <div className="editProfileButtonDiv" >
                             <button  className="editProfileButton" onClick={this.closeUpdate} >x</button>
                     </div> */}
-                    <div className="update-profile-div">
+                    <div style={{margin:"0px"}} className="update-profile-div">
                         <form className="update-profile-form"onSubmit={this.handleSubmit}>
                             <div className="vertical-line-profile"></div>
                             <label className="profile-labels">Username:</label>

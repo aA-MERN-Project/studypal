@@ -124,7 +124,9 @@ class Profile extends React.Component {
         free_wifi: "false",
         credit_card: "false",
         noise_level: "false"
-      })
+      });
+
+      
       this.props.updateUserPreferences(this.state.user.id, {
         miles_away: "",
         hours_opened_left: "",

@@ -156,5 +156,12 @@ button:hover {
     cursor: pointer;
     box-shadow:none;
     outline:none;
+}
+
+#welcomeName{
+    padding-top:25px;
+    position:absolute;
     
+    font-family: "Open Sans";
+    // border:1px solid black;
 }

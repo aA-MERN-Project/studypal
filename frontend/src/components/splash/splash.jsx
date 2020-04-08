@@ -101,7 +101,10 @@ class Splash extends React.Component {
       <div className="index">
         <NavBar />
         <div className="content">
-    <div className="cta">Discover your cafe for today.</div>
+          <div id="welcomeName">
+             Welcome, {this.props.user.handle}!
+          </div>
+        <div className="cta">Discover your cafe for today.</div>
 
       {/* {this.loggedIn()} */}
       <div id="looking-for">What are you looking for?</div>

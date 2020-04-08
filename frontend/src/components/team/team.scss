@@ -1,0 +1,290 @@
+
+.team-outer-div{
+    // border:1px solid black;
+    background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
+    font-family: "Open Sans";
+    text-align:center;
+
+    position:absolute;
+    z-index:-1;
+    top: 0;
+    left: 0;
+    // background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items:space-evenly;
+    min-height: 100%;
+    min-width: 100%
+}
+
+
+.team-outer-div * { 
+    box-sizing:border-box;
+    position:relative;
+    // border:1px solid black;
+    font-family: "Open Sans";
+    padding-top:2px;
+    padding-bottom:4px;
+    
+
+}
+.row::after{
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+[class*="col-"]{
+    float:left;
+    padding:14px;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+.col-developer{width:21.5%}
+
+.crewHeader{
+    margin-top:5%;
+    padding:20px;
+    font-size:35px;
+    margin-bottom:2%;
+    color:white;
+}
+
+
+.developer{
+    margin-right:1%;
+    margin-left:1%;
+    background-color:white;
+    // border:1px solid black(255, 127, 80, 0.8);
+}
+
+.first{
+    margin-left:4%;
+}
+
+.end{
+    margin-right:4%;
+}
+
+.andyPicDiv{
+    width:100%;
+    background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/AndyProfile2.jpg');
+    background-size:cover;
+    height:300px;
+}
+
+.wilsonPicDiv{
+    width:100%;
+    background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/wilson.jpeg');
+    background-size:cover;
+    height:300px;
+}
+
+.feiPicDiv{
+    width:100%;
+    background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/fei.jpg');
+    background-size:cover;
+    height:300px;
+}
+
+.joannaPicDiv{
+    width:100%;
+    background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/JoannaPic.jpg');
+    background-size:cover;
+    height:300px;
+}
+
+.teamPic{
+    width:100%;
+    background-size:cover;
+    height:300px;
+    
+}
+
+
+.angelCo, .linkedIn{
+    width:30px;
+    
+}
+
+.github{
+    width:30px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.teamIcons{
+    margin-top:10px;
+
+}
+
+
+.crewPicDiv{
+    padding:10px;
+    background-color: rgba(255, 127, 80, 0.8);;
+
+}
+
+.CrewName{
+    font-size:25px;
+}
+
+.crewTitle{
+    font-size:14px;
+}
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+//for mobile phones
+/* For mobile phones: */
+@media only screen and (max-width: 600px) {
+    [class*="col-"] {
+        width: 92%;
+      }
+    
+    .developer{
+        margin:4%;
+    }
+
+    .wilsonPicDiv, .andyPicDiv, .feiPicDiv, .joannaPicDiv{
+        height:450px;
+    }
+
+}
+
+
+
+  @media only screen and (min-width: 601px) {
+    [class*="col-"] {
+        width: 46%;
+      }
+
+      .developer{
+        margin:2%;
+      }
+  }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+        [class*="col-"] {
+            width: 46%;
+          }
+    
+          .developer{
+            margin:2%;
+          }
+
+          .wilsonPicDiv, .andyPicDiv, .feiPicDiv, .joannaPicDiv{
+            height:450px;
+        }
+
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+        [class*="col-"] {
+            width: 30%;
+          }
+
+          .developer{
+            margin:1.5%;
+          }
+
+    } 
+
+    /* Large devices (laptops/desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+        .row::after{
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        
+        [class*="col-"]{
+            float:left;
+            padding:14px;
+        }
+        
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+        .col-developer{width:21.5%}
+        
+        .crewHeader{
+            margin-top:5%;
+            padding:20px;
+            font-size:35px;
+            margin-bottom:2%;
+            color:white;
+        }
+        
+        
+        .developer{
+            margin-right:1%;
+            margin-left:1%;
+            background-color:white;
+            // border:1px solid black(255, 127, 80, 0.8);
+        }
+        
+        .first{
+            margin-left:4%;
+        }
+        
+        .end{
+            margin-right:4%;
+        }
+        
+        .andyPicDiv{
+            width:100%;
+            background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/AndyProfile2.jpg');
+            background-size:cover;
+            height:300px;
+        }
+        
+        .wilsonPicDiv{
+            width:100%;
+            background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/wilson.jpeg');
+            background-size:cover;
+            height:300px;
+        }
+        
+        .feiPicDiv{
+            width:100%;
+            background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/fei.jpg');
+            background-size:cover;
+            height:300px;
+        }
+        
+        .joannaPicDiv{
+            width:100%;
+            background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/JoannaPic.jpg');
+            background-size:cover;
+            height:300px;
+        }
+    
+
+    }
+    
