@@ -75,9 +75,9 @@ const FavButton = (props) => {
 
     
     return (
-      <div>
+      <span>
         {isFavorited ? FavoriteBold : FavoriteUnbold} 
-      </div>
+      </span>
     );
     
 }

@@ -31,7 +31,8 @@ import Modal from '../modal/modal_container'
                 filters: {},
                 user: this.props.user
             }
-            this.cafeClick = this.cafeClick.bind(this)
+            this.cafeClick = this.cafeClick.bind(this);
+            this.cafeRoll = this.cafeRoll.bind(this);
         }
 
         componentDidMount(){
@@ -57,14 +58,21 @@ import Modal from '../modal/modal_container'
         }
 
         cafeClick(cafe) {
-            debugger
             this.props
               .fetchFavoriteCafeById(cafe.id)
               .then(() => this.props.fetchCurrCafe(cafe.id))
               .then(() =>
                 this.props.openModal("favoriteModal", this.modalData)
               );
-            debugger
+        }
+
+        cafeRoll(){
+            
+            this.props
+              .rerollCafes(this.props.favorites)
+            this.props.getFilters({miles_away:"fakeData"})
+            this.props.history.push("/cafe")
+            
         }
 
         render() {
@@ -86,7 +94,7 @@ import Modal from '../modal/modal_container'
                         </div>
                         <div className="favorites-and-pick">
                             <div className="favorites-header">Favorites</div>
-                            <button className="pick-random">Pick a Random Favorite Cafe</button>
+                            <button className="pick-random" onClick={() => this.cafeRoll()}>Pick a Random Favorite Cafe</button>
                         </div>
                         <ul className="cafe-list">
                             {favorites.map(cafe => {
