@@ -13,7 +13,15 @@
    align-items: center;
 }
 
-
+.time-modal-red {
+    color: red;
+    margin-top: -8px;
+    font-family: "Open Sans";
+    font-size: 15px;
+    padding-bottom: 7px;
+    position: relative;
+    left: 25px;
+}
 .carousel-modal {
     // top: -20px;
     flex-flow: column nowrap;
@@ -29,6 +37,19 @@
     overflow-y: scroll;
 }
 
+.map-modal {
+    flex-flow: column nowrap;
+    max-height: 700px;
+    justify-content: space-around;
+    margin: auto;
+    position: relative;
+    width: 850px;
+    align-items: center;
+    background-color: white;
+    border: 2px solid #EBEBEB;
+    box-shadow: 0 0 10px #EBEBEB;
+    overflow-y: scroll;
+}
 
 
 .carousel-container {

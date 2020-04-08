@@ -5,91 +5,89 @@ import Map from '../map/directions';
 import FavButton from '../favorite_button/fav_button'
 // import PopUpContainer from "../popUp/pop_up_container";
 
+//Helper Functions
+
+    
 
 const Modal = (props) => {
-    
     if (!props.modal){
         return null
     }
-    let name = {}
-    let studyPalCafe = {}
-    let distance_away = {}
-    let photos = {}
-    let duration = {}
-    let rolled = {}
-    let selected = {}
-    let my_lat = {}
-    let my_lng = {}
-    let cafe_lat = {}
-    let cafe_lng = {}
-    let phone_num = {}
-    let address = {}
-    let favorite_amount = {}
-  
-    if(props.data.studyPalCafe.name) {
-      name = props.data.studyPalCafe.name
-      studyPalCafe = props.data.studyPalCafe;
-      distance_away = studyPalCafe.distance_away;
-      photos = props.data.yelpData.photos;
-      duration = (studyPalCafe.distance_away * 17.5).toFixed(2);
-      rolled = studyPalCafe.rolled_amount;
-      selected = studyPalCafe.selected_amount;
-      my_lat = props.data.filters.my_lat;
-      my_lng = props.data.filters.my_lng;
-      cafe_lat = studyPalCafe.coordinates_latitude;
-      cafe_lng = studyPalCafe.coordinates_longitude;
-      phone_num = props.data.yelpData.display_phone;
-      address = props.data.yelpData.location.display_address;
-      favorite_amount = studyPalCafe.favorite_amount;
-    }
-    
 
+    //Helper Methods
+    let handleUnfavorite = (userId,cafe) => {
+            const favoriteData = new Object();
+            favoriteData.type = "unfavorite";
+            favoriteData.cafe = cafe;
+            props.updateFavorites(userId, favoriteData);
+        }
 
-    // Put in after setting up user model
-    // let saved = studyPalCafe.saved_amount;
-   
-    let formatTime = function(fourDigitTime) {
+    let formatTime = function (fourDigitTime) {
       let hours24 = parseInt(fourDigitTime.substring(0, 2));
       let hours = ((hours24 + 11) % 12) + 1;
       let amPm = hours24 > 11 ? "pm" : "am";
       let minutes = fourDigitTime.substring(2);
       return hours + ":" + minutes + amPm;
-    }
+    };
 
-    let calculateTime = function(hours) {
+    let calculateTime = function (hours) {
       let dateApi = new Date();
       let day = dateApi.getDay();
-      if (!hours) return null
+      if (!hours) return null;
       if (!hours[0].open[day]) {
-        return "Unavailable Time For This Day"
+        return "Unavailable Time For This Day";
       } else {
         return formatTime(hours[0].open[day].end);
       }
-    }
-    
-    let time = calculateTime(props.yelpCafe.hours)
-
-    let handleDeleteFavorite = function (userId, cafe) {
-      const favorites = new Object();
-      favorites.type = "unfavorite";
-      favorites.cafe = cafe;
-      props.updateFavorites(userId, favorites);
-      props.fetchCurrCafe(cafe.id);
     };
 
-    let handleAddFavorite = function(userId, cafe){
-        const favorites = new Object();
-        favorites.type = "favorite";
-        favorites.cafe = cafe;
-        // debugger;
-        props.updateFavorites(userId, favorites);
-        props.fetchCurrCafe(cafe.id);
-        
+  let myPosition = null;
+
+  let getPosition = (position) => {
+    myPosition = {
+      my_lat: position.coords.latitude,
+      my_lng: position.coords.longitude
     }
 
+  }
 
+
+  let findCoordinates = () => {
+    navigator.geolocation.getCurrentPosition(getPosition);
+  }
+
+
+    // Data coming from StudyPal Backend
+    const {
+      rolled_amount,
+      selected_amount,
+      favorite_amount,
+    } = props.currCafe;
+
+    // Data coming from Yelp API
+    const { 
+      name,
+      coordinates, // coordinates.latitude / coordinates.longitude
+      photos,
+      hours,
+      display_phone,
+      url,
+      is_closed,
+      location, //location.address1, location.address3, location.city, location.zip_code, location.display_address
+
+     } = props.yelpCafe;
+   
+    // duration = (studyPalCafe.distance_away * 17.5).toFixed(2)
+
+   
+    const time = calculateTime(hours);
+    const isOpen = <div className="time-modal">Open until {time}</div>;
+    const isClosed = <div className="time-modal-red">Currently Closed</div>;
+    const openRightNow = hours[0].is_open_now;
     
-    const cafeModal = (
+
+    const favoriteModal = (
+
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
         <div className="carousel-container">
           <Carousel photos={photos} />
@@ -99,20 +97,20 @@ const Modal = (props) => {
           <div className="modal-horizontal-line"></div>
           <div className="business-misc-flex">
             <div className="modal-left">
-              <div className="time-modal">Open until {time} Today</div>
-              <div className="modal-address">
-                {address[0]}, {address[1]}
-              </div>
-              <div className="modal-address">{phone_num}</div>
+              {openRightNow ? isOpen : isClosed}
+              <div className="modal-address">{location.display_address[0]}</div>
+              <div className="modal-address">{location.display_address[1]}</div>
+              <div className="modal-address">{location.display_address[2]}</div>
+              <div className="modal-address">{display_phone}</div>
             </div>
             {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
             <div className="modal-mid">
               <div className="modal-distance-duration">
-                {Math.ceil(distance_away / 1609)} miles away
+
+                {/* {distance_away} miles away */}
               </div>
-              <div className="modal-distance-duration">
-                {Math.ceil((duration / 3600) / 3)} minutes
-              </div>
+              {/* <div className="modal-distance-duration">{duration} minutes</div> */}
+
             </div>
           </div>
           <div className="modal-bottom">
@@ -120,114 +118,138 @@ const Modal = (props) => {
             {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
             <div className="modal-right">
               <div className="rolled-favorited">
-                Number of Times Randomly Rolled: {rolled}
+                {/* Number of Times Randomly Rolled: {rolled} */}
               </div>
               {/* <div>Selected: {selected}</div> */}
               <div className="rolled-favorited">
-                Favorited by {props.currCafe.favorite_amount} others
+
+                <div>
+                  <b>{favorite_amount}</b> other <b>StudyPallers</b> have
+                  favorited this cafe
+                </div>
+                <div>
+                  <b>{selected_amount}</b> other <b>StudyPallers</b> have gone
+                  to this cafe
+                </div>
+                <div>
+                  <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
+                  cafe on our state of the art platform :)
+                </div>
+                <input
+                  id="cafe-submit"
+                  type="submit"
+                  onClick={() =>{
+                    
+                    props.openModal("mapModal", "data") }
+                  }
+                  value="Route"
+                />
+                <input
+                  id="cafe-submit"
+                  type="submit"
+                  onClick={() => {
+                    handleUnfavorite(props.user.id, props.currCafe)
+                    props.closeModal();
+          
+                  }}
+                  value="Remove"
+                />
+
               </div>
               <FavButton />
               {/* <PopUpContainer /> */}
             </div>
           </div>
         </div>
+      </div>
+    );
 
-        <Map
-          cafe_lat={cafe_lat}
-          cafe_lng={cafe_lng}
-          my_lat={my_lat}
-          my_lng={my_lng}
-        />
+    const mapModal = (
+      <div className="map-modal">
+        <div>
+          <Map
+          // cafe_lat={cafe_lat}
+          // cafe_lng={cafe_lng}
+          // my_lat={my_lat}
+          // my_lng={my_lng}
+          />
+        </div>
       </div>
     );
 
 
 
-  let favoriteData = props.yelpCafe
-  let favTime = calculateTime(props.yelpCafe.hours);
-  let favAddress = props.yelpCafe.location.display_address
+    const cafeModal = (
+      <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="carousel-container">
+          <Carousel photos={photos} />
+        </div>
+        <div className="business-misc">
+          <h1 className="modal-name"> {name} <FavButton /></h1>
+          <div className="modal-horizontal-line"></div>
+          <div className="business-misc-flex">
+            <div className="modal-left">
+              {openRightNow ? isOpen : isClosed}
+              <div className="modal-address">{location.display_address[0]}</div>
+              <div className="modal-address">{location.display_address[1]}</div>
+              <div className="modal-address">{location.display_address[2]}</div>
+              <div className="modal-address">{display_phone}</div>
 
-  // debugger
-  const favoriteModal = (
-    <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
-      <div className="carousel-container">
-        <Carousel photos={favoriteData.photos} />
-      </div>
-      <div className="business-misc">
-        <h1 className="modal-name"> {favoriteData.name} </h1>
-        <div className="modal-horizontal-line"></div>
-        <div className="business-misc-flex">
-          <div className="modal-left">
-            <div className="time-modal">Open until {favTime} Today</div>
-            <div className="modal-address">
-              {favAddress[0]}, {favAddress[1]}
             </div>
-            <div className="modal-address">{favoriteData.display_phone}</div>
-          </div>
-          {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
-          <div className="modal-mid">
-            <div className="modal-distance-duration">
-              {/* {distance_away} miles away */}
+            {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
+            <div className="modal-mid">
+              <div className="modal-distance-duration">
+                {/* {distance_away} miles away */}
               </div>
-            {/* <div className="modal-distance-duration">{duration} minutes</div> */}
-          </div>
-        </div>
-        <div className="modal-bottom">
-          <div className="modal-horizontal-info"></div>
-          {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
-          <div className="modal-right">
-            <div className="rolled-favorited">
-              {/* Number of Times Randomly Rolled: {rolled} */}
+              {/* <div className="modal-distance-duration">{duration} minutes</div> */}
             </div>
-            {/* <div>Selected: {selected}</div> */}
-            <div className="rolled-favorited">Favorited by {props.currCafe.favorite_amount} others </div>
-            {/* <a
-              className="yelp"
-              onClick={() =>
-                handleAddFavorite(props.data.user.id, props.data.yelpData)
-              }
-            >
-              <div id="yelp-text">Favorite</div>
-            </a>
+          </div>
+          <div className="modal-bottom">
+            <div className="modal-horizontal-info"></div>
+            {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
+            <div className="modal-right">
+              <div className="rolled-favorited">
+                {/* Number of Times Randomly Rolled: {rolled} */}
+              </div>
+              {/* <div>Selected: {selected}</div> */}
+              <div className="rolled-favorited">
+                <div>
+                  <b>{favorite_amount}</b> other <b>StudyPallers</b> have
+                  favorited this cafe
+                </div>
+                <div>
+                  <b>{selected_amount}</b> other <b>StudyPallers</b> have gone
+                  to this cafe
+                </div>
+                <div>
+                  <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
+                  cafe on our state of the art platform :)
+                </div>
 
-            <a
-              className="yelp"
-              onClick={() =>
-                handleDeleteFavorite(props.data.user.id, props.data.yelpData)
-              }
-            >
-              <div id="yelp-text">Unfavorite </div>
-            </a> */}
+                <input
+                  id="cafe-submit"
+                  type="submit"
+                  onClick={() => {
+                    props.openModal("mapModal", "data");
+                  }}
+                  value="Route"
+                />
+              </div>
+            </div>
           </div>
         </div>
-        {/* <div className="modal-distance-duration">
-            Distance <b>{distance_away}</b>  |  Duration <b>{duration}</b> 
-          </div>
-          <div>
-            Numbers of Times Randomly Rolled <b>{rolled}</b> | Selected <b>{selected}</b> 
-            | Studier Favorites <b>0</b>
-          </div> */}
       </div>
-      <Map
-        cafe_lat={cafe_lat}
-        cafe_lng={cafe_lng}
-        my_lat={my_lat}
-        my_lng={my_lng}
-      />
+    );
 
-    </div>
-  );
 
-    // let favoriteModal = (
-    //   <div>testest</div>
 
-    // )
+    let selectedModal = null;
+    
+    if(props.modal === "mapModal") selectedModal = mapModal;
+    if(props.modal === "cafeModal") selectedModal = cafeModal;
+    if(props.modal === "favoriteModal") selectedModal = favoriteModal;
 
-    // let selectedModal = this.props.modal === "cafeModal" ? cafeModal : 
-    let selectedModal = cafeModal
-    if(props.modal === "cafeModal") selectedModal = cafeModal 
 
-    if(props.modal === "favoriteModal") selectedModal = favoriteModal
     return (
       <div className="modal-backdrop" onClick={props.closeModal}>
         {selectedModal}
@@ -236,6 +258,5 @@ const Modal = (props) => {
 
 
 }
-
 
 export default Modal;
