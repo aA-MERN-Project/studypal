@@ -252,6 +252,7 @@
     padding-right: 10px;
     padding-left: 15px;
     padding-bottom: 5px;
+    max-height:164px;
 }
 
 .img-info-div {
@@ -291,10 +292,6 @@
     font-weight:700;
     color:#4169E1;
     outline:none;
-    
-    border: #4169E1 2px solid;
-
-    
     /* background-color:#4169E1;
     color:white; */
 }
@@ -329,7 +326,9 @@
     left: 90%;
     top: 2px;
     width: 90%;
-    color: rgb(64, 64, 64)
+    color: rgb(64, 64, 64);
+    padding-bottom:0px;
+    padding-top:0px;
 }
 
 .update-input:focus {
@@ -385,6 +384,14 @@
     outline: none;
 }
 
+.update-profile-button:hover{
+    font:11px;
+    font-weight:normal;
+
+}
+
+
+
 .update-profile-close {
     position: relative;
     left: 90%;
@@ -392,14 +399,21 @@
     outline: none
 }
 
+button.update-profile-close:hover{
+    font:11px;
+    font-weight:normal;
+}
+
 .vertical-line-profile {
     max-width: 190px;
+    max-width:170px;
     height: .1px;
     border: 1px solid rgba(65, 105, 225, 0.5);
     transform: rotate(90deg);
     position: relative;
     left: 25%;
-    top: 55%
+    top: 55%;
+    top:50%;
 }
 
 .profile-labels {
@@ -412,7 +426,8 @@
 }
 
 .update-profile-form {
-    width: 60%
+    width: 60%;
+   
 }
 
 .noun-espresso {
@@ -482,4 +497,18 @@
     }
   } 
 
+  /* Extra large devices (large laptops and desktops, 1370px and up) */
+  @media only screen and (min-width: 1370px) {
+    .profile-info{
+        padding:40px;
+    }
+
+    .filter-box-div{
+        padding: 40px;
+    }
+
+    .find-cafe-profile-div{
+        padding-top: 2%;  
+    }
+}
 
