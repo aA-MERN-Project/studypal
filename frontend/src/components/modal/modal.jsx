@@ -7,24 +7,44 @@ import FavButton from '../favorite_button/fav_button'
 
 
 const Modal = (props) => {
-     
+     debugger
     if (!props.modal){
         return null
     }
-    let name = props.data.studyPalCafe.name;
-    let studyPalCafe = props.data.studyPalCafe;
-    let distance_away = studyPalCafe.distance_away;
-    let photos = props.data.yelpData.photos;
-    let duration = (studyPalCafe.distance_away * 17.5).toFixed(2);
-    let rolled = studyPalCafe.rolled_amount;
-    let selected = studyPalCafe.selected_amount;
-    let my_lat = props.data.filters.my_lat;
-    let my_lng = props.data.filters.my_lng;
-    let cafe_lat = studyPalCafe.coordinates_latitude;
-    let cafe_lng = studyPalCafe.coordinates_longitude;
-    let phone_num = props.data.yelpData.display_phone;
-    let address = props.data.yelpData.location.display_address;
-    let favorite_amount = studyPalCafe.favorite_amount;
+    let name = {}
+    let studyPalCafe = {}
+    let distance_away = {}
+    let photos = {}
+    let duration = {}
+    let rolled = {}
+    let selected = {}
+    let my_lat = {}
+    let my_lng = {}
+    let cafe_lat = {}
+    let cafe_lng = {}
+    let phone_num = {}
+    let address = {}
+    let favorite_amount = {}
+    debugger
+    if(props.data.studyPalCafe.name) {
+      name = props.data.studyPalCafe.name
+      studyPalCafe = props.data.studyPalCafe;
+      distance_away = studyPalCafe.distance_away;
+      photos = props.data.yelpData.photos;
+      duration = (studyPalCafe.distance_away * 17.5).toFixed(2);
+      rolled = studyPalCafe.rolled_amount;
+      selected = studyPalCafe.selected_amount;
+      my_lat = props.data.filters.my_lat;
+      my_lng = props.data.filters.my_lng;
+      cafe_lat = studyPalCafe.coordinates_latitude;
+      cafe_lng = studyPalCafe.coordinates_longitude;
+      phone_num = props.data.yelpData.display_phone;
+      address = props.data.yelpData.location.display_address;
+      favorite_amount = studyPalCafe.favorite_amount;
+    }
+    
+
+
     // Put in after setting up user model
     // let saved = studyPalCafe.saved_amount;
    
@@ -49,9 +69,27 @@ const Modal = (props) => {
     
     let time = calculateTime(props.yelpCafe.hours)
 
+    let handleDeleteFavorite = function (userId, cafe) {
+      const favorites = new Object();
+      favorites.type = "unfavorite";
+      favorites.cafe = cafe;
+      props.updateFavorites(userId, favorites);
+      props.fetchCurrCafe(cafe.id);
+    };
+
+    let handleAddFavorite = function(userId, cafe){
+        const favorites = new Object();
+        favorites.type = "favorite";
+        favorites.cafe = cafe;
+        // debugger;
+        props.updateFavorites(userId, favorites);
+        props.fetchCurrCafe(cafe.id);
+        
+    }
 
 
-    const carouselModal = (
+    debugger
+    const cafeModal = (
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
         <div className="carousel-container">
           <Carousel photos={photos} />
@@ -101,9 +139,95 @@ const Modal = (props) => {
     );
 
 
+
+  let favoriteData = props.yelpCafe
+  let favTime = calculateTime(props.yelpCafe.hours);
+  let favAddress = props.yelpCafe.location.display_address
+
+  debugger
+  const favoriteModal = (
+    <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
+      <div className="carousel-container">
+        <Carousel photos={favoriteData.photos} />
+      </div>
+      <div className="business-misc">
+        <h1 className="modal-name"> {favoriteData.name} </h1>
+        <div className="modal-horizontal-line"></div>
+        <div className="business-misc-flex">
+          <div className="modal-left">
+            <div className="time-modal">Open until {favTime} Today</div>
+            <div className="modal-address">
+              {favAddress[0]}, {favAddress[1]}
+            </div>
+            <div className="modal-address">{favoriteData.display_phone}</div>
+          </div>
+          {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
+          <div className="modal-mid">
+            <div className="modal-distance-duration">
+              {/* {distance_away} miles away */}
+              </div>
+            {/* <div className="modal-distance-duration">{duration} minutes</div> */}
+          </div>
+        </div>
+        <div className="modal-bottom">
+          <div className="modal-horizontal-info"></div>
+          {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
+          <div className="modal-right">
+            <div className="rolled-favorited">
+              {/* Number of Times Randomly Rolled: {rolled} */}
+            </div>
+            {/* <div>Selected: {selected}</div> */}
+            <div className="rolled-favorited">Favorited by {props.currCafe.favorite_amount} others </div>
+            {/* <a
+              className="yelp"
+              onClick={() =>
+                handleAddFavorite(props.data.user.id, props.data.yelpData)
+              }
+            >
+              <div id="yelp-text">Favorite</div>
+            </a>
+
+            <a
+              className="yelp"
+              onClick={() =>
+                handleDeleteFavorite(props.data.user.id, props.data.yelpData)
+              }
+            >
+              <div id="yelp-text">Unfavorite </div>
+            </a> */}
+          </div>
+        </div>
+        {/* <div className="modal-distance-duration">
+            Distance <b>{distance_away}</b>  |  Duration <b>{duration}</b> 
+          </div>
+          <div>
+            Numbers of Times Randomly Rolled <b>{rolled}</b> | Selected <b>{selected}</b> 
+            | Studier Favorites <b>0</b>
+          </div> */}
+      </div>
+      <Map
+        cafe_lat={cafe_lat}
+        cafe_lng={cafe_lng}
+        my_lat={my_lat}
+        my_lng={my_lng}
+      />
+
+    </div>
+  );
+
+    // let favoriteModal = (
+    //   <div>testest</div>
+
+    // )
+
+    // let selectedModal = this.props.modal === "cafeModal" ? cafeModal : 
+    let selectedModal = cafeModal
+    if(props.modal === "cafeModal") selectedModal = cafeModal 
+
+    if(props.modal === "favoriteModal") selectedModal = favoriteModal
     return (
       <div className="modal-backdrop" onClick={props.closeModal}>
-        {carouselModal}
+        {selectedModal}
       </div>
     );
 

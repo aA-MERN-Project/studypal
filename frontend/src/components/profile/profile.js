@@ -204,7 +204,7 @@ class Profile extends React.Component {
       filters.credit_card ? filters.credit_card = "yes" : filters.credit_card = "no";
       filters.location_zip_code = JSON.parse(filters.location_zip_code);
 
-      debugger
+      // debugger
       
       this.props.fetchCafeByFilters(filters)
       this.props.getFilters(filters);

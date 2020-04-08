@@ -5,7 +5,7 @@ import { updateFavorites } from "../../actions/session_actions";
 import { fetchCurrCafe } from "../../actions/cafe_actions"
  
 const mapStateToProps = state => {
-   
+   debugger
   return {
     user: state.session.user,
     favorites: state.session.favorites,
@@ -13,7 +13,6 @@ const mapStateToProps = state => {
     data: state.modal.data,
     yelpCafe: state.entities.yelpCafe,
     currCafe: state.entities.currCafe,
-
   };
 };
 

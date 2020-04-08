@@ -124,7 +124,7 @@ const receiveFavorites = favorites => ({
 })
 
 export const fetchFavorites = userId => dispatch => {
-    debugger
+    // debugger
      return UserAPIUtil.getUser(userId)
        .then((user) => {
            dispatch(receiveFavorites(user.data.favorites))
@@ -135,7 +135,7 @@ export const fetchFavorites = userId => dispatch => {
 }
 
 export const updateFavorites = (id, favorites) => dispatch => {
-    ;
+    // debugger;
     let cafeId = favorites.cafe.id;
     let type = favorites.type;
 

@@ -15,8 +15,7 @@ export const RECEIVE_CURR_CAFE = "RECEIVE_CURR_CAFE"
 
 export const receiveCurrCafe = cafe => ({
     type: RECEIVE_CURR_CAFE,
-    cafe,
-
+    cafe
 })
 
 export const rerollCafes = cafes => ({
@@ -110,7 +109,12 @@ export const fetchCurrCafe = (id) => dispatch => {
 
 }
 
+export const fetchFavoriteCafeById = (id) => dispatch => {
+    return getYelpCafeById(id).then(cafe => {
+        dispatch(receiveYelpCafe(cafe.data));
+        return cafe.data;
+    })
 
-
+};
 
 
