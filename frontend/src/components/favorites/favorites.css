@@ -56,6 +56,10 @@
     border-radius: 5px;
 }
 
+.fav-cafe-img:hover {
+    cursor: pointer
+}
+
 .cafe-box {
     background-color: rgb(242, 242, 242);
     display: flex;
@@ -125,9 +129,17 @@
     font-weight: 900;
 }
 
+.modal-cafe-name:hover {
+    cursor: pointer
+}
+
 .modal-cafe-address {
     font-family: "Open Sans";
     font-size: 14.7px;
     padding-top: 5px;
     font-weight: lighter;
+}
+
+.modal-cafe-address:hover {
+    cursor: pointer
 }

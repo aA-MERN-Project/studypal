@@ -9,8 +9,6 @@ import Modal from "../modal/modal_container";
 import {updateCafe} from "../../util/cafe_api_util"
 import {selectRandomCafe} from "../../util/filters_util"
 
-
-
 class Cafe extends React.Component {
     constructor(props) {
         super(props);
@@ -26,7 +24,8 @@ class Cafe extends React.Component {
         this.calculateTime = this.calculateTime.bind(this);
         this.applyExtraFilters = this.applyExtraFilters.bind(this);
         this.addSelected = this.addSelected.bind(this);
-        this.shortenName = this.shortenName.bind(this)
+        this.shortenName = this.shortenName.bind(this);
+        this.viewStatus = this.viewStatus.bind(this)
     }
 
     shortenName(name) {
@@ -140,11 +139,38 @@ class Cafe extends React.Component {
       )
     }
 
+    viewStatus(modalData) {
+      if (this.props.loggedIn) {
+
+        return (
+          <a
+            className="yelp"
+            onClick={() => {
+              this.props.openModal("cafeModal", modalData);
+              this.props.fetchCurrCafe(this.props.yelpCafe.id);
+              this.props.fetchFavorites(this.props.user.id);
+            }}
+          >
+            <div id="yelp-text">View</div>
+          </a>
+        );
+      } else {
+
+        return (
+          <a
+            className="yelp"
+            onClick={() => {
+              this.props.openModal("cafeModal", modalData);
+              this.props.fetchCurrCafe(this.props.yelpCafe.id);
+            }}
+          >
+            <div id="yelp-text">View</div>
+          </a>
+        );
+      }
+    }
 
     render() {
-        // debugger;
-
-       
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
 
@@ -162,10 +188,6 @@ class Cafe extends React.Component {
                 .catch(err => this.props.history.push(`/errors`));
             }
           }
-
-
-
-
         if (Object.keys(this.props.yelpCafe).length === 0) return null
 
         if (!this.props.randomCafe) return null;
@@ -208,16 +230,7 @@ class Cafe extends React.Component {
                   <div className="profile">
                     <div className="title">
                       <div className="name">{this.shortenName(this.props.yelpCafe.name)}</div>
-                      <a
-                        className="yelp"
-                        onClick={() => {
-                          this.props.openModal("cafeModal", modalData)
-                          this.props.fetchCurrCafe(this.props.yelpCafe.id)
-                          this.props.fetchFavorites(this.props.user.id)
-                        }}
-                      >
-                        <div id="yelp-text">View</div>
-                      </a>
+                      {this.viewStatus(modalData)}
                     </div>
 
                     <div className="time">Open until {time} Today</div>

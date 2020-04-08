@@ -16,7 +16,7 @@ function Carousel(props) {
 
         setCounter(counter - 1)
 
-        debugger;
+        // debugger;
         setTimeout(
             () => {
 
@@ -61,7 +61,6 @@ function Carousel(props) {
 
     let photos
     
-    debugger
     if (props.photos.length > 0) {
       photos = props.photos
     } else {

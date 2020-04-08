@@ -66,7 +66,7 @@ class Splash extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
+    // debugger
     e.preventDefault();
 
     let state = this.state;
