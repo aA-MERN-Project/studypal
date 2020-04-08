@@ -135,7 +135,7 @@ const Modal = (props) => {
                   <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
                   cafe on our state of the art platform :)
                 </div>
-                <input
+                {/* <input
                   id="cafe-submit"
                   type="submit"
                   onClick={() =>{
@@ -143,7 +143,7 @@ const Modal = (props) => {
                     props.openModal("mapModal", "data") }
                   }
                   value="Route"
-                />
+                /> */}
                 <input
                   id="cafe-submit"
                   type="submit"
@@ -156,7 +156,7 @@ const Modal = (props) => {
                 />
 
               </div>
-              <FavButton />
+              {/* <FavButton /> */}
               {/* <PopUpContainer /> */}
             </div>
           </div>
@@ -226,14 +226,14 @@ const Modal = (props) => {
                   cafe on our state of the art platform :)
                 </div>
 
-                <input
+                {/* <input
                   id="cafe-submit"
                   type="submit"
                   onClick={() => {
                     props.openModal("mapModal", "data");
                   }}
                   value="Route"
-                />
+                /> */}
               </div>
             </div>
           </div>
