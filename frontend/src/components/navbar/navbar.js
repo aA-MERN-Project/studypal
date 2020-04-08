@@ -25,33 +25,31 @@ class NavBar extends React.Component {
           (!this.props.loggedIn && this.props.location.pathname === "/cafe")
         ) {
           return (
-            <div className="button-div">
-              <Link
-                onClick={() =>
-                  this.props.login({
-                    email: "ryan@gmail.com",
-                    password: "password",
-                  })
-                }
-                className="button"
-              >
-                Demo
-              </Link>
-              <div className="vertical-line-navbar"></div>
-              <Link className="buttonCrew" to="/crew">
-                The Crew
-              </Link>
-              <div className="vertical-line-navbar"></div>
-              <Link className="button" to="/login">
-                Log In
-              </Link>
-              <div className="vertical-line-navbar"></div>
-              <Link className="button" to="/signup">
-                Sign Up
-              </Link>
-
-              {/* &emsp; */}
-            </div>
+            <div className="button-div-logout">
+                <Link className="buttonCrew" to="/crew">The Crew</Link>
+                &emsp;
+                <div className="vertical-line-navbar"></div>
+                <Link 
+                  onClick={() => this.props.login({ email: "ryan@gmail.com", password: "password" })}
+                  className="button" 
+                  >
+                  Demo
+                </Link>
+                <div className="vertical-line-navbar"></div>
+                <Link className="button" to="/login">
+                  Log In
+                </Link>
+                <div className="vertical-line-navbar"></div>
+                <Link className="button" to="/signup">
+                  Sign Up
+                </Link>
+                &emsp;
+                <div className="vertical-line-navbar"></div>
+                    &emsp;
+                    <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
+                    <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"/>
+                    </a>
+              </div>
           );
         } else if (
           !this.props.loggedIn &&
@@ -96,6 +94,10 @@ class NavBar extends React.Component {
                 <button className="button2" onClick={this.handleLogout}>
                   Log Out
                 </button>
+                <div className="vertical-line-navbar"></div>
+                    <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
+                    <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"/>
+                    </a>
               </div>
             );
         } else if (this.props.loggedIn) {
@@ -106,6 +108,10 @@ class NavBar extends React.Component {
                     <Link className="buttonCrew" to="/crew">The Crew</Link>
                     <div className="vertical-line-navbar"></div>
                     <button className="button2" onClick={this.handleLogout}>Log Out</button>
+                    &nbsp;
+                    <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
+                        <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"/>
+                    </a>
                 </div>
             )
         } else if (
