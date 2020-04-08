@@ -149,7 +149,7 @@ class SessionForm extends React.Component {
                 }
               />
             </div>
-            <div className="signup-div">
+            <div className="loginfy-div">
               <form className="signup-form-div" onSubmit={this.handleSubmit}>
                 <div className="welcome-studypal">Welcome Back</div>
                 <div className="create-account-login">

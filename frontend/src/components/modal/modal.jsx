@@ -5,7 +5,7 @@ import Map from '../map/directions';
 
 
 const Modal = (props) => {
-     debugger
+    //  debugger
     if (!props.modal){
         return null
     }
@@ -23,7 +23,7 @@ const Modal = (props) => {
     let phone_num = {}
     let address = {}
     let favorite_amount = {}
-    debugger
+    // debugger
     if(props.data.studyPalCafe.name) {
       name = props.data.studyPalCafe.name
       studyPalCafe = props.data.studyPalCafe;
@@ -86,7 +86,7 @@ const Modal = (props) => {
     }
 
 
-    debugger
+    // debugger
     const cafeModal = (
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
         <div className="carousel-container">

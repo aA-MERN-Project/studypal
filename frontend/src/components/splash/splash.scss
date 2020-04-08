@@ -55,6 +55,8 @@
     font-weight: 400;
 }
 
+
+
 .divider {
     color: rgba(65, 105, 225, 0.5);
     position: relative;
@@ -106,13 +108,14 @@
     border-radius: 5px;
     font-size: 10.5px;
     color: rgba(65, 105, 225, 0.8);
+    outline:none;
 }
 
-// button:hover {
-//     cursor: pointer;
-//     font-weight:bold;
-//     color:#4169E1;
-// }
+button.clear:hover {
+    cursor: pointer;
+    font-weight:bold;
+    color:#4169E1;
+}
 
 .roll-cafe {
     // border: 1px solid red;
@@ -164,4 +167,61 @@
     
     font-family: "Open Sans";
     // border:1px solid black;
+}
+
+
+/* Extra extra large devices (like viewing it on a screen, 1500px and up) */
+@media only screen and (min-width: 1500px){
+    .preferences * {
+        font-size:13.5px;
+        
+    }
+
+    .content{
+        height:400px;
+    }
+
+    #welcomeName{
+        padding-top:40px;
+    }
+
+    
+    .cta{
+        top:65px;
+        font-size:33px;
+    }
+
+    #looking-for{
+        top:110px;
+        padding-bottom:15px;
+    }
+
+    .roll-cafe{
+        margin-top:15px;
+    }
+
+    .preferences{
+        padding-bottom:20px;
+        padding-top:20px;
+        padding-left:45px;
+        padding-right:45px;
+        
+    }
+
+    input.checkbox{
+        margin:5px;
+    }
+
+    #looking-for{
+        font-size:16px;
+    }
+
+    button.clear {
+        font-size:11.5px;
+    }
+
+    input#zip{
+        font-size:11px;
+    }
+
 }

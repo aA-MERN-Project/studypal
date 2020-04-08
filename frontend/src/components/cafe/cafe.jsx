@@ -69,7 +69,7 @@ class Cafe extends React.Component {
             return cafe;
         })
 
-        return addedDistance
+        return addedDistance;
 
     }
 

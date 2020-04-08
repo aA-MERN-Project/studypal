@@ -4,7 +4,7 @@ import './cafe.scss';
 
 const LoadingPage = () => (
 
-    <div className="index">
+    <div className="gifImgDiv">
         <img src={gif}></img>
     </div>
 );

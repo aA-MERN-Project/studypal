@@ -115,9 +115,10 @@
 
 
 .angelCo, .linkedIn{
-    width:30px;
-    
+    width:30px;   
 }
+
+
 
 .github{
     width:30px;
@@ -126,13 +127,22 @@
 
 .teamIcons{
     margin-top:10px;
-
 }
+
+.teamIcons > a > img{
+    border-bottom:4px solid white;
+}
+
+.teamIcons > a > img:hover{
+    border-bottom:4px solid #4169E1;
+}
+
 
 
 .crewPicDiv{
     padding:10px;
-    background-color: rgba(255, 127, 80, 0.8);;
+    background-color: rgba(255, 127, 80, 0.8);
+
 
 }
 
@@ -143,7 +153,6 @@
 .crewTitle{
     font-size:14px;
 }
-
 
 
 
@@ -284,7 +293,17 @@
             background-size:cover;
             height:300px;
         }
-    
 
     }
+
+    @media only screen and (min-width: 1500px){
+        .andyPicDiv, .wilsonPicDiv, .feiPicDiv, .joannaPicDiv{
+            height:350px;
+        }
+    }
     
+    @media only screen and (min-width: 1650px){
+        .andyPicDiv, .wilsonPicDiv, .feiPicDiv, .joannaPicDiv{
+            height:425px;
+        }
+    }

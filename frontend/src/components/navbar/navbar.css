@@ -90,9 +90,56 @@
     padding-top: 0.5%;
 }
 
+.button-div-logout {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: .5%;
+    padding-right: 5%;
+    width: 550px;
+    padding-top: 0.5%;
+}
+
+
+
 .vertical-line-navbar {
     width: 6%;
     height: .1px;
     border: .5px solid white;
     transform: rotate(90deg);
 }
+
+.gitIconNavbar{
+    z-index:5;
+    border:1px solid black;
+    background-color:white;
+}
+
+.gitIconLink{
+    width:30px;
+    
+}
+/* a.gitIconLink{
+    position:absolute;
+    z-index:10;
+    border:2px solid red;
+}
+
+.gitIconLink img{
+    position: relative;
+    height:2%;
+    width:2%;
+    left:40vw;
+    right:0vh;
+} 
+
+img.gitIconLink{
+    z-index:99;
+    position:absolute;
+    width:10%;
+    border: 2px solid blue;
+    top:0px;
+    right:px;
+
+} */
+

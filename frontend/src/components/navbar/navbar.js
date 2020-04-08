@@ -23,7 +23,7 @@ class NavBar extends React.Component {
         if (!this.props.loggedIn) {
             // debugger
             return (
-              <div className="button-div">
+              <div className="button-div-logout">
                 <Link className="buttonCrew" to="/crew">The Crew</Link>
                 &emsp;
                 <div className="vertical-line-navbar"></div>
@@ -41,6 +41,12 @@ class NavBar extends React.Component {
                 <Link className="button" to="/signup">
                   Sign Up
                 </Link>
+                &emsp;
+                <div className="vertical-line-navbar"></div>
+                    &emsp;
+                    <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
+                    <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"/>
+                    </a>
               </div>
             );
         }
@@ -52,7 +58,11 @@ class NavBar extends React.Component {
             return (
                 <div className="button-div">
                     <button className="button2" onClick={this.handleLogout}>Log Out</button>
+                    <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
+                    <img className="gitIconLink" alt="studypal github repo" src="https://www.pngitem.com/pimgs/m/128-1280311_github-icon-white-png-github-icon-black-background.png"/>
+                    </a>
                 </div>
+                
             )
         } else if (this.props.loggedIn) {
             return (
@@ -63,6 +73,10 @@ class NavBar extends React.Component {
                     <Link className="button" to="/user">Profile</Link>
                     <div className="vertical-line-navbar"></div>
                     <button className="button2" onClick={this.handleLogout}>Log Out</button>
+                    &nbsp;
+                    <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
+                        <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white_github.jpg"/>
+                    </a>
                 </div>
             )
         }

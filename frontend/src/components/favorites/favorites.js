@@ -57,10 +57,10 @@ import Modal from '../modal/modal_container'
         }
 
         cafeClick(cafe) {
-            debugger
+            // debugger
             this.props.fetchFavoriteCafeById(cafe.id)
                 .then(() => this.props.openModal("favoriteModal", this.modalData))
-            debugger
+            // debugger
         }
 
         render() {
