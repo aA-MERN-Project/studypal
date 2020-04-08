@@ -14,9 +14,9 @@ function Carousel(props) {
         carouselSlide.style.transition = "transform 0.75s ease-in-out"
 
 
-        setCounter(counter + 1)
+        setCounter(counter - 1)
 
-
+        debugger;
         setTimeout(
             () => {
 

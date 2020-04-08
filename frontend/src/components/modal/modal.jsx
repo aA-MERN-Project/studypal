@@ -82,6 +82,7 @@ const Modal = (props) => {
     const time = calculateTime(hours);
     const isOpen = <div className="time-modal">Open until {time}</div>;
     const isClosed = <div className="time-modal-red">Currently Closed</div>;
+    const openRightNow = hours[0].is_open_now;
     
 
     const favoriteModal = (
@@ -94,7 +95,7 @@ const Modal = (props) => {
           <div className="modal-horizontal-line"></div>
           <div className="business-misc-flex">
             <div className="modal-left">
-              {is_closed ? isOpen : isClosed}
+              {openRightNow ? isOpen : isClosed}
               <div className="modal-address">{location.display_address[0]}</div>
               <div className="modal-address">{location.display_address[1]}</div>
               <div className="modal-address">{location.display_address[2]}</div>
@@ -179,7 +180,7 @@ const Modal = (props) => {
           <div className="modal-horizontal-line"></div>
           <div className="business-misc-flex">
             <div className="modal-left">
-              {is_closed ? isOpen : isClosed}
+              {openRightNow ? isOpen : isClosed}
               <div className="modal-address">{location.display_address[0]}</div>
               <div className="modal-address">{location.display_address[1]}</div>
               <div className="modal-address">{location.display_address[2]}</div>
@@ -214,6 +215,7 @@ const Modal = (props) => {
                   <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
                   cafe on our state of the art platform :)
                 </div>
+
                 <input
                   id="cafe-submit"
                   type="submit"
