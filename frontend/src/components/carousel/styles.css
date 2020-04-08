@@ -45,7 +45,7 @@
 
 #prev {
     position: relative;
-    top: 70px;
+    top: 90px;
     left: 20px;
     font-size: 50px;
     width: 70px;
@@ -56,7 +56,7 @@
 }
 #next {
     position: relative;
-    top: 70px;
+    top: 90px;
     right: 20px;
     font-size: 50px;
     width: 70px;
@@ -64,5 +64,12 @@
     opacity: .7;
     /* color: white; */
     text-align: center;
+}
 
+#next:hover {
+    cursor: pointer
+}
+
+#prev:hover {
+    cursor: pointer
 }

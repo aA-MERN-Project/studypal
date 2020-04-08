@@ -84,14 +84,20 @@ class Cafe extends React.Component {
         let leftOverCafes = this.props.cafes.filter(cafe => {
             return cafe.id !== this.props.yelpCafe.id;
         });
-
+        
         // Puts into Redux cycle again
         let randomCafe = selectRandomCafe(leftOverCafes)
-        this.setState({ studyPalCafe: randomCafe })
-        this.props
-          .fetchYelpCafeById(randomCafe.id)
-          .catch(err => this.props.history.push(`/errors`))
-        this.props.rerollCafes(leftOverCafes);
+
+        if (randomCafe){
+          this.setState({ studyPalCafe: randomCafe })
+          this.props
+            .fetchYelpCafeById(randomCafe.id)
+            .catch(err => this.props.history.push(`/errors`))
+          this.props.rerollCafes(leftOverCafes);
+        } else {
+          this.props.history.push(`/retry`)
+        }
+       
     }
 
     handleClick(e) {
@@ -110,14 +116,12 @@ class Cafe extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-
-        if (this.props.cafes.length === 0) {
-            this.props.history.push(`/retry`)
-        }
+       
 
       }
 
     componentWillUnmount(){
+      this.props.clearCafes();
       this.setState({studyPalCafe: null})
       // debugger
 
@@ -131,19 +135,29 @@ class Cafe extends React.Component {
 
 
     render() {
+        // debugger;
+
+       
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
-        if (this.props.cafes.length === 0) return null;
+
+        if (this.props.cafes.length === 0) this.props.history.push(`/retry`)
 
         // If no curr yelpcafe exist, request from API
         if (Object.keys(this.props.yelpCafe).length === 0) {
+          let randomCafe = selectRandomCafe(this.props.cafes);
+          if (randomCafe){
               // debugger
               let randomCafe = selectRandomCafe(this.props.cafes);
               this.setState({studyPalCafe: randomCafe})
               this.props
                 .fetchYelpCafeById(randomCafe.id)
                 .catch(err => this.props.history.push(`/errors`));
+            }
           }
+
+
+
 
         if (Object.keys(this.props.yelpCafe).length === 0) return null
 
@@ -160,9 +174,11 @@ class Cafe extends React.Component {
         let modalData = {yelpData: this.props.yelpCafe, 
           distance, 
           noiseLevel, 
+          user: this.props.user,
           studyPalCafe: this.state.studyPalCafe,
           filters: this.props.filters}
 
+        
 
         return (
           <div className="page">
@@ -175,7 +191,11 @@ class Cafe extends React.Component {
                       <div className="name">{this.props.yelpCafe.name}</div>
                       <a
                         className="yelp"
-                        onClick={() => this.props.openModal("cafe", modalData)}
+                        onClick={() => {
+                          this.props.openModal("cafeModal", modalData)
+                          this.props.fetchCurrCafe(this.props.yelpCafe.id)
+                        
+                        }}
                       >
                         <div id="yelp-text">View</div>
                       </a>

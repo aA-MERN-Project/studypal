@@ -1,12 +1,12 @@
 import '../../reset.css';
 import './profile.css';
 import React from 'react';
-
 import NavBar from '../navbar/navbar_container';
 // import Test from '../updateProfile/test_container';
 import Test from '../updateProfile/test';
 import TestContainer from '../updateProfile/test_container';
 import $ from "jquery";
+import { Link } from "react-router-dom"
 
 
 class Profile extends React.Component {
@@ -18,7 +18,7 @@ class Profile extends React.Component {
           updated_user: props.updatedUser,       
           updatedProf: "false",
           user: this.props.user,        
-          miles_away: this.props.user.miles_away,
+          miles_away: null,
           hours_opened_left: this.props.user.hours_opened_left,
           free_wifi: this.props.user.free_wifi,
           credit_card: this.props.user.credit_card,
@@ -31,6 +31,9 @@ class Profile extends React.Component {
         this.update = this.update.bind(this)
         this.clear = this.clear.bind(this)
         this.updatePreferences = this.updatePreferences.bind(this)
+        this.handleRoll = this.handleRoll.bind(this);
+        this.findCoordinates = this.findCoordinates.bind(this);
+        this.getPosition = this.getPosition.bind(this);
         // this.openUpdate = this.openUpdate.bind(this);
         // this.closeUpdate= this.closeUpdate.bind(this);
     }
@@ -62,6 +65,9 @@ class Profile extends React.Component {
         }
         
       }
+      this.findCoordinates();
+
+
       //  ;
       // this.props.getUser(this.props.user.id);
       
@@ -119,22 +125,34 @@ class Profile extends React.Component {
     clear() {
       $("input[type=radio]:checked").prop("checked", false);
       this.setState({
-        miles_away: "",
-        hours_opened_left: "",
-        free_wifi: "false",
-        credit_card: "false",
-        noise_level: "false"
-      });
-
-      
+        miles_away: null,
+        hours_opened_left: 24,
+        free_wifi: false,
+        credit_card: false,
+        noise_level: false
+      })
       this.props.updateUserPreferences(this.state.user.id, {
-        miles_away: "",
-        hours_opened_left: "",
-        free_wifi: "false",
-        credit_card: "false",
-        noise_level: "false"
+        miles_away: null,
+        hours_opened_left: 24,
+        free_wifi: false,
+        credit_card: false,
+        noise_level: false
       });
     }
+
+
+  getPosition(position) {
+
+    this.setState({
+      my_lat: position.coords.latitude,
+      my_lng: position.coords.longitude
+    });
+
+  }
+
+  findCoordinates() {
+    navigator.geolocation.getCurrentPosition(this.getPosition);
+  }
 
     update(field) {
         return e => this.setState({
@@ -142,7 +160,8 @@ class Profile extends React.Component {
         })
     }
 
-    updatePreferences() {
+    updatePreferences(e) {
+      e.preventDefault();
       const updatedUser = this.state.user;
       if (updatedUser) {
         updatedUser.miles_away = this.state.miles_away;
@@ -151,8 +170,47 @@ class Profile extends React.Component {
         updatedUser.credit_card = this.state.credit_card;
         updatedUser.noise_level = this.state.noise_level;
       }
-
       this.props.updateUserPreferences(this.state.user.id, updatedUser);
+
+      this.handleRoll(e);
+
+    }
+
+    handleRoll(e){
+      e.preventDefault();
+      let filters = {
+        miles_away: null,
+        hours_opened_left: 24,
+        wifi: false,
+        credit_card: false,
+        noise_level: false,
+        location_zip_code: null,
+        my_lat: this.state.my_lat,
+        my_lng: this.state.my_lng,}
+
+      filters.miles_away = this.state.miles_away;
+      filters.hours_opened_left = this.state.hours_opened_left;
+      filters.credit_card = this.state.credit_card;
+      filters.noise_level = this.state.noise_level;
+      filters.location_zip_code = this.props.updatedUser.zipcode;
+      filters.wifi = this.props.updatedUser.free_wifi
+
+
+
+
+      //Mapping state to search params
+      filters.wifi ? filters.wifi = "yes" : filters.wifi = "no";
+      filters.noise_level ? filters.noise_level = "average" : filters.noise_level = "loud";
+      filters.credit_card ? filters.credit_card = "yes" : filters.credit_card = "no";
+      filters.location_zip_code = JSON.parse(filters.location_zip_code);
+
+      // debugger
+      
+      this.props.fetchCafeByFilters(filters)
+      this.props.getFilters(filters);
+      this.props.history.push(`/cafe`);
+
+
     }
 
     // openUpdate(){
@@ -396,10 +454,14 @@ class Profile extends React.Component {
             </div>
             <div className="find-cafe-profile-div">
               <button
-                onClick={() => this.updatePreferences()}
+                onClick={this.updatePreferences}
                 className="find-cafe-profile"
               >
                 Find a Cafe
+              </button>
+              <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" />
+              <button className="favorite-cafe-profiles">
+                <Link to="/favorites" className="favorite-cafes"> Favorite Cafes</Link>
               </button>
             </div>
           </div>

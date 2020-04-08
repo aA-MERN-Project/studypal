@@ -6,8 +6,8 @@ import React from 'react';
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.loggedOut = this.loggedOut.bind(this)
-        this.loggedIn = this.loggedIn.bind(this)
+        this.loggedOut = this.loggedOut.bind(this);
+        this.loggedIn = this.loggedIn.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
     }
 
@@ -21,6 +21,7 @@ class NavBar extends React.Component {
                 
     loggedOut() {
         if (!this.props.loggedIn) {
+            // debugger
             return (
               <div className="button-div">
                 <Link className="buttonCrew" to="/crew">The Crew</Link>
@@ -46,7 +47,14 @@ class NavBar extends React.Component {
     }
 
     loggedIn() {
-        if (this.props.loggedIn) {
+        if ((this.props.loggedIn && this.props.location.pathname === "/user") || (this.props.loggedIn && this.props.location.pathname === "/favorites")) {
+            // debugger
+            return (
+                <div className="button-div">
+                    <button className="button2" onClick={this.handleLogout}>Log Out</button>
+                </div>
+            )
+        } else if (this.props.loggedIn) {
             return (
                 <div className="button-div">
                     <Link className="buttonCrew" to="/crew">The Crew</Link>
@@ -58,6 +66,8 @@ class NavBar extends React.Component {
                 </div>
             )
         }
+
+
     }
 
     render() {
