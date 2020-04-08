@@ -76,9 +76,12 @@ import Modal from '../modal/modal_container'
 
         }
 
+        
+
         render() {
             if (!this.props.favorites) return null;
             let favorites = this.props.favorites;
+
 
             return (
                 <div className="favorites-page">  
@@ -98,29 +101,48 @@ import Modal from '../modal/modal_container'
                         <ul className="cafe-list">
                             {favorites.map(cafe => {
                                 return (
-                                    <div className="cafe-box">
-                                        <div className="cafe-text-info">
-                                            <div 
-                                                className="modal-cafe-name"
-                                                onClick={() => {
-                                                   
-                                                    this.cafeClick(cafe)
-                                                    // this.props.openModal("cafe", this.modalData)
-                                                    //     .then(() => this.cafeClick(cafe))
+                                  <div className="cafe-box">
+                                    <div className="cafe-text-info">
+                                      <div
+                                        className="modal-cafe-name"
+                                        onClick={() => {
+                                          this.cafeClick(cafe);
+                                          // this.props.openModal("cafe", this.modalData)
+                                          //     .then(() => this.cafeClick(cafe))
 
-                                                    // this.props.fetchCurrCafe(this.props.yelpCafe.id)
-                                                }}
-                                            >
-                                                {cafe.name}
-                                            </div>
-                                            <div className="modal-cafe-address">
-                                                {/* {cafe.location.address1} */}
-                                            </div>
-                                            <div onClick={() => this.handleUnfavorite(this.props.user.id, cafe)} className="favorite-remove">Remove</div>
-                                        </div>
-                                        <img className="fav-cafe-img" src={cafe.image_url}/>
+                                          // this.props.fetchCurrCafe(this.props.yelpCafe.id)
+                                        }}
+                                      >
+                                        {cafe.name}
+                                      </div>
+                                      <div className="modal-cafe-address">
+                                        {/* {cafe.location.address1} */}
+                                      </div>
+                                      <div
+                                        onClick={() =>
+                                          this.handleUnfavorite(
+                                            this.props.user.id,
+                                            cafe
+                                          )
+                                        }
+                                        className="favorite-remove"
+                                      >
+                                        Remove
+                                      </div>
                                     </div>
-                                )
+                                    {cafe.image_url ? (
+                                      <img
+                                        className="fav-cafe-img"
+                                        src={cafe.image_url}
+                                      />
+                                    ) : (
+                                      <img
+                                        className="fav-cafe-img"
+                                        src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/sparephoto.png"
+                                      ></img>
+                                    )}
+                                  </div>
+                                );
                             })}
                         </ul>
                     </div>
