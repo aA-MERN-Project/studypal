@@ -20,7 +20,7 @@ class NavBar extends React.Component {
     }
                 
     loggedOut() {
-        if (!this.props.loggedIn) {
+        if (!this.props.loggedIn && this.props.location.pathname === "/") {
           return (
             <div className="button-div">
               <Link
@@ -50,7 +50,33 @@ class NavBar extends React.Component {
               {/* &emsp; */}
             </div>
           );
-        } 
+        } else if (!this.props.loggedIn && this.props.location.pathname === "/crew") {
+          return (
+            <div className="button-div">
+              <Link
+                onClick={() =>
+                  this.props.login({
+                    email: "ryan@gmail.com",
+                    password: "password",
+                  })
+                }
+                className="button"
+              >
+                Demo
+              </Link>
+              <div className="vertical-line-navbar"></div>
+              <Link className="button" to="/login">
+                Log In
+              </Link>
+              <div className="vertical-line-navbar"></div>
+              <Link className="button" to="/signup">
+                Sign Up
+              </Link>
+
+              {/* &emsp; */}
+            </div>
+          );
+        }
     }
 
     loggedIn() {

@@ -58,6 +58,7 @@ import Modal from '../modal/modal_container'
         }
 
         cafeClick(cafe) {
+            
             this.props
               .fetchFavoriteCafeById(cafe.id)
               .then(() => this.props.fetchCurrCafe(cafe.id))
@@ -114,7 +115,7 @@ import Modal from '../modal/modal_container'
                                                 {cafe.name}
                                             </div>
                                             <div className="modal-cafe-address">
-                                                {/* {cafe.location.address1} */}
+                                                {cafe.location_display_address_0}
                                             </div>
                                             <div onClick={() => this.handleUnfavorite(this.props.user.id, cafe)} className="favorite-remove">Remove</div>
                                         </div>
