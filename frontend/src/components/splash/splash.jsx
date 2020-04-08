@@ -84,7 +84,7 @@ class Splash extends React.Component {
   }
 
   render() {
-    debugger
+    
     return (
       <div className="index">
         <NavBar />

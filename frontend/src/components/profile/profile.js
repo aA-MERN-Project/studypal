@@ -1,7 +1,7 @@
 import '../../reset.css';
 import './profile.css';
 import React from 'react';
-import NavBar from '../navbar/navbar_container';
+import NavBarContainer from '../navbar/navbar_container';
 // import Test from '../updateProfile/test_container';
 import Test from '../updateProfile/test';
 import TestContainer from '../updateProfile/test_container';
@@ -240,7 +240,7 @@ class Profile extends React.Component {
 
         return (
           <div className="profile-page">
-            <NavBar />
+            <NavBarContainer />
            
             <div className="profile-info-div">
               <div className="profile-info">
@@ -460,8 +460,10 @@ class Profile extends React.Component {
                 Find a Cafe
               </button>
               <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" />
-              <button className="favorite-cafe-profiles">
-                <Link to="/favorites" className="favorite-cafes"> Favorite Cafes</Link>
+              <button onClick={this.props.history.push('/favorites')} className="favorite-cafe-profiles">
+                Favorite Cafes
+                {/* onClick={this.props.history.push('/favorites')} */}
+                {/* <Link to="/favorites" className="favorite-cafes"> Favorite Cafes</Link> */}
               </button>
             </div>
           </div>

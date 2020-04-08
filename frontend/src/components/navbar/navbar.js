@@ -21,7 +21,7 @@ class NavBar extends React.Component {
                 
     loggedOut() {
         if (!this.props.loggedIn) {
-            // debugger
+
             return (
               <div className="button-div">
                 <Link 
@@ -45,7 +45,7 @@ class NavBar extends React.Component {
 
     loggedIn() {
         if ((this.props.loggedIn && this.props.location.pathname === "/user") || (this.props.loggedIn && this.props.location.pathname === "/favorites")) {
-            // debugger
+
             return (
                 <div className="button-div">
                     <button className="button2" onClick={this.handleLogout}>Log Out</button>
