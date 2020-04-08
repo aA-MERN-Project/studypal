@@ -1,0 +1,7 @@
+.pop-up-div{
+    position: relative;
+    top: 300px;
+    background-color: red;
+    border: 1px solid black;
+    z-index: 1;
+}

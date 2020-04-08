@@ -6,7 +6,7 @@ import {
 const yelpCafeReducer = (state = {}, action) => {
     Object.freeze(state);
     // let newState = Object.assign({}, state);
-    // debugger
+    
     switch (action.type) {
         case RECEIVE_YELP_CAFE:
             return action.cafe;

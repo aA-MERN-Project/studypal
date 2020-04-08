@@ -104,8 +104,12 @@ export const fetchYelpCafeById = (id) => dispatch => {
 
 export const fetchCurrCafe = (id) => dispatch => {
     getCafe(id)
-        .then(cafe => dispatch(receiveCurrCafe(cafe)))
+        .then(cafe => {
+            dispatch(receiveCurrCafe(cafe))
+            return cafe;
+        })
         .catch(err => console.log(err)) 
+
 
 }
 

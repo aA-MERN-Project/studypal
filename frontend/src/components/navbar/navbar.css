@@ -20,8 +20,9 @@
     font-size: 14px;
     color: white;
     text-decoration: none;
-    padding-left: 7%;
-    width: 30%
+    /* padding-left: 5%; */
+    width: 30%;
+    text-align: center
 }
 
 .buttonCrew{
@@ -32,8 +33,9 @@
     font-size: 14px;
     color: white;
     text-decoration: none;
-    padding-left: 7%;
+    /* padding-left: 5%; */
     width: 35%;
+    text-align: center
 }
 
 
@@ -58,6 +60,7 @@
 }
 
 .button2:hover{
+    cursor: pointer;
     font-size:15px;
     font-weight:bold;
     color:white;

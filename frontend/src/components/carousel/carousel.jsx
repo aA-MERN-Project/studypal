@@ -14,9 +14,9 @@ function Carousel(props) {
         carouselSlide.style.transition = "transform 0.75s ease-in-out"
 
 
-        setCounter(counter + 1)
+        setCounter(counter - 1)
 
-
+        debugger;
         setTimeout(
             () => {
 
@@ -58,7 +58,18 @@ function Carousel(props) {
 
     }
 
-    const {photos} = props;
+
+    let photos
+    
+    debugger
+    if (props.photos.length > 0) {
+      photos = props.photos
+    } else {
+      photos = ['https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png',
+        'https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png',
+        'https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png' ]
+    }
+    
 
     const testPhotos = [
         "https://s3-media2.fl.yelpcdn.com/bphoto/CPc91bGzKBe95aM5edjhhQ/o.jpg",

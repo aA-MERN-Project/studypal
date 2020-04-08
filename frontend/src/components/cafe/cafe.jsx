@@ -26,9 +26,16 @@ class Cafe extends React.Component {
         this.calculateTime = this.calculateTime.bind(this);
         this.applyExtraFilters = this.applyExtraFilters.bind(this);
         this.addSelected = this.addSelected.bind(this);
+        this.shortenName = this.shortenName.bind(this)
     }
 
-
+    shortenName(name) {
+      if (name.length > 28) {
+        return name.slice(0, 28)+ "..."
+      } else {
+        return name
+      }
+    }
 
 
     selectRandomCafe(cafe_array) {
@@ -69,7 +76,7 @@ class Cafe extends React.Component {
             return cafe;
         })
 
-        return addedDistance;
+        return addedDistance
 
     }
 
@@ -179,6 +186,18 @@ class Cafe extends React.Component {
           filters: this.props.filters}
 
         
+        const noPhoto = (
+          
+            <img
+              className="photo"
+              src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/sparephoto.png"
+            ></img>
+          
+        );
+
+         const yelpPhoto = (
+           <img className="photo" src={this.props.yelpCafe.image_url}></img>
+         );
 
         return (
           <div className="page">
@@ -188,13 +207,13 @@ class Cafe extends React.Component {
                 <div className="cafe">
                   <div className="profile">
                     <div className="title">
-                      <div className="name">{this.props.yelpCafe.name}</div>
+                      <div className="name">{this.shortenName(this.props.yelpCafe.name)}</div>
                       <a
                         className="yelp"
                         onClick={() => {
                           this.props.openModal("cafeModal", modalData)
                           this.props.fetchCurrCafe(this.props.yelpCafe.id)
-                        
+                          this.props.fetchFavorites(this.props.user.id)
                         }}
                       >
                         <div id="yelp-text">View</div>
@@ -212,10 +231,8 @@ class Cafe extends React.Component {
                     </div>
                   </div>
 
-                  <img
-                    className="photo"
-                    src={this.props.yelpCafe.image_url}
-                  ></img>
+                  {this.props.yelpCafe.image_url ? yelpPhoto : noPhoto}
+                 
                 </div>
 
                 <div className="map">

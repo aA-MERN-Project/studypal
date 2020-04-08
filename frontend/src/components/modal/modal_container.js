@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
 import Modal from "./modal";
-import { closeModal } from "../../actions/modal_actions";
+import { closeModal, openModal } from "../../actions/modal_actions";
 import { updateFavorites } from "../../actions/session_actions";
 import { fetchCurrCafe } from "../../actions/cafe_actions"
- 
+
+import { openPopUp } from '../../actions/pop_up_actions' 
+
 const mapStateToProps = state => {
-  //  debugger
   return {
     user: state.session.user,
     favorites: state.session.favorites,
@@ -19,8 +20,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()),
+    openModal: (type, data) => dispatch(openModal(type,data)),
     updateFavorites: (id, data) => dispatch(updateFavorites(id,data)),
     fetchCurrCafe: id => dispatch(fetchCurrCafe(id)),
+    openPopUp: () => dispatch(openPopUp())
   };
 };
 

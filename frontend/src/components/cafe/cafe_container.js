@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import { selectRandomCafe, applyExtraFilters } from "../../util/filters_util"
-import { clearCafes, rerollCafes, fetchYelpCafeById, fetchCurrCafe } from "../../actions/cafe_actions";
+import { clearCafes, rerollCafes, fetchYelpCafeById, fetchCurrCafe} from "../../actions/cafe_actions";
 import { openModal } from "../../actions/modal_actions";
+import { updateFavorites, fetchFavorites } from "../../actions/session_actions";
 
 import Cafe from '../cafe/cafe';
 
@@ -24,16 +25,17 @@ const mapStateToProps = state => {
     loading: state.loading.indexLoading,
     randomCafe: randomCafe,
     yelpCafe: state.entities.yelpCafe,
+
   };
 
 }
 const mapDispatchToProps = dispatch => ({
+  fetchFavorites: userId => dispatch(fetchFavorites(userId)),
   fetchCurrCafe: id => dispatch(fetchCurrCafe(id)),
   openModal: (modal, data) => dispatch(openModal(modal, data)),
   clearCafes: () => dispatch(clearCafes()),
   rerollCafes: cafes => dispatch(rerollCafes(cafes)),
   fetchYelpCafeById: id => dispatch(fetchYelpCafeById(id))
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cafe);

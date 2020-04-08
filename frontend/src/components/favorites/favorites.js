@@ -1,4 +1,4 @@
-import NavBar from '../navbar/navbar'
+import NavBarContainer from '../navbar/navbar_container'
 import React from 'react'
 import './favorites.css'
 import { Link } from 'react-router-dom'
@@ -31,7 +31,8 @@ import Modal from '../modal/modal_container'
                 filters: {},
                 user: this.props.user
             }
-            this.cafeClick = this.cafeClick.bind(this)
+            this.cafeClick = this.cafeClick.bind(this);
+            this.cafeRoll = this.cafeRoll.bind(this);
         }
 
         componentDidMount(){
@@ -57,27 +58,35 @@ import Modal from '../modal/modal_container'
         }
 
         cafeClick(cafe) {
-            // debugger
-            this.props.fetchFavoriteCafeById(cafe.id)
-                .then(() => this.props.openModal("favoriteModal", this.modalData))
-            // debugger
+            this.props
+              .fetchFavoriteCafeById(cafe.id)
+              .then(() => this.props.fetchCurrCafe(cafe.id))
+              .then(() =>
+                this.props.openModal("favoriteModal", this.modalData)
+              );
         }
+
+        cafeRoll(){
+            
+            this.props
+              .rerollCafes(this.props.favorites)
+            this.props.getFilters({miles_away:"fakeData"})
+            this.props.history.push("/cafe")
+            
+
+        }
+
+        
 
         render() {
             if (!this.props.favorites) return null;
-            let favorites;
-            if (Array.isArray(this.props.favorites)) {
-                favorites = this.props.favorites;
-            } else {
-                favorites = this.props.favorites.data
-            }
+            let favorites = this.props.favorites;
+
 
             return (
                 <div className="favorites-page">  
                     <Modal/>
-                    <NavBar 
-                        status={true}
-                    />
+                    <NavBarContainer />
                     <div className="favorites-div">
                         <div className="back-profile-div">
                             <Link className="back-profile-header" to="/user">
@@ -87,34 +96,53 @@ import Modal from '../modal/modal_container'
                         </div>
                         <div className="favorites-and-pick">
                             <div className="favorites-header">Favorites</div>
-                            <button className="pick-random">Pick a Random Favorite Cafe</button>
+                            <button className="pick-random" onClick={() => this.cafeRoll()}>Pick a Random Favorite Cafe</button>
                         </div>
                         <ul className="cafe-list">
                             {favorites.map(cafe => {
                                 return (
-                                    <div className="cafe-box">
-                                        <div className="cafe-text-info">
-                                            <div 
-                                                className="modal-cafe-name"
-                                                onClick={() => {
-                                                   
-                                                    this.cafeClick(cafe)
-                                                    // this.props.openModal("cafe", this.modalData)
-                                                    //     .then(() => this.cafeClick(cafe))
+                                  <div className="cafe-box">
+                                    <div className="cafe-text-info">
+                                      <div
+                                        className="modal-cafe-name"
+                                        onClick={() => {
+                                          this.cafeClick(cafe);
+                                          // this.props.openModal("cafe", this.modalData)
+                                          //     .then(() => this.cafeClick(cafe))
 
-                                                    // this.props.fetchCurrCafe(this.props.yelpCafe.id)
-                                                }}
-                                            >
-                                                {cafe.name}
-                                            </div>
-                                            <div className="modal-cafe-address">
-                                                {/* {cafe.location.address1} */}
-                                            </div>
-                                            <div onClick={() => this.handleUnfavorite(this.props.user.id, cafe)} className="favorite-remove">Remove</div>
-                                        </div>
-                                        <img className="fav-cafe-img" src={cafe.image_url}/>
+                                          // this.props.fetchCurrCafe(this.props.yelpCafe.id)
+                                        }}
+                                      >
+                                        {cafe.name}
+                                      </div>
+                                      <div className="modal-cafe-address">
+                                        {/* {cafe.location.address1} */}
+                                      </div>
+                                      <div
+                                        onClick={() =>
+                                          this.handleUnfavorite(
+                                            this.props.user.id,
+                                            cafe
+                                          )
+                                        }
+                                        className="favorite-remove"
+                                      >
+                                        Remove
+                                      </div>
                                     </div>
-                                )
+                                    {cafe.image_url ? (
+                                      <img
+                                        className="fav-cafe-img"
+                                        src={cafe.image_url}
+                                      />
+                                    ) : (
+                                      <img
+                                        className="fav-cafe-img"
+                                        src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/sparephoto.png"
+                                      ></img>
+                                    )}
+                                  </div>
+                                );
                             })}
                         </ul>
                     </div>
