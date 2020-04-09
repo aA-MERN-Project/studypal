@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap');
 
+/* added by FEI; DON'T TAKE OUT */
+#root{
+    height:100%;
+}
+
 .within-select {
     display: flex;
     font-family: 'Open Sans';
@@ -373,17 +378,40 @@
     /* padding-bottom: % */
 }
 
-.update-profile-button {
+.updateProfileButton {
     position: relative;
     left: 90%;
     top: 2px;
     outline: none;
+    width:105px;
+    padding-left:3px;
+    padding-right:3px;
+    background-color:white;
 }
 
-.update-profile-button:hover{
+.updateProfileButton:visited{
     font:11px;
-    font-weight:normal;
+    font-weight:bolder;
+    color: #4169E1;
+    background-color:white;
+    cursor:pointer;
+}
 
+.updateProfileButton:hover{
+    font:11px;
+    font-weight:bolder;
+    color: #4169E1;
+    background-color:white;
+    cursor:pointer;
+
+}
+
+.updateProfileButton:active{
+    font:11px;
+    font-weight:bolder;
+    color: #4169E1;
+    cursor:pointer;
+    background-color:white;
 }
 
 
@@ -392,12 +420,25 @@
     position: relative;
     left: 90%;
     top: 2px;
-    outline: none
+    outline: none;
+    width:50px;
 }
 
-button.update-profile-close:hover{
+update-profile-close:hover{
     font:11px;
-    font-weight:normal;
+    font-weight:bolder;
+    color: #4169E1;
+    cursor:pointer;
+    
+}
+
+button.update-profile-close:active{
+    font:11px;
+    font-weight:bolder;
+    color: #4169E1;
+    background-color:white;
+    cursor:pointer;
+    
 }
 
 .vertical-line-profile {
