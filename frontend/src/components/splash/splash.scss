@@ -1,13 +1,16 @@
-.index {
+
+.splashIndex {
     // border: 1px solid red;
     height: 100vh;
     background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
     font-family: "Open Sans";
+    position:absolute;
+   
 }
 
 .content {
     // border: 1px solid red;
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -176,7 +179,7 @@ button.clear:hover {
 #sf-available {
     position: relative;
     top: 140px;
-    text-align: center;
+    text-align: left;
     color: gray;
     // font-family: "Open Sans";
     font-size: 12px;
@@ -195,7 +198,10 @@ button.clear:hover {
     position:absolute;
     font-size: 14px;
     font-weight: 100;
-    padding: 2px;
+    padding: 7px;
+    padding-left:10px;
+    font-family: "Open Sans";
+
 // -webkit-transform: scale(.9, .9);
 // -webkit-transition: all .18s ease-in-out;
   
@@ -219,7 +225,11 @@ button.clear:hover {
     position:absolute;
     font-size: 14px;
     font-weight: 100;
-    padding: 3px;
+    padding: 5px;
+    padding-right:7px;
+    padding-left:10px;
+    font-family: "Open Sans";
+
 // -webkit-transform: scale(.9, .9);
 // -webkit-transition: all .18s ease-in-out;
   

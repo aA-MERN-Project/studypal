@@ -338,7 +338,7 @@
 }
 
 .updateProfileImg {
-    max-width: 50px;
+    max-width: 30px;
     width: 14%;
     min-width: 26px;
     background: rgba(65, 105, 225, 0.5);
@@ -393,7 +393,7 @@
     font:11px;
     font-weight:bolder;
     color: #4169E1;
-    background-color:white;
+    background-color:#ffffff;
     cursor:pointer;
 }
 
@@ -401,7 +401,7 @@
     font:11px;
     font-weight:bolder;
     color: #4169E1;
-    background-color:white;
+    background-color:#ffffff;
     cursor:pointer;
 
 }
@@ -411,7 +411,9 @@
     font-weight:bolder;
     color: #4169E1;
     cursor:pointer;
-    background-color:white;
+    background-color:#fdfffc;
+    border-radius:5px; 
+    border:1px solid rgba(51,51, 51, .3);
 }
 
 
@@ -424,7 +426,7 @@
     width:50px;
 }
 
-update-profile-close:hover{
+.update-profile-close:hover{
     font:11px;
     font-weight:bolder;
     color: #4169E1;
@@ -436,9 +438,10 @@ button.update-profile-close:active{
     font:11px;
     font-weight:bolder;
     color: #4169E1;
-    background-color:white;
     cursor:pointer;
-    
+    background-color:#fdfffc;
+    border-radius:5px; 
+    border:1px solid rgba(51,51, 51, .3);
 }
 
 .vertical-line-profile {
