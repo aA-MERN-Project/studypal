@@ -51,7 +51,7 @@
     border:none;
     /* Fei changed width to 30% */
     width:30%;
-
+    outline: none
 }
 
 .button:hover{
