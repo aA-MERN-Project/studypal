@@ -23,3 +23,12 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 * Cafe location displayed via the Google Maps API
 
 ![StudyPal Cafe](https://media.giphy.com/media/RLQQLfgpfL10NKOGCL/giphy.gif)
+
+* Favorites
+* Roll Cafe
+* Search cafe by parameters
+* Cafe status (number of rolls, etc)
+* User auth
+* Updating and saving profile preferences
+* Updating and saving user information
+* Mediaquery
