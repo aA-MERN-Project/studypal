@@ -190,11 +190,12 @@ button.clear:hover {
     color: grey;
     border-radius: 4px;
     width: 200px;
-    height: 78px;
+    height: 100px;
     display: none;
     position:absolute;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 100;
+    padding: 2px;
 // -webkit-transform: scale(.9, .9);
 // -webkit-transition: all .18s ease-in-out;
   
@@ -212,12 +213,13 @@ button.clear:hover {
     background-color:  rgb(255, 235, 230);
     color: grey;
     border-radius: 4px;
-    width: 200px;
+    width: 270px;
     height: 28px;
     display: none;
     position:absolute;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 100;
+    padding: 3px;
 // -webkit-transform: scale(.9, .9);
 // -webkit-transition: all .18s ease-in-out;
   
