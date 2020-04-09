@@ -15,12 +15,12 @@
 
 .time-modal-red {
     color: red;
-    margin-top: -8px;
+    // margin-top: -8px;
     font-family: "Open Sans";
     font-size: 16px;
     padding-bottom: 7px;
-    position: relative;
-    left: 25px;
+    // position: relative;
+    // left: 25px;
 }
 .carousel-modal {
     // top: -20px;
@@ -107,55 +107,66 @@
 }
 
 .modal-left {
-    padding-top: 5.4%;
-    padding-left: 5%;
-    display: inline-block;
-    height: 30px
+    // padding-top: 5.4%;
+    // padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    // justify-content: flex-end;
+    padding-left: 30px;
+    // height: 200px
 }
 
 .modal-right {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    bottom: 15px;
+    padding-right: 35px;
 }
 
 .rolled-favorited {
     font-family: "Open Sans";
     font-size: 15px;
-    position: relative;
+    // position: relative;
     // left: 20px;
-    top: 27px;
+    // top: 27px;
     padding-top: 10px;
+    padding-right: 20px;
 
 }
 
 .vertical-line-modal {
     // max-width: 190px;
-    width: 125px;
+    width: 140px;
     height: .1px;
     border: 1px solid black;
     transform: rotate(90deg);
-    position: relative;
-    left: 3%;
-    top: 75px
+    margin-top: 50px;
+    // position: relative;
+    // left: 3%;
+    // top: 75px
 }
 
 .business-misc-flex {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     position: relative;
-    right: 15px;
+    left: 20px;
+    top: 30px;
 }
 
 .time-modal {
     // color: rgba(51, 51, 51, 0.5);
     color: black;
-    margin-top: -8px;
+    // margin-top: -8px;
     font-family: "Open Sans";
     font-size: 15px;
     padding-bottom: 7px;
-    position: relative;
-    left: 25px;
-    widtH: 150px;
+    // position: relative;
+    // left: 25px;
+    // width: 150px;
 }
 
 .modal-address {
@@ -164,9 +175,9 @@
     font-family: "Open Sans";
     font-size: 15px;
     padding-bottom: 7px;
-    position: relative;
-    left: 25px;
-    width: 150px;
+    // position: relative;
+    // left: 25px;
+    // width: 150px;
 }
 
 .noun-espresso {
@@ -180,7 +191,7 @@
     display: flex; 
     flex-direction: column;
     align-items: center;
-    
+    // margin-bottom: 10px
 }
 
 .modal-horizontal-info {
@@ -213,4 +224,15 @@
     cursor: pointer;
     box-shadow:none;
     background-color: rgb(38, 38, 38)
+}
+
+.check-yelp {
+    font-family: "Open Sans";
+    color: black;
+    padding-left: 97px;
+    font-size: 14px
+}
+
+.check-yelp:hover {
+    color: blue;
 }
