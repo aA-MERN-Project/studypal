@@ -1,8 +1,10 @@
-import NavBarContainer from '../navbar/navbar_container'
-import React from 'react'
-import './favorites.css'
-import { Link } from 'react-router-dom'
-import Modal from '../modal/modal_container'
+import NavBarContainer from '../navbar/navbar_container';
+import React from 'react';
+import './favorites.scss';
+import { Link } from 'react-router-dom';
+import Modal from '../modal/modal_container';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import FavItem from './favorite_item_container';
 
     class Favorites extends React.Component {
 
@@ -14,9 +16,6 @@ import Modal from '../modal/modal_container'
 
             // let distance = this.props.YelpCafe.distance_away;
             // let noiseLevel = this.props.YelpCafe.noise_level;
-
-            this.handleUnfavorite = this.handleUnfavorite.bind(this)
-            this.handleFavorite = this.handleFavorite.bind(this)
             this.modalData = {
                 // yelpData: this.props.yelpCafe,
                 // distance,
@@ -31,7 +30,6 @@ import Modal from '../modal/modal_container'
                 filters: {},
                 user: this.props.user
             }
-            this.cafeClick = this.cafeClick.bind(this);
             this.cafeRoll = this.cafeRoll.bind(this);
         }
 
@@ -39,33 +37,7 @@ import Modal from '../modal/modal_container'
             this.props.fetchFavorites(this.props.user.id);
         }
 
-        handleFavorite(userId, cafe) {
-            // data that is needed to update backend
-            const favoriteData = new Object();
-            favoriteData.type = "favorite";
-            favoriteData.cafe = cafe;
-            // this function updates cafe backend with +1 or -1 favorites
-            this.props.updateFavorites(userId, favoriteData);
-        }
-
-        handleUnfavorite(userId,cafe){
-
-            const favoriteData = new Object();
-            favoriteData.type = "unfavorite";
-            favoriteData.cafe = cafe;
-            this.props.updateFavorites(userId, favoriteData);
-            // this.state.switch ? this.state.switch = false : this.state.switch = true
-        }
-
-        cafeClick(cafe) {
-            
-            this.props
-              .fetchFavoriteCafeById(cafe.id)
-              .then(() => this.props.fetchCurrCafe(cafe.id))
-              .then(() =>
-                this.props.openModal("favoriteModal", this.modalData)
-              );
-        }
+   
 
         cafeRoll(){
             
@@ -83,6 +55,8 @@ import Modal from '../modal/modal_container'
             if (!this.props.favorites) return null;
             let favorites = this.props.favorites;
 
+            let favoriteList = favorites.map((cafe, index) => <FavItem keys={index} cafe={cafe}/>)
+
 
             return (
                 <div className="favorites-page">  
@@ -97,59 +71,16 @@ import Modal from '../modal/modal_container'
                         </div>
                         <div className="favorites-and-pick">
                             <div className="favorites-header">Favorites</div>
-                            <button className="pick-random" onClick={() => this.cafeRoll()}>Pick a Random Favorite Cafe</button>
+                            <button className="pick-random" onClick={() => this.cafeRoll()}>Roll A Favorite Cafe</button>
                         </div>
-                        <ul className="cafe-list">
-                            {favorites.map(cafe => {
-                                return (
-                                  <div className="cafe-box">
-                                    <div className="cafe-text-info">
-                                      <div
-                                        className="modal-cafe-name"
-                                        onClick={() => {
-                                          this.cafeClick(cafe);
-                                        }}
-                                      >
-                                        {cafe.name}
-                                      </div>
-                                      <div
-                                        className="modal-cafe-address"
-                                        onClick={() => {
-                                          this.cafeClick(cafe);
-                                        }}
-                                      >
-                                        {cafe.location_display_address_0}
-                                      </div>
-                                      <div
-                                        onClick={() =>
-                                          this.handleUnfavorite(
-                                            this.props.user.id,
-                                            cafe
-                                          )
-                                        }
-                                        className="favorite-remove"
-                                      >
-                                        Remove
-                                      </div>
-                                    </div>
-                                    {cafe.image_url ? (
-                                      <img
-                                        className="fav-cafe-img"
-                                        onClick={() => {
-                                            this.cafeClick(cafe);
-                                        }}
-                                        src={cafe.image_url}
-                                      />
-                                    ) : (
-                                      <img
-                                        className="fav-cafe-img"
-                                        src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/sparephoto.png"
-                                      ></img>
-                                    )}
-                                  </div>
-                                );
-                            })}
-                        </ul>
+                        <div className="cafe-list">
+                          <ReactCSSTransitionGroup className="cafe-list"
+                            transitionName="fade"
+                            transitionEnterTimeout={500}
+                            transitionLeaveTimeout={300}>
+                              {favoriteList}
+                          </ReactCSSTransitionGroup>
+                        </div>
                     </div>
                 </div>
             )
