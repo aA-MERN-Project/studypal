@@ -3,65 +3,38 @@ import "./sliding.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 
+const FavTransition = (props) => {
+
+    const favorite = (
+      <div id="favorited" key={1}>
+        <div>
+          <i class="fas fa-check"></i> Favorited
+                  </div>
+      </div>
+    );
+
+    const unfavorite = (
+      <div id="unfavorite" key={2}>
+        <div>Removed from favorites</div>
+      </div>
+    );
 
 
-class FavTransition extends React.Component {
+    debugger
 
-    constructor(props){
 
-        super(props);
+    return (
+      <div>
+        <ReactCSSTransitionGroup
+          transitionName="spicy"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+        >
+          {props.isClicked ? (props.isFavorite ? favorite : unfavorite) : null}
+        </ReactCSSTransitionGroup>
+      </div>
+    );
 
-        this.state = {
-          favState: <div key={3}></div>,
-        };
+  }
 
-    }
-
-    componentDidMount(){
-        this.setState({ favState: <div key={3}></div> });
-    }
-
-    componentDidUpdate(prevProps){
-        const favorite = (
-          <div id="favorited" key={1}>
-            <div>
-              <i class="fas fa-check"></i> Favorited
-            </div>
-          </div>
-        );
-
-        const unfavorite = (
-          <div id="unfavorite" key={2}>
-            <div>Removed from favorites</div>
-          </div>
-        );
-
-        if (prevProps.isFavorite !== this.props.isFavorite ){
-            let newState = this.props.isFavorite ? favorite : unfavorite;
-            this.setState({favState: newState})
-        }
-
-    }
-
-    
-
-    render(){
-        
-
-        return (
-          <div>
-            <ReactCSSTransitionGroup
-              transitionName="spicy"
-              transitionEnterTimeout={500}
-              transitionLeaveTimeout={300}
-            >
-              {this.state.favState}
-            </ReactCSSTransitionGroup>
-          </div>
-        );
-
-    }
-
-}
-
-export default FavTransition;
+  export default FavTransition;
