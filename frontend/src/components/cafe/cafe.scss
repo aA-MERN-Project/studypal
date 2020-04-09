@@ -227,30 +227,30 @@
 
 // /* Medium devices (landscape tablets, 768px and up) */
 
-@media only screen and (min-width: 768px) {
-    .map{
-        height:470px;
-    }
+// @media only screen and (min-width: 768px) {
+//     .map{
+//         height:470px;
+//     }
 
-    .cafe{
-        justify-content: none;
-        max-height:470px;
-    }
+//     .cafe{
+//         justify-content: none;
+//         max-height:470px;
+//     }
 
-    .all{
-        padding-top: 7%;
-    }
+//     .all{
+//         padding-top: 7%;
+//     }
 
-    .profile{
-        padding-top:24px;
-        padding-bottom:24px;
-        background-color:green;
-    }
+//     .profile{
+//         padding-top:24px;
+//         padding-bottom:24px;
+//         background-color:green;
+//     }
 
-    .photo{
-        height:320px;
-    }
-}
+//     .photo{
+//         height:320px;
+//     }
+// }
 
    /* Large devices (laptops/desktops, 768px and up) */
 @media only screen and (min-width: 768px) {
