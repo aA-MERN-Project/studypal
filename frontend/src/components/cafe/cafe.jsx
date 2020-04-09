@@ -8,6 +8,9 @@ import NavBar from "../navbar/navbar_container";
 import Modal from "../modal/modal_container";
 import {updateCafe} from "../../util/cafe_api_util"
 import {selectRandomCafe} from "../../util/filters_util"
+import FavTransition from "../favorite_button/fav_transition";
+import { cafeIncludes } from "../../util/button_util";
+
 
 class Cafe extends React.Component {
     constructor(props) {
@@ -174,9 +177,7 @@ class Cafe extends React.Component {
     render() {
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
-
         if (this.props.cafes.length === 0) this.props.history.push(`/retry`)
-
         // If no curr yelpcafe exist, request from API
         if (Object.keys(this.props.yelpCafe).length === 0) {
           let randomCafe = selectRandomCafe(this.props.cafes);
@@ -190,7 +191,6 @@ class Cafe extends React.Component {
             }
           }
         if (Object.keys(this.props.yelpCafe).length === 0) return null
-
         if (!this.props.randomCafe) return null;
 
 
@@ -230,7 +230,9 @@ class Cafe extends React.Component {
                 <div className="cafe">
                   <div className="profile">
                     <div className="title">
-                      <div className="name">{this.shortenName(this.props.yelpCafe.name)}</div>
+                      <div className="name">
+                        {this.shortenName(this.props.yelpCafe.name)}
+                      </div>
                       {this.viewStatus(modalData)}
                     </div>
 
@@ -246,7 +248,6 @@ class Cafe extends React.Component {
                   </div>
 
                   {this.props.yelpCafe.image_url ? yelpPhoto : noPhoto}
-                 
                 </div>
 
                 <div className="map">
@@ -268,6 +269,7 @@ class Cafe extends React.Component {
             </div>
 
             <Modal />
+           
           </div>
         );
 
