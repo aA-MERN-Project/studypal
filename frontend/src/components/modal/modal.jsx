@@ -91,13 +91,24 @@ const Modal = (props) => {
     if (props.yelpCafe.hours) openRightNow = hours[0].is_open_now;
 
     const favoriteModal = (
-
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
         <div className="carousel-container">
           <Carousel photos={photos} />
         </div>
         <div className="business-misc">
-          <h1 className="modal-name"> {name} </h1>
+          <h1 className="modal-name">
+            {" "}
+            {name}{" "}
+            {/* <input
+              className="cafe-remove"
+              type="submit"
+              onClick={() => {
+                handleUnfavorite(props.user.id, props.currCafe);
+                props.closeModal();
+              }}
+              value="Remove"
+            /> */}
+          </h1>
           <div className="modal-horizontal-line"></div>
           <div className="business-misc-flex">
             <div className="modal-left">
@@ -107,61 +118,35 @@ const Modal = (props) => {
               <div className="modal-address">{location.display_address[2]}</div>
               <div className="modal-address">{display_phone}</div>
             </div>
-            {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
-            <div className="modal-mid">
-              <div className="modal-distance-duration">
-
-                {/* {distance_away} miles away */}
-              </div>
-              {/* <div className="modal-distance-duration">{duration} minutes</div> */}
-
-            </div>
-          </div>
-          <div className="modal-bottom">
-            <div className="modal-horizontal-info"></div>
-            {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
-            <div className="modal-right">
-              <div className="rolled-favorited">
-                {/* Number of Times Randomly Rolled: {rolled} */}
-              </div>
-              {/* <div>Selected: {selected}</div> */}
-              <div className="rolled-favorited">
-
-                <div>
+            {/* <div className="modal-mid"> */}
+            <div className="vertical-line-modal"></div>
+            <div className="modal-bottom">
+              {/* <div className="modal-horizontal-info"></div> */}
+              <div className="modal-right">
+                <div className="rolled-favorited">
                   <b>{favorite_amount}</b> other <b>StudyPallers</b> have
                   favorited this cafe
                 </div>
-                <div>
+                <div className="rolled-favorited">
                   <b>{selected_amount}</b> other <b>StudyPallers</b> have gone
                   to this cafe
                 </div>
-                <div>
+                <div className="rolled-favorited">
                   <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
                   cafe on our state of the art platform :)
                 </div>
                 {/* <input
-                  id="cafe-submit"
-                  type="submit"
-                  onClick={() =>{
-                    
-                    props.openModal("mapModal", "data") }
-                  }
-                  value="Route"
-                /> */}
-                <input
-                  id="cafe-submit"
-                  type="submit"
-                  onClick={() => {
-                    handleUnfavorite(props.user.id, props.currCafe)
-                    props.closeModal();
-          
-                  }}
-                  value="Remove"
-                />
-
+                    id="cafe-submit"
+                    type="submit"
+                    onClick={() =>{
+                      
+                      props.openModal("mapModal", "data") }
+                    }
+                    value="Route"
+                  /> */}
+                {/* <FavButton /> */}
+                {/* <PopUpContainer /> */}
               </div>
-              {/* <FavButton /> */}
-              {/* <PopUpContainer /> */}
             </div>
           </div>
         </div>
@@ -189,7 +174,10 @@ const Modal = (props) => {
           <Carousel photos={photos} />
         </div>
         <div className="business-misc">
-          <h1 className="modal-name"> {name} <FavButton /></h1>
+          <h1 className="modal-name">
+            {" "}
+            {name} <FavButton />
+          </h1>
           <div className="modal-horizontal-line"></div>
           <div className="business-misc-flex">
             <div className="modal-left">
@@ -198,46 +186,30 @@ const Modal = (props) => {
               <div className="modal-address">{location.display_address[1]}</div>
               <div className="modal-address">{location.display_address[2]}</div>
               <div className="modal-address">{display_phone}</div>
-
             </div>
-            {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
-            <div className="modal-mid">
-              <div className="modal-distance-duration">
-                {/* {distance_away} miles away */}
-              </div>
-              {/* <div className="modal-distance-duration">{duration} minutes</div> */}
-            </div>
-          </div>
-          <div className="modal-bottom">
-            <div className="modal-horizontal-info"></div>
-            {/* <img className="noun-espresso" src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png" /> */}
-            <div className="modal-right">
-              <div className="rolled-favorited">
-                {/* Number of Times Randomly Rolled: {rolled} */}
-              </div>
-              {/* <div>Selected: {selected}</div> */}
-              <div className="rolled-favorited">
-                <div>
-                  <b>{favorite_amount}</b> other <b>StudyPallers</b> have
-                  favorited this cafe
-                </div>
-                <div>
-                  <b>{selected_amount}</b> other <b>StudyPallers</b> have gone
-                  to this cafe
-                </div>
-                <div>
-                  <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
-                  cafe on our state of the art platform :)
-                </div>
-
-                {/* <input
-                  id="cafe-submit"
-                  type="submit"
-                  onClick={() => {
-                    props.openModal("mapModal", "data");
-                  }}
-                  value="Route"
-                /> */}
+              <div className="vertical-line-modal"></div>
+            <div className="modal-bottom">
+              <div className="modal-right">
+                  <div className="rolled-favorited">
+                    <b>{favorite_amount}</b> other <b>StudyPallers</b> have
+                    favorited this cafe
+                  </div>
+                  <div className="rolled-favorited">
+                    <b>{selected_amount}</b> other <b>StudyPallers</b> have gone
+                    to this cafe
+                  </div>
+                  <div className="rolled-favorited">
+                    <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
+                    cafe on our state of the art platform :)
+                  </div>
+                  {/* <input
+                    id="cafe-submit"
+                    type="submit"
+                    onClick={() => {
+                      props.openModal("mapModal", "data");
+                    }}
+                    value="Route"
+                  /> */}
               </div>
             </div>
           </div>

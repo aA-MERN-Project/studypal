@@ -54,9 +54,18 @@ class Splash extends React.Component {
     navigator.geolocation.getCurrentPosition(this.getPosition);
   }
 
+  
+
   componentDidMount() {
     this.findCoordinates();
-
+    if(this.props.isAuthenticated===true){
+      if(this.props.user.id){
+        this.props.getUpdatedUser(this.props.user.id);
+      }else{
+        this.props.getUpdatedUser(this.props.user._id);
+      }
+    }
+    
   }
 
 
@@ -78,7 +87,7 @@ class Splash extends React.Component {
 
 
   handleSubmit(e) {
-    debugger
+    // debugger
     e.preventDefault();
 
     let state = this.state;
@@ -105,13 +114,32 @@ class Splash extends React.Component {
   }
 
   render() {
+    // debugger;
+    let welcomeMessage;
+    if(this.props.isAuthenticated===true){
+        if(this.props.updatedUser){
+          // debugger;
+          welcomeMessage = `Welcome, ${this.props.updatedUser.handle}!`;
+
+        }
+        else if(this.props.user){
+          // debugger;
+          welcomeMessage = `Welcome, ${this.props.user.handle}!`;
+        }
+    }
+    else{
+      // debugger;
+      welcomeMessage = "";
+    }
     
     return (
       <div className="index">
         <NavBar />
         <div className="content">
-          <div id="welcomeName">Welcome, {this.props.user.handle}!</div>
-          <div className="cta">Discover your cafe for today.</div>
+          <div id="welcomeName">
+              {welcomeMessage}
+          </div>
+        <div className="cta">Discover your cafe for today.</div>
 
           {/* {this.loggedIn()} */}
           <div id="looking-for">What are you looking for?</div>

@@ -298,7 +298,7 @@ class Retry extends React.Component {
           </div>
 
           <div id="recommend-sf">
-            Lost? <span className="click-rec" onClick={this.findCafe}>Here's something for you.</span>
+            Lost? <span className="click-rec-gray" onClick={this.findCafe}>Here's something for you.</span>
             
           </div>
 

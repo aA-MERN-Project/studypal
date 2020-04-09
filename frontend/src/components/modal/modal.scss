@@ -34,7 +34,8 @@
     background-color: white;
     border: 2px solid #EBEBEB;
     box-shadow: 0 0 10px #EBEBEB;
-    overflow-y: scroll;
+    // overflow-y: scroll;
+    border-radius: 5px;
 }
 
 .map-modal {
@@ -106,7 +107,8 @@
 }
 
 .modal-left {
-    padding-left: 23px;
+    padding-top: 3.8%;
+    padding-left: 5%;
 }
 
 .modal-right {
@@ -120,19 +122,20 @@
     font-size: 15px;
     position: relative;
     // left: 20px;
-    top: 10px;
-    padding-top: 5px;
+    top: 30px;
+    padding-top: 10px;
 
 }
 
 .vertical-line-modal {
-    max-width: 190px;
+    // max-width: 190px;
+    width: 125px;
     height: .1px;
     border: 1px solid black;
     transform: rotate(90deg);
     position: relative;
-    left: 25%;
-    top: 55%
+    left: 3%;
+    top: 75px
 }
 
 .business-misc-flex {
@@ -147,7 +150,7 @@
     color: black;
     margin-top: -8px;
     font-family: "Open Sans";
-    font-size: 15px;
+    font-size: 17px;
     padding-bottom: 7px;
     position: relative;
     left: 25px;
@@ -157,7 +160,7 @@
     color: black;
     // color: rgba(51, 51, 51, 0.5);
     font-family: "Open Sans";
-    font-size: 15px;
+    font-size: 17px;
     padding-bottom: 7px;
     position: relative;
     left: 25px;
@@ -187,4 +190,24 @@
     position: relative;
     // left: 15px;
     top: 10px;
+}
+
+
+.cafe-remove {
+    height: 35px;
+    border: none;
+    width: 90px;
+    background-color: black;
+    color: #ffffff;
+    border-radius: 50px;
+    font-size: 12px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-left: 15px;
+    outline: none;
+}
+
+.cafe-remove:hover {
+    cursor: pointer;
+    box-shadow:none;
+    background-color: rgb(38, 38, 38)
 }
