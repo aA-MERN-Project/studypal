@@ -124,7 +124,7 @@ class Test extends React.Component {
                             <br />
                             <input className="update-input" type="text" placeholder="Change zipcode" value={this.state.zipcode} onChange={this.update("zipcode")}></input>
                             <br/>
-                            <button className="update-profile-button">Update profile</button>
+                            <button className="updateProfileButton">Update profile</button>
                             &ensp;
                             <button className="update-profile-close" onClick={this.closeUpdate}>Close</button>
                             <ul className="update-errors" onClick={this.closeUpdate}>{this.renderErrors()}</ul>
