@@ -12,7 +12,8 @@
     background: linear-gradient(180deg, #4169E1 0%, rgba(65,225,167,0.3) 50%, rgba(65,225,167,0.05) 100%)
 }
 
-.favorites-div {
+@media only screen and (max-height: 768px){
+    .favorites-div {
     background: white;
     /* margin-top: 12%; */
     width: 70%;
@@ -22,7 +23,26 @@
     padding: 20px;
     height: 400px;
     overflow: auto;
+    }
 }
+
+@media only screen and (min-height: 768px){
+    .favorites-div {
+    background: white;
+    /* margin-top: 12%; */
+    width: 70%;
+    min-width: 890px;
+    /* flex-direction: column; */
+    border-radius: 5px;
+    padding: 20px;
+    height: 550px;
+    overflow: auto;
+    }
+}
+
+
+
+
 
 .back-profile-div {
     width: 230px;
@@ -60,7 +80,7 @@
     cursor: pointer
 }
 
-.cafe-box {
+#cafe-box {
     background-color: rgb(242, 242, 242);
     display: flex;
     justify-content: space-between;
@@ -87,6 +107,7 @@
 
 .favorite-remove {
     padding-top: 10px;
+    font-family: "Open Sans";
     color: rgb(140, 140, 140);
     display: inline-block;
     width: 52px;
@@ -140,11 +161,31 @@
 
 .modal-cafe-address {
     font-family: "Open Sans";
-    font-size: 14.7px;
+    font-size: 13px;
     padding-top: 5px;
     font-weight: lighter;
 }
 
 .modal-cafe-address:hover {
     cursor: pointer
+}
+
+
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
