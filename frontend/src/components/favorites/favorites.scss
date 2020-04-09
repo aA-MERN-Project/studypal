@@ -88,6 +88,8 @@
     width: 250px;
     border-radius: 5px;
     padding: 10px;
+    border:1px solid rgb(151, 151, 151);
+   
 }
 
 #cafe-box:hover {
@@ -98,6 +100,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.cafe-text-info-outer{
+    display:flex;
+    flex-direction:column;
 }
 
 .cafe-text-info {
@@ -112,6 +119,9 @@
     display: inline-block;
     width: 52px;
     font-size:14px;
+    position:absolute;
+    padding-top:58px;
+  
 }
 
 .favorite-remove:hover {
