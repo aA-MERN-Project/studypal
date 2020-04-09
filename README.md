@@ -35,7 +35,7 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 
 ## Code 
 
-### Prepopulated Profile
+### Prepopulated Cafe Preferences
 An important part of the user profile is that they are able to save and retrieve their cafe preferences. Cafe preferences
 are selected via radio buttons, each of which triggers a change in local state. When a user submits these changes,
 the data in the local state is sent to and stored within MongoDB. To retrieve and display these changes, data is fetched
