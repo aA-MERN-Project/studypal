@@ -107,7 +107,7 @@
 }
 
 .modal-left {
-    padding-top: 5%;
+    padding-top: 5.4%;
     padding-left: 5%;
     display: inline-block;
     height: 30px
@@ -116,7 +116,6 @@
 .modal-right {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .rolled-favorited {
@@ -152,20 +151,22 @@
     color: black;
     margin-top: -8px;
     font-family: "Open Sans";
-    font-size: 16px;
+    font-size: 15px;
     padding-bottom: 7px;
     position: relative;
     left: 25px;
+    widtH: 150px;
 }
 
 .modal-address {
     color: black;
     // color: rgba(51, 51, 51, 0.5);
     font-family: "Open Sans";
-    font-size: 16px;
+    font-size: 15px;
     padding-bottom: 7px;
     position: relative;
     left: 25px;
+    width: 150px;
 }
 
 .noun-espresso {
