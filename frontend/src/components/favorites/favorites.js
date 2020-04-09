@@ -55,7 +55,7 @@ import FavItem from './favorite_item_container';
             if (!this.props.favorites) return null;
             let favorites = this.props.favorites;
 
-            let favoriteList = favorites.map((cafe, index) => <FavItem key={index} cafe={cafe}/>)
+            let favoriteList = favorites.map((cafe, index) => <FavItem key={cafe.id} cafe={cafe}/>)
 
 
             return (

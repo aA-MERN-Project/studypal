@@ -74,8 +74,10 @@ class FavItem extends React.Component {
     render(){
         let cafe = this.props.cafe;
 
+        debugger
+
         return (
-        <div id="cafe-box">
+        <div id="cafe-box" key={cafe.id}>
             <div className="cafe-text-info">
                 <div
                     className="modal-cafe-name"
