@@ -2,6 +2,7 @@ import React from 'react';
 import './splash.scss';
 import NavBar from '../navbar/navbar_container';
 import $ from "jquery";
+import {zipCodes} from '../../util/splash_util';
 
 class Splash extends React.Component {
   constructor(props) {
@@ -21,6 +22,8 @@ class Splash extends React.Component {
     this.getPosition = this.getPosition.bind(this);
     this.clear = this.clear.bind(this);
     this.update = this.update.bind(this);
+    this.isZipcode = this.isZipcode.bind(this);
+    this.isGeo = this.isGeo.bind(this);
   
   }
 
@@ -56,6 +59,24 @@ class Splash extends React.Component {
 
   }
 
+
+  isZipcode(){
+    // returns boolean if zipcode is in SF
+    let zipcode = parseInt(this.state.location_zip_code)
+    return !zipCodes.includes(zipcode)
+     
+  }
+
+  isGeo(){
+    if (!this.state.my_lat){
+      alert('Please turn on geolocations to use that filter')
+      this.findCoordinates();
+    }
+  
+  }
+
+
+
   handleSubmit(e) {
     debugger
     e.preventDefault();
@@ -72,11 +93,12 @@ class Splash extends React.Component {
     this.props.fetchCafeByFilters(state)
     this.props.getFilters(state)
     this.props.history.push(`/cafe`);
-
+  
   };
 
 
   update(field) {
+
     return e => this.setState({
       [field]: e.currentTarget.value
     })
@@ -88,19 +110,17 @@ class Splash extends React.Component {
       <div className="index">
         <NavBar />
         <div className="content">
-          <div id="welcomeName">
-             Welcome, {this.props.user.handle}!
-          </div>
-        <div className="cta">Discover your cafe for today.</div>
+          <div id="welcomeName">Welcome, {this.props.user.handle}!</div>
+          <div className="cta">Discover your cafe for today.</div>
 
-      {/* {this.loggedIn()} */}
-      <div id="looking-for">What are you looking for?</div>
+          {/* {this.loggedIn()} */}
+          <div id="looking-for">What are you looking for?</div>
           <div className="preferences">
-
             <div className="distance-hours">
-
               <form className="distance">
-                <span>Within: </span>
+                <i class="fas fa-info-circle" aria-hidden="true" id="parent-2">
+                  <div id="popup-2">Our distance filter is based off of your browser's geolocation. Results may vary.</div>
+                </i>  <span>Within: </span>
                 <label className="filter">
                   <input
                     className="checkbox"
@@ -109,8 +129,8 @@ class Splash extends React.Component {
                     name="miles"
                     value="0.5"
                   />
-                              0.5 miles
-                            </label>
+                  0.5 miles
+                </label>
                 <label className="filter">
                   <input
                     className="checkbox"
@@ -119,8 +139,8 @@ class Splash extends React.Component {
                     name="miles"
                     value="1"
                   />
-                              1 mile
-                            </label>
+                  1 mile
+                </label>
                 <label className="filter">
                   <input
                     className="checkbox"
@@ -129,8 +149,8 @@ class Splash extends React.Component {
                     name="miles"
                     value="3"
                   />
-                              3 miles
-                            </label>
+                  3 miles
+                </label>
                 <label className="filter">
                   <input
                     className="checkbox"
@@ -139,8 +159,8 @@ class Splash extends React.Component {
                     name="miles"
                     value="5"
                   />
-                              5 miles
-                            </label>
+                  5 miles
+                </label>
                 <label className="filter">
                   <input
                     className="checkbox"
@@ -149,8 +169,9 @@ class Splash extends React.Component {
                     name="miles"
                     value="10"
                   />
-                              10 miles
-                            </label>
+                  10 miles
+                </label> 
+              
               </form>
 
               <span className="divider">|</span>
@@ -165,8 +186,8 @@ class Splash extends React.Component {
                     name="hours"
                     value="1"
                   />
-                              1 hour
-                            </label>
+                  1 hour
+                </label>
                 <label className="filter">
                   <input
                     className="checkbox"
@@ -175,8 +196,8 @@ class Splash extends React.Component {
                     name="hours"
                     value="2"
                   />
-                              2 hours
-                            </label>
+                  2 hours
+                </label>
                 <label className="filter">
                   <input
                     className="checkbox"
@@ -185,8 +206,8 @@ class Splash extends React.Component {
                     name="hours"
                     value="3"
                   />
-                              3 hours
-                            </label>
+                  3 hours
+                </label>
                 <label className="filter">
                   <input
                     className="checkbox"
@@ -195,8 +216,8 @@ class Splash extends React.Component {
                     name="hours"
                     value="5"
                   />
-                              5 hours
-                            </label>
+                  5 hours
+                </label>
                 <label className="filter">
                   <input
                     className="checkbox"
@@ -205,8 +226,8 @@ class Splash extends React.Component {
                     name="hours"
                     value="8"
                   />
-                              8 hours
-                            </label>
+                  8 hours
+                </label>
               </form>
             </div>
 
@@ -219,8 +240,8 @@ class Splash extends React.Component {
                     type="radio"
                     value="true"
                   />
-                            Free WiFi
-                          </label>
+                  Free WiFi
+                </label>
               </form>
 
               <span className="divider">|</span>
@@ -233,8 +254,8 @@ class Splash extends React.Component {
                     type="radio"
                     value="true"
                   />
-                            Takes Credit Card
-                          </label>
+                  Takes Credit Card
+                </label>
               </form>
 
               <span className="divider">|</span>
@@ -247,25 +268,41 @@ class Splash extends React.Component {
                     type="radio"
                     value="true"
                   />
-                            Quiet Environment
-                          </label>
+                  Quiet Environment
+                </label>
               </form>
             </div>
 
-            <button className="clear" onClick={() => this.clear()}>Clear All</button>
+            <button className="clear" onClick={() => this.clear()}>
+              Clear All
+            </button>
           </div>
 
           <div className="roll-cafe">
-            <input 
+            <input
               id="zip"
               type="text"
               value={this.state.location_zip_code}
               placeholder="Enter your zip code"
               onChange={this.update("location_zip_code")}
             />
-            <input id="cafe-submit" onClick={this.handleSubmit} type="submit" value="Find a Cafe" />
+            <input
+              id="cafe-submit"
+              onClick={this.handleSubmit}
+              type="submit"
+              value="Find a Cafe"
+            />
           </div>
+
+          <div id="sf-available">
+              *Currently available only in San Francisco <i class="fas fa-info-circle" aria-hidden="true" id="parent">
+                <div id="popup">Sorry, we only support San Francisco Locations at this moment. We are working diligently to add more cafes into our service. Until then feel free to explore some great San Franciso based Study Areas :)!</div>
+              </i>
+
+          </div>
+          
         </div>
+        
       </div>
     );
   }
