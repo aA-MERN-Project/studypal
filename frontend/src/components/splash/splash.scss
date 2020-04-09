@@ -71,6 +71,11 @@
 
 .distance {
     padding-right: 20px;
+    
+}
+
+.fas {
+    color: gray;
 }
 
 .hours {
@@ -166,6 +171,61 @@ button.clear:hover {
     
     font-family: "Open Sans";
     // border:1px solid black;
+}
+
+#sf-available {
+    position: relative;
+    top: 140px;
+    text-align: center;
+    color: gray;
+    // font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 300;
+
+}
+
+
+#parent #popup {
+    background-color:  rgb(255, 235, 230);
+    color: grey;
+    border-radius: 4px;
+    width: 200px;
+    height: 78px;
+    display: none;
+    position:absolute;
+    font-size: 12px;
+    font-weight: 100;
+// -webkit-transform: scale(.9, .9);
+// -webkit-transition: all .18s ease-in-out;
+  
+}
+
+#parent:hover #popup {
+  display: block;
+  color: gray;
+
+
+}
+
+
+#parent-2 #popup-2 {
+    background-color:  rgb(255, 235, 230);
+    color: grey;
+    border-radius: 4px;
+    width: 200px;
+    height: 28px;
+    display: none;
+    position:absolute;
+    font-size: 12px;
+    font-weight: 100;
+// -webkit-transform: scale(.9, .9);
+// -webkit-transition: all .18s ease-in-out;
+  
+}
+
+#parent-2:hover #popup-2 {
+  display: block;
+  color: gray;
 }
 
 

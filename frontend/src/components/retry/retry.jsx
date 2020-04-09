@@ -20,6 +20,7 @@ class Retry extends React.Component {
     this.findCoordinates = this.findCoordinates.bind(this);
     this.getPosition = this.getPosition.bind(this);
     this.clear = this.clear.bind(this);
+    this.findCafe = this.findCafe.bind(this);
   }
 
   clear() {
@@ -52,9 +53,9 @@ class Retry extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    debugger
     let state = this.state;
-    //Mapping state to search params
+    state.location_zip_code ? (state.location_zip_code = parseInt(state.location_zip_code)) : state.location_zip_code = null;
     state.wifi ? (state.wifi = "yes") : (state.wifi = "no");
     state.noise_level
       ? (state.noise_level = "average")
@@ -66,13 +67,17 @@ class Retry extends React.Component {
     this.props.fetchCafeByFilters(state);
     this.props.getFilters(state);
     this.props.history.push(`/cafe`);
+    this.findCafe = this.findCafe.bind(this);
+
+
+    debugger
   }
 
   componentDidMount() {
     //  
-    if (Object.keys(this.props.filters).length === 0) {
-      this.props.history.push(`/`);
-    }
+    // if (Object.keys(this.props.filters).length === 0) {
+    //   this.props.history.push(`/`);
+    // }
   }
 
   update(field) {
@@ -82,16 +87,55 @@ class Retry extends React.Component {
       });
   }
 
+  handleZip(zip) {
+    let zipArr = zip.split('');
+    setInterval(() => {
+      if (zipArr.length > 0) {
+        this.setState({
+          location_zip_code: this.state.location_zip_code + zipArr.shift()
+        })
+      }
+    }, 50)
+  }
+
+  findCafe(e) {
+
+    e.preventDefault();
+
+
+    let zipcode = "94111";
+    setTimeout(() => {
+      this.handleZip(zipcode);
+    }, 500)
+    setTimeout(() => {
+      this.handleSubmit(e)
+    }, 1500)
+
+  }
+
+
   render() {
     return (
       <div className="index">
         <NavBar />
         <div className="content">
           <div className="cta">
-            Sorry, there are no more cafes for those search parameters
+            Looks like you ran out of cafes!
           </div>
 
-          <div id="looking-for">Let's try some other other parameters :)</div>
+          <div id="looking-for"><b>Improve the results by:</b></div>
+          <ul id="looking-for-2">
+            <li>
+              Trying a different zipcode from San Francisco
+            </li>
+            <li>
+              Trying different search parameters
+            </li>
+            <li>
+              Check that your geolocation is <span className="click-rec-gray" onClick={() => this.findCoordinates()}>working</span>
+            </li>
+          </ul>
+    
 
           <div className="preferences">
             <div className="distance-hours">
@@ -251,6 +295,11 @@ class Retry extends React.Component {
             <button className="clear" onClick={() => this.clear()}>
               Clear All
             </button>
+          </div>
+
+          <div id="recommend-sf">
+            Lost? <span className="click-rec-gray" onClick={this.findCafe}>Here's something for you.</span>
+            
           </div>
 
           <div className="roll-cafe">
