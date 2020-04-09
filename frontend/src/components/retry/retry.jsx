@@ -118,24 +118,25 @@ class Retry extends React.Component {
     return (
       <div className="index">
         <NavBar />
-        <div className="content">
-          <div className="cta">
-            Looks like you ran out of cafes!
-          </div>
+        <div className="new-test">
+          <div className="cta">Looks like you ran out of cafes!</div>
 
-          <div id="looking-for"><b>Improve the results by:</b></div>
+          <div id="looking-for">
+            <b>Improve the results by:</b>
+          </div>
           <ul id="looking-for-2">
+            <li>Trying a different zipcode from San Francisco</li>
+            <li>Trying different search parameters</li>
             <li>
-              Trying a different zipcode from San Francisco
-            </li>
-            <li>
-              Trying different search parameters
-            </li>
-            <li>
-              Check that your geolocation is <span className="click-rec-gray" onClick={() => this.findCoordinates()}>working</span>
+              Check that your geolocation is{" "}
+              <span
+                className="click-rec-gray"
+                onClick={() => this.findCoordinates()}
+              >
+                working
+              </span>
             </li>
           </ul>
-    
 
           <div className="preferences">
             <div className="distance-hours">
@@ -298,8 +299,10 @@ class Retry extends React.Component {
           </div>
 
           <div id="recommend-sf">
-            Lost? <span className="click-rec-gray" onClick={this.findCafe}>Here's something for you.</span>
-            
+            Lost?{" "}
+            <span className="click-rec-gray" onClick={this.findCafe}>
+              Here's something for you.
+            </span>
           </div>
 
           <div className="roll-cafe">

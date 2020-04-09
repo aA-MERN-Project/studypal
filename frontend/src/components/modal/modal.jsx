@@ -183,7 +183,7 @@ const Modal = (props) => {
             <div className="modal-left">
               {openRightNow ? isOpen : isClosed}
               <div className="modal-address">{location.display_address[0]}</div>
-              <div className="modal-address">{location.display_address[1]}</div>
+              {/* <div className="modal-address">{location.display_address[1]}</div> */}
               <div className="modal-address">{location.display_address[2]}</div>
               <div className="modal-address">{display_phone}</div>
             </div>

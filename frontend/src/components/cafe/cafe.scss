@@ -92,7 +92,7 @@
 .yelp:hover {
     cursor: pointer;
     position: relative;
-    top: 2px;
+    // top: 1px;
     box-shadow: none;
 }
 
@@ -163,6 +163,67 @@
     cursor: pointer;
 }
 
+@media only screen and (max-width: 600px) {
+    .left-right {
+        flex-direction: column;
+    }
+
+    .cafe {
+        align-items: flex-start;
+    }
+
+    .map {
+        position: relative;
+        left: 2.6%;
+    }
+
+    .profile {
+        width: 440px;
+        left: 3%
+    }
+
+    .photo {
+        width: 500px;
+        left: 3%;
+        margin-bottom: .5%;
+    }
+
+    .new-cafe {
+        position: relative;
+        right: 24%;
+    }
+}
+
+// @media only screen and (max-width: 768px) {
+//     .left-right {
+//         flex-direction: column;
+//     }
+
+//     .cafe {
+//         align-items: flex-start;
+//         padding-left: 6%
+//     }
+
+//     .photo {
+//         height: 450px;
+//         margin-bottom: .5%;
+//     }
+
+//     .map {
+//     position: relative;
+//     left: 5.6%;
+//     width: 610px;
+//     }
+
+//     #map-container {
+//         width: 610px;
+//     }
+
+//     .new-cafe {
+//         position: relative;
+//         right: 18%;
+//     }
+// }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
@@ -187,8 +248,8 @@
     .photo{
         height:320px;
     }
-  } 
 
+  } 
 
   /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
