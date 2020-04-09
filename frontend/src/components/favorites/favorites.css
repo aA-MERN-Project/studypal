@@ -70,6 +70,10 @@
     padding: 10px;
 }
 
+.cafe-box:hover {
+    background-color: rgb(255, 235, 230)
+}
+
 .cafe-list {
     display: flex;
     flex-wrap: wrap;
@@ -116,7 +120,8 @@
     border-radius: 50px;
     font-size: 12px;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
-    margin-right: 20px
+    margin-right: 20px;
+    outline: none
 }
 
 .pick-random:hover {

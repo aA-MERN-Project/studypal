@@ -60,13 +60,16 @@ function Carousel(props) {
 
 
     let photos
-    
-    if (props.photos.length > 0) {
-      photos = props.photos
+    if (props.photos.length === 1) {
+      photos = props.photos.concat(props.photos).concat(props.photos)
+    } else if (props.photos.length > 0) {
+      photos = props.photos;
     } else {
-      photos = ['https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png',
-        'https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png',
-        'https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png' ]
+      photos = [
+        "https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png",
+        "https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png",
+        "https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png",
+      ];
     }
     
 
