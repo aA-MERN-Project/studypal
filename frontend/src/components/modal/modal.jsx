@@ -134,8 +134,7 @@ const Modal = (props) => {
                 </div>
                 <div className="rolled-favorited">
                   <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
-                  cafe 
-                  {/* on our state of the art platform :) */}
+                  cafe on our platform
                 </div>
                 {/* <input
                     id="cafe-submit"
@@ -206,8 +205,7 @@ const Modal = (props) => {
               </div>
               <div className="rolled-favorited">
                 <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
-                cafe
-                {/* on our state of the art platform :) */}
+                cafe on our platform
               </div>
               {/* <input
                     id="cafe-submit"

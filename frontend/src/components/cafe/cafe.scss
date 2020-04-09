@@ -163,94 +163,64 @@
     cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
-    .left-right {
-        flex-direction: column;
-    }
-
-    .cafe {
-        align-items: flex-start;
-    }
-
-    .map {
-        position: relative;
-        left: 2.6%;
-    }
-
-    .profile {
-        width: 440px;
-        left: 3%
-    }
-
-    .photo {
-        width: 500px;
-        left: 3%;
-        margin-bottom: .5%;
-    }
-
-    .new-cafe {
-        position: relative;
-        right: 24%;
-    }
-}
-
-// @media only screen and (max-width: 768px) {
+// @media only screen and (max-width: 600px) {
 //     .left-right {
 //         flex-direction: column;
 //     }
 
 //     .cafe {
 //         align-items: flex-start;
-//         padding-left: 6%
-//     }
-
-//     .photo {
-//         height: 450px;
-//         margin-bottom: .5%;
 //     }
 
 //     .map {
-//     position: relative;
-//     left: 5.6%;
-//     width: 610px;
+//         position: relative;
+//         left: 2.6%;
 //     }
 
-//     #map-container {
-//         width: 610px;
+//     .profile {
+//         width: 440px;
+//         left: 3%
+//     }
+
+//     .photo {
+//         width: 500px;
+//         left: 3%;
+//         margin-bottom: .5%;
 //     }
 
 //     .new-cafe {
 //         position: relative;
-//         right: 18%;
+//         right: 24%;
 //     }
 // }
 
+
 // /* Medium devices (landscape tablets, 768px and up) */
 
-@media only screen and (min-width: 768px) {
-    .map{
-        height:470px;
-    }
+// @media only screen and (min-width: 768px) {
+//     .map{
+//         height:470px;
+//     }
 
-    .cafe{
-        justify-content: none;
-        max-height:470px;
-    }
+//     .cafe{
+//         justify-content: none;
+//         max-height:470px;
+//     }
 
-    .all{
-        padding-top: 7%;
-    }
+//     .all{
+//         padding-top: 7%;
+//     }
 
-    .profile{
-        padding-top:24px;
-        padding-bottom:24px;
-        background-color:green;
-    }
+//     .profile{
+//         padding-top:24px;
+//         padding-bottom:24px;
+//         background-color:green;
+//     }
 
-    .photo{
-        height:323px;
-    }
-}
+//     .photo{
+//         height:323px;
+//     }
+// }
 
    /* Large devices (laptops/desktops, 768px and up) */
 @media only screen and (min-width: 768px) {
@@ -276,7 +246,7 @@
     }
 
     .cafe{
-        justify-content: none;
+        justify-content: center;
         max-height:none;
         // border:3px solid green;
     }
@@ -307,6 +277,36 @@
         
     }
 
+}
+
+@media only screen and (max-width: 1070px) {
+    .left-right {
+        flex-direction: column;
+    }
+
+    .map {
+        position: relative;
+        left: 16%;
+        width: 600px;
+        margin-top: 5px
+    }
+
+    #map-container {
+        width: 600px;
+    }
+    
+    .profile {
+        width: 560px;
+        margin-top: 20px;
+    }
+
+    .photo {
+        width: 600px;
+    }
+
+    .new-cafe {
+        right: 16px
+    }
 }
 
   /* Large devices (laptops/desktops, 992px and up) */
@@ -452,3 +452,41 @@
         margin-top:10px;
     }
     }
+
+    @media only screen and (max-width: 767px) {
+    .profile {
+        width: 450px;
+        margin-right: 450px;
+        // margin-top: 20px;
+    }
+
+    .left-right {
+        flex-direction: column;
+    }
+
+    .photo {
+        height: 350px;
+        width: 508px;
+        margin-bottom: .1%;
+        margin-right: 450px
+    }
+
+    .map {
+        position: relative;
+        left: 6.6%;
+        width: 508px;
+    }
+
+    #map-container {
+        width: 508px;
+    }
+
+    .new-cafe {
+        position: relative;
+        right: 21%;
+    }
+
+    .navbar {
+        justify-content: flex-start;
+    }
+}

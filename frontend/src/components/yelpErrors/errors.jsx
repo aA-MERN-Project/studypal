@@ -17,7 +17,7 @@ class Errors extends React.Component {
 
   render() {
     return (
-      <div className="index">
+      <div className="bla">
         <div className="errors">
           <div className="sorry">SORRY :( </div>
           <br/>

@@ -3,10 +3,12 @@
   align-items: center;
   border-radius: 10px;
   position: absolute;
-  top: 750px;
+  // top: 750px;
+  top: 437px;
   height: 40px;
-  width: 500px;
-  left: 150px;
+  width: 58.5%;
+  min-width: 100px;
+  left: 177px;
   background-color: rgb(255, 235, 230);
   padding: 20px;
   -moz-box-sizing: border-box; 
@@ -20,10 +22,11 @@
   align-items: center;
   border-radius: 10px;
   position: absolute;
-  top: 750px;
+  top: 437px;
   height: 40px;
-  width: 500px;
-  left: 150px;
+  width: 58.5%;
+  min-width: 100px;
+  left: 177px;
   background-color: rgb(255, 235, 230);
   padding: 20px;
   -moz-box-sizing: border-box; 
@@ -34,7 +37,7 @@
 
 .spicy-enter {
 	opacity: .01;
-	transform: scaleX(0) translateY(100px);
+	transform: scaleX(0) translateY(25px) translateX(-500px);
 }
 
 .spicy-enter.spicy-enter-active {
@@ -50,7 +53,7 @@
 
 .spicy-leave-active {
 	opacity: 01;
-	transform: scaleX(0) translateY(100px);
+	transform: scaleX(0) translateY(25px) translateX(-500px);
 	transition: all 300ms ease-in-out
 }
 
