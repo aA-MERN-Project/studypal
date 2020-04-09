@@ -36,8 +36,10 @@ const FavButton = (props) => {
         favorites.type = "unfavorite";
         favorites.cafe = cafe;
 
-        props.updateFavorites(userId, favorites);
-        props.fetchCurrCafe(cafe.id);
+        props.updateFavorites(userId, favorites).then(
+          () => props.fetchCurrCafe(cafe.id)
+        )
+          
     };
 
     let handleAddFavorite = function (userId, cafe) {
@@ -45,8 +47,9 @@ const FavButton = (props) => {
         favorites.type = "favorite";
         favorites.cafe = cafe;
 
-        props.updateFavorites(userId, favorites);
-        props.fetchCurrCafe(cafe.id);
+        props.updateFavorites(userId, favorites).then(
+          () => props.fetchCurrCafe(cafe.id)
+        )
         props.openPopUp()
     }
 

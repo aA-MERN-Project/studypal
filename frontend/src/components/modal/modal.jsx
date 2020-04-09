@@ -3,8 +3,9 @@ import "./modal.scss";
 import Carousel from "../carousel/carousel"
 import Map from '../map/directions';
 import FavButton from '../favorite_button/fav_button'
-// import PopUpContainer from "../popUp/pop_up_container";
+import FavTransition from '../favorite_button/fav_transition'
 
+// import PopUpContainer from "../popUp/pop_up_container";
 //Helper Functions
 
     
@@ -128,12 +129,11 @@ const Modal = (props) => {
                   favorited this cafe
                 </div>
                 <div className="rolled-favorited">
-                  <b>{selected_amount}</b> other <b>StudyPallers</b> have gone
-                  to this cafe
+                  <b>{selected_amount}</b> other <b>StudyPallers</b> have viewed this cafe
                 </div>
                 <div className="rolled-favorited">
                   <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
-                  cafe on our state of the art platform :)
+                  cafe :)
                 </div>
                 {/* <input
                     id="cafe-submit"
@@ -147,6 +147,7 @@ const Modal = (props) => {
                 {/* <FavButton /> */}
                 {/* <PopUpContainer /> */}
               </div>
+
             </div>
           </div>
         </div>
@@ -195,12 +196,12 @@ const Modal = (props) => {
                     favorited this cafe
                   </div>
                   <div className="rolled-favorited">
-                    <b>{selected_amount}</b> other <b>StudyPallers</b> have gone
-                    to this cafe
+                    <b>{selected_amount}</b> other <b>StudyPallers</b> have viewed
+                    this cafe
                   </div>
                   <div className="rolled-favorited">
                     <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
-                    cafe on our state of the art platform :)
+                    cafe :)
                   </div>
                   {/* <input
                     id="cafe-submit"
@@ -214,6 +215,7 @@ const Modal = (props) => {
             </div>
           </div>
         </div>
+        <FavTransition />
       </div>
     );
 
@@ -229,6 +231,8 @@ const Modal = (props) => {
     return (
       <div className="modal-backdrop" onClick={props.closeModal}>
         {selectedModal}
+      
+        
       </div>
     );
 
