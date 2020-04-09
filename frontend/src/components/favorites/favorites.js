@@ -77,7 +77,7 @@ import Modal from '../modal/modal_container'
 
         }
 
-        
+    
 
         render() {
             if (!this.props.favorites) return null;

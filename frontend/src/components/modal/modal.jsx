@@ -119,11 +119,11 @@ const Modal = (props) => {
               <div className="modal-address">{location.display_address[1]}</div>
               <div className="modal-address">{location.display_address[2]}</div>
               <div className="modal-address">{display_phone}</div>
+              <a href={url} target="_blank">View on Yelp</a>
             </div>
             {/* <div className="modal-mid"> */}
             <div className="vertical-line-modal"></div>
             <div className="modal-bottom">
-              {/* <div className="modal-horizontal-info"></div> */}
               <div className="modal-right">
                 <div className="rolled-favorited">
                   <b>{favorite_amount}</b> other <b>StudyPallers</b> have
@@ -134,7 +134,8 @@ const Modal = (props) => {
                 </div>
                 <div className="rolled-favorited">
                   <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
-                  cafe :)
+                  cafe 
+                  {/* on our state of the art platform :) */}
                 </div>
                 {/* <input
                     id="cafe-submit"
@@ -189,26 +190,33 @@ const Modal = (props) => {
             <div className="modal-left">
               {openRightNow ? isOpen : isClosed}
               <div className="modal-address">{location.display_address[0]}</div>
-              {/* <div className="modal-address">{location.display_address[1]}</div> */}
               <div className="modal-address">{location.display_address[2]}</div>
               <div className="modal-address">{display_phone}</div>
+              <a href={url} target="_blank">View on Yelp</a>
             </div>
             <div className="vertical-line-modal"></div>
-            <div className="modal-bottom">
-              <div className="modal-right">
-                <div className="rolled-favorited">
-                  <b>{favorite_amount}</b> other <b>StudyPallers</b> have
-                  favorited this cafe
-                </div>
-                <div className="rolled-favorited">
-                  <b>{selected_amount}</b> other <b>StudyPallers</b> have viewed
-                  this cafe
-                </div>
-                <div className="rolled-favorited">
-                  <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
-                  cafe :)
-                </div>
+            <div className="modal-right">
+              <div className="rolled-favorited">
+                <b>{favorite_amount}</b> other <b>StudyPallers</b> have
+                favorited this cafe
               </div>
+              <div className="rolled-favorited">
+                <b>{selected_amount}</b> other <b>StudyPallers</b> have gone to
+                this cafe
+              </div>
+              <div className="rolled-favorited">
+                <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
+                cafe
+                {/* on our state of the art platform :) */}
+              </div>
+              {/* <input
+                    id="cafe-submit"
+                    type="submit"
+                    onClick={() => {
+                      props.openModal("mapModal", "data");
+                    }}
+                    value="Route"
+                  /> */}
             </div>
           </div>
         </div>

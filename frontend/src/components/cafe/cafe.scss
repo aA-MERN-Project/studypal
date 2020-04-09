@@ -92,7 +92,7 @@
 .yelp:hover {
     cursor: pointer;
     position: relative;
-    // top: 1px;
+    top: 1px;
     box-shadow: none;
 }
 
@@ -248,7 +248,7 @@
     }
 
     .photo{
-        height:320px;
+        height:323px;
     }
 }
 
@@ -409,7 +409,8 @@
     }
 
     .photo{
-        height:364px;
+        // height: 68.5%;
+        height: 362px;
     }
 }
 
@@ -446,7 +447,8 @@
     }
 
     .photo{
-        height:90.5%;
+        // height:90.5%;
+        height: 309px;
         margin-top:10px;
     }
     }
