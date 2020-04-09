@@ -8,7 +8,8 @@ import NavBar from "../navbar/navbar_container";
 import Modal from "../modal/modal_container";
 import {updateCafe} from "../../util/cafe_api_util"
 import {selectRandomCafe} from "../../util/filters_util"
-
+import FavTransition from "../favorite_button/fav_transition";
+import { cafeIncludes } from "../../util/button_util";
 
 
 class Cafe extends React.Component {
@@ -26,7 +27,8 @@ class Cafe extends React.Component {
         this.calculateTime = this.calculateTime.bind(this);
         this.applyExtraFilters = this.applyExtraFilters.bind(this);
         this.addSelected = this.addSelected.bind(this);
-        this.shortenName = this.shortenName.bind(this)
+        this.shortenName = this.shortenName.bind(this);
+        this.viewStatus = this.viewStatus.bind(this)
     }
 
     shortenName(name) {
@@ -140,16 +142,42 @@ class Cafe extends React.Component {
       )
     }
 
+    viewStatus(modalData) {
+      if (this.props.loggedIn) {
+
+        return (
+          <a
+            className="yelp"
+            onClick={() => {
+              this.props.fetchFavorites(this.props.user.id)
+                .then(() => this.addSelected(this.props.yelpCafe.id))
+                .then(() => this.props.fetchCurrCafe(this.props.yelpCafe.id))
+                .then(() => this.props.openModal("cafeModal", modalData))
+            }}
+          >
+            <div id="yelp-text">View</div>
+          </a>
+        );
+      } else {
+
+        return (
+          <a
+            className="yelp"
+            onClick={() => {
+              this.props.openModal("cafeModal", modalData);
+              this.props.fetchCurrCafe(this.props.yelpCafe.id);
+            }}
+          >
+            <div id="yelp-text">View</div>
+          </a>
+        );
+      }
+    }
 
     render() {
-        // debugger;
-
-       
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
-
         if (this.props.cafes.length === 0) this.props.history.push(`/retry`)
-
         // If no curr yelpcafe exist, request from API
         if (Object.keys(this.props.yelpCafe).length === 0) {
           let randomCafe = selectRandomCafe(this.props.cafes);
@@ -162,12 +190,7 @@ class Cafe extends React.Component {
                 .catch(err => this.props.history.push(`/errors`));
             }
           }
-
-
-
-
         if (Object.keys(this.props.yelpCafe).length === 0) return null
-
         if (!this.props.randomCafe) return null;
 
 
@@ -207,17 +230,10 @@ class Cafe extends React.Component {
                 <div className="cafe">
                   <div className="profile">
                     <div className="title">
-                      <div className="name">{this.shortenName(this.props.yelpCafe.name)}</div>
-                      <a
-                        className="yelp"
-                        onClick={() => {
-                          this.props.openModal("cafeModal", modalData)
-                          this.props.fetchCurrCafe(this.props.yelpCafe.id)
-                          this.props.fetchFavorites(this.props.user.id)
-                        }}
-                      >
-                        <div id="yelp-text">View</div>
-                      </a>
+                      <div className="name">
+                        {this.shortenName(this.props.yelpCafe.name)}
+                      </div>
+                      {this.viewStatus(modalData)}
                     </div>
 
                     <div className="time">Open until {time} Today</div>
@@ -232,7 +248,6 @@ class Cafe extends React.Component {
                   </div>
 
                   {this.props.yelpCafe.image_url ? yelpPhoto : noPhoto}
-                 
                 </div>
 
                 <div className="map">
@@ -254,6 +269,7 @@ class Cafe extends React.Component {
             </div>
 
             <Modal />
+           
           </div>
         );
 

@@ -58,6 +58,7 @@ import Modal from '../modal/modal_container'
         }
 
         cafeClick(cafe) {
+            
             this.props
               .fetchFavoriteCafeById(cafe.id)
               .then(() => this.props.fetchCurrCafe(cafe.id))
@@ -107,16 +108,17 @@ import Modal from '../modal/modal_container'
                                         className="modal-cafe-name"
                                         onClick={() => {
                                           this.cafeClick(cafe);
-                                          // this.props.openModal("cafe", this.modalData)
-                                          //     .then(() => this.cafeClick(cafe))
-
-                                          // this.props.fetchCurrCafe(this.props.yelpCafe.id)
                                         }}
                                       >
                                         {cafe.name}
                                       </div>
-                                      <div className="modal-cafe-address">
-                                        {/* {cafe.location.address1} */}
+                                      <div
+                                        className="modal-cafe-address"
+                                        onClick={() => {
+                                          this.cafeClick(cafe);
+                                        }}
+                                      >
+                                        {cafe.location_display_address_0}
                                       </div>
                                       <div
                                         onClick={() =>
@@ -133,6 +135,9 @@ import Modal from '../modal/modal_container'
                                     {cafe.image_url ? (
                                       <img
                                         className="fav-cafe-img"
+                                        onClick={() => {
+                                            this.cafeClick(cafe);
+                                        }}
                                         src={cafe.image_url}
                                       />
                                     ) : (
