@@ -67,3 +67,12 @@
     color:grey;
 }
 
+
+// DON'T DELETE, this is so white space doesn't show 
+// when screen size gets bigger;
+@media only screen and (min-width: 1200px){
+    .errorsIndex{
+        position:relative;
+    }
+    
+}
