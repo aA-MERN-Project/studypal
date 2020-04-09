@@ -225,7 +225,8 @@
 //     }
 // }
 
-/* Medium devices (landscape tablets, 768px and up) */
+// /* Medium devices (landscape tablets, 768px and up) */
+
 @media only screen and (min-width: 768px) {
     .map{
         height:470px;
@@ -243,44 +244,153 @@
     .profile{
         padding-top:24px;
         padding-bottom:24px;
+        background-color:green;
     }
 
     .photo{
         height:323px;
     }
+}
 
-  } 
+   /* Large devices (laptops/desktops, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .left-right{
+        width:1120px; //orig
+        width:900px;
+        justify-content:space-around;
+    }
+    
+    //name of cafe
+    .name{
+        font-size:22px;
+    }
 
-  /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+    //name of address
+    .address{
+        margin-top:25px;
+    }
+
     .map{
-        height:470px;
+        width:470px;
+        height:550px;
     }
 
     .cafe{
         justify-content: none;
-        max-height:475px;
+        max-height:none;
+        // border:3px solid green;
+    }
+
+    .yelp{
+        width:100px;
+        height:35px;
     }
 
     .all{
-        padding-top: 7%;
+        padding-top: 6.8%;
     }
 
     .profile{
-        padding-top:24px;
-        padding-bottom:24px;
+        padding-top:22px;
+        padding-bottom:17px;
+        width:470px;
+        padding-left:20px;
+        padding-right:20px;
+        background-color:green;
     }
 
     .photo{
-        height:320px;
+        height:406px; //was 320px;
+        width:510px;
+        
+        // background-color:#FF7F50;
+        
     }
+
+}
+
+  /* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 1100px) {
+    .left-right{
+        width:1120px; //orig
+        width:1050px;
+        justify-content:space-around;
+    }
+    
+    //name of cafe
+    .name{
+        font-size:22px;
+    }
+
+    //name of address
+    .address{
+        margin-top:25px;
+    }
+
+    .map{
+        height:510px;
+        width:510px; //added 20px
+        
+    }
+
+    .cafe{
+        justify-content: none;
+        max-height:none;
+        // border:3px solid green;
+    }
+
+    .yelp{
+        width:100px;
+        height:35px;
+    }
+
+    .all{
+        padding-top: 6.7%;
+    }
+
+    .profile{
+        padding-top:22px;
+        padding-bottom:17px;
+        width:500px;
+        padding-left:20px;
+        padding-right:20px;
+        background-color:pink;
+    }
+
+    .photo{
+        height:364px; //was 320px;
+        width:540px;
+        
+        // background-color:#FF7F50;
+        
+    }
+
+    
   } 
+
+  @media only screen and (min-width:1200px){
+    .profile{
+        padding-top:30px;
+        padding-bottom:28px;
+        background-color:purple;
+    }
+
+    .photo{
+        height:356px;
+    }
+
+    .map{
+        width:510px;
+        height:520px;
+        
+    }
+  }
 
 
     /* Extra large devices (large laptops and desktops, 1370px and up) */
 @media only screen and (min-width: 1370px){
     .map{
-        height:500px;
+        height:525px;
     }
 
     .cafe{
@@ -295,10 +405,12 @@
     .profile{
         padding-top:30px;
         padding-bottom:28px;
+        background-color:blue;
     }
 
     .photo{
-        height: 68.5%;
+        // height: 68.5%;
+        height: 362px;
     }
 }
 
@@ -311,7 +423,7 @@
     
     .map{
         width:600px;
-        height:616px;
+        height:625px;
         background-color:lightblue;
         
     }
@@ -331,11 +443,12 @@
     .profile{
         padding-top:30px;
         padding-bottom:28px;
+        background-color:yellow;
     }
 
     .photo{
-        height:420px;
-        height:90%;
+        // height:90.5%;
+        height: 309px;
         margin-top:10px;
     }
     }

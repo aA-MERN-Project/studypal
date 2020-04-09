@@ -3,6 +3,7 @@ import './splash.scss';
 import NavBar from '../navbar/navbar_container';
 import $ from "jquery";
 import {zipCodes} from '../../util/splash_util';
+import FavTransition from '../favorite_button/fav_transition'
 
 class Splash extends React.Component {
   constructor(props) {
@@ -324,7 +325,7 @@ class Splash extends React.Component {
 
           <div id="sf-available">
               *Currently available only in San Francisco <i class="fas fa-info-circle" aria-hidden="true" id="parent">
-                <div id="popup">Sorry, we only support San Francisco Locations at this moment. We are working diligently to add more cafes into our service. Until then feel free to explore some great San Franciso based Study Areas :)!</div>
+                <div id="popup">Sorry, we only support San Francisco Locations at this moment. We are working diligently to add more cafes into our service. Until then feel free to explore some great San Francisco based study areas :)!</div>
               </i>
 
           </div>

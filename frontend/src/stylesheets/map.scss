@@ -8,29 +8,40 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     #map-container{
-        height:470px;
+        height:550px;
     }
   } 
 
 
   /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1100px) {
     #map-container{
-        height:470px;
+        height:510px;
+        width:510px;
+       
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    #map-container{
+        height:520px;
+        width:510px;
+       
     }
   }
 
   /* Extra large devices (large laptops and desktops, 1370px and up) */
 @media only screen and (min-width: 1370px) {
     #map-container{
-        height:500px;
+        height:525px;
+        width:520px;
     }
 }
 
 /* Extra extra large devices (like viewing it on a screen, 1550px and up) */
 @media only screen and (min-width: 1600px){
   #map-container{
-    height:616px;
+    height:625px;
     width:600px;
 }
 }

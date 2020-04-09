@@ -1,10 +1,14 @@
 import React from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import "./modal.scss";
+import "../favorite_button/sliding.scss";
 import Carousel from "../carousel/carousel"
 import Map from '../map/directions';
 import FavButton from '../favorite_button/fav_button'
-// import PopUpContainer from "../popUp/pop_up_container";
+import FavTransition from '../favorite_button/fav_transition'
+import { cafeIncludes } from "../../util/button_util";
 
+// import PopUpContainer from "../popUp/pop_up_container";
 //Helper Functions
 
     
@@ -77,18 +81,16 @@ const Modal = (props) => {
 
      } = props.yelpCafe;
    
-    // duration = (studyPalCafe.distance_away * 17.5).toFixed(2)
 
-   
     const time = calculateTime(hours);
     const isOpen = <div className="time-modal">Open until {time}</div>;
     const isClosed = <div className="time-modal-red">Currently Closed</div>;
 
-
     let openRightNow = false;
-    
-
     if (props.yelpCafe.hours) openRightNow = hours[0].is_open_now;
+
+    
+    
 
     const favoriteModal = (
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
@@ -128,8 +130,7 @@ const Modal = (props) => {
                   favorited this cafe
                 </div>
                 <div className="rolled-favorited">
-                  <b>{selected_amount}</b> other <b>StudyPallers</b> have gone
-                  to this cafe
+                  <b>{selected_amount}</b> other <b>StudyPallers</b> have viewed this cafe
                 </div>
                 <div className="rolled-favorited">
                   <b>{rolled_amount}</b> times <b>StudyPal</b> has rolled this
@@ -148,6 +149,7 @@ const Modal = (props) => {
                 {/* <FavButton /> */}
                 {/* <PopUpContainer /> */}
               </div>
+
             </div>
           </div>
         </div>
@@ -167,7 +169,11 @@ const Modal = (props) => {
       </div>
     );
 
-
+    let isFavorited = null;
+    if (props.favorites) isFavorited = cafeIncludes(
+                           props.currCafe,
+                           props.favorites
+                         );
 
     const cafeModal = (
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
@@ -214,6 +220,7 @@ const Modal = (props) => {
             </div>
           </div>
         </div>
+        <FavTransition isFavorite={isFavorited} />
       </div>
     );
 
@@ -229,6 +236,8 @@ const Modal = (props) => {
     return (
       <div className="modal-backdrop" onClick={props.closeModal}>
         {selectedModal}
+      
+        
       </div>
     );
 

@@ -70,6 +70,10 @@
     padding: 10px;
 }
 
+.cafe-box:hover {
+    background-color: rgb(255, 235, 230)
+}
+
 .cafe-list {
     display: flex;
     flex-wrap: wrap;
