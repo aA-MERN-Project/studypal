@@ -2,18 +2,22 @@ import React from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import "./modal.scss";
 import "../favorite_button/sliding.scss";
-import Carousel from "../carousel/carousel"
+import Carousel from "../carousel/carousel";
 import Map from '../map/directions';
-import FavButton from '../favorite_button/fav_button'
-import FavTransition from '../favorite_button/fav_transition'
+import FavButton from '../favorite_button/fav_button';
+import FavTransition from '../favorite_button/fav_transition';
 import { cafeIncludes } from "../../util/button_util";
+import { useState} from 'react';
 
 // import PopUpContainer from "../popUp/pop_up_container";
 //Helper Functions
 
     
 
-const Modal = (props) => {
+function Modal(props){
+
+    const [isClicked, setClick] = useState(false);
+
     if (!props.modal){
         return null
     }
@@ -86,11 +90,11 @@ const Modal = (props) => {
     const isOpen = <div className="time-modal">Open until {time}</div>;
     const isClosed = <div className="time-modal-red">Currently Closed</div>;
 
+
     let openRightNow = false;
     if (props.yelpCafe.hours) openRightNow = hours[0].is_open_now;
 
-    
-    
+  
 
     const favoriteModal = (
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
@@ -175,6 +179,8 @@ const Modal = (props) => {
                            props.favorites
                          );
 
+    
+
     const cafeModal = (
       <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
         <div className="carousel-container">
@@ -183,7 +189,7 @@ const Modal = (props) => {
         <div className="business-misc">
           <h1 className="modal-name">
             {" "}
-            {name} <FavButton />
+            {name} <FavButton setClick={setClick}/>
           </h1>
           <div className="modal-horizontal-line"></div>
           <div className="business-misc-flex">
@@ -220,7 +226,7 @@ const Modal = (props) => {
             </div>
           </div>
         </div>
-        <FavTransition isFavorite={isFavorited} />
+        <FavTransition isFavorite={isFavorited} isClicked={isClicked}/>
       </div>
     );
 
