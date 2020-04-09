@@ -1,6 +1,8 @@
 import React from 'react';
 import NavBar from '../navbar/navbar_container';
-import './team.scss';
+import '../../reset.css';
+import './team.css';
+import {Link} from 'react-router-dom';
 
 class CrewPage extends React.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class CrewPage extends React.Component {
       return(
           <div className="teamPage">
              <NavBar/>
+             
              <div className="team-outer-div">
                  <br/>
                  <br/> 
@@ -32,16 +35,16 @@ class CrewPage extends React.Component {
                         </div>
                         
                         <div className="teamIcons">
-                            <a className="indIcon" target="_blank" href="https://www.linkedin.com/in/andy139/" >
-                                <img className="linkedIn" src="https://studypal-dev.s3-us-west-1.amazonaws.com/LinkedInIcon.png" alt="Andy's linkedIn"/>
+                            <a target="_blank" href="https://www.linkedin.com/in/andy139/" >
+                                <img className="linkedIn teamIcon" src="https://studypal-dev.s3-us-west-1.amazonaws.com/LinkedInIcon.png" alt="Andy's linkedIn"/>
                             </a>
                             &nbsp;
                             <a target="_blank" href="https://angel.co/u/andy-tran-32" >
-                                <img className="angelCo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/angelListIcon.png" alt="Andy's angel account"/>
+                                <img className="angelCo teamIcon" src="https://studypal-dev.s3-us-west-1.amazonaws.com/angelListIcon.png" alt="Andy's angel account"/>
                             </a>
                             &nbsp;
                             <a target="_blank" href="https://github.com/andy139" >
-                                <img className="github" src="https://studypal-dev.s3-us-west-1.amazonaws.com/GitHub.png" alt="Andy's github"/>
+                                <img className="github teamIcon" src="https://studypal-dev.s3-us-west-1.amazonaws.com/GitHub.png" alt="Andy's github"/>
 
                             </a>
                         </div>
@@ -57,15 +60,15 @@ class CrewPage extends React.Component {
                         </div>
                         <div className="teamIcons">
                             <a target="_blank" href="https://www.linkedin.com/in/wilson-ngu-67a45a151/" >
-                                 <img className="linkedIn" src="https://studypal-dev.s3-us-west-1.amazonaws.com/LinkedInIcon.png" alt="Wilson's linkedIn"/>
+                                 <img className="linkedIn teamIcon" src="https://studypal-dev.s3-us-west-1.amazonaws.com/LinkedInIcon.png" alt="Wilson's linkedIn"/>
                             </a>
                             &nbsp;
                             <a target="_blank" href="https://angel.co/u/wilson-ngu" >
-                                <img className="angelCo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/angelListIcon.png" alt="Wilson's angel"/>
+                                <img className="angelCo teamIcon" src="https://studypal-dev.s3-us-west-1.amazonaws.com/angelListIcon.png" alt="Wilson's angel"/>
                             </a>
                             &nbsp;
                             <a target="_blank" href="https://github.com/Heyitswilson" >
-                                <img className="github" src="https://studypal-dev.s3-us-west-1.amazonaws.com/GitHub.png" alt="Wilson's github"/>
+                                <img className="github teamIcon" src="https://studypal-dev.s3-us-west-1.amazonaws.com/GitHub.png" alt="Wilson's github"/>
                             </a>
 
                         </div>
@@ -81,16 +84,16 @@ class CrewPage extends React.Component {
                         </div>
                         <div className="teamIcons">
                             <a target="_blank" href="https://www.linkedin.com/in/fei-yang-4958261a4/" >
-                            <img className="linkedIn" src="https://studypal-dev.s3-us-west-1.amazonaws.com/LinkedInIcon.png" alt="Fei's linkedIn"/>
+                            <img className="linkedIn teamIcon" src="https://studypal-dev.s3-us-west-1.amazonaws.com/LinkedInIcon.png" alt="Fei's linkedIn"/>
 
                             </a>
                             &nbsp;
                             <a target="_blank"  href="https://angel.co/u/fei-yang-4" >
-                                <img className="angelCo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/angelListIcon.png" alt="Fei's Angel.co"/>  
+                                <img className="angelCo teamIcon" src="https://studypal-dev.s3-us-west-1.amazonaws.com/angelListIcon.png" alt="Fei's Angel.co"/>  
                             </a>
                             &nbsp;
                             <a target="_blank" href="https://github.com/FeiYGH" >
-                                <img className="github" src="https://studypal-dev.s3-us-west-1.amazonaws.com/GitHub.png" alt="Fei's Github"/>
+                                <img className="github teamIcon" src="https://studypal-dev.s3-us-west-1.amazonaws.com/GitHub.png" alt="Fei's Github"/>
                             </a>
 
                         </div>
@@ -106,7 +109,7 @@ class CrewPage extends React.Component {
                         </div>
                         <div className="teamIcons">
                         <a target="_blank" href="https://www.linkedin.com/in/joannajao/" >
-                            <img className="linkedIn" src="https://studypal-dev.s3-us-west-1.amazonaws.com/LinkedInIcon.png" alt="Joanna's linkedIn"/>
+                            <img className="linkedIn teamIcon" src="https://studypal-dev.s3-us-west-1.amazonaws.com/LinkedInIcon.png" alt="Joanna's linkedIn"/>
                             </a>
                         </div>
                     </div> 
