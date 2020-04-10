@@ -6,8 +6,7 @@ import App from './App';
 import axios from 'axios';
 import Root from "./components/root";
 import configureStore from './store/store';
-import './index.css'
-import getYelpCafeById from './util/yelp_api';
+import './index.css';
 import jwt_decode from 'jwt-decode';
 import {setAuthToken} from './util/session_api_util';
 import {logout} from './actions/session_actions';
@@ -67,7 +66,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store}/>, root);
 
-    window.getState = store.getState
+    if (process.env.NODE_ENV !== "production") {
+        window.getState = store.getState
+
+
+    }
+
+
+
+  
 })
 
 

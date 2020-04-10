@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Modal from '../modal/modal_container';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import FavItem from './favorite_item_container';
+import LoadingPage from '../cafe/loader';
 
     class Favorites extends React.Component {
 
