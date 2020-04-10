@@ -142,3 +142,5 @@ The update form is prepopulated with their existing data in the database. After 
       }
 ```
 
+#### Media queries
+This project uses media queries to make it user friendly and pretty for all different screen sizes;  We have a finished a good amount. All the 1) cafe page, 2) the splash page, 3) the crew page. 
