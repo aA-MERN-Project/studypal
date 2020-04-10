@@ -28,12 +28,17 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 * Roll Cafe
 * Search cafe by parameters
 * Cafe status (number of rolls, etc)
-* User auth
+* User auth - FY
 * Updating and saving profile preferences
-* Updating and saving user information
-* Mediaquery
+* Updating and saving user information - FY DONE
+* Mediaquery - FY
 
 ## Code 
+
+#### User Auth
+In User Auth, user (and all resources) have a Mongoose model with schema. Routes are set up in the backend to register new users and login existing users. Information from the login and signup forms are sent to the backend through axios calls. In the backend routes, validations (including email uniqueness and number/letter requirements) are performed. For signup, the app uses bcrypt to salt and hash new user's password before storing it in the database and saving the user. For login, we set up  backend route that use bcrypt to compare the user inputed password with the salted and hashed password in the database. Both login and register request returns a signed web token to "sign user in" on the frontend. To persist user, we set the token in local storage under key "jwtToken" on the client side; therefore, user remains sigend in through refresh. 
+
+Users are allowed to create accounts, securely sign up, and log in. 
 
 #### Prepopulated Cafe Preferences
 An important part of the user profile is that they are able to save and retrieve their cafe preferences. Cafe preferences
