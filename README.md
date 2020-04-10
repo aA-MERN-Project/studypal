@@ -36,9 +36,37 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 ## Code 
 
 #### User Auth
-In User Auth, user (and all resources) have a Mongoose model with schema. Routes are set up in the backend to register new users and login existing users. Information from the login and signup forms are sent to the backend through axios calls. In the backend routes, validations (including email uniqueness and number/letter requirements) are performed. For signup, the app uses bcrypt to salt and hash new user's password before storing it in the database and saving the user. For login, we set up  backend route that use bcrypt to compare the user inputed password with the salted and hashed password in the database. Both login and register request returns a signed web token to "sign user in" on the frontend. To persist user, we set the token in local storage under key "jwtToken" on the client side; therefore, user remains sigend in through refresh. 
+In User Auth, user (and all resources) have a Mongoose model with schema. Routes are set up in the backend to register new users and login existing users. Information from the login and signup forms are sent to the backend through axios calls. In the backend routes, validations (including email uniqueness and number/letter requirements) are performed. For signup, the app uses bcrypt to salt and hash new user's password before storing it in the database and saving the user. For login, we set up  backend route that use bcrypt to compare the user inputed password with the salted and hashed password in the database. Both login and register request returns a signed web token to "sign user in" on the frontend. To persist user, we set the signed web token in local storage under key "jwtToken" on the client side; therefore, user remains sigend in through refresh. 
 
 Users are allowed to create accounts, securely sign up, and log in. 
+
+```javascript
+    //part of the login route
+    //Finding a user by email. If user is found, then bcrypt compares password sent back with user's encrypted password 
+    User.findOne({email})
+        .then(user => {
+            //if not user is found, send back an error under email key   
+            if(!user){
+                errors.email = "User not found";
+                return res.status(404).json(errors);
+            }
+            bcrypt.compare(password, user.password)
+                .then(isMatch => {
+                    if(isMatch){
+                        const payload = {
+                            id: user.id,
+                            handle: user.handle,
+                            email: user.email,
+                            zipcode: user.zipcode,
+                            miles_away: user.miles_away,
+                            hours_opened_left: user.hours_opened_left,
+                            free_wifi: user.free_wifi,
+                            credit_card: user.credit_card,
+                            noise_level: user.noise_level
+                        };
+                        //
+         
+```
 
 #### Prepopulated Cafe Preferences
 An important part of the user profile is that they are able to save and retrieve their cafe preferences. Cafe preferences
