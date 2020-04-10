@@ -72,3 +72,40 @@ preferences.
     </label>
 ```
 
+#### Dynamic Prepopulating Profile Preferences
+Another important part of user profile is that user is able to see their information (username, email, and zipcode) displayed after on the profile page (/user) after login. User can choose to update one or more fields of their user profile. User can choose any email besides currently existing emails of other users in the database. When user clicks on the "update profile" button, user id from props is used via an axios call to find the user with the corresponding id in the MongoDB, validations are performed on form data, and that user is then updated with form data in the MongoDB.  
+
+The update form is prepopulated with their existing data in the database. After user logs in, the user information (and corresponding id) is stored in the session slice of state, which is passed to the component through props. After the component mounts, the app uses the user id to grab the user and corresponding information from the backend via an axios call. This information is used to prepopulate the user profile both on display and in the update form. When user updates their profile information, it is reflected in the username, email, and zipcode displayed on the page. The form is a child component of the profile page; in order to trigger a rerender of the parent page, the parent component passes down a handler function that sets parent state) whenever the form is updated. This triggers the lifecycle method "componentDidUpdate" in the parent component, which retrieves updated user information using the user id (which does not change) from the backend using an axios call; thus the profile information is always displays the most updated information. The splash page "Welcome, username!" message is written with similar logic and changes whenever user updates their profile.
+
+
+```javascript
+   //checks whether updatedUser from props is defined. If so, grabs the username, email, and 
+   //zipcode from updated user
+     render() {
+          let username;
+          let email;
+          let zipcode;
+          if (this.props.updatedUser){
+            username = this.props.updatedUser.handle;
+            email = this.props.updatedUser.email;
+            zipcode = this.props.updatedUser.zipcode;
+          }else{
+            username = "";
+            email = "";
+            zipcode = "";
+          }
+```
+
+```javascript
+      //when component is updated (i.e. user presses update profile), this function is triggered to grab
+      //most updated information for that user from backend
+      componentDidUpdate(prevProps, prevState){
+      if(prevProps.user !== this.props.user){
+         if(this.props.user.id){
+            this.props.getUpdatedUser(this.props.user.id);
+         }else{
+            this.props.getUpdatedUser(this.props.user._id);
+         }   
+      }
+```
+
