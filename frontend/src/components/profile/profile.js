@@ -74,7 +74,7 @@ class Profile extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-      //  ;
+      // debugger;
       if(prevProps.user !== this.props.user){
          if(this.props.user.id){
             this.props.getUpdatedUser(this.props.user.id);
