@@ -28,12 +28,45 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 * Roll Cafe
 * Search cafe by parameters
 * Cafe status (number of rolls, etc)
-* User auth
+* User auth - FY
 * Updating and saving profile preferences
-* Updating and saving user information
-* Mediaquery
+* Updating and saving user information - FY DONE
+* Mediaquery - FY
 
 ## Code 
+
+#### User Auth
+In User Auth, user (and all resources) have a Mongoose model with schema. Routes are set up in the backend to register new users and login existing users. Information from the login and signup forms are sent to the backend through axios calls. In the backend routes, validations (including email uniqueness and number/letter requirements) are performed. For signup, the app uses bcrypt to salt and hash new user's password before storing it in the database and saving the user. For login, we set up  backend route that use bcrypt to compare the user inputed password with the salted and hashed password in the database. Both login and register request returns a signed web token to "sign user in" on the frontend. To persist user, we set the signed web token in local storage under key "jwtToken" on the client side; therefore, user remains sigend in through refresh. 
+
+Users are allowed to create accounts, securely sign up, and log in. 
+
+```javascript
+    //part of the login route
+    //Finding a user by email. If user is found, then bcrypt compares password sent back with user's encrypted password 
+    User.findOne({email})
+        .then(user => {
+            //if not user is found, send back an error under email key   
+            if(!user){
+                errors.email = "User not found";
+                return res.status(404).json(errors);
+            }
+            bcrypt.compare(password, user.password)
+                .then(isMatch => {
+                    if(isMatch){
+                        const payload = {
+                            id: user.id,
+                            handle: user.handle,
+                            email: user.email,
+                            zipcode: user.zipcode,
+                            miles_away: user.miles_away,
+                            hours_opened_left: user.hours_opened_left,
+                            free_wifi: user.free_wifi,
+                            credit_card: user.credit_card,
+                            noise_level: user.noise_level
+                        };
+                        //
+         
+```
 
 #### Prepopulated Cafe Preferences
 An important part of the user profile is that they are able to save and retrieve their cafe preferences. Cafe preferences
@@ -72,3 +105,42 @@ preferences.
     </label>
 ```
 
+#### Dynamic Prepopulating Profile Preferences
+Another important part of user profile is that user is able to see their information (username, email, and zipcode) displayed after on the profile page (/user) after login. User can choose to update one or more fields of their user profile. User can choose any email besides currently existing emails of other users in the database. When user clicks on the "update profile" button, user id from props is used via an axios call to find the user with the corresponding id in the MongoDB, validations are performed on form data, and that user is then updated with form data in the MongoDB.  
+
+The update form is prepopulated with their existing data in the database. After user logs in, the user information (and corresponding id) is stored in the session slice of state, which is passed to the component through props. After the component mounts, the app uses the user id to grab the user and corresponding information from the backend via an axios call. This information is used to prepopulate the user profile both on display and in the update form. When user updates their profile information, it is reflected in the username, email, and zipcode displayed on the page. The form is a child component of the profile page; in order to trigger a rerender of the parent page, the parent component passes down a handler function that sets parent state) whenever the form is updated. This triggers the lifecycle method "componentDidUpdate" in the parent component, which retrieves updated user information using the user id (which does not change) from the backend using an axios call; thus the profile information is always displays the most updated information. The splash page "Welcome, username!" message is written with similar logic and changes whenever user updates their profile.
+
+
+```javascript
+   //checks whether updatedUser from props is defined. If so, grabs the username, email, and 
+   //zipcode from updated user
+     render() {
+          let username;
+          let email;
+          let zipcode;
+          if (this.props.updatedUser){
+            username = this.props.updatedUser.handle;
+            email = this.props.updatedUser.email;
+            zipcode = this.props.updatedUser.zipcode;
+          }else{
+            username = "";
+            email = "";
+            zipcode = "";
+          }
+```
+
+```javascript
+      //when component is updated (i.e. user presses update profile), this function is triggered to grab
+      //most updated information for that user from backend
+      componentDidUpdate(prevProps, prevState){
+      if(prevProps.user !== this.props.user){
+         if(this.props.user.id){
+            this.props.getUpdatedUser(this.props.user.id);
+         }else{
+            this.props.getUpdatedUser(this.props.user._id);
+         }   
+      }
+```
+
+#### Media queries
+This project uses media queries to make it user friendly and pretty for all different screen sizes;  We have a finished a good amount. All the 1) cafe page, 2) the splash page, 3) the crew page. 
