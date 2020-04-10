@@ -106,12 +106,13 @@
 .cafe-text-info-outer{
     display:flex;
     flex-direction:column;
-    position:relative;
+    // position:relative;
 }
 
 .cafe-text-info {
     display: flex;
     flex-direction: column;
+    position:relative;
 }
 
 .favorite-remove {
