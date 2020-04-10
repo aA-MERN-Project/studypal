@@ -77,7 +77,6 @@ class FavItem extends React.Component {
         debugger
 
         return (
-<<<<<<< HEAD
         <div id="cafe-box" key={cafe.id}>
             <div className="cafe-text-info">
                 <div
@@ -95,27 +94,6 @@ class FavItem extends React.Component {
                     }}
                 >
                     {cafe.location_display_address_0}
-=======
-        <div id="cafe-box">
-            <div className="cafe-text-info-outer">
-                <div className="cafe-text-info">
-                    <div
-                        className="modal-cafe-name"
-                        onClick={() => {
-                            this.cafeClick(cafe);
-                        }}
-                    >
-                        {cafe.name}
-                    </div>
-                    <div
-                        className="modal-cafe-address"
-                        onClick={() => {
-                            this.cafeClick(cafe);
-                        }}
-                    >
-                        {cafe.location_display_address_0}
-                    </div>
->>>>>>> b7f179abc3aaef4681af4dee34131761e3b56326
                 </div>
                 <div
                     onClick={() =>
