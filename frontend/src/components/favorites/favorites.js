@@ -53,6 +53,12 @@ import LoadingPage from '../cafe/loader';
     
 
         render() {
+
+            debugger
+            const { loading } = this.props;
+            if (loading) { return <LoadingPage />; }
+
+
             if (!this.props.favorites) return null;
             let favorites = this.props.favorites;
 

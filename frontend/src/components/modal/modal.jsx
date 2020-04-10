@@ -17,7 +17,7 @@ import { useState} from 'react';
 function Modal(props){
 
     const [isClicked, setClick] = useState(false);
-
+    debugger
     if (!props.modal){
         return null
     }
@@ -206,7 +206,7 @@ function Modal(props){
                 favorited this cafe
               </div>
               <div className="rolled-favorited">
-                <b>{selected_amount}</b> other <b>StudyPallers</b> have gone to
+                <b>{selected_amount}</b> other <b>StudyPallers</b> have viewed
                 this cafe
               </div>
               <div className="rolled-favorited">
@@ -224,7 +224,7 @@ function Modal(props){
             </div>
           </div>
         </div>
-        <FavTransition isFavorite={isFavorited} isClicked={isClicked}/>
+        <FavTransition isFavorite={isFavorited} isClicked={isClicked} history={props.history} closeModal={props.closeModal}/>
       </div>
     );
 

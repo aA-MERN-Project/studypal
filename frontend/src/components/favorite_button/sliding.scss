@@ -1,6 +1,7 @@
 #favorited {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-radius: 10px;
   position: absolute;
   // top: 750px;
@@ -14,6 +15,11 @@
   -moz-box-sizing: border-box; 
   box-sizing: border-box;
  
+}
+
+.favorite-box {
+  display: flex;
+  justify-content: space-between;
 }
 
 #unfavorite {
@@ -57,4 +63,9 @@
 	transition: all 300ms ease-in-out
 }
 
+#my-favorites:hover {
+  cursor: pointer;
+  text-decoration: underline;
+
+}
 

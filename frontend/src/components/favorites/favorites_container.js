@@ -11,6 +11,7 @@ const mSTP = (state) => {
 // debugger
     return({
       user: state.session.user,
+      loading: state.loading.favLoading,
       favorites: state.session.favorites,
       yelpCafe: state.entities.yelpCafe,
     

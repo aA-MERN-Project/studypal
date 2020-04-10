@@ -41,7 +41,6 @@ class Cafe extends React.Component {
 
 
     selectRandomCafe(cafe_array) {
-        // Lets filter cafes before we select a random cafe
         return cafe_array[Math.floor(Math.random() * cafe_array.length)];
 
     }
@@ -102,6 +101,9 @@ class Cafe extends React.Component {
           this.props
             .fetchYelpCafeById(randomCafe.id)
             .catch(err => this.props.history.push(`/errors`))
+            .then(() => this.props.fetchCurrCafe(this.props.yelpCafe.id))
+            .then(() => this.props.fetchFavorites(this.props.user.id))
+          
           this.props.rerollCafes(leftOverCafes);
         } else {
           this.props.history.push(`/retry`)
@@ -138,7 +140,7 @@ class Cafe extends React.Component {
 
     addSelected(id) {
       updateCafe(id, { updateType: "selected" }).then(
-        () => console.log("Selected +1")
+        
       )
     }
 
@@ -195,11 +197,11 @@ class Cafe extends React.Component {
 
 
         let display_address = this.props.yelpCafe.location.display_address;
-        let time = this.calculateTime(this.props.yelpCafe.hours);
         let lat = this.props.yelpCafe.coordinates.latitude;
         let lng = this.props.yelpCafe.coordinates.longitude;
         let distance = this.props.randomCafe.distance_away;
         let noiseLevel = this.props.randomCafe.noise_level;
+        let hours = this.props.yelpCafe.hours;
 
         let modalData = {yelpData: this.props.yelpCafe, 
           distance, 
@@ -207,6 +209,14 @@ class Cafe extends React.Component {
           user: this.props.user,
           studyPalCafe: this.state.studyPalCafe,
           filters: this.props.filters}
+
+        const time = this.calculateTime(hours);
+        const isOpen = <div className="time">Open until {time} Today</div>;
+        const isClosed = <div className="time">Currently Closed</div>;
+        let openRightNow = false;
+        if (this.props.yelpCafe.hours) openRightNow = hours[0].is_open_now;
+
+
 
         
         const noPhoto = (
@@ -235,9 +245,7 @@ class Cafe extends React.Component {
                       </div>
                       {this.viewStatus(modalData)}
                     </div>
-
-                    <div className="time">Open until {time} Today</div>
-
+                    {openRightNow ? isOpen : isClosed}
                     <div className="address">
                       {display_address[0]}, {display_address[1]}
                     </div>
