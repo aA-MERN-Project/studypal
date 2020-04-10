@@ -72,3 +72,9 @@ preferences.
     </label>
 ```
 
+#### Dynamic Prepopulating Profile Preferences
+Another important part of user profile is that user is able to see their information (username, email, and zipcode) displayed after on the profile page (/user) after login. User can choose to update one or more fields of their user profile. User can choose any email besides currently existing emails of other users in the database. When user clicks on the "update profile" button, the data from the form is used to find the user with the corresponding id in the MongoDB; that user is then updated in both the MongoDB. 
+
+The update form is prepopulated with their existing data in the database. After user logs in, the user information (and corresponding id) is stored in the sesion slice of state, which is passed to the component through props. After the component mounts, the app uses the user id to grab the user and corresponding information from the backend via an axios call. This information is used to prepopulate the user profile both on display and in the update form. When user updates their profile information, it is reflected in the username, email, and zipcode displayed on the page. The form is a child component of the profile page; in order to trigger a rerender of the parent page, the parent component passes down a handler function that sets parent state) whenever the form is updated. This triggers a rerender of the parent component. The parent retrieves updated user information using the user id (which does not change) from the backend using an axios call; thus the profile information is always displays the most updated information. The splash page welcome "username" message is written with similar logic and changes whenever user updates their profile. 
+
+
