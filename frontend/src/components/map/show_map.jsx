@@ -43,8 +43,12 @@ class ShowMap extends React.Component {
 
     marker.linkUrl = this.props.yelp_link;
 
+    let googleAddress = this.props.address.address1 + " "  + this.props.address.state + " " + this.props.address.city + " " + this.props.address.zip_code
+    let encodedAddress = "http://maps.google.com/maps?q=" + encodeURIComponent(googleAddress)
+
+
     marker.addListener("click", function() {
-      window.open(this.linkUrl, "_blank");
+      window.open(encodedAddress, "_blank");
     });
 
     // const marker_person = new google.maps.Marker({

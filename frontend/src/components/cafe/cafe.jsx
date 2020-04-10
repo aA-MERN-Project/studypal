@@ -252,6 +252,8 @@ class Cafe extends React.Component {
 
                 <div className="map">
                   <ShowMap
+                      //1600 Pennsylvania Avenue NW Washington, DC 20500
+                    address={this.props.yelpCafe.location}
                     key={lat}
                     lat={lat}
                     lng={lng}

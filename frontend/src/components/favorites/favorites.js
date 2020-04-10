@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Modal from '../modal/modal_container';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import FavItem from './favorite_item_container';
+import LoadingPage from '../cafe/loader';
 
     class Favorites extends React.Component {
 
@@ -55,7 +56,7 @@ import FavItem from './favorite_item_container';
             if (!this.props.favorites) return null;
             let favorites = this.props.favorites;
 
-            let favoriteList = favorites.map((cafe, index) => <FavItem keys={index} cafe={cafe}/>)
+            let favoriteList = favorites.map((cafe, index) => <FavItem key={cafe.id} cafe={cafe}/>)
 
 
             return (

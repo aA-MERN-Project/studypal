@@ -38,7 +38,7 @@ const FavButton = (props) => {
 
         props.updateFavorites(userId, favorites).then(
           () => props.fetchCurrCafe(cafe.id)
-        )
+        ).then(() => props.setClick(true))
           
     };
 
@@ -49,7 +49,7 @@ const FavButton = (props) => {
 
         props.updateFavorites(userId, favorites).then(
           () => props.fetchCurrCafe(cafe.id)
-        )
+        ).then(() => props.setClick(true))
         props.openPopUp()
     }
 
