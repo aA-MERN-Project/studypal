@@ -79,7 +79,8 @@ The update form is prepopulated with their existing data in the database. After 
 
 
 ```javascript
-   //checks whether updatedUser from props is defined. If so, grabs the username, email, and zipcode from updated user
+   //checks whether updatedUser from props is defined. If so, grabs the username, email, and 
+   //zipcode from updated user
      render() {
           let username;
           let email;
@@ -96,7 +97,8 @@ The update form is prepopulated with their existing data in the database. After 
 ```
 
 ```javascript
-      //when component is updated (i.e. user presses update profile), this function is triggered to grab most updated    information for that user from backend
+      //when component is updated (i.e. user presses update profile), this function is triggered to grab
+      //most updated information for that user from backend
       componentDidUpdate(prevProps, prevState){
       if(prevProps.user !== this.props.user){
          if(this.props.user.id){
