@@ -33,7 +33,7 @@ class Cafe extends React.Component {
 
     shortenName(name) {
       if (name.length > 28) {
-        return name.slice(0, 28)+ "..."
+        return name.slice(0, 24)+ "..."
       } else {
         return name
       }
