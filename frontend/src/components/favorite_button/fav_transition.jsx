@@ -4,12 +4,16 @@ import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 
 const FavTransition = (props) => {
-
     const favorite = (
       <div id="favorited" key={1}>
-        <div>
-          <i class="fas fa-check"></i> Favorited
-                  </div>
+          <div><i class="fas fa-check"></i> Favorited </div>
+          <div id="my-favorites" onClick={
+            () => {
+            props.closeModal()
+            props.history.push('/favorites')
+          
+          }
+            }>My Favorites</div>
       </div>
     );
 

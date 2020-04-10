@@ -12,6 +12,7 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const START_LOADING_LOGIN = "START_LOADING_LOGIN";
 export const RECEIVE_PREFERENCES = "RECEIVE_PREFERENCES";
 export const RECEIVE_FAVORITES = "RECEIVE_FAVORITES";
+export const START_LOADING_FAVORITE_CAFES = "START_LOADING_FAVORITE_CAFES"
 
 export const startLoadingLogin = () => ({
     type: START_LOADING_LOGIN
@@ -123,15 +124,21 @@ const receiveFavorites = favorites => ({
     favorites
 })
 
+
+export const startLoadingFavoriteCafes = () => ({
+    type: START_LOADING_FAVORITE_CAFES,
+});
+
 export const fetchFavorites = userId => dispatch => {
-    // debugger
+    dispatch(startLoadingFavoriteCafes());
+
+
      return UserAPIUtil.getUser(userId)
        .then((user) => {
            dispatch(receiveFavorites(user.data.favorites))
         })
        .catch((err) => console.log(err));
     
-
 }
 
 export const updateFavorites = (id, favorites) => dispatch => {
@@ -139,8 +146,7 @@ export const updateFavorites = (id, favorites) => dispatch => {
     let cafeId = favorites.cafe.id;
     let type = favorites.type;
 
-    updateCafe(cafeId, { updateType: type }).then(() =>
-        console.log("Favorites Updated")
+    updateCafe(cafeId, { updateType: type }).then(
     );
 
     return (

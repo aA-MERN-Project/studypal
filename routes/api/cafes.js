@@ -10,13 +10,55 @@ const {
 const {
   getYelpCafeById
 } = require("../../util/yelp_api");
+const apiKey = require("../../config/keys").yelpAPI;
 
 const mongoose = require('mongoose');
 const express = require("express");
 const router = express.Router();
 const Cafe = require("../../models/Cafe");
 
+// GRAPHQL
+const yelpApiUrl = "https://api.yelp.com/v3/graphql";
+const { GraphQLClient } = require('graphql-request');
+const client = new GraphQLClient(yelpApiUrl, {
+  headers: { Authorization: `Bearer ${apiKey}` },
+});
 
+router.post("/cafe_hours/", (req, res, next) => {
+
+
+  const query = `
+    query phone_search($phone: String!) {
+      phone_search(
+        phone: $phone
+      ) {
+      total
+      business {
+        name
+        rating
+        review_count
+        location {
+          address1
+          city
+          state
+          country
+        }
+        hours {
+          is_open_now
+          open {
+            start
+            end
+            day
+          }
+        }
+      }
+    }
+  }`;
+
+
+  const data = client.request(query, req.body);
+  res.json(data);
+});
 
 router.get("/test", (req, res) => {
     res.json({ msg: "What's up this is our cafe route"})

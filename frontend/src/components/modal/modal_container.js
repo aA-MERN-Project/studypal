@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom';
 import Modal from "./modal";
 import { closeModal, openModal } from "../../actions/modal_actions";
 import { updateFavorites } from "../../actions/session_actions";
@@ -28,4 +29,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));

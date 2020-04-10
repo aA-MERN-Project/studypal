@@ -92,7 +92,7 @@ export const fetchYelpCafeById = (id) => dispatch => {
     dispatch(startLoadingFilteredCafes());
    
     updateCafe(id, {updateType: "randomlyRolled"}).then(
-        () => console.log("Roll +1")
+        
     )
 
     return getYelpCafeById(id).then(cafe => {
