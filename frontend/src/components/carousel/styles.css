@@ -14,8 +14,8 @@
     display: flex;
     justify-content: space-evenly;
     box-sizing: border-box;
-    width: 100%;
-    margin: 0 auto;
+    width: 820px;
+    margin-left: 12px;
     overflow: hidden;
     position: relative;
     height: 100%;
