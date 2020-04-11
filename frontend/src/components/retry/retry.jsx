@@ -8,7 +8,7 @@ class Retry extends React.Component {
     super(props);
     this.state = {
       miles_away: null,
-      hours_opened_left: 24,
+      hours_opened_left: 0,
       wifi: false,
       credit_card: false,
       noise_level: false,
@@ -28,7 +28,7 @@ class Retry extends React.Component {
 
     this.setState({
       miles_away: null,
-      hours_opened_left: 24,
+      hours_opened_left: 0,
       wifi: false,
       credit_card: false,
       noise_level: false
@@ -53,7 +53,7 @@ class Retry extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+    
     let state = this.state;
     state.location_zip_code ? (state.location_zip_code = parseInt(state.location_zip_code)) : state.location_zip_code = null;
     state.wifi ? (state.wifi = "yes") : (state.wifi = "no");

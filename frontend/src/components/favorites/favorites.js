@@ -54,7 +54,7 @@ import LoadingPage from '../cafe/loader';
 
         render() {
 
-            debugger
+           
             const { loading } = this.props;
             if (loading) { return <LoadingPage />; }
 

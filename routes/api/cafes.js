@@ -4,6 +4,10 @@ const {
 } = require("../../util/filters_util")
 
 const {
+    applyTimeFilter
+} = require("../../util/filters_util")
+
+const {
     calculateDistance
 } =  require("../../util/distance_util")
 
@@ -24,41 +28,7 @@ const client = new GraphQLClient(yelpApiUrl, {
   headers: { Authorization: `Bearer ${apiKey}` },
 });
 
-router.post("/cafe_hours/", (req, res, next) => {
 
-
-  const query = `
-    query phone_search($phone: String!) {
-      phone_search(
-        phone: $phone
-      ) {
-      total
-      business {
-        name
-        rating
-        review_count
-        location {
-          address1
-          city
-          state
-          country
-        }
-        hours {
-          is_open_now
-          open {
-            start
-            end
-            day
-          }
-        }
-      }
-    }
-  }`;
-
-
-  const data = client.request(query, req.body);
-  res.json(data);
-});
 
 router.get("/test", (req, res) => {
     res.json({ msg: "What's up this is our cafe route"})
@@ -116,8 +86,9 @@ router.post("/filters", (req,res) => {
             let cafesArr = JSON.parse(JSON.stringify(cafes))
             let addDist = calculateDistance(cafesArr, my_lat, my_lng)
             let filteredCafes = applyAllFilters(addDist,filters)
-
-            res.json(filteredCafes);
+            let timeFilteredCafes = applyTimeFilter(filteredCafes, filters);
+            // let timeFilteredCafes = applyTimeFilter(filteredCafes, filters)
+            res.json(timeFilteredCafes);
 
         })
         .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with that zipcode' }));
