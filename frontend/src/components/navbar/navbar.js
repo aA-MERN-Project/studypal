@@ -167,7 +167,7 @@ class NavBar extends React.Component {
     render() {
         return(
             <div className="navbar">
-                <Link className="logo" to="/">Studypal SF</Link>
+                <Link className="logo" to="/">Studypal</Link>
                     {this.loggedOut()}
                     {this.loggedIn()}
             </div>
