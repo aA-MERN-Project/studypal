@@ -25,7 +25,6 @@ class Splash extends React.Component {
     this.update = this.update.bind(this);
     this.isZipcode = this.isZipcode.bind(this);
     this.isGeo = this.isGeo.bind(this);
-  
   }
 
   clear() {
@@ -102,7 +101,6 @@ class Splash extends React.Component {
   
   };
 
-
   update(field) {
 
     return e => this.setState({
@@ -134,7 +132,6 @@ class Splash extends React.Component {
           </div>
         <div className="cta">Discover your cafe for today.</div>
 
-          {/* {this.loggedIn()} */}
           <div id="looking-for">What are you looking for?</div>
           <div className="preferences">
             <div className="distance-hours">
@@ -317,7 +314,7 @@ class Splash extends React.Component {
 
           <div id="sf-available">
               *Currently available only in San Francisco <i class="fas fa-info-circle" aria-hidden="true" id="parent">
-                <div id="popup">Sorry, we only support San Francisco locations at this moment. We are working diligently to add more cafes into our service. Until then, feel free to explore some great San Francisco based study areas!</div>
+                <div id="popup">Sorry, we only support San Francisco locations at this moment. We are working diligently to add more cafes into our service. Until then, feel free to explore some great San Francisco-based study areas!</div>
               </i>
 
           </div>
