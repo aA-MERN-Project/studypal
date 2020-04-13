@@ -1,7 +1,7 @@
 # StudyPal
 [Live demo](https://studypal-sf.herokuapp.com/#/)
 
-StudyPal recommends a study spot based on all cafes located within San Francisco. Built using the MERN stack and the Yelp and Google Maps APIs, StudyPal seeks to provide a simple and intuitive user interface where users roll for cafes based on various preference. 
+StudyPal recommends a study spot based on all cafes located within San Francisco. Built using the MERN stack and the Yelp and Google Maps APIs, StudyPal seeks to provide a simple and intuitive user interface where users roll for cafes based on various preferences. 
 
 ![StudyPal Homepage](https://studypal-dev.s3-us-west-1.amazonaws.com/splash_screenshot.png)
 
@@ -15,9 +15,13 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 * Figma
 
 ## Features
-* Secure user authentication with password digests
-* Profiles prepopulated with cafe preferences and user information
+* Secure user authentication using bcrypt for password encryption; errors render when appropriate
+* Profile are prepopulated with cafe preferences and user information
 * Profile and preferences which allow user updates
+* Cafe randomly selected based upon preferences
+* Logged in user can favorite and unfavorite a cafe; user can see favorited cafe index page
+* User can choose app to randomly roll a cafe from their favorited cafes
+* Cafe page has a pop up modal that shows more pictures of cafe, has information about cafe status/statistics 
 * Yelp cafe data fetched by the Yelp Fusion API
 * Cafe suggestions filtered by cafe preferences and user geolocation
 * Cafe location displayed via the Google Maps API
@@ -28,7 +32,7 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 * Roll Cafe
 * Search cafe by parameters
 * Cafe status (number of rolls, etc)
-* User auth - FY
+* User auth - FY 
 * Updating and saving profile preferences
 * Updating and saving user information - FY DONE
 * Mediaquery - FY
@@ -36,9 +40,9 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 ## Code 
 
 #### User Auth
-In User Auth, user (and all resources) have a Mongoose model with schema. Routes are set up in the backend to register new users and login existing users. Information from the login and signup forms are sent to the backend through axios calls. In the backend routes, validations (including email uniqueness and number/letter requirements) are performed. For signup, the app uses bcrypt to salt and hash new user's password before storing it in the database and saving the user. For login, we set up  backend route that use bcrypt to compare the user inputed password with the salted and hashed password in the database. Both login and register request returns a signed web token to "sign user in" on the frontend. To persist user, we set the signed web token in local storage under key "jwtToken" on the client side; therefore, user remains sigend in through refresh. 
+In User Auth, user (and all resources) have a Mongoose model with schema. Routes are set up in the backend to register new users and login existing users. Information from the login and signup forms are sent to the backend through axios calls. In the backend routes, validations (including email uniqueness and number/letter requirements) are performed. For signup, the app uses bcrypt to salt and hash new user's password before storing it in the database and saving the user. For login, we set up  a backend route that use bcrypt to compare the user inputed password with the salted and hashed password in the database. Both login and register request returns a signed web token to "sign user in" on the frontend. To persist user, we set the signed web token in local storage under key "jwtToken" on the client side; therefore, user remains sigend in through refresh. 
 
-Users are allowed to create accounts, securely sign up, and log in. 
+Users are allowed to create accounts, securely sign up, and log in. Errors render when validations do not pass, user is not found (login), and on sign up when username already exists in database. 
 
 ```javascript
     //part of the login route
@@ -143,4 +147,4 @@ The update form is prepopulated with their existing data in the database. After 
 ```
 
 #### Media queries
-This project uses media queries to make it user friendly and pretty for all different screen sizes;  We have a finished a good amount. All the 1) cafe page, 2) the splash page, 3) the crew page. 
+This project uses media queries to make it user friendly and for a pleasing display from small laptop to big screens. Furthermore, we have made the 1) crew page and 2) cafe page also mobile and tablet friendly. 
