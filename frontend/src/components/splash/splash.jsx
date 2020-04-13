@@ -71,7 +71,6 @@ class Splash extends React.Component {
 
 
   isZipcode(){
-    // returns boolean if zipcode is in SF
     let zipcode = parseInt(this.state.location_zip_code)
     return !zipCodes.includes(zipcode)
      
@@ -88,12 +87,9 @@ class Splash extends React.Component {
 
 
   handleSubmit(e) {
-    // debugger
     e.preventDefault();
 
     let state = this.state;
-    //  
-    //Mapping state to search params
     state.wifi ? state.wifi = "yes" : state.wifi = "no";
     state.noise_level ? state.noise_level = "average" : state.noise_level = "loud";
     state.credit_card ? state.credit_card = "yes" : state.credit_card = "no";
@@ -115,21 +111,17 @@ class Splash extends React.Component {
   }
 
   render() {
-    // debugger;
     let welcomeMessage;
     if(this.props.isAuthenticated===true){
         if(this.props.updatedUser){
-          // debugger;
           welcomeMessage = `Welcome, ${this.props.updatedUser.handle}!`;
 
         }
         else if(this.props.user){
-          // debugger;
           welcomeMessage = `Welcome, ${this.props.user.handle}!`;
         }
     }
     else{
-      // debugger;
       welcomeMessage = "";
     }
     

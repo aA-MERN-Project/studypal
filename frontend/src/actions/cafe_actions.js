@@ -44,7 +44,6 @@ export const receiveYelpCafe = cafe => ({
     cafe
 });
 
-// Loading Actions
 
 export const startLoadingFilteredCafes = () => ({
     type: START_LOADING_FILTERED_CAFES,
@@ -54,8 +53,6 @@ export const startLoadingSingleCafe = () => ({
     type: START_LOADING_SINGLE_CAFE,
 
 });
-
-// API actions
 
 export const fetchCafes = () => dispatch => (
   getCafes()

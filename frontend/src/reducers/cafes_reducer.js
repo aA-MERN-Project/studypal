@@ -7,7 +7,6 @@ import { RECEIVE_CAFES,
 
 const cafesReducer = (state = {}, action) => {
     Object.freeze(state);
-    // let newState = Object.assign({}, state);
     
     switch (action.type) {
         case RECEIVE_CAFES:

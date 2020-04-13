@@ -53,7 +53,6 @@ class Retry extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
     let state = this.state;
     state.location_zip_code ? (state.location_zip_code = parseInt(state.location_zip_code)) : state.location_zip_code = null;
     state.wifi ? (state.wifi = "yes") : (state.wifi = "no");
@@ -70,14 +69,6 @@ class Retry extends React.Component {
     this.findCafe = this.findCafe.bind(this);
 
 
-    debugger
-  }
-
-  componentDidMount() {
-    //  
-    // if (Object.keys(this.props.filters).length === 0) {
-    //   this.props.history.push(`/`);
-    // }
   }
 
   update(field) {

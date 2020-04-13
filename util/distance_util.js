@@ -32,9 +32,6 @@ const calculateDistance = (cafes, my_lat, my_lng) => {
         );
         return cafe;
     })
-
-    //Return array with cafes distance
-
     return addedDistance
 
 }

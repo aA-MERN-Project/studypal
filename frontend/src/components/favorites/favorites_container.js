@@ -8,7 +8,6 @@ import { openModal } from "../../actions/modal_actions";
 import  {selectRandomCafe} from "../../util/filters_util"
 
 const mSTP = (state) => {
-// debugger
     return({
       user: state.session.user,
       loading: state.loading.favLoading,

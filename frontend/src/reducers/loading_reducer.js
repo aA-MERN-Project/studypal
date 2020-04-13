@@ -15,8 +15,6 @@ const initialState = {
 const loadingReducer = (state = initialState, action) => {
     Object.freeze(state);
     switch (action.type) {
-        // case RECEIVE_CURRENT_USER: 
-        //     return Object.assign({}, state, { loginLoading: false });
         case RECEIVE_CAFES:
             return Object.assign({}, state, { indexLoading: false});
         case RECEIVE_YELP_CAFE:
@@ -29,8 +27,6 @@ const loadingReducer = (state = initialState, action) => {
             return Object.assign({}, state, { detailLoading: true});
         case START_LOADING_FAVORITE_CAFES:
             return Object.assign({}, state, { favLoading: true });
-        // case START_LOADING_LOGIN:
-        //     return Object.assign({}, state, { loginLoading: true })
         default:
         return state;
     }
