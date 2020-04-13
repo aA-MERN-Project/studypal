@@ -62,9 +62,36 @@
 	transition: all 300ms ease-in-out
 }
 
+#my-favorites {
+  color: #4169E1;
+}
+
 #my-favorites:hover {
   cursor: pointer;
   text-decoration: underline;
 
 }
 
+@media only screen and (max-width: 1070px) {
+    #favorited {
+        top: 570px;
+        left: 55px;
+    }
+
+    #unfavorite {
+        top: 570px;
+        left: 55px;
+    }
+}
+
+@media only screen and (min-width: 1071px) {
+    #favorited {
+      top: 350px;
+      left: 182px
+    }
+
+    #unfavorite {
+      top: 350px;
+      left: 182px
+    }
+}
