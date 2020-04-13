@@ -1,4 +1,3 @@
-//  Axios Request
 const axios = require("axios");
 const apiKey = require("../config/keys").yelpAPI;
 const getYelpCafeById = (id) => {

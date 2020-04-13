@@ -25,7 +25,6 @@ class ShowMap extends React.Component {
       zoom: 13
     };
 
-    // this.MarkerManager = new MarkerManager(this.map);
     this.map = new google.maps.Map(this.mapNode, mapOptions);
 
     let icon = {
@@ -50,11 +49,6 @@ class ShowMap extends React.Component {
     marker.addListener("click", function() {
       window.open(encodedAddress, "_blank");
     });
-
-    // const marker_person = new google.maps.Marker({
-    //   position: { lat: this.props.my_lat, lng: this.props.my_lng },
-    //   map: this.map
-    // });
 
   }
 

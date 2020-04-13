@@ -157,10 +157,6 @@ let data = [
     }
 ]
 
-
-//ASSUME DATA IS this.props.cafes
-
-
 import React from 'react';
 
 
@@ -169,14 +165,6 @@ class Favorites extends React.Component {
      constructor(props) {
         super(props);
         this.state = {
-        
         }
-
-
-
-
-
     }
-
-
 }

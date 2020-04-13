@@ -15,8 +15,6 @@ function Carousel(props) {
 
 
         setCounter(counter - 1)
-
-        // debugger;
         setTimeout(
             () => {
 

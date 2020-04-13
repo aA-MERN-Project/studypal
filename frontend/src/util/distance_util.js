@@ -22,7 +22,6 @@ export const distance = (lat1, lon1, lat2, lon2, unit)  => {
 
 export const applyExtraFilters = (cafe_array) => {
 
-      // Matches filters coming in from data to match filter params
       let loudMap = { "loud": false, "average": true, "quiet": true };
       let creditMap = { "yes": true, "no": false, "": false };
       let wifiMap = { "yes": true, "no": false, "": false };
@@ -33,7 +32,6 @@ export const applyExtraFilters = (cafe_array) => {
       let loudFilter = cafes => cafes.filter(cafe => loudMap[cafe.noise_level] === this.props.filters.noise_level);
 
     
-      // Apply all filters, looks ugly right now will change later
       return emptyFilter(wifiFilter(creditFilter(loudFilter(cafe_array))))
       
   }

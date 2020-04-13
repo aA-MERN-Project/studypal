@@ -7,7 +7,7 @@ const db = require('./config/keys').mongoURI;
 
 
 const bodyParser = require('body-parser');
-// EXPRESS ROUTES
+
 const users = require("./routes/api/users");
 const cafes = require("./routes/api/cafes")
 const path = require('path');
@@ -19,16 +19,16 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-//MIDDLE WARE FOR BODY PARSER
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-// USING EXPRESS ROUTES
+
 app.use("/api/users", users);
 app.use("/api/cafes", cafes);
 
-// SETUP MONGOOSE DB -> MONGODB
+
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
