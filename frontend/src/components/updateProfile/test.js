@@ -31,12 +31,6 @@ class Test extends React.Component {
         }else if(this.props.user._id){
             this.props.updateProfileAct(this.props.user._id, this.state);
         }
-    // componentWillUpdate(nextProps,nextState){
-    //      ;
-    //     if (!nextProps.user.email === this.state.user.email){
-    //         this.props.updateProfileAct(nextProps.user.id, nextProps.user);
-    //       }
-    // }
     }
 
     handleSubmit(e) {
@@ -49,16 +43,7 @@ class Test extends React.Component {
         
         this.props.handler();
 
-        // this.setState({updateProfile:"true"});
-        // // also check if no errors 
-        // if(this.state.updateProfile==="false"){
-        //     this.props.updateProfileAct(this.props.user.id, this.state);
-        // }else{
-        //     this.props.updateProfileAct(this.props.user._id, this.state);
-        // }
         
-        //this added so that when user updates Profile, it will setstate
-        //in profile page to trigger rerender of profile component
         this.props.clearErrors();
         this.props.handler();
     }
@@ -87,7 +72,6 @@ class Test extends React.Component {
     }
 
     openUpdate(){
-        // debugger;
         this.setState({updatedProfile:"true"});
         this.setState({handle:this.props.updatedUser.handle});
         this.setState({email:this.props.updatedUser.email});
@@ -106,9 +90,6 @@ class Test extends React.Component {
         if (this.state.updatedProfile==="true"){
             return(
                 <div>
-                    {/* <div className="editProfileButtonDiv" >
-                            <button  className="editProfileButton" onClick={this.closeUpdate} >x</button>
-                    </div> */}
                     <div style={{margin:"0px"}} className="update-profile-div">
                         <form className="update-profile-form"onSubmit={this.handleSubmit}>
                             <div className="vertical-line-profile"></div>

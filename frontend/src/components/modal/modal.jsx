@@ -7,22 +7,15 @@ import Map from '../map/directions';
 import FavButton from '../favorite_button/fav_button';
 import FavTransition from '../favorite_button/fav_transition';
 import { cafeIncludes } from "../../util/button_util";
-import { useState} from 'react';
-
-// import PopUpContainer from "../popUp/pop_up_container";
-//Helper Functions
-
-    
+import { useState} from 'react';    
 
 function Modal(props){
 
     const [isClicked, setClick] = useState(false);
-    debugger
     if (!props.modal){
         return null
     }
 
-    //Helper Methods
     let handleUnfavorite = (userId,cafe) => {
             const favoriteData = new Object();
             favoriteData.type = "unfavorite";
@@ -65,23 +58,21 @@ function Modal(props){
   }
 
 
-    // Data coming from StudyPal Backend
     const {
       rolled_amount,
       selected_amount,
       favorite_amount,
     } = props.currCafe;
 
-    // Data coming from Yelp API
     const { 
       name,
-      coordinates, // coordinates.latitude / coordinates.longitude
+      coordinates,
       photos,
       hours,
       display_phone,
       url,
       is_closed,
-      location, //location.address1, location.address3, location.city, location.zip_code, location.display_address
+      location,
 
      } = props.yelpCafe;
    
@@ -163,10 +154,6 @@ function Modal(props){
       <div className="map-modal">
         <div>
           <Map
-          // cafe_lat={cafe_lat}
-          // cafe_lng={cafe_lng}
-          // my_lat={my_lat}
-          // my_lng={my_lng}
           />
         </div>
       </div>

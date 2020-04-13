@@ -50,7 +50,7 @@
     font-size: 40px;
     width: 60px;
     height: 60px;
-    opacity: .7;
+    opacity: .8;
     /* color: rgb(139, 123, 123); */
     text-align: center;
     border-radius: 5px;
@@ -58,11 +58,11 @@
 #next {
     position: relative;
     top: 90px;
-    right: 20px;
+    right: 25px;
     font-size: 40px;
     width: 60px;
     height: 60px;
-    opacity: .7;
+    opacity: .8;
     /* color: white; */
     text-align: center;
     border-radius: 5px;
@@ -76,4 +76,57 @@
 #prev:hover {
     cursor: pointer;
     opacity: .4
+}
+
+@media only screen and (max-width: 1070px) {
+
+    .carousel-slide img {
+        height: 300px;
+        width: 77%;
+        margin-right: 2px;
+    }
+
+    .carousel-container {
+        width: 95%;
+        margin-left: 14.7px
+    }
+
+    #next {
+        position: relative;
+        top: 130px;
+        font-size: 35px;
+        width: 50px;
+        height: 50px;
+        right: 119px;
+    }
+
+    #prev {
+        position: relative;
+        top: 130px; 
+        font-size: 35px;
+        width: 50px;
+        height: 50px;       
+        left: 130px;
+    }
+
+    .pointers {
+        width: 570px;
+    }
+
+}
+
+@media only screen and (min-width: 1071px) { 
+    .carousel-slide img {
+        height: 350px;
+        width: 60.2%;
+        margin-right: 2px;
+    }
+
+    #next {
+        top: 40px
+    }
+
+    #prev {
+        top: 40px
+    }
 }

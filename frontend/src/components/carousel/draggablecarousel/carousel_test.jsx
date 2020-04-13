@@ -32,16 +32,6 @@ class CarouselTest extends React.Component {
                 <h1>Drag the carousel along the x-axies...</h1>
                 <Carousel _data={items} {...setting}>
                     {
-
-                        // photos.map(photo => (
-                        //     <img 
-                        //         src={photo}
-                        //         style={{ ...itemStyle }}
-                        //         >
-
-                        //     </img>
-                        // ))
-
                         items.map((i, _i) => (
                             <div
                                 key={_i}

@@ -1,6 +1,5 @@
 
 .splashIndex {
-    // border: 1px solid red;
     height: 100vh;
     background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
     font-family: "Open Sans";
@@ -9,7 +8,6 @@
 }
 
 .content {
-    // border: 1px solid red;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -23,7 +21,6 @@
 }
 
 .cta {
-    // border: 1px solid red;
     position: relative;
     top: 50px;
     text-align: center;
@@ -36,7 +33,6 @@
     position: relative;
     top: 90px;
     text-align: center;
-    // font-family: "Open Sans";
     font-size: 14px;
     font-weight: 600;
 }
@@ -67,7 +63,6 @@
 }
 
 .distance-hours {
-    // border: 1px solid red;
     display: flex;
     justify-content: space-between;
 }
@@ -128,7 +123,6 @@ button.clear:hover {
 }
 
 .roll-cafe {
-    // border: 1px solid red;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -152,7 +146,6 @@ button.clear:hover {
     font-family: "Montserrat";
 }
 
-//Fei added box shadow border
 #cafe-submit {
     height: 35px;
     border: none;
@@ -175,7 +168,6 @@ button.clear:hover {
     position:absolute;
     
     font-family: "Open Sans";
-    // border:1px solid black;
 }
 
 #sf-available {
@@ -183,7 +175,6 @@ button.clear:hover {
     top: 140px;
     text-align: left;
     color: gray;
-    // font-family: "Open Sans";
     font-size: 12px;
     font-weight: 300;
 
@@ -195,7 +186,6 @@ button.clear:hover {
     color: grey;
     border-radius: 4px;
     width: 200px;
-    // height: 100px; //DON'T PUT HEIGHT BACK IN
     display: none;
     position:absolute;
     font-size: 14px;
@@ -203,9 +193,8 @@ button.clear:hover {
     padding: 7px;
     padding-left:10px;
     font-family: "Open Sans";
-
-// -webkit-transform: scale(.9, .9);
-// -webkit-transition: all .18s ease-in-out;
+    bottom: 10px;
+    left: 250px;
   
 }
 
@@ -222,7 +211,6 @@ button.clear:hover {
     color: grey;
     border-radius: 4px;
     width: 270px;
-    // height: 28px; //DON'T PUT HEIGHT BACK IN
     display: none;
     position:absolute;
     font-size: 14px;
@@ -232,8 +220,6 @@ button.clear:hover {
     padding-left:10px;
     font-family: "Open Sans";
 
-// -webkit-transform: scale(.9, .9);
-// -webkit-transition: all .18s ease-in-out;
   
 }
 
@@ -299,8 +285,6 @@ button.clear:hover {
 
 }
 
-// DON'T DELETE, this is so white space doesn't show 
-// when screen size gets bigger;
 @media only screen and (min-width: 876px){
     .splashIndex{
         position:relative;

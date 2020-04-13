@@ -1,19 +1,8 @@
-.page *{
-    // border:1px solid black;
-}
 .index {
     height: 100vh;
     background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
     font-family: "Open Sans";
 }
-
-// .index img {
-//     position: relative;
-//     height: 140px;
-//     left: 45vw;
-//     top: 40vh;
-//     border: 5px solid blue;
-// }
 
 .gifImgDiv{
     height: 100vh;
@@ -26,7 +15,6 @@
     height: 140px;
     left: 45vw;
     top: 40vh;
-    // border: 5px solid blue;
 }
 
 
@@ -163,79 +151,17 @@
     cursor: pointer;
 }
 
-// @media only screen and (max-width: 600px) {
-//     .left-right {
-//         flex-direction: column;
-//     }
-
-//     .cafe {
-//         align-items: flex-start;
-//     }
-
-//     .map {
-//         position: relative;
-//         left: 2.6%;
-//     }
-
-//     .profile {
-//         width: 440px;
-//         left: 3%
-//     }
-
-//     .photo {
-//         width: 500px;
-//         left: 3%;
-//         margin-bottom: .5%;
-//     }
-
-//     .new-cafe {
-//         position: relative;
-//         right: 24%;
-//     }
-// }
-
-
-// /* Medium devices (landscape tablets, 768px and up) */
-
-// @media only screen and (min-width: 768px) {
-//     .map{
-//         height:470px;
-//     }
-
-//     .cafe{
-//         justify-content: none;
-//         max-height:470px;
-//     }
-
-//     .all{
-//         padding-top: 7%;
-//     }
-
-//     .profile{
-//         padding-top:24px;
-//         padding-bottom:24px;
-//         background-color:green;
-//     }
-
-//     .photo{
-//         height:320px;
-//     }
-// }
-
-   /* Large devices (laptops/desktops, 768px and up) */
 @media only screen and (min-width: 768px) {
     .left-right{
-        width:1120px; //orig
+        width:1120px; 
         width:900px;
         justify-content:space-around;
     }
-    
-    //name of cafe
+
     .name{
         font-size:22px;
     }
 
-    //name of address
     .address{
         margin-top:25px;
     }
@@ -248,7 +174,6 @@
     .cafe{
         justify-content: center;
         max-height:none;
-        // border:3px solid green;
     }
 
     .yelp{
@@ -266,15 +191,11 @@
         width:470px;
         padding-left:20px;
         padding-right:20px;
-        // background-color:green;
     }
 
     .photo{
-        height:406px; //was 320px;
-        width:510px;
-        
-        // background-color:#FF7F50;
-        
+        height:406px;
+        width:510px;        
     }
 
 }
@@ -309,34 +230,30 @@
     }
 }
 
-  /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 1100px) {
     .left-right{
-        width:1120px; //orig
+        width:1120px;
         width:1050px;
         justify-content:space-around;
     }
     
-    //name of cafe
     .name{
         font-size:22px;
     }
 
-    //name of address
     .address{
         margin-top:25px;
     }
 
     .map{
         height:510px;
-        width:510px; //added 20px
+        width:510px; 
         
     }
 
     .cafe{
         justify-content: none;
         max-height:none;
-        // border:3px solid green;
     }
 
     .yelp{
@@ -354,15 +271,11 @@
         width:500px;
         padding-left:20px;
         padding-right:20px;
-        // background-color:pink;
     }
 
     .photo{
-        height:364px; //was 320px;
-        width:540px;
-        
-        // background-color:#FF7F50;
-        
+        height:364px;
+        width:540px;        
     }
 
     
@@ -372,7 +285,6 @@
     .profile{
         padding-top:30px;
         padding-bottom:28px;
-        // background-color:purple;
     }
 
     .photo{
@@ -386,8 +298,6 @@
     }
   }
 
-
-    /* Extra large devices (large laptops and desktops, 1370px and up) */
 @media only screen and (min-width: 1370px){
     .map{
         height:525px;
@@ -405,7 +315,6 @@
     .profile{
         padding-top:30px;
         padding-bottom:28px;
-        // background-color:blue;
     }
 
     .photo{
@@ -414,7 +323,6 @@
 }
 
 
- /* Extra extra large devices (like viewing it on a screen, 1550px and up) */
  @media only screen and (min-width: 1600px){
     .left-right {
         width:1230px;
@@ -435,14 +343,11 @@
         justify-content: space-between;
         width:580px; 
         height:550px;
-
-        // background-color:pink;
     }
 
     .profile{
         padding-top:30px;
         padding-bottom:28px;
-        // background-color:yellow;
     }
 
     .photo{
@@ -455,7 +360,6 @@
     .profile {
         width: 450px;
         margin-right: 450px;
-        // margin-top: 20px;
     }
 
     .left-right {

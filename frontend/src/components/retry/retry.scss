@@ -1,5 +1,4 @@
 .index {
-    // border: 1px solid red;
     height: 100vh;
     background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
     font-family: "Open Sans";
@@ -18,7 +17,6 @@
 }
 ​
 .cta {
-    // border: 1px solid red;
     position: relative;
     top: 55px;
     text-align: center;
@@ -42,7 +40,6 @@
 }
 ​
 .roll-cafe {
-    // border: 1px solid red;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -94,7 +91,7 @@
 }
 
 .click-rec-gray{
-    color:gray;
+    color:blue;
 }
 .click-rec-gray:hover {
     

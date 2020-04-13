@@ -33,14 +33,10 @@ router.patch('/:id/profile', (req,res,next)=> {
         return res.status(400).json(errors);
     }
     const userId = req.params.id;
-    //  ;
 
     User.findOne({email: req.body.email})
     .then(user => {
         if(user){
-            //find user with _id and check if email belongs to user with _id
-            //if it matches, then send up data, if not, then send email taken error
-            //User should be able to keep their old email and only change username
             User.findOne({_id:req.params.id})
                 .then(userOrig => {
                     if (userOrig.email === user.email){
@@ -84,17 +80,6 @@ router.patch('/:id/profile', (req,res,next)=> {
     });
 });
 
-//get single user by email
-// router.get('/:email', (req,res) => {
-//     User.findOne({email: req.params.email})
-//         .then(user => res.json(user))
-//         .catch(err => 
-//             res.status(404).json({noUserFound: "no user found with that email"})
-//         );
-// });
-
-//update single user preferences (not including zipcode) --> (find by email)
-
 router.patch('/:id', (req, res, next) => {
     const userId = req.params.id
 
@@ -102,18 +87,11 @@ router.patch('/:id', (req, res, next) => {
     User.findOne({ _id: userId })
 
         .then(user => {
-            // return res.json(user.miles_away)
             let miles_away = req.body.miles_away;
             let hours_opened_left = req.body.hours_opened_left;
             let free_wifi = req.body.free_wifi;
             let credit_card = req.body.credit_card;
             let noise_level = req.body.noise_level;
-
-            // let miles_away = req.params.id
-            // let hours_opened_left = req.params.id
-            // let free_wifi = req.params.id;
-            // let credit_card = req.params.id;
-            // let noise_level = req.params.id;
 
             user.miles_away = miles_away;
             user.hours_opened_left = hours_opened_left;
@@ -141,7 +119,6 @@ router.patch('/favorites/:id', (req,res, next) => {
     User.findOne({ _id: id})
       .then((user) => {
 
-        // Creates an array for current users on db
         if (!user.favorites) {
           user.favorites = [];
         }
@@ -152,7 +129,6 @@ router.patch('/favorites/:id', (req,res, next) => {
             );
             user.favorites = deletedFavorite;
         } else {
-            // check if favorite is already in array  
             const existingFavorites = user.favorites.map(
                 cafe => cafe.id
             )
@@ -174,39 +150,9 @@ router.patch('/favorites/:id', (req,res, next) => {
         console.log("No user found with that id");
       });
 
-   
-
-    //   Cafe.findOne({ id: newCafe.id })
-    //     .then((cafe) => {
-
-    //       if (type === "favorite") {
-    //         cafe.favorite += 1;
-    //       }
-
-    //       if (type === "unfavorite") {
-    //         cafe.favorite -= 1;
-    //       }
-    //       debugger
-
-    //       cafe
-    //         .save()
-    //         .then((cafe) => {
-    //           res.json(cafe);
-    //           console.log("Cafe backend favorites updated");
-    //         })
-    //         .catch((err) => console.log("Cafe save did not work :("));
-    //     })
-    //     .catch((err) =>
-    //       res
-    //         .status(404)
-    //         .json({ nothingAdded: "No update to StudyPal database" })
-    //     );
-
-
 })
 
 router.post('/register', (req,res) => {
-    //  ; 
     const {errors, isValid} = validateRegisterInput(req.body);
     
     if(!isValid){
@@ -226,7 +172,6 @@ router.post('/register', (req,res) => {
                     zipcode: req.body.zipcode
             });
         
-        //  ;
         bcrypt.genSalt(10, (err,salt) => {
             bcrypt.hash(newUser.password, salt, (err,hash)=> {
                 if(err) throw err;
@@ -242,7 +187,6 @@ router.post('/register', (req,res) => {
 });
 
 router.post('/login', (req, res) => {
-    //  ;
     const {errors, isValid} = validateLoginInput(req.body);
     if(!isValid){
         return res.status(400).json(errors);
@@ -252,7 +196,6 @@ router.post('/login', (req, res) => {
 
     User.findOne({email})
         .then(user => {
-            //   
             if(!user){
                 errors.email = "User not found";
                 return res.status(404).json(errors);

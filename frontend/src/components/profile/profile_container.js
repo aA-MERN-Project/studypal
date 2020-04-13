@@ -8,11 +8,9 @@ import { fetchCafeByFilters } from '../../actions/cafe_actions';
 import { getFilters } from '../../actions/filter_actions';
 
 const mapStateToProps = state => {
-    //  
     return({
     user: state.session.user,
     updatedUser: state.session.updatedUser,
-    // userUpdated:state.session.data.user,
     test: "test"
 });
 };
@@ -23,7 +21,6 @@ const mapDispatchToProps = dispatch => ({
     login: (user) =>dispatch(login(user)),
     updateProfileAct: (id,user)=> dispatch(updateProfileAct(id,user)),
     getUpdatedUser: (id) => dispatch(updatedUser(id)),
-    // getPreferences: () => dispatch
     updateUserPreferences: (id, preferences) => dispatch(updateUserPreferences(id, preferences)),
     fetchCafeByFilters: filters => dispatch(fetchCafeByFilters(filters)),
     getFilters: filters => dispatch(getFilters(filters)),

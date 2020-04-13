@@ -22,7 +22,8 @@ class NavBar extends React.Component {
     loggedOut() {
         if (
           (!this.props.loggedIn && this.props.location.pathname === "/") ||
-          (!this.props.loggedIn && this.props.location.pathname === "/cafe")
+          (!this.props.loggedIn && this.props.location.pathname === "/cafe") ||
+          (!this.props.loggedIn && this.props.location.pathname === "/retry")
         ) {
           return (
             <div className="button-div-logout">
@@ -143,10 +144,9 @@ class NavBar extends React.Component {
               </div>
             );
         } else if (
-                 (this.props.loggedIn &&
-                   this.props.location.pathname === "/crew") ||
-                 (this.props.loggedIn &&
-                   this.props.location.pathname === "/cafe")
+                  (this.props.loggedIn &&this.props.location.pathname === "/crew") ||
+                  (this.props.loggedIn && this.props.location.pathname === "/cafe") || 
+                  (this.props.loggedIn && this.props.location.pathname === "/retry")
                ) {
                  return (
                    <div className="button-div">

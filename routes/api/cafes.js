@@ -1,4 +1,3 @@
-// This is API route for our inputted data
 const {
     applyAllFilters
 } = require("../../util/filters_util")
@@ -17,7 +16,6 @@ const express = require("express");
 const router = express.Router();
 const Cafe = require("../../models/Cafe");
 
-// GRAPHQL
 const yelpApiUrl = "https://api.yelp.com/v3/graphql";
 const { GraphQLClient } = require('graphql-request');
 const client = new GraphQLClient(yelpApiUrl, {
@@ -66,7 +64,6 @@ router.get("/test", (req, res) => {
 
 
 router.get("/", (req,res) => {
-    // testing distance
     let my_lat = 37.79001;
     let my_lng = -122.41177;
     Cafe
@@ -81,13 +78,11 @@ router.get("/", (req,res) => {
 });
 
 
-//Making request to YELP API
 router.get("/yelp_id/:id", (req,res) =>  {
 
     const yelpId = req.params.id;
     getYelpCafeById(yelpId)
         .then((cafe) => {
-            //also add count to database
             res.json(cafe.data);
         })
         .catch(err => {

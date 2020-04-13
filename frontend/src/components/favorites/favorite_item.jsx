@@ -8,18 +8,9 @@ class FavItem extends React.Component {
             studyPalCafe: false
         }
 
-        // let distance = this.props.YelpCafe.distance_away;
-        // let noiseLevel = this.props.YelpCafe.noise_level;
-
         this.handleUnfavorite = this.handleUnfavorite.bind(this)
         this.handleFavorite = this.handleFavorite.bind(this)
         this.modalData = {
-            // yelpData: this.props.yelpCafe,
-            // distance,
-            // noiseLevel,
-            // user: this.props.user,
-            // studyPalCafe: this.state.studyPalCafe,
-            // filters: this.props.filters
             yelpData: {},
             distance: {},
             noiseLevel: {},
@@ -33,11 +24,9 @@ class FavItem extends React.Component {
 
 
     handleFavorite(userId, cafe) {
-        // data that is needed to update backend
         const favoriteData = new Object();
         favoriteData.type = "favorite";
         favoriteData.cafe = cafe;
-        // this function updates cafe backend with +1 or -1 favorites
         this.props.updateFavorites(userId, favoriteData);
     }
 
@@ -47,7 +36,6 @@ class FavItem extends React.Component {
         favoriteData.type = "unfavorite";
         favoriteData.cafe = cafe;
         this.props.updateFavorites(userId, favoriteData);
-        // this.state.switch ? this.state.switch = false : this.state.switch = true
     }
 
     cafeClick(cafe) {
@@ -73,8 +61,6 @@ class FavItem extends React.Component {
 
     render(){
         let cafe = this.props.cafe;
-
-        debugger
 
         return (
         <div id="cafe-box" key={cafe.id}>

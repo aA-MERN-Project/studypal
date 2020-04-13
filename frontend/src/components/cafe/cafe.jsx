@@ -66,7 +66,6 @@ class Cafe extends React.Component {
     }
 
     calculateDistance(cafes) {
-        //Return array with cafes distance
         let addedDistance = cafes.map(cafe => {
             cafe.distance_away = distance(
                 this.props.filters.my_lat,
@@ -88,12 +87,10 @@ class Cafe extends React.Component {
 
     reRoll() {
 
-        // Removes current YelpCafe from array
         let leftOverCafes = this.props.cafes.filter(cafe => {
             return cafe.id !== this.props.yelpCafe.id;
         });
         
-        // Puts into Redux cycle again
         let randomCafe = selectRandomCafe(leftOverCafes)
 
         if (randomCafe){
@@ -134,7 +131,6 @@ class Cafe extends React.Component {
     componentWillUnmount(){
       this.props.clearCafes();
       this.setState({studyPalCafe: null})
-      // debugger
 
     }
 
@@ -180,11 +176,9 @@ class Cafe extends React.Component {
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
         if (this.props.cafes.length === 0) this.props.history.push(`/retry`)
-        // If no curr yelpcafe exist, request from API
         if (Object.keys(this.props.yelpCafe).length === 0) {
           let randomCafe = selectRandomCafe(this.props.cafes);
           if (randomCafe){
-              // debugger
               let randomCafe = selectRandomCafe(this.props.cafes);
               this.setState({studyPalCafe: randomCafe})
               this.props
@@ -260,7 +254,6 @@ class Cafe extends React.Component {
 
                 <div className="map">
                   <ShowMap
-                      //1600 Pennsylvania Avenue NW Washington, DC 20500
                     address={this.props.yelpCafe.location}
                     key={lat}
                     lat={lat}
