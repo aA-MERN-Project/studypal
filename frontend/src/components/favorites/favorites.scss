@@ -90,6 +90,7 @@
     border-radius: 5px;
     padding: 10px;
     border:1px solid rgb(151, 151, 151);
+    position:relative;
    
 }
 
@@ -114,6 +115,7 @@
     flex-direction: column;
     position:relative;
     justify-content: space-between;
+    // position:absolute;
 }
 
 .favorite-remove {
@@ -123,8 +125,9 @@
     display: inline-block;
     width: 52px;
     font-size:14px;
-    position:relative;
-    padding-top:58px;
+    position:absolute;
+    top:50px;
+    // border:1px solid black;
   
 }
 
