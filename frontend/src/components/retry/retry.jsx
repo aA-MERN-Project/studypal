@@ -119,7 +119,7 @@ class Retry extends React.Component {
             <li id="firstLookForLi">Trying a different zipcode from San Francisco</li>
             <li>Trying different search parameters</li>
             <li>
-              Check that your geolocation is{" "}
+              Checking that your geolocation is{" "}
               <span
                 className="click-rec-gray"
                 onClick={() => this.findCoordinates()}

@@ -209,7 +209,7 @@
 
     .carousel-modal {
         height: 520px;
-        padding-bottom: 40px;
+        padding-bottom: 20px;
         width: 600px
     }
 
@@ -219,7 +219,7 @@
 
     .business-misc {
         position: relative;
-        bottom: 210px;
+        bottom: 190px;
     }
 
     .modal-horizontal-line {
@@ -241,7 +241,7 @@
 @media only screen and (min-width: 1071px) {
     .carousel-modal {
         height: 600px;
-        padding-bottom: 10px;
+        padding-bottom: 5px;
     }
 
     .carousel-container {
@@ -250,6 +250,6 @@
 
     .business-misc {
         position: relative;
-        bottom: 230px;
+        bottom: 220px;
     }
 }
