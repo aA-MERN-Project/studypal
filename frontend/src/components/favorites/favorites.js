@@ -14,16 +14,7 @@ import LoadingPage from '../cafe/loader';
             this.state = {
                 studyPalCafe: false
             }
-
-            // let distance = this.props.YelpCafe.distance_away;
-            // let noiseLevel = this.props.YelpCafe.noise_level;
             this.modalData = {
-                // yelpData: this.props.yelpCafe,
-                // distance,
-                // noiseLevel,
-                // user: this.props.user,
-                // studyPalCafe: this.state.studyPalCafe,
-                // filters: this.props.filters
                 yelpData: {},
                 distance: {},
                 noiseLevel: {},
@@ -53,8 +44,6 @@ import LoadingPage from '../cafe/loader';
     
 
         render() {
-
-           
             const { loading } = this.props;
             if (loading) { return <LoadingPage />; }
 

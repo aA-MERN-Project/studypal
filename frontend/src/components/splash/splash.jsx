@@ -25,7 +25,6 @@ class Splash extends React.Component {
     this.update = this.update.bind(this);
     this.isZipcode = this.isZipcode.bind(this);
     this.isGeo = this.isGeo.bind(this);
-  
   }
 
   clear() {
@@ -71,7 +70,6 @@ class Splash extends React.Component {
 
 
   isZipcode(){
-    // returns boolean if zipcode is in SF
     let zipcode = parseInt(this.state.location_zip_code)
     return !zipCodes.includes(zipcode)
      
@@ -88,12 +86,9 @@ class Splash extends React.Component {
 
 
   handleSubmit(e) {
-    // debugger
     e.preventDefault();
 
     let state = this.state;
-    //  
-    //Mapping state to search params
     state.wifi ? state.wifi = "yes" : state.wifi = "no";
     state.noise_level ? state.noise_level = "average" : state.noise_level = "loud";
     state.credit_card ? state.credit_card = "yes" : state.credit_card = "no";
@@ -106,7 +101,6 @@ class Splash extends React.Component {
   
   };
 
-
   update(field) {
 
     return e => this.setState({
@@ -115,21 +109,17 @@ class Splash extends React.Component {
   }
 
   render() {
-    // debugger;
     let welcomeMessage;
     if(this.props.isAuthenticated===true){
         if(this.props.updatedUser){
-          // debugger;
           welcomeMessage = `Welcome, ${this.props.updatedUser.handle}!`;
 
         }
         else if(this.props.user){
-          // debugger;
           welcomeMessage = `Welcome, ${this.props.user.handle}!`;
         }
     }
     else{
-      // debugger;
       welcomeMessage = "";
     }
     
@@ -142,7 +132,6 @@ class Splash extends React.Component {
           </div>
         <div className="cta">Discover your cafe for today.</div>
 
-          {/* {this.loggedIn()} */}
           <div id="looking-for">What are you looking for?</div>
           <div className="preferences">
             <div className="distance-hours">
@@ -325,7 +314,7 @@ class Splash extends React.Component {
 
           <div id="sf-available">
               *Currently available only in San Francisco <i class="fas fa-info-circle" aria-hidden="true" id="parent">
-                <div id="popup">Sorry, we only support San Francisco locations at this moment. We are working diligently to add more cafes into our service. Until then, feel free to explore some great San Francisco based study areas!</div>
+                <div id="popup">Sorry, we only support San Francisco locations at this moment. We are working diligently to add more cafes into our service. Until then, feel free to explore some great San Francisco-based study areas!</div>
               </i>
 
           </div>

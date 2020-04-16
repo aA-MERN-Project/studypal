@@ -11,16 +11,9 @@ function Carousel(props) {
     const [cref, setCref] = useState(React.createRef())
 
 
-    //Helper
-
     function giveMeIntValOf(el) {
-        // extracting 20 from translateX(20px) and converting it to integer with parsInt
         return parseInt(el.replace('translateX(', '').replace('px)', ''), 10)
     } 
-
-    // const handleSnap = useCallBack(
-    //     () =>
-    // )
 
     
     function handleSnap() {
@@ -30,14 +23,10 @@ function Carousel(props) {
 
         
 
-        // reset carousel
         setDown(false);
 
          
         carousel.classList.remove('active');
-
-        //Threshold
-        // getting transvalue
 
          
         const tempThresholdOffset = giveMeIntValOf(carousel.firstChild.style.transform)
@@ -50,10 +39,6 @@ function Carousel(props) {
         transition: transform 0.5s cubic-bezier(.25,.72,.51,.96);
       `;
         }
-
-
-
-
     }
 
 
@@ -69,11 +54,7 @@ function Carousel(props) {
         
         setDown(true);
         setX(_startX);
-        setLeftOffset(_transLeftOffset);
-
-        //Reset transition
-
-         
+        setLeftOffset(_transLeftOffset);         
 
         const x = event.pageX - carousel.offsetLeft;
         const walk = (x- startX) * dragSpeed;
@@ -82,27 +63,17 @@ function Carousel(props) {
         transform: translateX(${transLeftOffset + walk}px);
         transition: transform 0.0s ease-in-out;
       `;
-
-       
-
-
     }
 
-
-    // mouse Leave
     function handleMouseLeave(e) {
          
         handleSnap()
     }
 
-
-    // mouse Up
     function handleMouseUp(e){
         handleSnap();
     }
 
-
-    // mouse Move
     function handleMouseMove (e){
         const carousel = cref.current
         if (!isDown) return
@@ -112,14 +83,12 @@ function Carousel(props) {
         carousel.firstChild.style.transform = `translateX(${transLeftOffset + walk}px)`;
     }
 
-
     const {
         _data,
         itemWidth,
         itemHeight,
         itemSideOffsets
     } = props
-
 
     const cWrapperStyle = {
         width: `${_data.length * (itemWidth + (2 * itemSideOffsets))}px`,

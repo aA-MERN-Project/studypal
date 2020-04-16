@@ -1,8 +1,6 @@
 import {distance} from "./distance_util"
 
-export const selectRandomCafe = (cafe_array) => {
-    // Lets filter cafes before we select a random cafe
-    return cafe_array[Math.floor(Math.random() * cafe_array.length)];
+export const selectRandomCafe = (cafe_array) => {    return cafe_array[Math.floor(Math.random() * cafe_array.length)];
 
 };
 
@@ -19,8 +17,6 @@ export const calculateDistance = (cafes, filters = {}) => {
         );
         return cafe;
     })
-
-    //Return array with cafes distance
 
     return addedDistance
 

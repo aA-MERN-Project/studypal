@@ -2,7 +2,6 @@ import '../../reset.css';
 import './profile.css';
 import React from 'react';
 import NavBarContainer from '../navbar/navbar_container';
-// import Test from '../updateProfile/test_container';
 import Test from '../updateProfile/test';
 import TestContainer from '../updateProfile/test_container';
 import $ from "jquery";
@@ -34,19 +33,10 @@ class Profile extends React.Component {
         this.handleRoll = this.handleRoll.bind(this);
         this.findCoordinates = this.findCoordinates.bind(this);
         this.getPosition = this.getPosition.bind(this);
-        // this.openUpdate = this.openUpdate.bind(this);
-        // this.closeUpdate= this.closeUpdate.bind(this);
     }
 
-    //to change the state once the profile gets updated
     handler(){
-      //  ;
       this.setState({updatedProf: "true"});
-      //  ;
-      // this.props.getUser(this.state.user.id)
-      //   .then(user => this.props.login(user));
-      // this.setState({user:this.props.user});
-
     };
 
     handleSubmit(e) {
@@ -54,8 +44,6 @@ class Profile extends React.Component {
     }
 
     componentDidMount(){
-      //session should populate with logged in user 
-      //info once the component has mounted
       this.setState({user:this.props.user});
       if(this.props.user ){
         if(this.props.user.id){
@@ -68,13 +56,10 @@ class Profile extends React.Component {
       this.findCoordinates();
 
 
-      //  ;
-      // this.props.getUser(this.props.user.id);
       
     }
 
     componentDidUpdate(prevProps, prevState){
-      // debugger;
       if(prevProps.user !== this.props.user){
          if(this.props.user.id){
             this.props.getUpdatedUser(this.props.user.id);
@@ -83,44 +68,11 @@ class Profile extends React.Component {
          }   
       }
       
-      // if(prevProps.user !== this.props.user){
-      //    this.props.getUpdatedUser(this.props.user._id);
-      // }
     }
-
-
-    // componentWillUpdate(nextProps, nextState){
-    //   // if (nextState.updated ==="true"  && this.state.user !== nextState.user ) {
-    //   //   this.props.getUser();
-  
-    //   if (!nextState.user === this.state.user){
-    //     this.props.getUser(nextProps.user.id);
-    //     this.props.updateProfileAct(nextProps.user.id, nextProps.user);
-    //     // this.props.updatedUser(this.props.user.id);
-    //   }
-    //   if (!nextState.updatedUser === this.state.updatedUser){
-    //     this.props.getUpdatedUser(nextProps.user.id);
-    //   }
-    // }
   
     componentWillReceiveProps(nextProps){
       this.setState({user:nextProps.user});
     }
-
-    // componentDidUpdate(prevProps){
-    //   if(this.props.user2 !== prevProps.user2){
-    //     this.getUser(this.props.user.id)
-    //   }
-    //    ;
-    // }
-
-    // componentWillReceiveProps(nextProps){
-    //    ;
-    //   // this.setState({user:nextProps.user});
-    //   this.setState({user:nextProps.user});
-    //    ;
-    //   this.props.login({email:nextProps.user.email, password:nextProps.user.password} );
-    // }
 
     clear() {
       $("input[type=radio]:checked").prop("checked", false);
@@ -195,16 +147,10 @@ class Profile extends React.Component {
       filters.location_zip_code = this.props.updatedUser.zipcode;
       filters.wifi = this.props.updatedUser.free_wifi
 
-
-
-
-      //Mapping state to search params
       filters.wifi ? filters.wifi = "yes" : filters.wifi = "no";
       filters.noise_level ? filters.noise_level = "average" : filters.noise_level = "loud";
       filters.credit_card ? filters.credit_card = "yes" : filters.credit_card = "no";
       filters.location_zip_code = JSON.parse(filters.location_zip_code);
-
-      // debugger
       
       this.props.fetchCafeByFilters(filters)
       this.props.getFilters(filters);
@@ -212,17 +158,6 @@ class Profile extends React.Component {
 
 
     }
-
-    // openUpdate(){
-    //     document.getElementById("halfProfile2").style.width = "300px";
-
-    // }
-
-    // closeUpdate(){
-    //   document.getElementById("halfProfile2").style.width = "0px";
-      
-    // }
-
 
     render() {
       let username;
@@ -477,7 +412,6 @@ class Profile extends React.Component {
                 className="favorite-cafe-profiles"
               >
                 Favorite Cafes
-                {/* <Link to="/favorites" className="favorite-cafes"> Favorite Cafes</Link> */}
               </button>
             </div>
           </div>

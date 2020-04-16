@@ -20,9 +20,6 @@ class SessionForm extends React.Component {
         this.update = this.update.bind(this);
         this.signup = this.signup.bind(this);
         this.login =this.login.bind(this);
-        // this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
-        // this.handleSubmitSignup = this.handleSubmitSignup.bind(this);
-        // this.checkErrors = this.checkErrors.bind(this);
     }
     
     componentWillUpdate(nextProps, nextState){
@@ -33,15 +30,12 @@ class SessionForm extends React.Component {
         handle: this.state.handle,
         zipcode: this.state.zipcode
     };
-    //checking if user registered successfully, then log them in
     if(nextProps.signedIn === true){
-        //  ;
         console.log("SUCCESS");
         this.props.logInNewUser(user)
             .then(this.props.history.push("/"));
    
     }else if(nextProps.isAuthenticated ===true){
-      //  ;
       this.props.history.push("/");
     }
     
@@ -55,15 +49,12 @@ class SessionForm extends React.Component {
             handle: this.state.handle,
             zipcode: this.state.zipcode
         };
-        //checking if user registered successfully, then log them in
         if(nextProps.signedIn === true){
-            //  ;
             console.log("SUCCESS");
             this.props.logInNewUser(user)
                 .then(this.props.history.push("user"));
        
         }else if(nextProps.isAuthenticated ===true){
-          //  ;
           this.props.history.push("/user");
         }
         this.setState({errors: nextProps.errors});
@@ -85,35 +76,6 @@ class SessionForm extends React.Component {
         }; 
         this.props.processForm(user);
     }
-
-    // checkErrors(){
-    //   if(this.props.errors.length > 0){      
-    //     console.log("login errors, like no user with that email");
-    //   }else if(this.props.errors.length === 0 ){
-    //     this.props.history.push('user');
-    //   }
-    // }
-
-    // handleSubmitSignup(e){
-    //     e.preventDefault();
-    //     let user = {
-    //         email: this.state.email,
-    //         handle: this.state.handle,
-    //         password: this.state.password,
-    //         password2: this.state.password2,
-    //         zipcode: this.state.zipcode
-    //     };
-    //     this.props.processForm(user);
-    // }
-
-    // handleSubmitLogin(e){
-    //     e.preventDefault();
-    //     let user = {
-    //         email: this.state.email,
-    //         password: this.state.password
-    //     };
-    //     this.props.processForm(user);   
-    // }
 
     update(field){
         return e => this.setState({

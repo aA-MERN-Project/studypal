@@ -15,15 +15,11 @@
 
 .time-modal-red {
     color: red;
-    // margin-top: -8px;
     font-family: "Open Sans";
     font-size: 16px;
     padding-bottom: 7px;
-    // position: relative;
-    // left: 25px;
 }
 .carousel-modal {
-    // top: -20px;
     flex-flow: column nowrap;
     max-height: 700px;
     justify-content: space-around;
@@ -34,7 +30,6 @@
     background-color: white;
     border: 2px solid #EBEBEB;
     box-shadow: 0 0 10px #EBEBEB;
-    // overflow-y: scroll;
     border-radius: 5px;
 }
 
@@ -81,29 +76,19 @@
     font-family: "Montserrat";
     font-size: 30px;
     color: rgb(247, 96, 42);
-    // color: black;
-    // display: flex;
-    // justify-content: center
+     color: black;
 }
 
 .modal-horizontal-line {
     position: relative;
     bottom: 30px;
     left: 32px;
-    // width: 100%;
     width: 769px;
     height: .01px;
-    // margin-left: auto;
-    // margin-right: auto;
     border: 1px solid black;
-    // border: 1px solid rgb(128, 159, 255);
-    // border: 1px solid rgba(255, 127, 80, 0.8);
-    // margin-bottom:15px;
-    // padding: 50px;
 }
 
 .modal-distance-duration {
-    // color: rgba(51, 51, 51, 0.5);
     color: black;
     font-family: "Open Sans";
     font-size: 15px;
@@ -115,14 +100,10 @@
 }
 
 .modal-left {
-    // padding-top: 5.4%;
-    // padding-left: 5%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    // justify-content: flex-end;
     padding-left: 30px;
-    // height: 200px
 }
 
 .modal-right {
@@ -138,25 +119,17 @@
 .rolled-favorited {
     font-family: "Open Sans";
     font-size: 15px;
-    // position: relative;
-    // left: 20px;
-    // top: 27px;
     padding-top: 10px;
     padding-right: 20px;
 
 }
 
 .vertical-line-modal {
-    // max-width: 190px;
     width: 110px;
     height: .1px;
     border: 1px solid black;
-    // border: 1px solid rgb(247, 96, 42);
     transform: rotate(90deg);
     margin-top: 50px;
-    // position: relative;
-    // left: 3%;
-    // top: 75px
     position: relative;
     right: 35px;
 }
@@ -170,26 +143,17 @@
 }
 
 .time-modal {
-    // color: rgba(51, 51, 51, 0.5);
     color: black;
-    // margin-top: -8px;
     font-family: "Open Sans";
     font-size: 15px;
     padding-bottom: 7px;
-    // position: relative;
-    // left: 25px;
-    // width: 150px;
 }
 
 .modal-address {
     color: black;
-    // color: rgba(51, 51, 51, 0.5);
     font-family: "Open Sans";
     font-size: 15px;
     padding-bottom: 7px;
-    // position: relative;
-    // left: 25px;
-    // width: 150px;
 }
 
 .noun-espresso {
@@ -207,7 +171,6 @@
     border: .5px solid black;
     margin-bottom:15px;
     position: relative;
-    // left: 15px;
     top: 10px;
 }
 
@@ -240,4 +203,53 @@
 
 .check-yelp:hover {
     color: blue;
+}
+
+@media only screen and (max-width: 1070px) {
+
+    .carousel-modal {
+        height: 520px;
+        padding-bottom: 20px;
+        width: 600px
+    }
+
+    .carousel-container {
+        width: 800px;
+    }
+
+    .business-misc {
+        position: relative;
+        bottom: 190px;
+    }
+
+    .modal-horizontal-line {
+        width: 560px;
+        left: 20px;
+    }
+
+    .vertical-line-modal {
+        right: 10px;
+        width: 150px;
+        margin-top: 60px;
+    }
+
+    .modal-right {
+        right: 10px
+    }
+}
+
+@media only screen and (min-width: 1071px) {
+    .carousel-modal {
+        height: 600px;
+        padding-bottom: 5px;
+    }
+
+    .carousel-container {
+        width: 800px;
+    }
+
+    .business-misc {
+        position: relative;
+        bottom: 220px;
+    }
 }

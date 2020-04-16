@@ -1,21 +1,12 @@
 .errorsIndex {
-    /* // border: 1px solid red; */
     height: 100vh;
     background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
     font-family: "Open Sans";
     position:absolute;
 }
 
-// .index .errors {
-//     font-size: 40px;
-//     color: white;
 
-//     position: relative;
-//     height: 140px;
-//     left: 0vw;
-//     top: 12vh;
 
-// }
 
 .errorsContent {
     font-size: 40px;
@@ -68,8 +59,6 @@
 }
 
 
-// DON'T DELETE, this is so white space doesn't show 
-// when screen size gets bigger;
 @media only screen and (min-width: 1200px){
     .errorsIndex{
         position:relative;

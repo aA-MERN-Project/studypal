@@ -90,6 +90,7 @@
     border-radius: 5px;
     padding: 10px;
     border:1px solid rgb(151, 151, 151);
+    position:relative;
    
 }
 
@@ -112,7 +113,9 @@
 .cafe-text-info {
     display: flex;
     flex-direction: column;
-    position: relative;
+    position:relative;
+    justify-content: space-between;
+    // position:absolute;
 }
 
 .favorite-remove {
@@ -123,7 +126,8 @@
     width: 52px;
     font-size:14px;
     position:absolute;
-    padding-top:58px;
+    top:50px;
+    // border:1px solid black;
   
 }
 
