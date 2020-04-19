@@ -7,9 +7,9 @@
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    /* height: 9%; */
     width: 100%;
     background-color: #4169E1;
+    z-index: 99
 }
 
 .button {
