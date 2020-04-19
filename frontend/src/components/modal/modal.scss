@@ -156,6 +156,15 @@
     padding-bottom: 7px;
 }
 
+.yelpLk{
+    color:#4169E1;
+    text-decoration:none;
+}
+
+.yelpLk:hover{
+    text-decoration: underline;
+}
+
 .noun-espresso {
     width: 30px;
     height: 30px;
@@ -205,6 +214,8 @@
     color: blue;
 }
 
+
+
 @media only screen and (max-width: 1070px) {
 
     .carousel-modal {
@@ -253,3 +264,5 @@
         bottom: 220px;
     }
 }
+
+
