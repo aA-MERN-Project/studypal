@@ -53,6 +53,9 @@ import LoadingPage from '../cafe/loader';
 
             let favoriteList = favorites.map((cafe, index) => <FavItem key={cafe.id} cafe={cafe}/>)
 
+            let noFavMsg;
+            if(favoriteList.length===0){noFavMsg = "You currently have no favorite cafes."}
+            else{noFavMsg=""}
 
             return (
                 <div className="favorites-page">  
@@ -69,7 +72,9 @@ import LoadingPage from '../cafe/loader';
                             <div className="favorites-header">Favorites</div>
                             <button className="pick-random" onClick={() => this.cafeRoll()}>Roll A Favorite Cafe</button>
                         </div>
+                        <div className="noFavMsg">{noFavMsg}</div>
                         <div className="cafe-list">
+                        
                           <ReactCSSTransitionGroup className="cafe-list"
                             transitionName="fade"
                             transitionEnterTimeout={500}

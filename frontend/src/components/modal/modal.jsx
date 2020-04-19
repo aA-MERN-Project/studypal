@@ -114,7 +114,7 @@ function Modal(props){
               <div className="modal-address">{location.display_address[1]}</div>
               <div className="modal-address">{location.display_address[2]}</div>
               <div className="modal-address">{display_phone}</div>
-              <a href={url} target="_blank">View on Yelp</a>
+              <a href={url} className="yelpLk" target="_blank">View on Yelp</a>
             </div>
             {/* <div className="modal-mid"> */}
             <div className="vertical-line-modal"></div>
@@ -184,7 +184,7 @@ function Modal(props){
               <div className="modal-address">{location.display_address[0]}</div>
               <div className="modal-address">{location.display_address[2]}</div>
               <div className="modal-address">{display_phone}</div>
-              <a href={url} target="_blank">View on Yelp</a>
+              <a href={url} className="yelpLk" target="_blank">View on Yelp</a>
             </div>
             <div className="vertical-line-modal"></div>
             <div className="modal-right">
