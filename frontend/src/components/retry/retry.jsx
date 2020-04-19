@@ -75,7 +75,7 @@ class Retry extends React.Component {
   update(field) {
     return e =>
       this.setState({
-        [field]: JSON.parse(e.currentTarget.value)
+        [field]: e.currentTarget.value
       });
   }
 
