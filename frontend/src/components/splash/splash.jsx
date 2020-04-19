@@ -10,7 +10,7 @@ class Splash extends React.Component {
     super(props)
     this.state = {
       miles_away: null,
-      hours_opened_left: 24,
+      hours_opened_left: 0,
       wifi: false,
       credit_card: false,
       noise_level: false,
@@ -33,7 +33,7 @@ class Splash extends React.Component {
 
     this.setState({
       miles_away: null,
-      hours_opened_left: 24,
+      hours_opened_left: 0,
       wifi: false,
       credit_card: false,
       noise_level: false,

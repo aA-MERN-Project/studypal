@@ -110,4 +110,48 @@ const applyAllFilters = (cafes, filters) => {
 
 }
 
+
+const applyTimeFilter = (cafes, filters) => {
+
+
+    const hoursLeftFilter = (parseInt(filters.hours_opened_left) * 60)  // convert to military time!
+    let cafesOpen = cafes.filter(cafe => {
+
+        if (filters.hours_opened_left === 0) return true;
+
+        if (cafe.hours) {
+
+            if (cafe.hours[0]) {
+                let hours = cafe.hours[0].open;
+                let today = new Date();
+                let n = today.getDay();
+
+                let currTime = today.getHours(); // retrives 0-23
+                let todaysHours = hours[n];
+
+                if (!todaysHours) return false;
+
+                let endTime = parseInt(todaysHours.end);
+                let timeOpenLeft = (endTime * 0.60) - ((currTime * 60) + today.getMinutes());
+
+                
+                return ((0 < timeOpenLeft) && (timeOpenLeft > hoursLeftFilter));
+
+
+            }
+
+        } else {
+            return false;
+        }
+
+    })
+
+
+    return cafesOpen;
+
+
+}
+
+
+module.exports.applyTimeFilter = applyTimeFilter;
 module.exports.applyAllFilters = applyAllFilters;

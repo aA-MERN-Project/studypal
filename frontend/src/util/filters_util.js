@@ -26,3 +26,44 @@ export const calculateDistance = (cafes, filters = {}) => {
 export const applyExtraFilters = (cafes, filters) => {
     return cafes.filter(cafe => cafe.distance_away < filters.miles_away);
 }
+
+
+export const applyTimeFilter = (cafes, filters) => {
+
+
+    let hoursLeft = cafes.map(cafe => {
+        let hours = cafe.hours[0].open;
+        let today = new Date();
+        let n = today.getDay();
+        let currTime = today.getHours(); // retrives 0-23
+
+       
+        let todaysHours = hours[n];
+        let endTime;
+        if (todaysHours) {return cafe
+
+        } else{
+            let endTime = parseInt(todaysHours.end);
+        }
+  
+
+
+
+        return cafe.timeOpenLeft = (endTime * 0.60) - ((currTime * 60) + today.getMinutes());
+
+    })
+
+
+    const hoursLeftFilter = (parseInt(filters.hours_opened_left) * 60)  // convert to military time!
+
+
+    let cafesOpen = hoursLeft.filter(cafe => {
+        return cafe.timeOpenLeft > hoursLeftFilter;
+
+    })
+
+
+    return cafesOpen;
+
+
+}
