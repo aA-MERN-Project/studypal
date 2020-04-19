@@ -20,8 +20,16 @@ class FavItem extends React.Component {
         }
         this.cafeClick = this.cafeClick.bind(this);
         this.cafeRoll = this.cafeRoll.bind(this);
+        this.shortenName = this.shortenName.bind(this);
     }
 
+    shortenName(name) {
+        if (name.length > 34) {
+            return name.slice(0, 34) + "..."
+        } else {
+            return name
+        }
+    }
 
     handleFavorite(userId, cafe) {
         const favoriteData = new Object();
@@ -72,7 +80,7 @@ class FavItem extends React.Component {
                             this.cafeClick(cafe);
                         }}
                     >
-                        {cafe.name}
+                        {this.shortenName(cafe.name)}
                     </div>
                     <div
                         className="modal-cafe-address"
