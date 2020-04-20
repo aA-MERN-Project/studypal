@@ -45,7 +45,7 @@ In User Auth, user (and all resources) have a Mongoose model with schema. Routes
 Users are allowed to create accounts, securely sign up, and log in. Errors render when validations do not pass, user is not found (login), and on sign up when username already exists in database. 
 
 
-![signup](https://media.giphy.com/media/RLQQLfgpfL10NKOGCL/giphy.gif)
+![signup](/frontend/public/signup.png)
 
 
 
