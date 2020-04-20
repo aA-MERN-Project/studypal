@@ -26,7 +26,7 @@ StudyPal recommends a study spot based on all cafes located within San Francisco
 * Cafe suggestions filtered by cafe preferences and user geolocation
 * Cafe location displayed via the Google Maps API
 
-![StudyPal Cafe](/public/show.png)
+![StudyPal Cafe](https://media.giphy.com/media/RLQQLfgpfL10NKOGCL/giphy.gif)
 
 * Favorites
 * Roll Cafe
