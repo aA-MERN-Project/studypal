@@ -59,7 +59,7 @@ class CrewPage extends React.Component {
                             </div>
                         </div>
                         <div className="teamIcons">
-                            <a target="_blank" href="https://www.linkedin.com/in/wilson-ngu-67a45a151/" >
+                              <a target="_blank" href="https://www.linkedin.com/in/wilson-ngu/" >
                                  <img className="linkedIn teamIcon" src="https://studypal-dev.s3-us-west-1.amazonaws.com/LinkedInIcon.png" alt="Wilson's linkedIn"/>
                             </a>
                             &nbsp;
