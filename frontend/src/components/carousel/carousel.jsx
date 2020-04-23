@@ -1,60 +1,73 @@
 import React from 'react';
-import { useState, useCallback} from 'react';
+import { useState, useCallback, useEffect} from 'react';
 import "./styles.css";
 
 function Carousel(props) {
 
 
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(2);
+
+
+    useEffect(() => {
+
+      //0 second photo
+      //1 third photo
+      //2 1st photo  
+      //3 2nd photo
+      //4 3rd photo
+      //5 1st photo
+
+
+      const carouselSlide = document.querySelector(".carousel-slide")
+      const carouselImages = document.querySelectorAll(".img");
+      let size = carouselImages[0].clientWidth + 5;
+      carouselSlide.style.transition = "transform 0.75s ease-in-out"
+      if(counter === -1){
+        carouselSlide.style.transform = "translateX(" + ((-size * 3)) + "px)";
+        setCounter(2);
+
+
+      } else if(counter > 4){
+
+        carouselSlide.style.transform = "translateX(" + ((-size * 3)) + "px)";
+        setCounter(2);
+
+
+      } else {
+        carouselSlide.style.transform = "translateX(" + ((-size * counter)) + "px)";
+
+      }
+
+  
+
+
+    
+      
+    });
+
+
+
     function handleBefore(e){
-        e.preventDefault();
-        const carouselSlide = document.querySelector(".carousel-slide")
-        const carouselImages = document.querySelectorAll(".img");
-        let size = carouselImages[0].clientWidth + 5;
-        carouselSlide.style.transition = "transform 0.75s ease-in-out"
+
+      e.preventDefault();
+    
+      setCounter(counter - 1)
 
 
-        setCounter(counter - 1)
-        setTimeout(
-            () => {
-
-                if (counter < 0) {
-                    carouselSlide.style.transform = "translateX(" + ((-size * (photos.length - 1))) + "px)";
-                    setCounter(photos.length - 1);
-                }
-
-                else {
-                    carouselSlide.style.transform = "translateX(" + ((-size * counter)) + "px)";
-                }
-            }, 0 )
-
+      
     }
 
-    function handleNext(e){
+
+    function handleNext(e) {
+
+
         e.preventDefault();
-        const carouselSlide = document.querySelector(".carousel-slide")
-        const carouselImages = document.querySelectorAll(".img");
-        let size = carouselImages[0].clientWidth + 5;
-        carouselSlide.style.transition = "transform 0.75s ease-in-out"
-
-
         setCounter(counter + 1)
 
-
-        setTimeout(
-            () => {
-
-                if (counter >= photos.length) {
-                    carouselSlide.style.transform = "translateX(" + ((-size * (photos.length +1))) + "px)";
-                    setCounter(0);
-                }
-
-                else {
-                    carouselSlide.style.transform = "translateX(" + ((-size * counter)) + "px)";
-                }
-            }, 0)
-
+ 
     }
+
+
 
 
     let photos
@@ -77,21 +90,32 @@ function Carousel(props) {
         "https://s3-media4.fl.yelpcdn.com/bphoto/HZVDyYaghwPl2kVbvHuHjA/o.jpg"
     ]
 
+    const buttons = (
+      <div className="container">
+        <span className="dot"></span>
+        <span className="dot active"></span>
+        <span className="dot"></span>
+    </div>
+      
+    )
+
     return (
       <div className="carousel">
         <div className="carousel-container">
           <div className="pointers">
             <div className="prev-button">
-              <button onClick={handleBefore} id="prev">
+              <button onClick={(e) => handleBefore(e)} id="prev">
                 &#10094;
               </button>
             </div>
             <div className="next-button">
-              <button onClick={handleNext} id="next">
+              <button onClick={(e) => handleNext(e)} id="next">
                 &#10095;
               </button>
             </div>
           </div>
+
+          
           <div className="carousel-slide">
             {photos.map((url, i) => (
               <img key={i} className="img" src={url} />
@@ -105,7 +129,15 @@ function Carousel(props) {
               <img key={i} className="img" src={url} />
             ))}
           </div>
+
+       
+          
         </div>
+      
+ 
+
+          
+          
       </div>
     );
 

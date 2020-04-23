@@ -78,6 +78,23 @@
     opacity: .4
 }
 
+.container {
+    padding: 20px;
+}
+.dot {
+    background-color: #eee;
+    border: 1px solid #666;
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 1px #888;
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+}
+.dot.active {
+    background-color: #41ABE5;
+    box-shadow: inset 2px 0px 2px -2px #333;
+}
+
 @media only screen and (max-width: 1070px) {
 
     .carousel-slide img {

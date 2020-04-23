@@ -4,6 +4,8 @@ import { clearCafes, rerollCafes, fetchYelpCafeById, fetchCurrCafe} from "../../
 import { openModal } from "../../actions/modal_actions";
 import { updateFavorites, fetchFavorites } from "../../actions/session_actions";
 
+import { applyTimeFilter } from '../../util/filters_util';
+
 import Cafe from '../cafe/cafe';
 
 
@@ -15,6 +17,9 @@ const mapStateToProps = state => {
   let filters = state.entities.filters;
   let filteredCafes = applyExtraFilters(cafes, filters);
   let randomCafe = selectRandomCafe(Object.values(state.entities.cafes))
+
+  // let test = applyTimeFilter(cafes, filters);
+  // debugger
 
    
   return {
