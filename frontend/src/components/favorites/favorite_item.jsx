@@ -24,8 +24,8 @@ class FavItem extends React.Component {
     }
 
     shortenName(name) {
-        if (name.length > 34) {
-            return name.slice(0, 34) + "..."
+        if (name.length > 25) {
+            return name.slice(0, 25) + "..."
         } else {
             return name
         }

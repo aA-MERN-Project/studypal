@@ -85,6 +85,7 @@ via an axios call and rendered accessible to local state via props. Each radio b
 corresponding state value is not equal to a default empty string and mark it if so, thus prepopulating a user's cafe 
 preferences.
 
+![preferences](https://toasty-dev.s3-us-west-1.amazonaws.com/icons/preferences2.gif)
 
 
 ```javascript
