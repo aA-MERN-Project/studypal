@@ -314,7 +314,7 @@ class Splash extends React.Component {
 
           <div id="sf-available">
               *Currently available only in San Francisco <i class="fas fa-info-circle" aria-hidden="true" id="parent">
-                <div id="popup">Sorry, we only support San Francisco locations at this moment. Feel free to explore some great San Francisco-based study areas! ZIP codes 94111 and 94109 have some neat cafes! </div>
+                <div id="popup">Not in San Francisco? Don't worry! Just hit "Find a Cafe" without setting a distance! Check out ZIP codes 94111 or 94109 for some neat cafes!</div>
               </i>
 
           </div>
