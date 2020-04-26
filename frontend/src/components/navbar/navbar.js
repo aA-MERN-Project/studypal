@@ -207,9 +207,17 @@ class NavBar extends React.Component {
     render() {
         return(
             <div className="navbar">
-                <Link className="logo" to="/">Studypal</Link>
-                    {this.loggedOut()}
-                    {this.loggedIn()}
+                 <div className="logoCrew">
+                    <Link className="logo" to="/">
+                      <span className="logoText">Studypal&nbsp;&nbsp;</span> 
+                    </Link>
+                    
+                    <span className="coffeeImgLogo">
+                        <img className="coffeeImgLogo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"/>
+                    </span>
+                 </div>
+                {this.loggedOut()}
+                {this.loggedIn()}
             </div>
         )
 

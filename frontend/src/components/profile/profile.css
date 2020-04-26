@@ -550,5 +550,31 @@ button.update-profile-close:active{
     .find-cafe-profile-div{
         padding-top: 2%;  
     }
+
+    .updateProfileImg{
+        left:104%;
+    }
 }
 
+
+/* Extra extra large devices (large laptops and desktops, 1500px and up) */
+@media only screen and (min-width: 1500px) {
+    .updateProfileImg{
+        left:109%;
+    }
+}
+
+
+/* Extra extra large devices (large laptops and desktops, 1600px and up) */
+@media only screen and (min-width: 1600px) {
+    .updateProfileImg{
+        left:114%;
+    }
+}
+
+/* Extra extra large devices (large laptops and desktops, 1700px and up) */
+@media only screen and (min-width: 1700px) {
+    .updateProfileImg{
+        left:120%;
+    }
+}

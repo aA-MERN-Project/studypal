@@ -80,7 +80,15 @@
     font-size: 20px;
     color: white;
     padding-left: 4%;
+    padding-left: 10%;
     text-decoration: none;
+}
+
+.coffeeImgLogo{
+    height:40px;
+    box-sizing:border-box;
+    margin:0px;
+    padding:0px;
 }
 
 .button-div {
@@ -155,3 +163,13 @@ img.gitIconLink{
 
 } */
 
+.logoCrew{
+    display:inline-block;
+    width:20%;
+    margin-bottom:13px;
+
+}
+
+.coffeeImgLogo{
+    margin-bottom:-7px;
+}
