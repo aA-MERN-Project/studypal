@@ -85,10 +85,11 @@
 }
 
 .coffeeImgLogo{
-    height:40px;
+    height:35px;
     box-sizing:border-box;
     margin:0px;
     padding:0px;
+    margin-bottom: -5px;
 }
 
 .button-div {
@@ -170,6 +171,3 @@ img.gitIconLink{
 
 }
 
-.coffeeImgLogo{
-    margin-bottom:-7px;
-}
