@@ -76,6 +76,8 @@ class Profile extends React.Component {
 
     clear() {
       $("input[type=radio]:checked").prop("checked", false);
+      $("input[type=checkbox]:checked").prop("checked", false);
+
       this.setState({
         miles_away: null,
         hours_opened_left: 24,
@@ -155,8 +157,6 @@ class Profile extends React.Component {
       this.props.fetchCafeByFilters(filters)
       this.props.getFilters(filters);
       this.props.history.push(`/cafe`);
-
-
     }
 
     render() {
@@ -345,7 +345,7 @@ class Profile extends React.Component {
                             className="checkbox"
                             checked={this.state.free_wifi === "true"}
                             onChange={this.update("free_wifi")}
-                            type="radio"
+                            type="checkbox"
                             value="true"
                           />
                           Free WiFi
@@ -361,7 +361,7 @@ class Profile extends React.Component {
                             className="checkbox"
                             checked={this.state.credit_card === "true"}
                             onChange={this.update("credit_card")}
-                            type="radio"
+                            type="checkbox"
                             value="true"
                           />
                           Takes Credit Card
@@ -377,7 +377,7 @@ class Profile extends React.Component {
                             className="checkbox"
                             checked={this.state.noise_level === "true"}
                             onChange={this.update("noise_level")}
-                            type="radio"
+                            type="checkbox"
                             value="true"
                           />
                           Quiet Environment
