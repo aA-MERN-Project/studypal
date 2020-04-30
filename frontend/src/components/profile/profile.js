@@ -345,8 +345,9 @@ class Profile extends React.Component {
                             className="checkbox"
                             checked={this.state.free_wifi === "true"}
                             onChange={this.update("free_wifi")}
-                            type="checkbox"
+                            type="radio"
                             value="true"
+                            name="free_wifi"
                           />
                           Free WiFi
                         </label>
@@ -361,8 +362,9 @@ class Profile extends React.Component {
                             className="checkbox"
                             checked={this.state.credit_card === "true"}
                             onChange={this.update("credit_card")}
-                            type="checkbox"
+                            type="radio"
                             value="true"
+                            name="credit_card"
                           />
                           Takes Credit Card
                         </label>
@@ -377,8 +379,9 @@ class Profile extends React.Component {
                             className="checkbox"
                             checked={this.state.noise_level === "true"}
                             onChange={this.update("noise_level")}
-                            type="checkbox"
+                            type="radio"
                             value="true"
+                            name="noise_level"
                           />
                           Quiet Environment
                         </label>
