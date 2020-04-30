@@ -144,7 +144,7 @@ button.clear:hover {
     align-items: center;
     justify-content: space-between;
     position: relative;
-    top: 150px;
+    top: 145px;
     height: 43px;
     width: 360px;
     border-radius: 50px;
@@ -190,10 +190,10 @@ button.clear:hover {
 
 #sf-available {
     position: relative;
-    top: 140px;
+    top: 155px;
     text-align: left;
     color: gray;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 300;
 
 }
@@ -206,14 +206,14 @@ button.clear:hover {
     width: 200px;
     display: none;
     position:absolute;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 100;
-    padding: 7px;
-    padding-left:10px;
+    padding: 10px;
+    padding-left:12px;
     font-family: "Open Sans";
     bottom: 10px;
     left: 250px;
-    width: 190px;
+    width: 220px;
 }
 
 #parent:hover #popup {
@@ -228,7 +228,7 @@ button.clear:hover {
     background-color:  rgb(255, 235, 230);
     color: grey;
     border-radius: 4px;
-    width: 270px;
+    width: 320px;
     display: none;
     position:absolute;
     font-size: 14px;

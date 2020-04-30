@@ -210,11 +210,11 @@ class NavBar extends React.Component {
                  <div className="logoCrew">
                     <Link className="logo" to="/">
                       <span className="logoText">Studypal&nbsp;&nbsp;</span> 
+                      <span className="coffeeImgLogo">
+                          <img className="coffeeImgLogo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"/>
+                      </span>
                     </Link>
                     
-                    <span className="coffeeImgLogo">
-                        <img className="coffeeImgLogo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"/>
-                    </span>
                  </div>
                 {this.loggedOut()}
                 {this.loggedIn()}
