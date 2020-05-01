@@ -34,14 +34,18 @@
 @media only screen and (min-width: 1370px) {
     #map-container{
         height:525px;
+        height:630px;
         width:520px;
+        
     }
 }
 
 /* Extra extra large devices (like viewing it on a screen, 1550px and up) */
 @media only screen and (min-width: 1600px){
   #map-container{
-    height:625px;
+    height:630px;
     width:600px;
+
+
 }
 }

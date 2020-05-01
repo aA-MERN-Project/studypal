@@ -138,7 +138,7 @@ class Splash extends React.Component {
               <form className="distance">
                 <i class="fas fa-info-circle" aria-hidden="true" id="parent-2">
                   <div id="popup-2">Our distance filter is based off of your browser's geolocation. Results may vary.</div>
-                </i>  <span>Within: </span>
+                </i>  <span id="withinMsg">Within: </span>
                 <label className="filter">
                   <input
                     className="checkbox"

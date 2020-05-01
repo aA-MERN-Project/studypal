@@ -28,7 +28,7 @@ class Cafe extends React.Component {
         this.applyExtraFilters = this.applyExtraFilters.bind(this);
         this.addSelected = this.addSelected.bind(this);
         this.shortenName = this.shortenName.bind(this);
-        this.viewStatus = this.viewStatus.bind(this)
+        this.viewStatus = this.viewStatus.bind(this);
     }
 
     shortenName(name) {
@@ -59,7 +59,7 @@ class Cafe extends React.Component {
         let day = dateApi.getDay();
         if (!hours) return null
         if (!hours[0].open[day]) {
-            return "Unavailable Time For This Day"
+            return "Unavailable Time For This Day";
         } else {
             return this.formatTime(hours[0].open[day].end);
         }
@@ -124,8 +124,7 @@ class Cafe extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-       
-
+     
       }
 
     componentWillUnmount(){
@@ -146,7 +145,7 @@ class Cafe extends React.Component {
         return (
           <a
             className="yelp"
-            onClick={() => {
+            onClick={() => {   
               this.props.fetchFavorites(this.props.user.id)
                 .then(() => this.addSelected(this.props.yelpCafe.id))
                 .then(() => this.props.fetchCurrCafe(this.props.yelpCafe.id))
@@ -223,7 +222,11 @@ class Cafe extends React.Component {
         );
 
          const yelpPhoto = (
-           <img className="photo" src={this.props.yelpCafe.image_url}></img>
+           <div className="cafePhotoContainer">
+              <img className="photo" src={this.props.yelpCafe.image_url}></img>
+
+           </div>
+          //  <img className="photo" src={this.props.yelpCafe.image_url}></img>
          );
 
         return (

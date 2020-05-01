@@ -195,7 +195,10 @@
 
     .photo{
         height:406px;
-        width:510px;        
+        width:510px;  
+        object-fit:cover;    
+        object-position: 50% 50%;
+
     }
 
 }
@@ -223,6 +226,9 @@
 
     .photo {
         width: 600px;
+        object-fit:cover;
+        object-position: 50% 50%;
+
     }
 
     .new-cafe {
@@ -275,7 +281,8 @@
 
     .photo{
         height:364px;
-        width:540px;        
+        width:540px;   
+        object-fit:cover;     
     }
 
     
@@ -288,7 +295,8 @@
     }
 
     .photo{
-        height:356px;
+        height:359px;
+        object-fit:cover;
     }
 
     .map{
@@ -301,6 +309,7 @@
 @media only screen and (min-width: 1370px){
     .map{
         height:525px;
+        height:630px;
     }
 
     .cafe{
@@ -318,7 +327,20 @@
     }
 
     .photo{
-        height:72.5%;
+        // height:72.5%;
+        min-height:500px;
+        // height:auto;
+        object-position:50% 80%;
+        object-fit:cover;
+        border-radius:3px;
+    }
+
+    .cafePhotoContainer{
+        overflow:hidden;
+        min-height:470px;
+        max-height:500px;
+        border-radius:4px;
+        border-bottom: .5px solid #808080;
     }
 }
 
@@ -330,7 +352,7 @@
     
     .map{
         width:600px;
-        height:625px;
+        height:630px;
         background-color:lightblue;
         
     }
@@ -352,7 +374,12 @@
 
     .photo{
         height:90.5%;
-        margin-top:10px;
+        // margin-top:10px;
+    }
+
+    .cafePhotoContainer{
+        border-bottom: .5px solid #808080;
+
     }
     }
 
@@ -366,11 +393,18 @@
         flex-direction: column;
     }
 
+    .cafePhotoContainer{
+        min-height:410px;
+    }
+
     .photo {
-        height: 350px;
+        min-height: 410px;
         width: 508px;
         margin-bottom: .1%;
-        margin-right: 450px
+        margin-right: 450px;
+        object-fit:cover;
+        object-position: 50% 50%;
+
     }
 
     .map {

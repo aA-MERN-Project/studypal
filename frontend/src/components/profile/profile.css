@@ -11,7 +11,7 @@
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 15px;
     color: #333333;
     padding-right: 5px;
 }
@@ -86,7 +86,7 @@
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     color: #333333;
     padding-bottom: 2%
 }
@@ -99,7 +99,7 @@
     font-family: "Open Sans";
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 15px;
     color: #333333;
 }
 
@@ -111,7 +111,8 @@
     flex-direction: column;
     width: 65%;
     /* width: 100%; */
-    min-width: 827px;
+    /* min-width: 827px; */
+    min-width:965px;
     height: 40%;
     padding: 40px;
 }
@@ -120,6 +121,7 @@
     display: flex;
     justify-content: space-around;
     padding-top: 7%;
+    min-width:965px;
 }
 
 .filter-box-div{
@@ -129,7 +131,8 @@
     flex-direction: column;
     padding: 40px;
     width: 65%;
-    min-width: 827px;
+    /* min-width: 827px; */
+    min-width:965px;
     height: 40%;
     background-color: white;
 }
@@ -259,6 +262,7 @@
 
 .img-info-div {
     display: flex;
+
 }
 
 .only-profile-info {
@@ -535,6 +539,10 @@ button.update-profile-close:active{
     .find-cafe-profile-div {
         padding-top:1.7%
     }
+
+    .profile-preferences{
+        font-size:16px;
+    }
   } 
 
   /* Extra large devices (large laptops and desktops, 1370px and up) */
@@ -561,7 +569,34 @@ button.update-profile-close:active{
 @media only screen and (min-width: 1500px) {
     .updateProfileImg{
         left:109%;
+
     }
+    
+    label.filter{
+        font-size:16px;
+
+    }
+
+    .within-select{
+        font-size:16px;
+    }
+
+    .profile-preferences{
+        font-size:16px;
+    }
+
+    .filter-box-div{
+        min-width:1060px;
+    }
+
+    .profile-info{
+        /* min-width:980px; */
+        min-width:1060px;
+        
+    }
+
+
+   
 }
 
 
@@ -569,6 +604,10 @@ button.update-profile-close:active{
 @media only screen and (min-width: 1600px) {
     .updateProfileImg{
         left:114%;
+    }
+
+    .profile-preferences{
+        font-size:17px;
     }
 }
 
@@ -578,3 +617,7 @@ button.update-profile-close:active{
         left:120%;
     }
 }
+
+
+
+
