@@ -240,13 +240,22 @@ class Cafe extends React.Component {
                       {this.viewStatus(modalData)}
                     </div>
                     {openRightNow ? isOpen : isClosed}
+                    
                     <div className="address">
                       {display_address[0]}, {display_address[1]}
+                      <span><button className="yelp" id="pickAnother" onClick={this.handleClick}>Try another!</button></span>
                     </div>
 
                     <div className="shelter">
                       ** Shelter in Place May Affect Hours **
                     </div>
+                    {/* <div className="address">
+                      {display_address[0]}, {display_address[1]}
+                    </div>
+
+                    <div className="shelter">
+                      ** Shelter in Place May Affect Hours **
+                    </div> */}
                   </div>
 
                   {this.props.yelpCafe.image_url ? yelpPhoto : noPhoto}
@@ -265,10 +274,10 @@ class Cafe extends React.Component {
                 </div>
               </div>
 
-              <span className="new-cafe">
+              {/* <span className="new-cafe">
                 I'm not sold. &nbsp;
                 <span onClick={this.handleClick}>Show me another cafe!</span>
-              </span>
+              </span> */}
             </div>
 
             <Modal />

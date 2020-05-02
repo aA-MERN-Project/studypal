@@ -33,8 +33,34 @@ class Profile extends React.Component {
         this.handleRoll = this.handleRoll.bind(this);
         this.findCoordinates = this.findCoordinates.bind(this);
         this.getPosition = this.getPosition.bind(this);
+        this.creditCardCheck = this.creditCardCheck.bind(this);
+        this.wifiCheck = this.wifiCheck.bind(this);
+        this.noiseLevelCheck = this.noiseLevelCheck.bind(this);
     }
 
+    creditCardCheck(){
+      if(this.state.credit_card){
+        this.setState({credit_card:false});
+      }else{
+        this.setState({credit_card:true});
+      }
+    }
+
+    wifiCheck(){
+      if(this.state.free_wifi){
+        this.setState({free_wifi:false});
+      }else{
+        this.setState({free_wifi:true});
+      }
+    }
+
+    noiseLevelCheck(){
+      if(this.state.noise_level){
+        this.setState({noise_level:false});
+      }else{
+        this.setState({noise_level:true});
+      }
+    }
     handler(){
       this.setState({updatedProf: "true"});
     };
@@ -172,6 +198,8 @@ class Profile extends React.Component {
         email = "";
         zipcode = "";
       }
+
+      // let noiseLevel = this.state.noise_level ? "checked" : "unchecked";
 
         return (
           <div className="profile-page">
@@ -343,9 +371,9 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
-                            checked={this.state.free_wifi === "true"}
-                            onChange={this.update("free_wifi")}
-                            type="radio"
+                            checked={this.state.free_wifi === true}
+                            onChange={()=>this.wifiCheck()}
+                            type="checkbox"
                             value="true"
                             name="free_wifi"
                           />
@@ -360,9 +388,9 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
-                            checked={this.state.credit_card === "true"}
-                            onChange={this.update("credit_card")}
-                            type="radio"
+                            checked={this.state.credit_card === true}
+                            onChange={()=>this.creditCardCheck()}
+                            type="checkbox"
                             value="true"
                             name="credit_card"
                           />
@@ -377,9 +405,9 @@ class Profile extends React.Component {
                         <label className="filter">
                           <input
                             className="checkbox"
-                            checked={this.state.noise_level === "true"}
-                            onChange={this.update("noise_level")}
-                            type="radio"
+                            checked={this.state.noise_level === true}
+                            onChange={()=>this.noiseLevelCheck()}
+                            type="checkbox"
                             value="true"
                             name="noise_level"
                           />
