@@ -25,6 +25,8 @@ class Retry extends React.Component {
 
   clear() {
     $("input[type=radio]:checked").prop("checked", false);
+    $("input[type=checkbox]:checked").prop("checked", false);
+
 
     this.setState({
       miles_away: null,
@@ -117,9 +119,9 @@ class Retry extends React.Component {
             <b>Improve the results by:</b>
           </div>
           <ul id="looking-for-2">
-            <li id="firstLookForLi">Trying a different zipcode from San Francisco</li>
-            <li>Trying different search parameters</li>
-            <li>
+            <li id="firstLookForLi">Searching without a distance preference</li>
+            <li>Trying a different zipcode from San Francisco (94111, 94109, 94123</li>
+            {/* <li>
               Checking that your geolocation is{" "}
               <span
                 className="click-rec-gray"
@@ -127,14 +129,14 @@ class Retry extends React.Component {
               >
                 working
               </span>
-            </li>
+            </li> */}
           </ul>
 
           <div className="preferences">
             <div className="distance-hours">
               <form className="distance">
-                <span>Within: </span>
-                <label className="filter">
+                <span className="splash-filter-2">Within: </span>
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("miles_away")}
@@ -144,7 +146,7 @@ class Retry extends React.Component {
                   />
                   0.5 miles
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("miles_away")}
@@ -154,7 +156,7 @@ class Retry extends React.Component {
                   />
                   1 mile
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("miles_away")}
@@ -164,7 +166,7 @@ class Retry extends React.Component {
                   />
                   3 miles
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("miles_away")}
@@ -174,7 +176,7 @@ class Retry extends React.Component {
                   />
                   5 miles
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("miles_away")}
@@ -189,8 +191,8 @@ class Retry extends React.Component {
               <span className="divider">|</span>
 
               <form className="hours">
-                <span>Open for the next: </span>
-                <label className="filter">
+                <span className="splash-filter-2">Open for the next: </span>
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("hours_opened_left")}
@@ -200,7 +202,7 @@ class Retry extends React.Component {
                   />
                   1 hour
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("hours_opened_left")}
@@ -210,7 +212,7 @@ class Retry extends React.Component {
                   />
                   2 hours
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("hours_opened_left")}
@@ -220,7 +222,7 @@ class Retry extends React.Component {
                   />
                   3 hours
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("hours_opened_left")}
@@ -230,7 +232,7 @@ class Retry extends React.Component {
                   />
                   5 hours
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("hours_opened_left")}
@@ -245,11 +247,11 @@ class Retry extends React.Component {
 
             <div className="other-filters">
               <form className="wifi">
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("wifi")}
-                    type="radio"
+                    type="checkbox"
                     value="true"
                   />
                   Free WiFi
@@ -259,11 +261,11 @@ class Retry extends React.Component {
               <span className="divider">|</span>
 
               <form className="card">
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("credit_card")}
-                    type="radio"
+                    type="checkbox"
                     value="true"
                   />
                   Takes Credit Card
@@ -273,11 +275,11 @@ class Retry extends React.Component {
               <span className="divider">|</span>
 
               <form className="noise">
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("noise_level")}
-                    type="radio"
+                    type="checkbox"
                     value="true"
                   />
                   Quiet Environment
@@ -302,7 +304,7 @@ class Retry extends React.Component {
               id="zip"
               type="text"
               value={this.state.location_zip_code}
-              placeholder="Enter your zip code"
+              placeholder="Enter a ZIP code (94111)"
               onChange={this.update("location_zip_code")}
             />
             <input

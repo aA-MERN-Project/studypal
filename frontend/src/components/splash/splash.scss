@@ -1,10 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 .splashIndex {
     height: 100vh;
     background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
     font-family: "Open Sans";
     position:absolute;
-   
+}
+
+.splash-filter {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    color: #333333;
+    padding-left: 10px;
+}
+
+.splash-filter-2 {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #333333;
 }
 
 .content {
@@ -14,18 +31,18 @@
     align-items: center;
     width: 100%;
     min-width: 866px;
-    height: 350px;
-    top: 30vh;
+    height: 390px;
+    top: 23vh;
     background: #ffffff;
     color: #333333;
 }
 
 .cta {
     position: relative;
-    top: 50px;
+    top: 63px;
     text-align: center;
     font-family: "Montserrat";
-    font-size: 28px;
+    font-size: 34px;
     font-weight: 600;
 }
 
@@ -33,7 +50,7 @@
     position: relative;
     top: 90px;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -42,7 +59,7 @@
     background-color: rgba(65, 105, 225, 0.2);
     border-radius: 10px;
     position: relative;
-    top: 110px;
+    top: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -127,9 +144,9 @@ button.clear:hover {
     align-items: center;
     justify-content: space-between;
     position: relative;
-    top: 127px;
-    height: 35px;
-    width: 320px;
+    top: 145px;
+    height: 43px;
+    width: 360px;
     border-radius: 50px;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
     
@@ -142,12 +159,13 @@ button.clear:hover {
     position: relative;
     height: 85%;
     left: 12px;
-    font-size: 10px;
+    font-size: 14px;
     font-family: "Montserrat";
+    width: 230px;
 }
 
 #cafe-submit {
-    height: 35px;
+    height: 43px;
     border: none;
     width: 110px;
     background-color: #FF7F50;
@@ -166,16 +184,16 @@ button.clear:hover {
 #welcomeName{
     padding-top:25px;
     position:absolute;
-    
+    font-size: 19px;
     font-family: "Open Sans";
 }
 
 #sf-available {
     position: relative;
-    top: 140px;
+    top: 155px;
     text-align: left;
     color: gray;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 300;
 
 }
@@ -188,14 +206,14 @@ button.clear:hover {
     width: 200px;
     display: none;
     position:absolute;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 100;
-    padding: 7px;
-    padding-left:10px;
+    padding: 10px;
+    padding-left:12px;
     font-family: "Open Sans";
     bottom: 10px;
     left: 250px;
-  
+    width: 220px;
 }
 
 #parent:hover #popup {
@@ -210,7 +228,7 @@ button.clear:hover {
     background-color:  rgb(255, 235, 230);
     color: grey;
     border-radius: 4px;
-    width: 270px;
+    width: 320px;
     display: none;
     position:absolute;
     font-size: 14px;

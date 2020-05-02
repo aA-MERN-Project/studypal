@@ -29,6 +29,7 @@ class Splash extends React.Component {
 
   clear() {
     $("input[type=radio]:checked").prop("checked", false);
+    $("input[type=checkbox]:checked").prop("checked", false);
 
 
     this.setState({
@@ -83,8 +84,6 @@ class Splash extends React.Component {
   
   }
 
-
-
   handleSubmit(e) {
     e.preventDefault();
 
@@ -94,11 +93,9 @@ class Splash extends React.Component {
     state.credit_card ? state.credit_card = "yes" : state.credit_card = "no";
     state.location_zip_code = JSON.parse(state.location_zip_code);
 
-
     this.props.fetchCafeByFilters(state)
     this.props.getFilters(state)
     this.props.history.push(`/cafe`);
-  
   };
 
   update(field) {
@@ -130,16 +127,17 @@ class Splash extends React.Component {
           <div id="welcomeName">
               {welcomeMessage}
           </div>
-        <div className="cta">Discover your cafe for today.</div>
+          <div className="cta">Discover your cafe for today.</div>
 
           <div id="looking-for">What are you looking for?</div>
           <div className="preferences">
             <div className="distance-hours">
               <form className="distance">
-                <i class="fas fa-info-circle" aria-hidden="true" id="parent-2">
+                {/* <i class="fas fa-info-circle" aria-hidden="true" id="parent-2">
                   <div id="popup-2">Our distance filter is based off of your browser's geolocation. Results may vary.</div>
-                </i>  <span>Within: </span>
-                <label className="filter">
+                </i>   */}
+                <span className="splash-filter-2">Within: </span>
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("miles_away")}
@@ -149,7 +147,7 @@ class Splash extends React.Component {
                   />
                   0.5 miles
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("miles_away")}
@@ -159,7 +157,7 @@ class Splash extends React.Component {
                   />
                   1 mile
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("miles_away")}
@@ -169,7 +167,7 @@ class Splash extends React.Component {
                   />
                   3 miles
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("miles_away")}
@@ -179,7 +177,7 @@ class Splash extends React.Component {
                   />
                   5 miles
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("miles_away")}
@@ -195,8 +193,8 @@ class Splash extends React.Component {
               <span className="divider">|</span>
 
               <form className="hours">
-                <span>Open for the next: </span>
-                <label className="filter">
+                <span className="splash-filter-2">Open for the next: </span>
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("hours_opened_left")}
@@ -206,7 +204,7 @@ class Splash extends React.Component {
                   />
                   1 hour
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("hours_opened_left")}
@@ -216,7 +214,7 @@ class Splash extends React.Component {
                   />
                   2 hours
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("hours_opened_left")}
@@ -226,7 +224,7 @@ class Splash extends React.Component {
                   />
                   3 hours
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("hours_opened_left")}
@@ -236,7 +234,7 @@ class Splash extends React.Component {
                   />
                   5 hours
                 </label>
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("hours_opened_left")}
@@ -251,11 +249,11 @@ class Splash extends React.Component {
 
             <div className="other-filters">
               <form className="wifi">
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("wifi")}
-                    type="radio"
+                    type="checkbox"
                     value="true"
                   />
                   Free WiFi
@@ -265,11 +263,11 @@ class Splash extends React.Component {
               <span className="divider">|</span>
 
               <form className="card">
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("credit_card")}
-                    type="radio"
+                    type="checkbox"
                     value="true"
                   />
                   Takes Credit Card
@@ -279,11 +277,11 @@ class Splash extends React.Component {
               <span className="divider">|</span>
 
               <form className="noise">
-                <label className="filter">
+                <label className="splash-filter">
                   <input
                     className="checkbox"
                     onChange={this.update("noise_level")}
-                    type="radio"
+                    type="checkbox"
                     value="true"
                   />
                   Quiet Environment
@@ -301,7 +299,7 @@ class Splash extends React.Component {
               id="zip"
               type="text"
               value={this.state.location_zip_code}
-              placeholder="Enter your zip code"
+              placeholder="Enter a ZIP code (94111)"
               onChange={this.update("location_zip_code")}
             />
             <input
@@ -314,7 +312,7 @@ class Splash extends React.Component {
 
           <div id="sf-available">
               *Currently available only in San Francisco <i class="fas fa-info-circle" aria-hidden="true" id="parent">
-                <div id="popup">Not in San Francisco? Don't worry! Just hit "Find a Cafe" without setting a distance! Check out ZIP codes 94111 or 94109 for some neat cafes!</div>
+                <div id="popup">Not in San Francisco? Click "Find a Cafe" without setting a distance! Check out ZIP codes 94111, 94109, or 94123!</div>
               </i>
 
           </div>
