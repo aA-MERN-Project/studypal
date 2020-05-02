@@ -162,3 +162,35 @@ The update form is prepopulated with their existing data in the database. After 
 <!-- 
 #### Media queries
 This project uses media queries to make it user friendly and for a pleasing display from small laptop to big screens. Furthermore, we have made the 1) crew page and 2) cafe page also mobile and tablet friendly.  -->
+
+
+
+#### Interactive Roll and Random Cafe with Google Maps
+
+
+
+![user profile](/frontend/public/show.png)
+
+When viewing a cafe the user has the option to select the cafe, or to roll another cafe. Once the user selects the cafe they will be prompted information about the cafe such as the closing time, address, and popularity. A Google Maps is also shown to the user of the cafes location within the city.
+
+```javascript
+   //checks whether updatedUser from props is defined. If so, grabs the username, email, and 
+   //zipcode from updated user
+     
+```
+
+
+
+#### Backend Search Function
+
+Utilized Express.js to create a filtered search of cafes with parameters coming from the frontend. We created several API endpoints to faciliate the search of cafes of our database of 800+ cafes in our in-house noSQL database. From the users geolocation, we calculated the distance of each cafe from the user, and used that as one of the filters to select cafes for the user.
+
+
+![user profile](/frontend/public/show.png)
+
+
+```javascript
+   //checks whether updatedUser from props is defined. If so, grabs the username, email, and 
+   //zipcode from updated user
+     
+```

@@ -73,20 +73,63 @@ router.get("/:yelp_id", (req, res) => {
 
 router.post("/filters", (req,res) => {
     const filters = req.body;
-    const my_lat = req.body.my_lat;
-    const my_lng = req.body.my_lng;
+    let my_lat = req.body.my_lat;
+    let my_lng = req.body.my_lng;
 
-    Cafe.find({})
-        .then(cafes => {
-            let cafesArr = JSON.parse(JSON.stringify(cafes))
-            let addDist = calculateDistance(cafesArr, my_lat, my_lng)
-            let filteredCafes = applyAllFilters(addDist,filters)
+
+    // If no geolocation, and zipcode
+    if (filters.location_zip_code && !filters.my_lat) {
+
+        // Find random cafe with that zipcode, then use distance filter
+        Cafe.find({})
+          .then((cafes) => {
+   
+            let cafesArr = JSON.parse(JSON.stringify(cafes));
+
+            let midCafe = cafes.filter(
+              (cafe) => cafe.location_zip_code === filters.location_zip_code
+            )[0];
+
+
+            my_lat = midCafe.coordinates_latitude;
+            my_lng = midCafe.coordinates_longitude;
+
+
+            let addDist = calculateDistance(cafesArr, my_lat, my_lng);
+            let filteredCafes = applyAllFilters(addDist, filters);
             let timeFilteredCafes = applyTimeFilter(filteredCafes, filters);
-            // let timeFilteredCafes = applyTimeFilter(filteredCafes, filters)
             res.json(timeFilteredCafes);
+          })
+          .catch((err) =>
+            res
+              .status(404)
+              .json({ nocafesfound: "No cafes found with that zipcode" })
+          );
 
-        })
-        .catch(err => res.status(404).json({ nocafesfound: 'No cafes found with that zipcode' }));
+        
+        
+    } else {
+
+           Cafe.find({})
+             .then((cafes) => {
+               let cafesArr = JSON.parse(JSON.stringify(cafes));
+               let addDist = calculateDistance(cafesArr, my_lat, my_lng);
+               let filteredCafes = applyAllFilters(addDist, filters);
+               let timeFilteredCafes = applyTimeFilter(filteredCafes, filters);
+               // let timeFilteredCafes = applyTimeFilter(filteredCafes, filters)
+               res.json(timeFilteredCafes);
+             })
+             .catch((err) =>
+               res
+                 .status(404)
+                 .json({ nocafesfound: "No cafes found with that zipcode" })
+             );
+
+    }
+
+
+
+ 
 })
 
 

@@ -66,7 +66,7 @@ export const login = (user) => dispatch => {
      
     return SessionAPIUtil.login(user).then(res => {
         const {token} = res.data;
-        localStorage.setItem('jwtToken', token);
+        sessionStorage.setItem('jwtToken', token);
 
         SessionAPIUtil.setAuthToken(token); 
         const decoded = jwt_decode(token);
@@ -79,7 +79,7 @@ export const login = (user) => dispatch => {
 
 export const logout = () => dispatch => {
      
-    localStorage.removeItem('jwtToken');
+    sessionStorage.removeItem('jwtToken');
     SessionAPIUtil.setAuthToken(false);
     dispatch(logoutCurrentUser());
 };

@@ -12,18 +12,18 @@ import Errors from './yelpErrors/errors_container';
 import {Switch, Route} from 'react-router-dom';
 import CrewPage from './team/team_page';
 import FavoritesContainer from './favorites/favorites_container'
-import ReactDOM from "react-dom";
-
+// import ReactDOM from "react-dom";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee, faHeart,} from "@fortawesome/free-solid-svg-icons";
 library.add(faCheckSquare, faCoffee, faHeart,);
 
 
-const App = () => {
+const App = (props) => {
   return (
     <div className="app">
+      {window.beforeunload = () => props.logout()}
       <Switch>
         <Route exact path="/retry" component={RetryContainer} />
         <Route exact path="/errors" component={Errors} />

@@ -2,8 +2,23 @@
     height: 420px;
     width: 60%;
     margin-right: 2px;
+         
 }
 
+/* .carousel-slide test {
+    height: 420px;
+    width: 60%;
+    margin-right: 2px;
+} */
+
+.first {
+       -webkit-animation: moveSlideshow 30s linear infinite;
+        -moz-animation: moveSlideshow 30s linear infinite;
+        -ms-animation: moveSlideshow 30s linear infinite;
+        -o-animation: moveSlideshow 30s linear infinite;
+        animation: moveSlideshow 30s linear infinite;
+
+}
 .carousel {
     padding: 0;
     margin: 15px;
@@ -26,12 +41,17 @@
 .carousel-slide {
     position: relative;
     display: flex;
-    right: 330px;
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    
+    /* //accepted incoming change but don't know what it does */
+    right: 330px;
+
+   
 }
+
+
+
 
 .pointers {
     position: absolute;
@@ -150,3 +170,6 @@
         top: 40px
     }
 }
+
+
+
