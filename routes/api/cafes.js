@@ -78,7 +78,7 @@ router.post("/filters", (req,res) => {
 
 
     // If no geolocation, and zipcode
-    if (filters.location_zip_code && !filters.my_lat) {
+    if (filters.location_zip_code) {
 
         // Find random cafe with that zipcode, then use distance filter
         Cafe.find({})
