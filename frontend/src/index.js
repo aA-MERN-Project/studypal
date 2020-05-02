@@ -14,9 +14,9 @@ import {updateProfile, getUser} from './util/user_api_util';
 document.addEventListener("DOMContentLoaded", () => {
     let store;
 
-    if(localStorage.jwtToken){
-        setAuthToken(localStorage.jwtToken);
-        const decodedUser = jwt_decode(localStorage.jwtToken);
+    if(sessionStorage.jwtToken){
+        setAuthToken(sessionStorage.jwtToken);
+        const decodedUser = jwt_decode(sessionStorage.jwtToken);
         const preloadedState = {session: {isAuthenticated: true, user: decodedUser}};
     
         store = configureStore(preloadedState);

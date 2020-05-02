@@ -23,7 +23,7 @@ library.add(faCheckSquare, faCoffee, faHeart,);
 const App = (props) => {
   return (
     <div className="app">
-      {window.onunload = () => props.logout()}
+      {window.beforeunload = () => props.logout()}
       <Switch>
         <Route exact path="/retry" component={RetryContainer} />
         <Route exact path="/errors" component={Errors} />
