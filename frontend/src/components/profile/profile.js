@@ -17,7 +17,7 @@ class Profile extends React.Component {
           updated_user: props.updatedUser,       
           updatedProf: "false",
           user: this.props.user,        
-          miles_away: null,
+          miles_away: this.props.user.miles_away,
           hours_opened_left: this.props.user.hours_opened_left,
           free_wifi: this.props.user.free_wifi,
           credit_card: this.props.user.credit_card,
