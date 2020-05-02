@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
+#withinMsg{
+    font-size:16px;
+    margin-right:10px;
+}
+
+
 .splashIndex {
     height: 100vh;
     background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
@@ -11,9 +17,10 @@
     font-family: "Open Sans";
     font-style: normal;
     font-weight: normal;
-    font-size: 15px;
+    font-size: 16px;
     color: #333333;
     padding-left: 10px;
+    line-height:1.2;
 }
 
 .splash-filter-2 {
@@ -31,10 +38,20 @@
     align-items: center;
     width: 100%;
     min-width: 866px;
-    height: 390px;
+    height: 420px;
     top: 23vh;
     background: #ffffff;
     color: #333333;
+}
+
+.checkbox{
+    vertical-align:bottom;
+    margin-right:5px;
+    vertical-align:text-top;
+}
+
+.alignbottom2{
+    vertical-align:top;
 }
 
 .cta {
@@ -124,13 +141,13 @@
     position: relative;
     top: 14px;
     margin-bottom: 8px;
-    width: 70px;
-    padding-top: 3px;
+    width: 72px;
+    padding-top: 4px;
     padding-bottom: 4px;
     background-color: #ffffff;
     border: none;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 13.5px;
     color: rgba(65, 105, 225, 0.8);
     outline:none;
 }
@@ -161,15 +178,12 @@ button.clear:hover {
     position: relative;
     height: 85%;
     left: 12px;
-    font-size: 12.5px;
+    font-size: 13.5px;
     font-family: "Montserrat";
     width: 230px;
 }
 
-#withinMsg{
-    font-size:15px;
-    
-}
+
 
 #cafe-submit {
     height: 43px;
@@ -178,7 +192,7 @@ button.clear:hover {
     background-color: #FF7F50;
     color: #ffffff;
     border-radius: 50px;
-    font-size: 12px;
+    font-size: 13.5px;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
     outline:none;
 }
@@ -200,7 +214,7 @@ button.clear:hover {
     top: 155px;
     text-align: left;
     color: gray;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 300;
 
 }
@@ -253,7 +267,13 @@ button.clear:hover {
   color: gray;
 }
 
+/* Extra extra large devices (like viewing it on a screen, 700px and up) */
+@media only screen and (min-width: 700px){
+    .content{
+        height:430px;
+    }
 
+}   
 
 
 /* Extra extra large devices (like viewing it on a screen, 1500px and up) */
@@ -263,8 +283,12 @@ button.clear:hover {
         
     }
 
+    .filter{
+        font-size:16px;
+    }
+
     .content{
-        height:400px;
+        height:450px;
     }
 
     #welcomeName{
@@ -289,7 +313,7 @@ button.clear:hover {
 
 
     .roll-cafe{
-        margin-top:15px;
+        margin-top:5px;
     }
 
     .preferences{
@@ -301,22 +325,28 @@ button.clear:hover {
     }
 
     input.checkbox{
-        margin:5px;
+        // margin:5px;
+        vertical-align:text-top;
+        margin-right:5px;
+    }
+
+    input.checkbox.alignbottom2{
+        vertical-align:top;
     }
 
     
 
     button.clear {
-        font-size:12px;
+        font-size:13.5px;
     }
 
     input#zip{
-        font-size:13px;
+        font-size:13.5px;
     }
 
     #withinMsg{
         font-size:16px;
-        
+        margin-right:10px;   
     }
 
 }

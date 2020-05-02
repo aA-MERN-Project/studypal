@@ -254,7 +254,7 @@ class Splash extends React.Component {
               <form className="wifi">
                 <label className="splash-filter">
                   <input
-                    className="checkbox"
+                    className="checkbox alignbottom2" 
                     onChange={this.update("wifi")}
                     type="checkbox"
                     value="true"
@@ -268,7 +268,7 @@ class Splash extends React.Component {
               <form className="card">
                 <label className="splash-filter">
                   <input
-                    className="checkbox"
+                    className="checkbox alignbottom2"
                     onChange={this.update("credit_card")}
                     type="checkbox"
                     value="true"
@@ -282,7 +282,7 @@ class Splash extends React.Component {
               <form className="noise">
                 <label className="splash-filter">
                   <input
-                    className="checkbox"
+                    className="checkbox alignbottom2"
                     onChange={this.update("noise_level")}
                     type="checkbox"
                     value="true"

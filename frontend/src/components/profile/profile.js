@@ -370,7 +370,7 @@ class Profile extends React.Component {
                       <form>
                         <label className="filter">
                           <input
-                            className="checkbox"
+                            className="checkbox alignbottom2"
                             checked={this.state.free_wifi === true}
                             onChange={()=>this.wifiCheck()}
                             type="checkbox"
@@ -387,7 +387,7 @@ class Profile extends React.Component {
                       <form>
                         <label className="filter">
                           <input
-                            className="checkbox"
+                            className="checkbox alignbottom2"
                             checked={this.state.credit_card === true}
                             onChange={()=>this.creditCardCheck()}
                             type="checkbox"
@@ -404,7 +404,7 @@ class Profile extends React.Component {
                       <form>
                         <label className="filter">
                           <input
-                            className="checkbox"
+                            className="checkbox alignbottom2"
                             checked={this.state.noise_level === true}
                             onChange={()=>this.noiseLevelCheck()}
                             type="checkbox"
