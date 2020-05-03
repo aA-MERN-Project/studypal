@@ -11,7 +11,7 @@
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: normal;
-    font-size: 13px;
+    font-size: 16px;
     color: #333333;
     padding-right: 5px;
 }
@@ -86,7 +86,7 @@
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 16px;
     color: #333333;
     padding-bottom: 2%
 }
@@ -99,7 +99,7 @@
     font-family: "Open Sans";
     font-style: normal;
     font-weight: normal;
-    font-size: 12.5px;
+    font-size: 16px;
     color: #333333;
 }
 
@@ -111,7 +111,8 @@
     flex-direction: column;
     width: 65%;
     /* width: 100%; */
-    min-width: 827px;
+    /* min-width: 827px; */
+    min-width:1050px;
     height: 40%;
     padding: 40px;
 }
@@ -120,6 +121,7 @@
     display: flex;
     justify-content: space-around;
     padding-top: 7%;
+    min-width:965px;
 }
 
 .filter-box-div{
@@ -129,7 +131,8 @@
     flex-direction: column;
     padding: 40px;
     width: 65%;
-    min-width: 827px;
+    /* min-width: 827px; */
+    min-width:1050px;
     height: 40%;
     background-color: white;
 }
@@ -259,6 +262,7 @@
 
 .img-info-div {
     display: flex;
+
 }
 
 .only-profile-info {
@@ -276,13 +280,13 @@
     position: relative;
     top: 22px;
     margin-bottom: 8px;
-    width: 70px;
-    padding-top: 3px;
+    width: 77px;
+    padding-top: 4px;
     padding-bottom: 4px;
     background-color: #ffffff;
     border: rgba(65, 105, 225, 0.5) 2px solid;
     border-radius: 5px;
-    font-size: 10.5px;
+    font-size: 13px;
     color: rgba(65, 105, 225, 0.5);
     font-weight: 900;
     outline:none;
@@ -501,16 +505,20 @@ button.update-profile-close:active{
     color:white;
 }
 
+
+
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .profile-info{
         padding-top:30px;
         padding-bottom:30px;
+        min-width:800px;
     }
 
     .filter-box-div{
         padding-top:25px;
         padding-bottom:25px;
+        min-width:800px;
     }
 
     .find-cafe-profile-div {
@@ -525,26 +533,46 @@ button.update-profile-close:active{
     .profile-info{
         padding-top:30px;
         padding-bottom:30px;
+        min-width:1040px;
     }
 
     .filter-box-div{
         padding-top:25px;
         padding-bottom:25px;
+        min-width:1080px;
+        padding-left:20px;
+        padding-right:20px; 
+    }
+
+    label.filter{
+        margin-right:4px;
     }
 
     .find-cafe-profile-div {
         padding-top:1.7%
     }
+
+    .profile-preferences{
+        font-size:17px;
+    }
   } 
 
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1100px) {
+        .updateProfileImg{
+            left:115%;
+        }
+  }
   /* Extra large devices (large laptops and desktops, 1370px and up) */
   @media only screen and (min-width: 1370px) {
     .profile-info{
         padding:40px;
+        min-width:1080px;
     }
 
     .filter-box-div{
         padding: 40px;
+        
     }
 
     .find-cafe-profile-div{
@@ -552,7 +580,7 @@ button.update-profile-close:active{
     }
 
     .updateProfileImg{
-        left:104%;
+        left:115%;
     }
 }
 
@@ -560,8 +588,35 @@ button.update-profile-close:active{
 /* Extra extra large devices (large laptops and desktops, 1500px and up) */
 @media only screen and (min-width: 1500px) {
     .updateProfileImg{
-        left:109%;
+        left:115%;
+
     }
+    
+    label.filter{
+        font-size:16px;
+
+    }
+
+    .within-select{
+        font-size:16px;
+    }
+
+    .profile-preferences{
+        font-size:16px;
+    }
+
+    .filter-box-div{
+        min-width:1080px;
+    }
+
+    .profile-info{
+        /* min-width:980px; */
+        min-width:1080px;
+        
+    }
+
+
+   
 }
 
 
@@ -570,11 +625,19 @@ button.update-profile-close:active{
     .updateProfileImg{
         left:114%;
     }
+
+    .profile-preferences{
+        font-size:17px;
+    }
 }
 
 /* Extra extra large devices (large laptops and desktops, 1700px and up) */
 @media only screen and (min-width: 1700px) {
     .updateProfileImg{
-        left:120%;
+        left:125%;
     }
 }
+
+
+
+

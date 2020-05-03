@@ -133,11 +133,14 @@ class Splash extends React.Component {
           <div className="preferences">
             <div className="distance-hours">
               <form className="distance">
-                {/* <i class="fas fa-info-circle" aria-hidden="true" id="parent-2">
+                <i class="fas fa-info-circle" aria-hidden="true" id="parent-2">
                   <div id="popup-2">Our distance filter is based off of your browser's geolocation. Results may vary.</div>
-                </i>   */}
-                <span className="splash-filter-2">Within: </span>
-                <label className="splash-filter">
+                </i>  
+                <span id="withinMsg">Within: </span>
+                <label className="filter">
+                {/* </i>   */}
+                {/* <span className="splash-filter-2">Within: </span>
+                <label className="splash-filter"> */}
                   <input
                     className="checkbox"
                     onChange={this.update("miles_away")}
@@ -251,7 +254,7 @@ class Splash extends React.Component {
               <form className="wifi">
                 <label className="splash-filter">
                   <input
-                    className="checkbox"
+                    className="checkbox alignbottom2" 
                     onChange={this.update("wifi")}
                     type="checkbox"
                     value="true"
@@ -265,7 +268,7 @@ class Splash extends React.Component {
               <form className="card">
                 <label className="splash-filter">
                   <input
-                    className="checkbox"
+                    className="checkbox alignbottom2"
                     onChange={this.update("credit_card")}
                     type="checkbox"
                     value="true"
@@ -279,7 +282,7 @@ class Splash extends React.Component {
               <form className="noise">
                 <label className="splash-filter">
                   <input
-                    className="checkbox"
+                    className="checkbox alignbottom2"
                     onChange={this.update("noise_level")}
                     type="checkbox"
                     value="true"

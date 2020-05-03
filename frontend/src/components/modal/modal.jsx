@@ -9,6 +9,7 @@ import FavTransition from '../favorite_button/fav_transition';
 import { cafeIncludes } from "../../util/button_util";
 import { useState} from 'react';    
 
+
 function Modal(props){
 
     const [isClicked, setClick] = useState(false);
@@ -21,7 +22,8 @@ function Modal(props){
             favoriteData.type = "unfavorite";
             favoriteData.cafe = cafe;
             props.updateFavorites(userId, favoriteData);
-        }
+    }
+
 
     let formatTime = function (fourDigitTime) {
       let hours24 = parseInt(fourDigitTime.substring(0, 2));
