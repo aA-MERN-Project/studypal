@@ -311,6 +311,9 @@ class Splash extends React.Component {
               type="submit"
               value="Find a Cafe"
             />
+
+
+            
           </div>
 
           <div id="sf-available">
