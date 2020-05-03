@@ -179,9 +179,18 @@ class Profile extends React.Component {
       filters.noise_level ? filters.noise_level = "average" : filters.noise_level = "loud";
       filters.credit_card ? filters.credit_card = "yes" : filters.credit_card = "no";
       filters.location_zip_code = JSON.parse(filters.location_zip_code);
+
+      filters.hours_opened_left = JSON.parse(filters.hours_opened_left);
+
+      if (filters.hours_opened_left === 24) filters.hours_opened_left = 0;
+      // filters.hours_opened_left = 0;
       
       this.props.fetchCafeByFilters(filters)
       this.props.getFilters(filters);
+
+
+      debugger
+
       this.props.history.push(`/cafe`);
     }
 

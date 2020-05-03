@@ -77,6 +77,8 @@ function Modal(props){
       location,
 
      } = props.yelpCafe;
+
+
    
 
     const time = calculateTime(hours);
@@ -112,8 +114,8 @@ function Modal(props){
           <div className="business-misc-flex">
             <div className="modal-left">
               {openRightNow ? isOpen : isClosed}
-              <div className="modal-address">{location.display_address[0]}</div>
-              <div className="modal-address">{location.display_address[1]}</div>
+              <div className="modal-address"></div>
+              <div className="modal-address">{location ? location.display_address[1] : null}</div>
               {/* <div className="modal-address">{location.display_address[2]}</div> */}
               <div className="modal-address">{display_phone}</div>
               <a href={url} className="yelpLk" target="_blank">View on Yelp</a>
@@ -183,7 +185,7 @@ function Modal(props){
           <div className="business-misc-flex">
             <div className="modal-left">
               {openRightNow ? isOpen : isClosed}
-              <div className="modal-address">{location.display_address[0]}</div>
+              <div className="modal-address"></div>
               {/* <div className="modal-address">{location.display_address[2]}</div> */}
               <div className="modal-address">{display_phone}</div>
               <a href={url} className="yelpLk" target="_blank">View on Yelp</a>
@@ -217,11 +219,21 @@ function Modal(props){
       </div>
     );
 
+    const turnOnLocationModal = (
+      <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
+        <h1>Hey, you! We can't find your location.</h1>
+        <br/>
+        Try refreshing the page, if that doesn't work make sure you allow or
+        grant permissions if your browser asks for your location.
+      </div>
+    );
 
 
+    debugger
     let selectedModal = null;
     
     if(props.modal === "mapModal") selectedModal = mapModal;
+    if(props.modal === "turnOnLocationModal") selectedModal = turnOnLocationModal;
     if(props.modal === "cafeModal") selectedModal = cafeModal;
     if(props.modal === "favoriteModal") selectedModal = favoriteModal;
 

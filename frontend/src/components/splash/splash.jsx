@@ -4,6 +4,8 @@ import NavBar from '../navbar/navbar_container';
 import $ from "jquery";
 import {zipCodes} from '../../util/splash_util';
 import FavTransition from '../favorite_button/fav_transition'
+import DropdownLocation from './clickable_dropdown';
+import Modal from "../modal/modal_container";
 
 class Splash extends React.Component {
   constructor(props) {
@@ -25,6 +27,7 @@ class Splash extends React.Component {
     this.update = this.update.bind(this);
     this.isZipcode = this.isZipcode.bind(this);
     this.isGeo = this.isGeo.bind(this);
+    this.updateState = this.updateState.bind(this);
   }
 
   clear() {
@@ -42,11 +45,12 @@ class Splash extends React.Component {
   }
 
 
-  getPosition(position) {
+  getPosition(my_lat, my_lng,zipcode) {
 
     this.setState({
-      my_lat: position.coords.latitude,
-      my_lng: position.coords.longitude
+      my_lat: my_lat,
+      my_lng: my_lng,
+      location_zip_code: zipcode,
     });
 
   }
@@ -58,7 +62,7 @@ class Splash extends React.Component {
   
 
   componentDidMount() {
-    this.findCoordinates();
+    
     if(this.props.isAuthenticated===true){
       if(this.props.user.id){
         this.props.getUpdatedUser(this.props.user.id);
@@ -93,6 +97,7 @@ class Splash extends React.Component {
     state.credit_card ? state.credit_card = "yes" : state.credit_card = "no";
     state.location_zip_code = JSON.parse(state.location_zip_code);
 
+    debugger
     this.props.fetchCafeByFilters(state)
     this.props.getFilters(state)
     this.props.history.push(`/cafe`);
@@ -103,6 +108,15 @@ class Splash extends React.Component {
     return e => this.setState({
       [field]: e.currentTarget.value
     })
+  }
+
+
+  updateState(field, value){
+       return () =>
+         this.setState({
+           [field]: value,
+         });
+
   }
 
   render() {
@@ -119,14 +133,16 @@ class Splash extends React.Component {
     else{
       welcomeMessage = "";
     }
+
+
     
     return (
       <div className="splashIndex">
         <NavBar />
+        <Modal />
         <div className="content">
-          <div id="welcomeName">
-              {welcomeMessage}
-          </div>
+          <div id="welcomeName">{welcomeMessage}</div>
+
           <div className="cta">Discover your cafe for today.</div>
 
           <div id="looking-for">What are you looking for?</div>
@@ -134,12 +150,15 @@ class Splash extends React.Component {
             <div className="distance-hours">
               <form className="distance">
                 <i class="fas fa-info-circle" aria-hidden="true" id="parent-2">
-                  <div id="popup-2">Our distance filter is based off of your browser's geolocation. Results may vary.</div>
-                </i>  
+                  <div id="popup-2">
+                    Our distance filter is based off of your browser's
+                    geolocation. Results may vary.
+                  </div>
+                </i>
                 <span id="withinMsg">Within: </span>
                 <label className="filter">
-                {/* </i>   */}
-                {/* <span className="splash-filter-2">Within: </span>
+                  {/* </i>   */}
+                  {/* <span className="splash-filter-2">Within: </span>
                 <label className="splash-filter"> */}
                   <input
                     className="checkbox"
@@ -189,8 +208,7 @@ class Splash extends React.Component {
                     value="10"
                   />
                   10 miles
-                </label> 
-              
+                </label>
               </form>
 
               <span className="divider">|</span>
@@ -254,7 +272,7 @@ class Splash extends React.Component {
               <form className="wifi">
                 <label className="splash-filter">
                   <input
-                    className="checkbox alignbottom2" 
+                    className="checkbox alignbottom2"
                     onChange={this.update("wifi")}
                     type="checkbox"
                     value="true"
@@ -297,7 +315,18 @@ class Splash extends React.Component {
             </button>
           </div>
 
-          <div className="roll-cafe">
+          <DropdownLocation
+            my_lat={this.state.my_lat}
+            my_lng={this.state.my_lng}
+            updateState={this.updateState}
+            findCordinates={this.findCoordinates}
+            location_zip_code={this.state.location_zip_code}
+            handleSubmit={this.handleSubmit}
+            update={this.update}
+            getPosition={this.getPosition}
+          ></DropdownLocation>
+
+          {/* <div className="roll-cafe">
             <input
               id="zip"
               type="text"
@@ -313,18 +342,18 @@ class Splash extends React.Component {
             />
 
 
-            
-          </div>
+          </div> */}
 
           <div id="sf-available">
-              *Currently available only in San Francisco <i class="fas fa-info-circle" aria-hidden="true" id="parent">
-                <div id="popup">Not in San Francisco? Click "Find a Cafe" without setting a distance! Check out ZIP codes 94111, 94109, or 94123!</div>
-              </i>
-
+            *Currently available only in San Francisco{" "}
+            <i class="fas fa-info-circle" aria-hidden="true" id="parent">
+              <div id="popup">
+                Not in San Francisco? Click "Find a Cafe" without setting a
+                distance! Check out ZIP codes 94111, 94109, or 94123!
+              </div>
+            </i>
           </div>
-          
         </div>
-        
       </div>
     );
   }
