@@ -120,7 +120,7 @@ class Retry extends React.Component {
           </div>
           <ul id="looking-for-2">
             <li id="firstLookForLi">Searching without a distance preference</li>
-            <li>Trying a different zipcode from San Francisco (94111, 94109, 94123</li>
+            <li>Trying a different zipcode from San Francisco (94111, 94109, 94123)</li>
             {/* <li>
               Checking that your geolocation is{" "}
               <span
