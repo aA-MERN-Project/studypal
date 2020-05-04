@@ -220,11 +220,10 @@ function Modal(props){
     );
 
     const turnOnLocationModal = (
-      <div className="carousel-modal" onClick={(e) => e.stopPropagation()}>
-        <h1>Hey, you! We can't find your location.</h1>
+      <div className="location-modal" onClick={(e) => e.stopPropagation()}>
+        <h1>Hey there! We can't find your location.</h1>
         <br/>
-        Try refreshing the page, if that doesn't work make sure you allow or
-        grant permissions if your browser asks for your location.
+        Try refreshing the page, or make sure to allow the browser to access your location.
       </div>
     );
 

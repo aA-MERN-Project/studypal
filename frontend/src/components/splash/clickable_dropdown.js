@@ -152,14 +152,15 @@ class DropdownLocation extends React.Component {
 
     return (
       <div className="roll-cafe">
-        <b> Near</b>
+        {/* <b> Near</b> */}
         <input
           id="zip"
           type="text"
           value={this.props.location_zip_code}
-          placeholder="Enter a ZIP code (94111)"
+          placeholder="Choose or enter a ZIP code"
           onChange={this.props.update("location_zip_code")}
           onClick={this.showMenu}
+          autocomplete="off"
         />
         <input
           id="cafe-submit"

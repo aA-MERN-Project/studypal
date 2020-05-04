@@ -324,6 +324,7 @@ class Splash extends React.Component {
             handleSubmit={this.handleSubmit}
             update={this.update}
             getPosition={this.getPosition}
+            
           ></DropdownLocation>
 
           {/* <div className="roll-cafe">
@@ -348,8 +349,7 @@ class Splash extends React.Component {
             *Currently available only in San Francisco{" "}
             <i class="fas fa-info-circle" aria-hidden="true" id="parent">
               <div id="popup">
-                Not in San Francisco? Click "Find a Cafe" without setting a
-                distance! Check out ZIP codes 94111, 94109, or 94123!
+                Not in San Francisco? Just click on our search bar to pick a ZIP code!
               </div>
             </i>
           </div>
