@@ -7,18 +7,27 @@
 
 .dropdown {
     position:absolute;
-    width: 100%;
+    width: 97.2%;
     // height: 100%;
-    background-color: whitesmoke;
+    background-color: white;
+    border: 1px solid #4169E1;
     opacity: 0.9;
     z-index: 1;
-    top: 105%;
-    border-radius: 50px;
+    // top: 105%;
+    top: 50px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
-.currlocation {
-    width: inherit;
+.curr-location {
+    // width: inherit;
+    padding: 3px;
+}
 
+
+.curr-location:hover {
+    cursor: pointer;
+    background-color: rgba(65, 105, 225, 0.2);
 }
 
 .splashIndex {

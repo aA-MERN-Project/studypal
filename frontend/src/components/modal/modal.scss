@@ -218,6 +218,21 @@
     color: blue;
 }
 
+.location-modal {
+    background: white;
+    border: 2px solid #EBEBEB;
+    box-shadow: 0 0 10px #EBEBEB;
+    border-radius: 5px;
+    // max-height: 700px;
+    justify-content: space-around;
+    margin: auto;
+    position: relative;
+    // width: 850px;
+    align-items: center;
+    // height: 100px;
+    padding: 30px;
+    width: 552px;
+}
 
 
 @media only screen and (max-width: 1070px) {
