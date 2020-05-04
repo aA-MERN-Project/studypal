@@ -189,7 +189,6 @@ class Profile extends React.Component {
       this.props.getFilters(filters);
 
 
-      debugger
 
       this.props.history.push(`/cafe`);
     }

@@ -76,7 +76,6 @@ router.post("/filters", (req,res) => {
     let my_lat = req.body.my_lat;
     let my_lng = req.body.my_lng;
 
-    debugger
     // If no geolocation, and zipcode
     if (filters.location_zip_code) {
 
@@ -98,7 +97,6 @@ router.post("/filters", (req,res) => {
             let addDist = calculateDistance(cafesArr, my_lat, my_lng);
             let filteredCafes = applyAllFilters(addDist, filters);
             let timeFilteredCafes = applyTimeFilter(filteredCafes, filters);
-            debugger
             res.json(timeFilteredCafes);
           })
           .catch((err) =>
@@ -118,7 +116,6 @@ router.post("/filters", (req,res) => {
                let filteredCafes = applyAllFilters(addDist, filters);
                let timeFilteredCafes = applyTimeFilter(filteredCafes, filters);
                // let timeFilteredCafes = applyTimeFilter(filteredCafes, filters)
-               debugger
                res.json(timeFilteredCafes);
              })
              .catch((err) =>
