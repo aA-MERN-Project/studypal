@@ -97,7 +97,6 @@ class Splash extends React.Component {
     state.credit_card ? state.credit_card = "yes" : state.credit_card = "no";
     state.location_zip_code = JSON.parse(state.location_zip_code);
 
-    debugger
     this.props.fetchCafeByFilters(state)
     this.props.getFilters(state)
     this.props.history.push(`/cafe`);
@@ -349,7 +348,7 @@ class Splash extends React.Component {
             *Currently available only in San Francisco{" "}
             <i class="fas fa-info-circle" aria-hidden="true" id="parent">
               <div id="popup">
-                Not in San Francisco? Just click on our search bar to pick a ZIP code!
+                Not in San Francisco? Just click on our search bar to pick a ZIP code in San Francisco!
               </div>
             </i>
           </div>

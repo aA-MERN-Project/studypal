@@ -48,7 +48,6 @@ class DropdownLocation extends React.Component {
     let my_lng = position.coords.longitude;
 
 
-    debugger;
     this.codeLatLng(my_lat, my_lng)
 
   
@@ -59,10 +58,8 @@ class DropdownLocation extends React.Component {
   findCoordinates() {
   
     navigator.geolocation.getCurrentPosition(this.getPosition, (error) => {
-        debugger
         this.props.openModal("turnOnLocationModal", null);
     });
-      debugger;
   }
 
   codeLatLng(lat, lng) {

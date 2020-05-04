@@ -19,8 +19,6 @@ const mapStateToProps = state => {
   let randomCafe = selectRandomCafe(Object.values(state.entities.cafes))
 
   // let test = applyTimeFilter(cafes, filters);
-  // debugger
-
    
   return {
     user: state.session.user,

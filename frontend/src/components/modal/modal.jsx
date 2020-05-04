@@ -221,14 +221,16 @@ function Modal(props){
 
     const turnOnLocationModal = (
       <div className="location-modal" onClick={(e) => e.stopPropagation()}>
-        <h1>Hey there! We can't find your location.</h1>
+        <img className="doggo-modal" src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/study_dog.png"/>
         <br/>
-        Try refreshing the page, or make sure to allow the browser to access your location.
+        <h1>Hey there! We can't find your location.</h1>
+        <br />
+        Try refreshing the page, allowing the browser to access
+        your location, or picking a ZIP code from the search bar.
       </div>
     );
 
 
-    debugger
     let selectedModal = null;
     
     if(props.modal === "mapModal") selectedModal = mapModal;

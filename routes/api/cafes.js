@@ -117,7 +117,6 @@ router.post("/filters", (req,res) => {
                let filteredCafes = applyAllFilters(addDist, filters);
                let timeFilteredCafes = applyTimeFilter(filteredCafes, filters);
                // let timeFilteredCafes = applyTimeFilter(filteredCafes, filters)
-               debugger
                res.json(timeFilteredCafes);
              })
              .catch((err) =>
