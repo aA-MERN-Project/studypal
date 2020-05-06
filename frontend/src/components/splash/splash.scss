@@ -7,16 +7,17 @@
 
 .dropdown {
     position:absolute;
-    width: 97.2%;
+    width: 62%;
     // height: 100%;
     background-color: white;
-    border: 1px solid #4169E1;
+    border: 1px solid rgb(217, 217, 217);
     opacity: 0.9;
     z-index: 1;
     // top: 105%;
-    top: 50px;
+    top: 40px;
     border-radius: 5px;
     padding: 5px;
+    left: 17px
 }
 
 .curr-location {

@@ -2,6 +2,8 @@ import React from 'react';
 import './retry.scss';
 import NavBar from '../navbar/navbar_container';
 import $ from "jquery";
+import DropdownLocation from '../splash/clickable_dropdown';
+
 
 class Retry extends React.Component {
   constructor(props) {
@@ -21,6 +23,16 @@ class Retry extends React.Component {
     this.getPosition = this.getPosition.bind(this);
     this.clear = this.clear.bind(this);
     this.findCafe = this.findCafe.bind(this);
+    this.updateState = this.updateState.bind(this);
+    this.update = this.update.bind(this);
+  }
+
+  updateState(field, value) {
+    return () =>
+      this.setState({
+        [field]: value,
+      });
+
   }
 
   clear() {
@@ -37,12 +49,14 @@ class Retry extends React.Component {
     });
   }
 
-  getPosition(position) {
+  getPosition(my_lat, my_lng, zipcode) {
+
     this.setState({
-      my_lat: position.coords.latitude,
-      my_lng: position.coords.longitude
+      my_lat: my_lat,
+      my_lng: my_lng,
+      location_zip_code: zipcode,
     });
-    console.log(position.coords.latitude, position.coords.longitude);
+
   }
 
   findCoordinates() {
@@ -57,19 +71,16 @@ class Retry extends React.Component {
     e.preventDefault();
     
     let state = this.state;
-    state.location_zip_code ? (state.location_zip_code = parseInt(state.location_zip_code)) : state.location_zip_code = null;
+    // state.location_zip_code ? (state.location_zip_code = parseInt(state.location_zip_code)) : state.location_zip_code = null;
     state.wifi ? (state.wifi = "yes") : (state.wifi = "no");
-    state.noise_level
-      ? (state.noise_level = "average")
-      : (state.noise_level = "loud");
-    state.credit_card
-      ? (state.credit_card = "yes")
-      : (state.credit_card = "no");
+    state.noise_level ? (state.noise_level = "average") : (state.noise_level = "loud");
+    state.credit_card ? (state.credit_card = "yes") : (state.credit_card = "no");
+    state.location_zip_code = JSON.parse(state.location_zip_code);
 
     this.props.fetchCafeByFilters(state);
     this.props.getFilters(state);
     this.props.history.push(`/cafe`);
-    this.findCafe = this.findCafe.bind(this);
+    // this.findCafe = this.findCafe.bind(this);
 
 
   }
@@ -120,7 +131,7 @@ class Retry extends React.Component {
           </div>
           <ul id="looking-for-2">
             <li id="firstLookForLi">Searching without a distance preference</li>
-            <li>Trying a different zipcode from San Francisco (94111, 94109, 94123)</li>
+            <li>Trying a different zipcode from San Francisco (94106, 94109, 94123)</li>
             {/* <li>
               Checking that your geolocation is{" "}
               <span
@@ -299,7 +310,19 @@ class Retry extends React.Component {
             </span>
           </div>
 
-          <div className="roll-cafe">
+            <DropdownLocation
+              my_lat={this.state.my_lat}
+              my_lng={this.state.my_lng}
+              updateState={this.updateState}
+              findCordinates={this.findCoordinates}
+              location_zip_code={this.state.location_zip_code}
+              handleSubmit={this.handleSubmit}
+              update={this.update}
+              getPosition={this.getPosition}
+
+            ></DropdownLocation>
+          {/* <div className="roll-cafe">
+
             <input
               id="zip"
               type="text"
@@ -313,7 +336,7 @@ class Retry extends React.Component {
               type="submit"
               value="Find a Cafe"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     );
