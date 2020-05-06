@@ -223,10 +223,16 @@ function Modal(props){
       <div className="location-modal" onClick={(e) => e.stopPropagation()}>
         <img className="doggo-modal" src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/study_dog.png"/>
         <br/>
-        <h1>Hey there! We can't find your location.</h1>
-        <br />
-        Try refreshing the page, allowing the browser to access
-        your location, or picking a ZIP code from the search bar.
+        <div className="noLocatText">
+          <h1 >Hey there! We can't find your location.</h1>
+          <br />
+          <span className="noLocatText2" >
+              Try <span className="coralColor">refreshing</span> the page, <span className="coralColor">allowing</span> the browser to access
+              your location, or <span className="coralColor">picking</span> a ZIP code from the search bar.
+          </span>
+
+        </div>
+        
       </div>
     );
 
