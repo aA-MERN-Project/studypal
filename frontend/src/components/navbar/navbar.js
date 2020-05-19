@@ -11,6 +11,12 @@ class NavBar extends React.Component {
         this.handleLogout = this.handleLogout.bind(this);
     }
 
+    componentDidMount() {
+      debugger
+      this.props.getUser("5e8a59172f5ef608b05b6a0a")
+      debugger
+    }
+
     handleLogout(){
          
         this.props.logout();
@@ -29,7 +35,8 @@ class NavBar extends React.Component {
             <div className="button-div-logout">
                 {/* &emsp; */}
                 <Link 
-                  onClick={() => this.props.login({ email: "ryan@gmail.com", password: "password" })}
+                  onClick={() => this.props.login({ email: this.props.demoUser.undefined.data.email, password: "password" })}
+                  // onClick={() => console.log(this.props.demoUser.undefined.data.email)}
                   className="button" 
                   >
                   Demo User
@@ -61,7 +68,7 @@ class NavBar extends React.Component {
               <Link
                 onClick={() =>
                   this.props.login({
-                    email: "ryan@gmail.com",
+                    email: this.props.demoUser.undefined.data.email,
                     password: "password",
                   })
                 }
