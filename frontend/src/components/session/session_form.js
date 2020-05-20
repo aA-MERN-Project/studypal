@@ -152,7 +152,11 @@ class SessionForm extends React.Component {
                 </div>
               </form>
                 <div className="nevermind">
-                  Never mind, <Link to="/">just help me find a cafe</Link>
+                  Never mind, <Link to="/">just help me find a cafe</Link>.
+                  Or,&nbsp;
+                  <Link to="/" onClick={() => this.props.processForm({ email: this.props.demoUser.undefined.data.email, password: "password" })}>
+                    let's log in as a demo user.
+                  </Link>
                 </div>
             </div>
           </div>
@@ -240,7 +244,11 @@ class SessionForm extends React.Component {
                 </div>
               </form>
               <div className="nevermind">
-                Never mind, <Link to="/">just help me find a cafe.</Link>
+                Never mind, <Link to="/">just help me find a cafe.</Link>&nbsp; 
+                Or,&nbsp;
+                <Link to="/" onClick={() => this.props.logInNewUser({ email: this.props.demoUser.undefined.data.email, password: "password" })}>
+                let's log in as a demo user.
+                </Link>
               </div>
             </div>
 
