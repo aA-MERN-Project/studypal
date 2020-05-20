@@ -62,7 +62,6 @@ class Splash extends React.Component {
   
 
   componentDidMount() {
-    
     if(this.props.isAuthenticated===true){
       if(this.props.user.id){
         this.props.getUpdatedUser(this.props.user.id);

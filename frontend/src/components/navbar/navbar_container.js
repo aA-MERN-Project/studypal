@@ -6,12 +6,14 @@ import { getUser } from '../../actions/user_actions'
 const mapStateToProps = state => ({
     loggedIn: state.session.isAuthenticated,
     errors: state.errors.session,
+    demoUser: state.entities.users
+
 })
 
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout()),
     login: (email, password) => dispatch(login(email, password)),
-    getUser: () => dispatch(getUser("5e8a59172f5ef608b05b6a0a"))
+    getUser: (id) => dispatch(getUser(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

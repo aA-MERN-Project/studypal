@@ -447,7 +447,7 @@ class Profile extends React.Component {
                 src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png"
               />
               <button
-                onClick={() => this.props.history.push("/favorites")}
+                onClick={() => this.props.history.push(`/favorites`)}
                 className="favorite-cafe-profiles"
               >
                 Favorite Cafes
