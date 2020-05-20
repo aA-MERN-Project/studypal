@@ -122,8 +122,7 @@ export const startLoadingFavoriteCafes = () => ({
 
 export const fetchFavorites = userId => dispatch => {
     dispatch(startLoadingFavoriteCafes());
-
-
+    
      return UserAPIUtil.getUser(userId)
        .then((user) => {
            dispatch(receiveFavorites(user.data.favorites))

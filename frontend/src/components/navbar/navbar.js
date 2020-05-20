@@ -12,9 +12,7 @@ class NavBar extends React.Component {
     }
 
     componentDidMount() {
-      debugger
       this.props.getUser("5e8a59172f5ef608b05b6a0a")
-      debugger
     }
 
     handleLogout(){
