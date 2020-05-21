@@ -3,6 +3,7 @@ import './retry.scss';
 import NavBar from '../navbar/navbar_container';
 import $ from "jquery";
 import DropdownLocation from '../splash/clickable_dropdown';
+import FavButton from '../favorite_button/fav_button';
 
 
 class Retry extends React.Component {
@@ -16,7 +17,8 @@ class Retry extends React.Component {
       noise_level: false,
       location_zip_code: "",
       my_lat: null,
-      my_lng: null
+      my_lng: null,
+      random: "AFSAF"
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.findCoordinates = this.findCoordinates.bind(this);
@@ -51,11 +53,21 @@ class Retry extends React.Component {
 
   getPosition(my_lat, my_lng, zipcode) {
 
-    this.setState({
-      my_lat: my_lat,
-      my_lng: my_lng,
-      location_zip_code: zipcode,
-    });
+    if (zipcode){
+      this.setState({
+        my_lat: my_lat,
+        my_lng: my_lng,
+        location_zip_code: zipcode,
+      });
+
+    } else {
+      this.setState({
+        my_lat: my_lat,
+        my_lng: my_lng,
+        location_zip_code: "",
+      });
+
+    }
 
   }
 
@@ -65,6 +77,7 @@ class Retry extends React.Component {
 
   componentDidMount() {
     this.findCoordinates();
+    this.setState({location_zip_code: ""})
   }
 
   handleSubmit(e) {
@@ -75,11 +88,12 @@ class Retry extends React.Component {
     state.wifi ? (state.wifi = "yes") : (state.wifi = "no");
     state.noise_level ? (state.noise_level = "average") : (state.noise_level = "loud");
     state.credit_card ? (state.credit_card = "yes") : (state.credit_card = "no");
-    state.location_zip_code ? (state.location_zip_code = JSON.parse(state.location_zip_code)) : (state.location_zip_code = state.location_zip_code);
-    
     debugger
+    state.location_zip_code === "" ? state.location_zip_code = null : state.location_zip_code = JSON.parse(state.location_zip_code);
     
 
+
+    debugger
 
     this.props.fetchCafeByFilters(state);
     this.props.getFilters(state);
@@ -100,6 +114,7 @@ class Retry extends React.Component {
     let zipArr = zip.split('');
     setInterval(() => {
       if (zipArr.length > 0) {
+   
         this.setState({
           location_zip_code: this.state.location_zip_code + zipArr.shift()
         })
@@ -122,6 +137,8 @@ class Retry extends React.Component {
 
   }
 
+
+  debugger
 
   render() {
     return (

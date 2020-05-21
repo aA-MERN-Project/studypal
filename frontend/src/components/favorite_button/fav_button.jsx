@@ -77,6 +77,7 @@ const FavButton = (props) => {
     if (!props.favorites) return null;
     const isFavorited = cafeIncludes(props.currCafe, props.favorites);
     
+    debugger
 
     
     return (

@@ -8,8 +8,9 @@ import NavBar from "../navbar/navbar_container";
 import Modal from "../modal/modal_container";
 import {updateCafe} from "../../util/cafe_api_util"
 import {selectRandomCafe} from "../../util/filters_util"
-import FavTransition from "../favorite_button/fav_transition";
+
 import { cafeIncludes } from "../../util/button_util";
+import FavButton from '../favorite_button/fav_button';
 
 
 class Cafe extends React.Component {
@@ -19,6 +20,7 @@ class Cafe extends React.Component {
             studyPalCafe: this.props.randomCafe, 
             cafeFromYelpApi: "", 
             leftOverCafes: [],
+            setClick: false,
         }
 
         this.handleClick = this.handleClick.bind(this);
@@ -29,6 +31,12 @@ class Cafe extends React.Component {
         this.addSelected = this.addSelected.bind(this);
         this.shortenName = this.shortenName.bind(this);
         this.viewStatus = this.viewStatus.bind(this);
+        this.setClick = this.setClick.bind(this);
+    }
+
+
+    setClick(boolean){
+      this.setState({setClick:boolean})
     }
 
     shortenName(name) {
@@ -239,6 +247,7 @@ class Cafe extends React.Component {
                     <div className="title">
                       <div className="name">
                         {this.shortenName(this.props.yelpCafe.name)}
+                        <FavButton setClick={this.setClick}></FavButton>
                       </div>
                       {this.viewStatus(modalData)}
                     </div>
