@@ -1,5 +1,6 @@
 import {getCafe, getCafeByZipcode, getCafes, getCafeByFilters} from '../util/cafe_api_util';
 import {getYelpCafeById, updateCafe} from '../util/cafe_api_util'
+import { fetchFavorites} from '../actions/session_actions';
 
 
 

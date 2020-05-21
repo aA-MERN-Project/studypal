@@ -2,6 +2,12 @@
     font-size: 30px;
     color: #4169E1;
     margin-left: 10px;
+    transition: 0.75s;
+
+}
+
+.fas {
+    transition: 0.75s;
 }
 
 #heart-icons:hover {

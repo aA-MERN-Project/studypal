@@ -1,4 +1,4 @@
-import { OPEN_MODAL, CLOSE_MODAL } from "../actions/modal_actions";
+import { OPEN_MODAL, CLOSE_MODAL} from "../actions/modal_actions";
 
 const initialState = {
   modal: "",
@@ -11,7 +11,6 @@ const modalReducer = (state = initialState, action) => {
    
   switch (action.type) {
     case OPEN_MODAL:
-
       return Object.assign({}, state, {
         modal: action.modal,
         data: action.data

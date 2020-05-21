@@ -1,0 +1,56 @@
+.modal-session-backdrop {
+   position: fixed;
+   display: flex;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   background: rgba(255,255,255, 0.9);
+   z-index: 9999;
+   align-items: center;
+   overflow: hidden;
+}
+
+.login-modal{
+
+    background: white;
+    border: 1px solid black;
+    box-shadow: 0 0 10px #EBEBEB;
+    border-radius: 5px;
+    // max-height: 700px;
+    justify-content: space-around;
+    margin: auto;
+    position: relative;
+    // width: 850px;
+    align-items: center;
+    // height: 100px;
+    padding: 30px;
+    width: 552px;
+    height: 400px;
+    bottom: 20%;
+
+
+}
+
+
+.signup-modal{
+
+    background: white;
+    border: 1px solid black;
+    box-shadow: 0 0 10px #EBEBEB;
+    border-radius: 5px;
+    // max-height: 700px;
+    justify-content: space-around;
+    margin: auto;
+    position: relative;
+    // width: 850px;
+    align-items: center;
+    // height: 100px;
+    padding: 30px;
+    width: 552px;
+    height: 400px;
+    bottom: 20%;
+
+}
+ 
+ 

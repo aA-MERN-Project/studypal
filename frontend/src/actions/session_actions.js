@@ -70,8 +70,12 @@ export const login = (user) => dispatch => {
 
         SessionAPIUtil.setAuthToken(token); 
         const decoded = jwt_decode(token);
-         
+        const userId = decoded.id
         dispatch(receiveCurrentUser(decoded));
+
+        dispatch(fetchFavorites(userId))
+
+
     })
     .catch(err => {dispatch(receiveErrors(err.response.data));
     });
