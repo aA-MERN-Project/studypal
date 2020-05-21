@@ -36,6 +36,7 @@ class Profile extends React.Component {
         this.creditCardCheck = this.creditCardCheck.bind(this);
         this.wifiCheck = this.wifiCheck.bind(this);
         this.noiseLevelCheck = this.noiseLevelCheck.bind(this);
+        this.updateUserPrefsOnly = this.updateUserPrefsOnly.bind(this);
     }
 
     creditCardCheck(){
@@ -138,6 +139,19 @@ class Profile extends React.Component {
         return e => this.setState({
             [field]: e.currentTarget.value
         })
+    }
+
+    updateUserPrefsOnly(e){
+      e.preventDefault();
+      const updatedUser = this.state.user;
+      if (updatedUser) {
+        updatedUser.miles_away = this.state.miles_away;
+        updatedUser.hours_opened_left = this.state.hours_opened_left;
+        updatedUser.free_wifi = this.state.free_wifi;
+        updatedUser.credit_card = this.state.credit_card;
+        updatedUser.noise_level = this.state.noise_level;
+      }
+      this.props.updateUserPreferences(this.state.user.id, updatedUser);
     }
 
     updatePreferences(e) {
@@ -426,11 +440,18 @@ class Profile extends React.Component {
                   </div>
                   <div className="profile-clear-div">
                     <button
+                        className="profile-clear" 
+                        onClick={this.updateUserPrefsOnly}
+                     >
+                        Save All
+                    </button>&emsp;
+                    <button
                       className="profile-clear"
                       onClick={() => this.clear()}
                     >
                       Clear All
                     </button>
+                    
                   </div>
                 </div>
               </div>

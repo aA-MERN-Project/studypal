@@ -40,11 +40,9 @@ class Test extends React.Component {
         }else{
             this.props.updateProfileAct(this.props.user._id, this.state);
         }
-        
-        this.props.handler();
-
-        
-        this.props.clearErrors();
+        // this.props.handler();        
+        // this.props.clearErrors();
+        this.closeUpdate();
         this.props.handler();
     }
 

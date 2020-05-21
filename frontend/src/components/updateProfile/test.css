@@ -2,3 +2,12 @@
     border-radius: 5%;
     
 }
+
+
+.update-profile-div *{
+    margin-top:3px;
+}
+
+.update-profile-div {
+    display: flex
+}

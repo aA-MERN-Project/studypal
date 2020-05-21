@@ -306,6 +306,9 @@
     display: flex;
     justify-content: center;
 }
+#profile-save-preferences{
+    width:140px;
+}
 
 
 .editProfileButton{

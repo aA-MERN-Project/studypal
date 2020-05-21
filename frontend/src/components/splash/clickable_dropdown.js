@@ -154,7 +154,8 @@ class DropdownLocation extends React.Component {
           id="zip"
           type="text"
           value={this.props.location_zip_code}
-          placeholder="Choose or enter a ZIP code"
+          // placeholder="Choose or enter a ZIP code"
+          placeholder="Search by entering a ZIP code"
           onChange={this.props.update("location_zip_code")}
           onClick={this.showMenu}
           autocomplete="off"
