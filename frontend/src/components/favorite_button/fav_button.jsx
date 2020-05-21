@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import "./button.css"
 import { openPopUp } from '../../actions/pop_up_actions'
+import { openSessionModal} from '../../actions/modal_actions';
 
 const mSTP = state => {
     
@@ -23,6 +24,7 @@ const mDTP = dispatch => {
     return {
         updateFavorites: (id, data) => dispatch(updateFavorites(id, data)),
         fetchCurrCafe: id => dispatch(fetchCurrCafe(id)),
+        openSessionModal: (type, data) => dispatch(openSessionModal(type, data)),
         openPopUp: () => dispatch(openPopUp())
     }
 }
@@ -56,29 +58,57 @@ const FavButton = (props) => {
 
 
     const FavoriteBold = (
+        <span>
+          <i
+            class="fas fa-heart"
+            id="heart-icons"
+            onClick={() => handleDeleteFavorite(props.user.id, props.currCafe)}
+          ></i>
 
-        <i
-          class="fas fa-heart"
-          id="heart-icons"
-          onClick={() => handleDeleteFavorite(props.user.id, props.currCafe)}
-        ></i>
+        </span>
+ 
       
     );
 
+    let isUser;
+
+    if (props.user){
+      isUser = Object.keys(props.user).length > 0;
+    } else {
+      isUser = false;
+    }
+
     const FavoriteUnbold = (
-      <i
-        class="far fa-heart"
-        id="heart-icons"
-        onClick={() => handleAddFavorite(props.user.id, props.currCafe)}
-      ></i>
+
+      <span>
+        {
+          isUser ? <i
+            class="far fa-heart"
+            id="heart-icons"
+
+            onClick={() => handleAddFavorite(props.user.id, props.currCafe)}
+          ></i> :
+            <i
+              class="far fa-heart"
+              id="heart-icons"
+
+              onClick={() => props.openSessionModal('signup', null)}
+            ></i>
+          
+          
+          }
+
+
+      </span>
+  
     );
 
 
-    if (!props.favorites) return null;
-    const isFavorited = cafeIncludes(props.currCafe, props.favorites);
-    
+    let isFavorited;
+    if (props.favorites) isFavorited = cafeIncludes(props.currCafe, props.favorites);
+   
+  
     debugger
-
     
     return (
       <span>
