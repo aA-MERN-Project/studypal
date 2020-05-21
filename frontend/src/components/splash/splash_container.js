@@ -9,7 +9,7 @@ const mSTP = state => ({
     filters: state.entities.filters,
     user: state.session.user,
     updatedUser: state.session.updatedUser,
-    isAuthenticated: state.session.isAuthenticated
+    isAuthenticated: state.session.isAuthenticated,
 
 })
 
@@ -18,7 +18,6 @@ const mDTP = dispatch => {
       getUpdatedUser: (id) => dispatch(updatedUser(id)),
       fetchCafeByFilters: filters => dispatch(fetchCafeByFilters(filters)),
       getFilters: filters => dispatch(getFilters(filters)),
-      
     };
   };
 

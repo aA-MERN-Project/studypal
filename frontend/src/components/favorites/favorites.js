@@ -26,7 +26,11 @@ import LoadingPage from '../cafe/loader';
         }
 
         componentDidMount(){
-            this.props.fetchFavorites(this.props.user.id);
+            if (this.props.user.id) {
+                this.props.fetchFavorites(this.props.user.id);
+            } else {
+                this.props.fetchFavorites(this.props.user._id);
+            }
         }
 
    
