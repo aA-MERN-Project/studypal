@@ -75,7 +75,11 @@ class Retry extends React.Component {
     state.wifi ? (state.wifi = "yes") : (state.wifi = "no");
     state.noise_level ? (state.noise_level = "average") : (state.noise_level = "loud");
     state.credit_card ? (state.credit_card = "yes") : (state.credit_card = "no");
-    state.location_zip_code = JSON.parse(state.location_zip_code);
+    state.location_zip_code ? (state.location_zip_code = JSON.parse(state.location_zip_code)) : (state.location_zip_code = state.location_zip_code);
+    
+    debugger
+    
+
 
     this.props.fetchCafeByFilters(state);
     this.props.getFilters(state);
