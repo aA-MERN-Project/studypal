@@ -2,6 +2,7 @@ import * as SessionAPIUtil from "../util/session_api_util";
 import * as UserAPIUtil from "../util/user_api_util";
 import jwt_decode from 'jwt-decode';
 import { updateCafe } from "../util/cafe_api_util";
+import { closeSessionModal } from '../actions/modal_actions'
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
@@ -74,7 +75,7 @@ export const login = (user) => dispatch => {
         dispatch(receiveCurrentUser(decoded));
 
         dispatch(fetchFavorites(userId))
-
+        dispatch(closeSessionModal())
 
     })
     .catch(err => {dispatch(receiveErrors(err.response.data));

@@ -108,7 +108,6 @@ const FavButton = (props) => {
     if (props.favorites) isFavorited = cafeIncludes(props.currCafe, props.favorites);
    
   
-    debugger
     
     return (
       <span>

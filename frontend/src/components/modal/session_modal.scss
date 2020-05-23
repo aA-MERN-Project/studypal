@@ -9,6 +9,7 @@
    z-index: 9999;
    align-items: center;
    overflow: hidden;
+   justify-content: center;
 }
 
 .login-modal{
@@ -53,4 +54,91 @@
 
 }
  
- 
+ .modal-login {
+    outline: none;
+    width: 40%;
+    height: 40px;
+    background: rgba(255, 127, 80, 0.8);
+    border-radius: 50px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+    
+ }
+
+ .modal-signup-form {
+    border-radius: 5px;
+    background: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+ }
+
+ #welcome-studypal-modal {
+    font-size: 25px;
+    padding-bottom: 15px;
+ }
+
+ #welcome-back-modal {
+     font-size: 25px;
+     padding: 15px;
+     text-align: center;
+ }
+
+ #create-account-modal {
+     font-size: 17px;
+     margin-top: 0px;
+     margin-left: 0px;
+ }
+
+ #or {
+    font-size: 17px;
+     margin-top: 0px;
+     margin-left: 4px;
+     margin-right: 4px;
+ }
+
+ .signup-or-login {
+     display: flex;
+     justify-content: center;
+ }
+
+ #login-account-modal {
+    font-size: 17px;
+    margin-top: 0px;
+    margin-left: 0px;
+    color: #4169E1;
+    text-decoration: underline;
+ }
+
+ #login-account-modal:hover {
+     cursor: pointer;
+ }
+
+ #signup-page-modal {
+     border: 1px solid black;
+     border-radius: 5px;
+     display: flex;
+     justify-content: space-around;
+ }
+
+ #signup-pic {
+    // position: absolute;
+    width: 320px;
+ }
+
+ #signup-pic-div {
+     width: 0%
+ }
+
+ #signup-pic-div2 {
+     width:0%;
+ }
+
+ .login-page-modal {
+     height: 513.66px
+ }
