@@ -92,7 +92,7 @@ const FavButton = (props) => {
               class="far fa-heart"
               id="heart-icons"
 
-              onClick={() => props.openSessionModal('signup', null)}
+              onClick={() => props.openSessionModal('login', null)}
             ></i>
           
           

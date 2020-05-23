@@ -76,6 +76,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
+    padding-bottom: 20px;
  }
 
  #welcome-studypal-modal {
@@ -124,21 +126,39 @@
      border-radius: 5px;
      display: flex;
      justify-content: space-around;
+     width: 719.94px;
  }
 
  #signup-pic {
-    // position: absolute;
+    width: 320px;
+    position: relative;
+    left: 24px;
+ }
+
+ #signup-pic2 {
     width: 320px;
  }
 
  #signup-pic-div {
-     width: 0%
+     width: 100%
  }
 
  #signup-pic-div2 {
-     width:0%;
+     width: 100%;
  }
 
  .login-page-modal {
      height: 513.66px
+ }
+
+ .modal-demo-login {
+    font-size: 15px;
+    margin-top: 15px;
+    color: #4169E1;
+    text-decoration: underline;
+    margin-left: 124px;
+ }
+
+ .modal-demo-login:hover {
+     cursor: pointer;
  }

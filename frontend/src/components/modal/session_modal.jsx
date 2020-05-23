@@ -56,6 +56,8 @@ class SessionModal extends React.Component {
         this.signupModal = this.signupModal.bind(this);
         this.logClose = this.logClose.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+        this.switchFromLogin = this.switchFromLogin.bind(this);
+        this.switchFromSignup = this.switchFromSignup.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -121,12 +123,38 @@ class SessionModal extends React.Component {
         this.props.login({ email: this.props.demoUser.undefined.data.email, password: "password" })
     }
 
+    switchFromLogin() {
+        this.props.openModal("signup");
+        this.setState({
+            handle: '',
+            email: '',
+            password: '',
+            password2: '',
+            zipcode: '',
+            errors: {},
+        });
+        this.props.clearErrors();
+    }
+
+    switchFromSignup() {
+        this.props.openModal("login");
+        this.setState({
+            handle: '',
+            email: '',
+            password: '',
+            password2: '',
+            zipcode: '',
+            errors: {},
+        });
+        this.props.clearErrors();
+    }
+
     loginModal() {
         return (
             <div className="login-page-modal" id="signup-page-modal">
                 <div id="signup-pic-div2" className="left-div-signup">
                     <img
-                        id="signup-pic"
+                        id="signup-pic2"
                         src={
                             "https://studypal-dev.s3-us-west-1.amazonaws.com/new_top_left.png"
                         }
@@ -138,7 +166,7 @@ class SessionModal extends React.Component {
                         <div className="signup-or-login">
                             <div id="create-account-modal" className="create-account-login">Login</div>
                             <div id="or" className="create-account-login"> or </div>
-                            <span id="login-account-modal" className="create-account-login" onClick={() => this.props.openModal("signup")}>Sign Up</span>
+                            <span id="login-account-modal" className="create-account-login" onClick={() => this.switchFromLogin()}>Sign Up</span>
 
                         </div>
 
@@ -174,22 +202,11 @@ class SessionModal extends React.Component {
                                 Login
                             </button>
                         </div>
+                        <div className="modal-demo-login" onClick={() => { this.logClose() }}>
+                            Demo Login
+                        </div>
                     </form>
             </div>
-
-            // <div className="login-modal" onClick={(e) => e.stopPropagation()} >
-            //     Login Modal
-            //     <br/>
-            //     <Link
-            //         // className="modal-login"
-            //         onClick={() => { this.logClose() }}
-            //     >
-            //         Demo Login
-            //     </Link>
-            //     <br/>
-        
-            //     <span onClick={() => this.props.openModal("signup")}>Back to Signup Modal Button</span>
-            // </div>
         )
     }
     
@@ -202,7 +219,7 @@ class SessionModal extends React.Component {
                             <div className="signup-or-login">
                                 <div id="create-account-modal" className="create-account-login">Sign Up </div>
                                 <div id="or" className="create-account-login"> or </div>
-                                <span id="login-account-modal" className="create-account-login" onClick={() => this.props.openModal("login")}> Login</span>
+                                <span id="login-account-modal" className="create-account-login" onClick={() => this.switchFromSignup()}> Login</span>
                             </div>
                             <div className="form-input-div">
                                 <label className="form-labels">
