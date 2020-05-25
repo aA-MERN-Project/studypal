@@ -146,8 +146,8 @@ class Cafe extends React.Component {
         }
 
         if (this.props.user){
-          // debugger
           this.props.fetchFavorites(this.props.user.id);
+          
         }
 
     }

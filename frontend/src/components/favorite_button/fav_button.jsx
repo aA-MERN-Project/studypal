@@ -97,7 +97,7 @@ const FavButton = (props) => {
               class="far fa-heart"
               id="heart-icons"
 
-              onClick={() => props.openSessionModal('signup', null)}
+              onClick={() => props.openSessionModal('login', null)}
             ></i>
           
           
@@ -111,8 +111,7 @@ const FavButton = (props) => {
 
     let isFavorited;
     if (props.favorites) isFavorited = cafeIncludes(props.currCafe, props.favorites);
-   
-    
+       
     return (
       <span>
         {isFavorited ? FavoriteBold : FavoriteUnbold} 

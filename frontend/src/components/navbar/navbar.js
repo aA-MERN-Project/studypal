@@ -32,14 +32,14 @@ class NavBar extends React.Component {
           return (
             <div className="button-div-logout">
                 {/* &emsp; */}
-                <Link 
+                {/* <Link 
                   onClick={() => this.props.login({ email: this.props.demoUser.undefined.data.email, password: "password" })}
                   // onClick={() => console.log(this.props.demoUser.undefined.data.email)}
                   className="button" 
                   >
                   Demo User
                 </Link>
-                <div className="vertical-line-navbar"></div>
+                <div className="vertical-line-navbar"></div> */}
                 <Link className="button" to="/login">
                   Log In
                 </Link>
@@ -63,7 +63,7 @@ class NavBar extends React.Component {
         ) {
           return (
             <div className="button-div">
-              <Link
+              {/* <Link
                 onClick={() =>
                   this.props.login({
                     email: this.props.demoUser.undefined.data.email,
@@ -74,7 +74,7 @@ class NavBar extends React.Component {
               >
                 Demo User
               </Link>
-              <div className="vertical-line-navbar"></div>
+              <div className="vertical-line-navbar"></div> */}
               <Link className="button" to="/login">
                 Log In
               </Link>
