@@ -39,7 +39,7 @@ const FavButton = (props) => {
         favorites.cafe = cafe;
 
         props.updateFavorites(userId, favorites).then(
-          () => props.fetchCurrCafe(cafe.id)
+          () => props.fetchCurrCafe(props.currCafe.id)
         ).then(() => props.setClick(true))
           
     };
@@ -50,9 +50,9 @@ const FavButton = (props) => {
         favorites.cafe = cafe;
 
         props.updateFavorites(userId, favorites).then(
-          () => props.fetchCurrCafe(cafe.id)
-        ).then(() => props.setClick(true))
-        props.openPopUp()
+          () => props.fetchCurrCafe(props.currCafe.id)
+        ).then(() => props.setClick(true));
+        props.openPopUp();
     }
 
 
@@ -63,6 +63,8 @@ const FavButton = (props) => {
             class="fas fa-heart"
             id="heart-icons"
             onClick={() => handleDeleteFavorite(props.user.id, props.currCafe)}
+            // onClick={() => handleDeleteFavorite(props.user.id, props.yelpCafe)}
+
           ></i>
 
         </span>
@@ -86,7 +88,10 @@ const FavButton = (props) => {
             class="far fa-heart"
             id="heart-icons"
 
+            // onClick={() => handleAddFavorite(props.user.id, props.currCafe)}
             onClick={() => handleAddFavorite(props.user.id, props.currCafe)}
+
+
           ></i> :
             <i
               class="far fa-heart"
@@ -107,8 +112,6 @@ const FavButton = (props) => {
     let isFavorited;
     if (props.favorites) isFavorited = cafeIncludes(props.currCafe, props.favorites);
    
-  
-    debugger
     
     return (
       <span>

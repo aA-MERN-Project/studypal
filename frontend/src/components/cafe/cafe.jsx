@@ -13,6 +13,7 @@ import FavTransition from '../favorite_button/fav_transition';
 import { cafeIncludes } from "../../util/button_util";
 import FavButton from '../favorite_button/fav_button';
 
+import {useState} from 'react';
 
 class Cafe extends React.Component {
     constructor(props) {
@@ -22,7 +23,10 @@ class Cafe extends React.Component {
             cafeFromYelpApi: "", 
             leftOverCafes: [],
             setClick: false,
+            isFavoriteClicked: false
         }
+
+
 
         this.handleClick = this.handleClick.bind(this);
         this.reRoll = this.reRoll.bind(this);
@@ -33,11 +37,20 @@ class Cafe extends React.Component {
         this.shortenName = this.shortenName.bind(this);
         this.viewStatus = this.viewStatus.bind(this);
         this.setClick = this.setClick.bind(this);
+        this.turnOnFavTransition = this.turnOnFavTransition.bind(this);
+    }
+
+
+    turnOnFavTransition(){
+      // debugger;
+      this.setState({isFavoriteClicked:true});
     }
 
 
     setClick(boolean){
-      this.setState({setClick:boolean})
+      // debugger;
+      this.setState({setClick:boolean, isFavoriteClicked:true});
+      
     }
 
     shortenName(name) {
@@ -119,6 +132,7 @@ class Cafe extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
+        this.setState({isFavoriteClicked:false})
         this.reRoll();
     }
 
@@ -132,14 +146,17 @@ class Cafe extends React.Component {
         }
 
         if (this.props.user){
-          debugger
-          this.props.fetchFavorites(this.props.user.id)
-          
+          // debugger
+          this.props.fetchFavorites(this.props.user.id);
         }
+
     }
 
     componentDidUpdate(prevProps, prevState) {
-     
+      if(prevProps.yelpCafe!==this.props.yelpCafe){
+        this.props.fetchCurrCafe(this.props.yelpCafe.id);
+      }  
+
       }
 
     componentWillUnmount(){
@@ -244,66 +261,134 @@ class Cafe extends React.Component {
           //  <img className="photo" src={this.props.yelpCafe.image_url}></img>
          );
 
-        return (
-          <div className="page">
-            <NavBar />
-            <div className="all">
-              <div className="left-right">
-                <div className="cafe">
-                  <div className="profile">
-                    <div className="title">
-                      <div className="name">
-                        {this.shortenName(this.props.yelpCafe.name)}
-                        <FavButton setClick={this.setClick}></FavButton>
+         let isFavorited;
+         if (this.props.favorites && this.props.yelpCafe) isFavorited = cafeIncludes(this.props.yelpCafe, this.props.favorites); 
+         
+        if(this.props.yelpCafe){
+          return (
+            <div className="page">
+              <NavBar />
+              <div className="all">
+                <div className="left-right">
+                  <div className="cafe">
+                    <div className="profile">
+                      <div className="title">
+                        <div className="name">
+                          {this.shortenName(this.props.yelpCafe.name)}
+                          <FavButton yelpCafe={this.props.yelpCafe} setClick={this.setClick}></FavButton>
+                          
+                        </div>
+                        {this.viewStatus(modalData)}
                       </div>
-                      {this.viewStatus(modalData)}
+                      {openRightNow ? isOpen : isClosed}
+                      
+                      <div className="address">
+                        {display_address[0]}, {display_address[1]}
+                        <span><button className="yelp" id="pickAnother" onClick={this.handleClick}>Try another!</button></span>
+                      </div>
+  
+                      <div className="shelter">
+                        ** Shelter in Place May Affect Hours **
+                      </div>
+  
                     </div>
-                    {openRightNow ? isOpen : isClosed}
-                    
-                    <div className="address">
-                      {display_address[0]}, {display_address[1]}
-                      <span><button className="yelp" id="pickAnother" onClick={this.handleClick}>Try another!</button></span>
+                    <div id="favoritedCafePage">
+                      <FavTransition isFavorite={isFavorited} isClicked={this.state.isFavoriteClicked} history={this.props.history} closeModal={this.props.closeModal}/>  
                     </div>
-
-                    <div className="shelter">
-                      ** Shelter in Place May Affect Hours **
-                    </div>
-                    {/* <div className="address">
-                      {display_address[0]}, {display_address[1]}
-                    </div>
-
-                    <div className="shelter">
-                      ** Shelter in Place May Affect Hours **
-                    </div> */}
+                    {this.props.yelpCafe.image_url ? yelpPhoto : noPhoto}
                   </div>
-
-                  {this.props.yelpCafe.image_url ? yelpPhoto : noPhoto}
+  
+                  <div className="map">
+                    <ShowMap
+                      address={this.props.yelpCafe.location}
+                      key={lat}
+                      lat={lat}
+                      lng={lng}
+                      my_lat={this.props.filters.my_lat}
+                      my_lng={this.props.filters.my_lng}
+                      yelp_link={this.props.yelpCafe.url}
+                    />
+                  </div>
+                 
                 </div>
-
-                <div className="map">
-                  <ShowMap
-                    address={this.props.yelpCafe.location}
-                    key={lat}
-                    lat={lat}
-                    lng={lng}
-                    my_lat={this.props.filters.my_lat}
-                    my_lng={this.props.filters.my_lng}
-                    yelp_link={this.props.yelpCafe.url}
-                  />
-                </div>
+  
+                {/* <span className="new-cafe">
+                  I'm not sold. &nbsp;
+                  <span onClick={this.handleClick}>Show me another cafe!</span>
+                </span> */}
               </div>
-
-              {/* <span className="new-cafe">
-                I'm not sold. &nbsp;
-                <span onClick={this.handleClick}>Show me another cafe!</span>
-              </span> */}
+              
+              <SessionModal/>
+              <Modal />
+             
             </div>
+          );
+        }
+        // return (
+        //   <div className="page">
+        //     <NavBar />
+        //     <div className="all">
+        //       <div className="left-right">
+        //         <div className="cafe">
+        //           <div className="profile">
+        //             <div className="title">
+        //               <div className="name">
+        //                 {this.shortenName(this.props.yelpCafe.name)}
+        //                 <FavButton yelpCafe={this.props.yelpCafe} setClick={this.setClick}></FavButton>
+                        
+        //               </div>
+        //               {this.viewStatus(modalData)}
+        //             </div>
+        //             {openRightNow ? isOpen : isClosed}
+                    
+        //             <div className="address">
+        //               {display_address[0]}, {display_address[1]}
+        //               <span><button className="yelp" id="pickAnother" onClick={this.handleClick}>Try another!</button></span>
+        //             </div>
+
+        //             <div className="shelter">
+        //               ** Shelter in Place May Affect Hours **
+        //             </div>
+        //             {/* <div className="address">
+        //               {display_address[0]}, {display_address[1]}
+        //             </div>
+
+        //             <div className="shelter">
+        //               ** Shelter in Place May Affect Hours **
+        //             </div> */}
+                  
+        //           </div>
+                  
+        //           {this.props.yelpCafe.image_url ? yelpPhoto : noPhoto}
+        //         </div>
+
+        //         <div className="map">
+        //           <ShowMap
+        //             address={this.props.yelpCafe.location}
+        //             key={lat}
+        //             lat={lat}
+        //             lng={lng}
+        //             my_lat={this.props.filters.my_lat}
+        //             my_lng={this.props.filters.my_lng}
+        //             yelp_link={this.props.yelpCafe.url}
+        //           />
+        //         </div>
+        //         {/* <FavTransition isFavorite={isFavorited} isClicked={isClicked} history={props.history} closeModal={props.closeModal}/> */}
+        //         <FavTransition isFavorite={isFavorited} isClicked={this.state.isFavoriteClicked} history={this.props.history} closeModal={this.props.closeModal}/>
+
+        //       </div>
+
+        //       {/* <span className="new-cafe">
+        //         I'm not sold. &nbsp;
+        //         <span onClick={this.handleClick}>Show me another cafe!</span>
+        //       </span> */}
+        //     </div>
             
-            <SessionModal/>
-            <Modal />
+        //     <SessionModal/>
+        //     <Modal />
            
-          </div>
-        );
+        //   </div>
+        // );
 
 
     }

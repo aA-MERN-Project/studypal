@@ -55,7 +55,7 @@ import LoadingPage from '../cafe/loader';
             if (!this.props.favorites) return null;
             let favorites = this.props.favorites;
 
-            let favoriteList = favorites.map((cafe, index) => <FavItem key={cafe.id} cafe={cafe}/>)
+            let favoriteList = favorites.map((cafe, index) => <FavItem key={cafe.id} cafe={cafe}/>);
 
             let noFavMsg;
             if(favoriteList.length===0){noFavMsg = "You currently have no favorite cafes."}
