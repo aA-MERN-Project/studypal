@@ -136,7 +136,6 @@ class Retry extends React.Component {
   }
 
 
-
   render() {
     return (
       <div className="index">

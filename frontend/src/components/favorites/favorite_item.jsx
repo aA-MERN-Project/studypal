@@ -24,11 +24,19 @@ class FavItem extends React.Component {
     }
 
     shortenName(name) {
+        // if(name){
+        //     if (name.length > 15) {
+        //         return name.slice(0, 15) + " ..."
+        //     } else {
+        //         return name
+        //     }
+        // }
         if (name.length > 15) {
             return name.slice(0, 15) + " ..."
         } else {
             return name
         }
+        
     }
 
     handleFavorite(userId, cafe) {
@@ -47,7 +55,6 @@ class FavItem extends React.Component {
     }
 
     cafeClick(cafe) {
-
         this.props
             .fetchFavoriteCafeById(cafe.id)
             .then(() => this.props.fetchCurrCafe(cafe.id))
@@ -60,8 +67,8 @@ class FavItem extends React.Component {
 
         this.props
             .rerollCafes(this.props.favorites)
-        this.props.getFilters({ miles_away: "fakeData" })
-        this.props.history.push("/cafe")
+        this.props.getFilters({ miles_away: "fakeData" });
+        this.props.history.push("/cafe");
     }
 
    
@@ -69,56 +76,109 @@ class FavItem extends React.Component {
 
     render(){
         let cafe = this.props.cafe;
+        if(cafe){
+            // debugger;
+            return (
+                <div id="cafe-box" key={cafe.id}>
+                    <div className="cafe-text-info-outer">
+                        <div className="cafe-text-info">
+                            <div
+                                className="modal-cafe-name"
+                                onClick={() => {
+                                    this.cafeClick(cafe);
+                                }}
+                            >
+                                
+                                {this.shortenName(cafe.name)}
+                            </div>
+                            <div
+                                className="modal-cafe-address"
+                                onClick={() => {
+                                    this.cafeClick(cafe);
+                                }}
+                            >
+                                {cafe.location_display_address_0}
+                            </div>
+                        </div>
+                        <div
+                            onClick={() =>
+                                this.handleUnfavorite(
+                                    this.props.user.id,
+                                    cafe
+                                )
+                            }
+                            className="favorite-remove">
+                            Remove
+                        </div>
+                    </div>
+                    
+                    {cafe.image_url ? (
+                        <img
+                            className="fav-cafe-img"
+                            onClick={() => {
+                                this.cafeClick(cafe);
+                            }}
+                            src={cafe.image_url}
+                        />
+                    ) : (
+                            <img
+                                className="fav-cafe-img"
+                                src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/sparephoto.png"
+                            ></img>
+                        )}
+                </div>
+                )
+        }
+        // return (
+        // <div id="cafe-box" key={cafe.id}>
+        //     <div className="cafe-text-info-outer">
+        //         <div className="cafe-text-info">
+        //             <div
+        //                 className="modal-cafe-name"
+        //                 onClick={() => {
+        //                     this.cafeClick(cafe);
+        //                 }}
+        //             >
 
-        return (
-        <div id="cafe-box" key={cafe.id}>
-            <div className="cafe-text-info-outer">
-                <div className="cafe-text-info">
-                    <div
-                        className="modal-cafe-name"
-                        onClick={() => {
-                            this.cafeClick(cafe);
-                        }}
-                    >
-                        {this.shortenName(cafe.name)}
-                    </div>
-                    <div
-                        className="modal-cafe-address"
-                        onClick={() => {
-                            this.cafeClick(cafe);
-                        }}
-                    >
-                        {cafe.location_display_address_0}
-                    </div>
-                </div>
-                <div
-                    onClick={() =>
-                        this.handleUnfavorite(
-                            this.props.user.id,
-                            cafe
-                        )
-                    }
-                    className="favorite-remove">
-                    Remove
-                </div>
-            </div>
+        //                 {this.shortenName(cafe.name)}
+        //             </div>
+        //             <div
+        //                 className="modal-cafe-address"
+        //                 onClick={() => {
+        //                     this.cafeClick(cafe);
+        //                 }}
+        //             >
+        //                 {cafe.location_display_address_0}
+        //             </div>
+        //         </div>
+        //         <div
+        //             onClick={() =>
+        //                 this.handleUnfavorite(
+        //                     this.props.user.id,
+        //                     cafe
+        //                 )
+        //             }
+        //             className="favorite-remove">
+        //             Remove
+        //         </div>
+        //     </div>
             
-            {cafe.image_url ? (
-                <img
-                    className="fav-cafe-img"
-                    onClick={() => {
-                        this.cafeClick(cafe);
-                    }}
-                    src={cafe.image_url}
-                />
-            ) : (
-                    <img
-                        className="fav-cafe-img"
-                        src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/sparephoto.png"
-                    ></img>
-                )}
-        </div>
-        )
+        //     {cafe.image_url ? (
+        //         <img
+        //             className="fav-cafe-img"
+        //             onClick={() => {
+        //                 this.cafeClick(cafe);
+        //             }}
+        //             src={cafe.image_url}
+        //         />
+        //     ) : (
+        //             <img
+        //                 className="fav-cafe-img"
+        //                 src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/sparephoto.png"
+        //             ></img>
+        //         )}
+        // </div>
+        // )
 
         
 
