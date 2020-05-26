@@ -238,18 +238,7 @@ function Modal(props){
     );
 
 
-     const recommendModal = (
-       <div className="recommend-modal" onClick={(e) => e.stopPropagation()}>
-         Our search for those the parameters returned no results. 
-         <br/>
-         Would you like us to fill your results with some StudyPal favorites? (RECOMMENDED)
-         <br/>
-         Or you can go back and try a different search
-
-        
-       </div>
-     );
-
+ 
 
     let selectedModal = null;
     
@@ -257,7 +246,6 @@ function Modal(props){
     if(props.modal === "turnOnLocationModal") selectedModal = turnOnLocationModal;
     if(props.modal === "cafeModal") selectedModal = cafeModal;
     if(props.modal === "favoriteModal") selectedModal = favoriteModal;
-    if (props.modal === "recommendModal") selectedModal = recommendModal;
 
 
     return (

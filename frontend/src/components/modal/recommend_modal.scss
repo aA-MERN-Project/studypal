@@ -1,5 +1,6 @@
 .recommend-modal{
-
+    display: flex;
+    flex-direction: column;
     background: white;
     border: 1px solid black;
     box-shadow: 0 0 10px #EBEBEB;
@@ -12,7 +13,7 @@
     align-items: center;
     // height: 100px;
     padding: 30px;
-    width: 600px;
+    width: 700px;
     height: 600px;
     bottom: 20%;
 
@@ -21,16 +22,46 @@
 
 }
 
-@keyframes login-drop {
-    0% {}
-    100% { transform: translateY(200px)}
+.recommend-text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 20px;
+}
+.yes-no-box {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
 }
 
-// .recommend-modal.show {
-//     -webkit-transform: translateY(0%);
-//      -moz-transform: translateY(0%);
-//       -ms-transform: translateY(0%);
-//        -o-transform: translateY(0%);
-//           transform: translateY(0%);
+.modal-gif {
+    height:300px;
+}
 
-// }
+@keyframes login-drop {
+    0% {}
+    100% { transform: translateY(125px)}
+}
+
+
+.modal-recommend-backdrop {
+   position: fixed;
+   display: flex;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+    background: rgba(255,255,255, 0.3);
+   z-index: 9998;
+   align-items: center;
+   overflow: hidden;
+//    opacity: 0.8;
+
+
+}
+
+.yes-button {
+    font-size: 60px;
+}
+
+

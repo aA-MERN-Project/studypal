@@ -14,6 +14,10 @@ export const getYelpCafeById = id => {
 
 };
 
+export const getFavorites = (id) => {
+    return axios.get(`/api/favorites/${id}`)
+}
+
 
 export const getCafeByZipcode = zipcode => {
     return axios.get(`/api/cafes/zip_code/${zipcode}`);

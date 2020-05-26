@@ -6,7 +6,7 @@ const FavoriteSchema = new Schema({
     type: String,
     },
     favorites: {
-    type: Array,
+    type:Array,
     default: [],
   },
 });

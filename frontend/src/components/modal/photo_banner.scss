@@ -1,0 +1,34 @@
+#container {
+  width: 1000px;
+  overflow: hidden;
+  margin: 50px auto;
+  background: white;
+}
+ /*photobanner*/
+
+ .photobanner {
+   height: 233px;
+   width: 1100px;
+   margin-bottom: 80px;
+ }
+
+ ul > li {
+   display: inline-block;
+ }
+
+ li.first {
+   -webkit-animation: bannermove 8s linear infinite;
+   -moz-animation: bannermove 8s linear infinite;
+   -ms-animation: bannermove 8s linear infinite;
+   -o-animation: bannermove 8s linear infinite;
+   animation: bannermove 8s linear infinite;
+ }
+
+ @keyframes bannermove {
+   0% {
+     margin-left: 0px;
+   }
+   100% {
+     margin-left: -450px;
+   }
+ }

@@ -1,5 +1,5 @@
 import {getCafe, getCafeByZipcode, getCafes, getCafeByFilters} from '../util/cafe_api_util';
-import {getYelpCafeById, updateCafe} from '../util/cafe_api_util'
+import {getYelpCafeById, updateCafe, getFavorites} from '../util/cafe_api_util'
 import { fetchFavorites} from '../actions/session_actions';
 
 
@@ -12,7 +12,8 @@ export const REROLL_CAFES = "REROLL_CAFES";
 export const RECEIVE_YELP_CAFE = "RECEIVE_YELP_CAFE";
 export const START_LOADING_FILTERED_CAFES = "START_LOADING_FILTERED_CAFES";
 export const START_LOADING_SINGLE_CAFE = "START_LOADING_SINGLE_CAFE";
-export const RECEIVE_CURR_CAFE = "RECEIVE_CURR_CAFE"
+export const RECEIVE_CURR_CAFE = "RECEIVE_CURR_CAFE";
+export const STOP_LOADER = "STOP_LOADER";
 
 
 export const receiveCurrCafe = cafe => ({
@@ -23,6 +24,11 @@ export const receiveCurrCafe = cafe => ({
 export const rerollCafes = cafes => ({
     type: REROLL_CAFES,
     cafes,
+
+})
+
+export const recommendLoader = () => ({
+    type: STOP_LOADER,
 
 })
 
@@ -61,6 +67,19 @@ export const fetchCafes = () => dispatch => (
     .then(cafes => dispatch(receiveCafes(cafes)))
     .catch(err => console.log(err))
 );
+
+
+export const fetchRecommended = (id) => dispatch => (
+    getFavorites(id)
+        .then(fave => {
+            let cafeArr = fave.data.favorites
+
+            debugger
+            dispatch(rerollCafes(cafeArr))
+            dispatch(recommendLoader())
+        })
+        .catch(err => console.log(err))
+)
 
 
 export const fetchCafeByZipcode = zipcode => dispatch => (

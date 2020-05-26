@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import Modal from "./modal";
 import { closeModal, openModal } from "../../actions/modal_actions";
 import { updateFavorites } from "../../actions/session_actions";
-import { fetchCurrCafe } from "../../actions/cafe_actions"
+import { fetchCurrCafe, fetchRecommended } from "../../actions/cafe_actions"
 
 import { openPopUp } from '../../actions/pop_up_actions' 
 
@@ -24,7 +24,8 @@ const mapDispatchToProps = dispatch => {
     openModal: (type, data) => dispatch(openModal(type,data)),
     updateFavorites: (id, data) => dispatch(updateFavorites(id,data)),
     fetchCurrCafe: id => dispatch(fetchCurrCafe(id)),
-    openPopUp: () => dispatch(openPopUp())
+    openPopUp: () => dispatch(openPopUp()),
+    fetchRecommended: (id) => dispatch(fetchRecommended(id)),
   };
 };
 
