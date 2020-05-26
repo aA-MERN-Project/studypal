@@ -2,6 +2,7 @@ import React from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import "./modal.scss";
 import "../favorite_button/sliding.scss";
+import "./recommend_modal.scss";
 import Carousel from "../carousel/carousel";
 import Map from '../map/directions';
 import FavButton from '../favorite_button/fav_button';
@@ -237,12 +238,26 @@ function Modal(props){
     );
 
 
+     const recommendModal = (
+       <div className="recommend-modal" onClick={(e) => e.stopPropagation()}>
+         Our search for those the parameters returned no results. 
+         <br/>
+         Would you like us to fill your results with some StudyPal favorites? (RECOMMENDED)
+         <br/>
+         Or you can go back and try a different search
+
+        
+       </div>
+     );
+
+
     let selectedModal = null;
     
     if(props.modal === "mapModal") selectedModal = mapModal;
     if(props.modal === "turnOnLocationModal") selectedModal = turnOnLocationModal;
     if(props.modal === "cafeModal") selectedModal = cafeModal;
     if(props.modal === "favoriteModal") selectedModal = favoriteModal;
+    if (props.modal === "recommendModal") selectedModal = recommendModal;
 
 
     return (

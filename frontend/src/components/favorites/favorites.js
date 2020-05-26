@@ -41,6 +41,8 @@ import LoadingPage from '../cafe/loader';
               .rerollCafes(this.props.favorites)
             this.props.getFilters({miles_away:"fakeData"})
             this.props.history.push("/cafe")
+
+            debugger
             
 
         }

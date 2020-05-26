@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 
 const users = require("./routes/api/users");
 const cafes = require("./routes/api/cafes")
+const favorites = require("./routes/api/favorites");
 const path = require('path');
 
 if (process.env.NODE_ENV === "production") {
@@ -27,6 +28,8 @@ app.use(bodyParser.json());
 
 app.use("/api/users", users);
 app.use("/api/cafes", cafes);
+app.use("/api/favorites", favorites);
+
 
 
 mongoose

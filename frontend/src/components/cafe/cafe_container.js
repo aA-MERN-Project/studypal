@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import { selectRandomCafe, applyExtraFilters } from "../../util/filters_util"
-import { clearCafes, rerollCafes, fetchYelpCafeById, fetchCurrCafe} from "../../actions/cafe_actions";
+import { clearCafes, rerollCafes, fetchYelpCafeById, fetchCurrCafe, startLoadingFilteredCafes} from "../../actions/cafe_actions";
 import { openModal, closeModal, openSessionModal, closeSessionModal } from "../../actions/modal_actions";
 import { updateFavorites, fetchFavorites } from "../../actions/session_actions";
+
 
 import { applyTimeFilter } from '../../util/filters_util';
 
@@ -42,7 +43,8 @@ const mapDispatchToProps = dispatch => ({
   clearCafes: () => dispatch(clearCafes()),
   rerollCafes: cafes => dispatch(rerollCafes(cafes)),
   fetchYelpCafeById: id => dispatch(fetchYelpCafeById(id)),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  loadAgain: () => dispatch(startLoadingFilteredCafes())
 
 });
 

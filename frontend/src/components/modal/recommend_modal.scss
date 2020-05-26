@@ -1,0 +1,36 @@
+.recommend-modal{
+
+    background: white;
+    border: 1px solid black;
+    box-shadow: 0 0 10px #EBEBEB;
+    border-radius: 5px;
+    // max-height: 700px;
+    justify-content: space-around;
+    margin: auto;
+    position: relative;
+    // width: 850px;
+    align-items: center;
+    // height: 100px;
+    padding: 30px;
+    width: 600px;
+    height: 600px;
+    bottom: 20%;
+
+    animation: login-drop 0.75s ease forwards;
+
+
+}
+
+@keyframes login-drop {
+    0% {}
+    100% { transform: translateY(200px)}
+}
+
+// .recommend-modal.show {
+//     -webkit-transform: translateY(0%);
+//      -moz-transform: translateY(0%);
+//       -ms-transform: translateY(0%);
+//        -o-transform: translateY(0%);
+//           transform: translateY(0%);
+
+// }

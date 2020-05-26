@@ -38,6 +38,7 @@ class Cafe extends React.Component {
         this.viewStatus = this.viewStatus.bind(this);
         this.setClick = this.setClick.bind(this);
         this.turnOnFavTransition = this.turnOnFavTransition.bind(this);
+        this.recommendUsersCafes = this.recommendUsersCafes.bind(this);
     }
 
 
@@ -51,6 +52,13 @@ class Cafe extends React.Component {
       // debugger;
       this.setState({setClick:boolean, isFavoriteClicked:true});
       
+    }
+
+    recommendUsersCafes(){
+      this.props.loadAgain();
+      this.props.openModal('recommendModal', null)
+
+
     }
 
     shortenName(name) {
@@ -206,7 +214,12 @@ class Cafe extends React.Component {
     render() {
         const { loading } = this.props;
         if (loading) { return <LoadingPage />; }
-        if (this.props.cafes.length === 0) this.props.history.push(`/retry`)
+        // if (this.props.cafes.length === 0) this.props.history.push(`/retry`)
+
+        if (this.props.cafes.length === 0) this.recommendUsersCafes();
+
+
+
         if (Object.keys(this.props.yelpCafe).length === 0) {
           let randomCafe = selectRandomCafe(this.props.cafes);
           if (randomCafe){
@@ -237,7 +250,11 @@ class Cafe extends React.Component {
 
         const time = this.calculateTime(hours);
         const isOpen = <div className="time">Open until {time} Today</div>;
-        const isClosed = <div className="time">Currently Closed</div>;
+        const isClosed = (
+        
+            <div className="time">Currently Closed</div>
+        
+        );
         let openRightNow = false;
         if (this.props.yelpCafe.hours) openRightNow = hours[0].is_open_now;
 
