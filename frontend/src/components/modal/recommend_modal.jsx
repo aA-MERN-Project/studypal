@@ -47,7 +47,7 @@ function RecommendModal(props){
 
             <div className="recommend-text">
                 <div>
-                    Our search for the parameters returned no results.
+                    Hey! Our search with those parameters yielded no results.
                 </div>
                 
                 <div>

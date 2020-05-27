@@ -14,6 +14,13 @@ export const START_LOADING_FILTERED_CAFES = "START_LOADING_FILTERED_CAFES";
 export const START_LOADING_SINGLE_CAFE = "START_LOADING_SINGLE_CAFE";
 export const RECEIVE_CURR_CAFE = "RECEIVE_CURR_CAFE";
 export const STOP_LOADER = "STOP_LOADER";
+export const RECEIVE_CAFE_HOUR_CHOICES = "RECEIVE_CAFE_HOUR_CHOICES";
+
+export const receiveCafeHourChoices = cafes => ({
+
+    type: RECEIVE_CAFE_HOUR_CHOICES,
+    cafes
+})
 
 
 export const receiveCurrCafe = cafe => ({
@@ -64,7 +71,7 @@ export const startLoadingSingleCafe = () => ({
 
 export const fetchCafes = () => dispatch => (
   getCafes()
-    .then(cafes => dispatch(receiveCafes(cafes)))
+    .then(cafes => dispatch(receiveCafes(cafes.data)))
     .catch(err => console.log(err))
 );
 
@@ -84,7 +91,7 @@ export const fetchRecommended = (id) => dispatch => (
 
 export const fetchCafeByZipcode = zipcode => dispatch => (
   getCafeByZipcode(zipcode)
-    .then(cafes => dispatch(receiveCafes(cafes)))
+    .then(cafes => dispatch(receiveCafes(cafes.data)))
     .catch(err => console.log(err))
 );
 
@@ -95,11 +102,15 @@ export const fetchCafe = id => dispatch => (
 );
 
 
-export const fetchCafeByFilters = filters => dispatch => {
+export const fetchCafeByFilters = filters => (dispatch, getState) => {
     dispatch(startLoadingFilteredCafes());
 
+
+    const hourFilter = parseInt(getState().entities.filters.hours_opened_left)
+
     return getCafeByFilters(filters).then(cafes => {
-        dispatch(receiveCafes(cafes));
+        dispatch(receiveCafes(cafes.data["default"]));
+        dispatch(receiveCafeHourChoices(cafes.data));
         return cafes;
     })
 

@@ -7,10 +7,11 @@ import { RECEIVE_CAFES,
 
 const cafesReducer = (state = {}, action) => {
     Object.freeze(state);
+
     
     switch (action.type) {
         case RECEIVE_CAFES:
-            return action.cafes.data
+            return action.cafes
         case REROLL_CAFES:
             return action.cafes
         case RECEIVE_CAFE:

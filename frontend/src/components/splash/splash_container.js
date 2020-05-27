@@ -3,7 +3,7 @@ import { fetchCafeByFilters } from '../../actions/cafe_actions';
 import Splash from './splash';
 import { getFilters } from '../../actions/filter_actions';
 import {updatedUser} from '../../actions/updated_user_actions';
-
+import {closeModal} from '../../actions/modal_actions'
 const mSTP = state => ({
     cafes: state.entities.cafes,
     filters: state.entities.filters,
@@ -18,6 +18,7 @@ const mDTP = dispatch => {
       getUpdatedUser: (id) => dispatch(updatedUser(id)),
       fetchCafeByFilters: filters => dispatch(fetchCafeByFilters(filters)),
       getFilters: filters => dispatch(getFilters(filters)),
+      closeModal: () => dispatch(closeModal())
     };
   };
 

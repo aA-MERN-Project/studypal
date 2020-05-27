@@ -125,14 +125,21 @@ export const startLoadingFavoriteCafes = () => ({
     type: START_LOADING_FAVORITE_CAFES,
 });
 
-export const fetchFavorites = userId => dispatch => {
+export const fetchFavorites = userId => (dispatch, getState) => {
+
+
     dispatch(startLoadingFavoriteCafes());
+    let isLoggedIn = getState().session.isAuthenticated
     
-     return UserAPIUtil.getUser(userId)
-       .then((user) => {
-           dispatch(receiveFavorites(user.data.favorites))
-        })
-       .catch((err) => console.log(err));
+    if (isLoggedIn){
+        return UserAPIUtil.getUser(userId)
+            .then((user) => {
+                dispatch(receiveFavorites(user.data.favorites))
+            })
+            .catch((err) => console.log(err));
+    }
+    
+ 
     
 }
 

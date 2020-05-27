@@ -69,6 +69,8 @@ class Splash extends React.Component {
         this.props.getUpdatedUser(this.props.user._id);
       }
     }
+
+    this.props.closeModal();
     
   }
 

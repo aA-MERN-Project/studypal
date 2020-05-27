@@ -158,6 +158,8 @@ class Cafe extends React.Component {
           
         }
 
+       
+
     }
 
     componentDidUpdate(prevProps, prevState) {

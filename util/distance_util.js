@@ -23,6 +23,11 @@ const distance = (lat1, lon1, lat2, lon2, unit) => {
 
 const calculateDistance = (cafes, my_lat, my_lng) => {
 
+    if (!my_lat) {
+        my_lat = 37.79001;
+        my_lng = -122.41177;
+    }
+
     let addedDistance = cafes.map(cafe => {
         cafe.distance_away = distance(
             my_lat,

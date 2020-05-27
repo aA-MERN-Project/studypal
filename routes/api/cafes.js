@@ -7,6 +7,10 @@ const {
 } = require("../../util/filters_util")
 
 const {
+    applyDistFilter
+} = require("../../util/filters_util")
+
+const {
     calculateDistance
 } =  require("../../util/distance_util")
 
@@ -77,16 +81,16 @@ router.post("/filters", (req,res) => {
     let my_lng = req.body.my_lng;
 
 
-    // If no geolocation, and zipcode
+    // If zipcode
     if (filters.location_zip_code) {
 
         // Find random cafe with that zipcode, then use distance filter
         Cafe.find({})
           .then((cafes) => {
    
-            let cafesArr = JSON.parse(JSON.stringify(cafes));
+            const cafesArr = JSON.parse(JSON.stringify(cafes));
 
-            let midCafe = cafes.filter(
+            const midCafe = cafes.filter(
               (cafe) => cafe.location_zip_code === filters.location_zip_code
             )[0];
 
@@ -95,9 +99,12 @@ router.post("/filters", (req,res) => {
             my_lng = midCafe.coordinates_longitude;
 
 
-            let addDist = calculateDistance(cafesArr, my_lat, my_lng);
-            let filteredCafes = applyAllFilters(addDist, filters);
-            let timeFilteredCafes = applyTimeFilter(filteredCafes, filters);
+            const addDist = calculateDistance(cafesArr, my_lat, my_lng);
+            const filteredCafes = applyAllFilters(addDist, filters);
+            const distFilteredCafes = applyDistFilter(filteredCafes, filters);
+
+            const timeFilteredCafes = applyTimeFilter(distFilteredCafes, filters);
+
   
             res.json(timeFilteredCafes);
           })
@@ -110,14 +117,17 @@ router.post("/filters", (req,res) => {
         
     } else {
 
+              // If no geolocation, and zipcode
+
            Cafe.find({})
              .then((cafes) => {
-               let cafesArr = JSON.parse(JSON.stringify(cafes));
-               let addDist = calculateDistance(cafesArr, my_lat, my_lng);
-               let filteredCafes = applyAllFilters(addDist, filters);
-               let timeFilteredCafes = applyTimeFilter(filteredCafes, filters);
-               // let timeFilteredCafes = applyTimeFilter(filteredCafes, filters)
-               res.json(timeFilteredCafes);
+                let cafesArr = JSON.parse(JSON.stringify(cafes));
+                const addDist = calculateDistance(cafesArr, my_lat, my_lng);
+                const filteredCafes = applyAllFilters(addDist, filters);
+                const distFilteredCafes = applyDistFilter(filteredCafes, filters);
+                const timeFilteredCafes = applyTimeFilter(distFilteredCafes, filters);
+
+                res.json(timeFilteredCafes);
              })
              .catch((err) =>
                res
