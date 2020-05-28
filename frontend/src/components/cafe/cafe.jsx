@@ -303,7 +303,7 @@ class Cafe extends React.Component {
                       
                       <div className="address">
                         {display_address[0]}, {display_address[1]}
-                        <span><button className="yelp" id="pickAnother" onClick={this.handleClick}>Try another!</button></span>
+                        <span><div className="yelp" id="pickAnother" onClick={this.handleClick}>Try another!</div></span>
                       </div>
   
                       <div className="shelter">

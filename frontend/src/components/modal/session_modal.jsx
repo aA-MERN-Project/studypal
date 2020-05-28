@@ -198,9 +198,9 @@ class SessionModal extends React.Component {
                             <ul className="session-errors">{this.renderErrors()}</ul>
                         </div>
                         <div className="l-s-button-div">
-                            <button className="login-signup-button">
+                            <div className="login-signup-button">
                                 Login
-                            </button>
+                            </div>
                         </div>
                         <div className="modal-demo-login" onClick={() => { this.logClose() }}>
                             Demo Login
@@ -285,9 +285,9 @@ class SessionModal extends React.Component {
                                 <ul className="session-errors">{this.renderErrors()}</ul>
                             </div>
                             <div className="l-s-button-div">
-                                <button className="login-signup-button">
+                                <div className="login-signup-button">
                                     Sign Up
-                                </button>
+                                </div>
                             </div>
                         </form>
                     <div id="signup-pic-div" className="right-div-signup">

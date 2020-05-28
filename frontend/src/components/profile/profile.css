@@ -6,6 +6,10 @@
     height:100%;
 }
 
+.profile-buttons-div {
+    display: flex;
+}
+
 .within-select {
     display: flex;
     font-family: 'Open Sans';
@@ -227,6 +231,9 @@
     font-size: 16px;
     text-align: center;
     color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 
 .favorite-cafes {
@@ -390,10 +397,19 @@
     left: 90%;
     top: 2px;
     outline: none;
-    width:105px;
+    width:90px;
     padding-left:3px;
     padding-right:3px;
-    background-color:white;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: #ffffff;
+    border: BLACK 1px solid;
+    border-radius: 2px;
+    font-size: 13px;
+    color: gray;
+    font-weight: 900;
+    outline: none;
+    text-align: center;
 }
 
 .updateProfileButton:visited{
@@ -406,7 +422,7 @@
 
 .updateProfileButton:hover{
     font:11px;
-    font-weight:bolder;
+    /* font-weight:bolder; */
     color: #4169E1;
     background-color:#ffffff;
     cursor:pointer;
@@ -429,8 +445,21 @@
     position: relative;
     left: 90%;
     top: 2px;
+    padding-left:3px;
+    padding-right:3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: #ffffff;
+    border: BLACK 1px solid;
+    border-radius: 2px;
+    font-size: 13px;
+    color: gray;
+    font-weight: 900;
+    outline: none;
+    text-align: center;
     outline: none;
     width:50px;
+    margin-left: 10px;
 }
 
 .update-profile-close:hover{
@@ -497,7 +526,10 @@ button.update-profile-close:active{
     font-size: 16px;
     text-align: center;
     color: #FFFFFF;
-    margin-left: 4%
+    margin-left: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .favorite-cafe-profiles:hover {

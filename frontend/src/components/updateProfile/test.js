@@ -6,7 +6,6 @@ class Test extends React.Component {
     
     constructor(props) {
         super(props);
-        //  ;
         this.state = {
             id: this.props.user.id,
             handle: this.props.user.handle,
@@ -24,24 +23,12 @@ class Test extends React.Component {
         this.closeUpdate= this.closeUpdate.bind(this);
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        if(this.props.user.id){
-            this.props.updateProfileAct(this.props.user.id, this.state);
-        }else if(this.props.user._id){
-            this.props.updateProfileAct(this.props.user._id, this.state);
-        }
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
+    handleSubmit() {
         if(this.props.user.id){
             this.props.updateProfileAct(this.props.user.id, this.state);
         }else{
             this.props.updateProfileAct(this.props.user._id, this.state);
         }
-        // this.props.handler();        
-        // this.props.clearErrors();
         this.closeUpdate();
         this.props.handler();
     }
@@ -103,9 +90,10 @@ class Test extends React.Component {
                             <br />
                             <input className="update-input" type="text" placeholder="Change zipcode" value={this.state.zipcode} onChange={this.update("zipcode")}></input>
                             <br/>
-                            <button className="updateProfileButton">Update profile</button>
-                            &ensp;
-                            <button className="update-profile-close" onClick={() => this.closeUpdate()}>Close</button>
+                            <div className="profile-buttons-div">
+                                <div className="updateProfileButton" onClick={() => this.handleSubmit()}>Update profile</div>
+                                <div className="update-profile-close" onClick={() => this.closeUpdate()}>Close</div>
+                            </div>
                             <ul className="update-errors" onClick={this.closeUpdate}>{this.renderErrors()}</ul>
                         </form>
                         

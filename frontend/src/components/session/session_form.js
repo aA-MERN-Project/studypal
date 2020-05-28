@@ -146,9 +146,9 @@ class SessionForm extends React.Component {
                   <ul className="session-errors">{this.renderErrors()}</ul>
                 </div>
                 <div className="l-s-button-div">
-                  <button className="login-signup-button">
+                  <div className="login-signup-button">
                     {this.props.formType}
-                  </button>
+                  </div>
                 </div>
               </form>
                 <div className="nevermind">
@@ -238,9 +238,9 @@ class SessionForm extends React.Component {
                   <ul className="session-errors">{this.renderErrors()}</ul>
                 </div>
                 <div className="l-s-button-div">
-                  <button className="login-signup-button">
+                  <div className="login-signup-button">
                     {this.props.formType}
-                  </button>
+                  </div>
                 </div>
               </form>
               <div className="nevermind">
