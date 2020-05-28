@@ -147,17 +147,10 @@ class Retry extends React.Component {
             <b>Improve the results by:</b>
           </div>
           <ul id="looking-for-2">
-            <li id="firstLookForLi">Searching without a distance preference</li>
-            <li>Trying a different zipcode from San Francisco (94106, 94109, 94123)</li>
-            {/* <li>
-              Checking that your geolocation is{" "}
-              <span
-                className="click-rec-gray"
-                onClick={() => this.findCoordinates()}
-              >
-                working
-              </span>
-            </li> */}
+            <li id="firstLookForLi">Searching with different hours. Sometimes there are no cafes that remain open 
+              <br/>
+            for the next 5-8 hours, but there are cafes open for the next three!</li>
+            {/* <li>Trying a different zipcode from San Francisco (94106, 94109, 94123)</li> */}
           </ul>
 
           <div className="preferences">
