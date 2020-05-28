@@ -457,22 +457,22 @@ class Profile extends React.Component {
               </div>
             </div>
             <div className="find-cafe-profile-div">
-              <button
+              <div
                 onClick={this.updatePreferences}
                 className="find-cafe-profile"
               >
                 Find a Cafe
-              </button>
+              </div>
               <img
                 className="noun-espresso"
                 src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png"
               />
-              <button
+              <div
                 onClick={() => this.props.history.push(`/favorites`)}
                 className="favorite-cafe-profiles"
               >
                 Favorite Cafes
-              </button>
+              </div>
             </div>
           </div>
         );

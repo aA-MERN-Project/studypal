@@ -110,8 +110,8 @@ function LoadingPage(props) {
           </div>
             <img src={gif}></img>
 
-          <div>
-            <button
+          <div className="loading-b-div">
+            <div className="loading-yes"
               onClick={() => {
                 props.rerollCafes(cafeChoices[nextBestChoice]);
                 props.recommendLoader();
@@ -119,15 +119,15 @@ function LoadingPage(props) {
               }}
             >
               Let's do that
-            </button>
-            <button
+            </div>
+            <div className="loading-no"
               onClick={() => {
                 props.history.push(`/`);
                 props.closeModal();
               }}
             >
               Go back to homepage
-            </button>
+            </div>
           </div>
     
         </div>
