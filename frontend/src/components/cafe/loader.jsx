@@ -98,16 +98,19 @@ function LoadingPage(props) {
 
     const cafeBestChoice = (
       <div className="gifImgDiv">
-        <div className="recommend-text">
           <div>
-            We could not find cafes open for
-            {props.filters.hours_opened_left} hours
-            <br />
+            We could not find cafes open for&nbsp;{props.filters.hours_opened_left} hours
+          </div>
+          <div>
             However, we've found other cafes that are open for {
               nextBestChoice
             }{" "}
             hours.
-            <br />
+
+          </div>
+            <img src={gif}></img>
+
+          <div>
             <button
               onClick={() => {
                 props.rerollCafes(cafeChoices[nextBestChoice]);
@@ -115,7 +118,7 @@ function LoadingPage(props) {
                 props.closeModal();
               }}
             >
-              Take me there!
+              Let's do that
             </button>
             <button
               onClick={() => {
@@ -126,9 +129,10 @@ function LoadingPage(props) {
               Go back to homepage
             </button>
           </div>
+    
         </div>
-        <img src={gif}></img>
-      </div>
+      
+  
     );
 
     const recommendLoading = (

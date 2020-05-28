@@ -134,25 +134,51 @@ const applyTimeFilter = (cafes, filters) => {
   
     let cafeInEachTime = {};
     const hoursLeftFilter = (parseInt(filters.hours_opened_left) * 60);  // convert to military time!
+    // const defaultChoices = cafes.filter(cafe => {
+    //     if (filters.hours_opened_left === 0) return true; // retruns true if user doesn't care
+    //     if (cafe.hours) {
+
+    //         if (cafe.hours[0]) {
+    //             const hours = cafe.hours[0].open;
+    //             const today = new Date();
+    //             const n = today.getDay();
+    //             const currTime = (today.getHours() * 60) + today.getMinutes(); // military hours
+    //             const todaysHours = hours[n];
+    //             if (!todaysHours) return false;
+    //             const endTime = parseInt(todaysHours.end);
+    //             const startTime = parseInt(todaysHours.start);
+    //             if ( currTime < startTime ) return false;
+
+    //             const timeOpenLeft = (endTime * 0.60) - currTime;
+
+    //             // debugger
+    //             return ((0 < timeOpenLeft) && (timeOpenLeft > hoursLeftFilter));
+    //         }
+    //     } else {
+    //         return false;
+    //     }
+
+    // })
+
     const defaultChoices = cafes.filter(cafe => {
         if (filters.hours_opened_left === 0) return true; // retruns true if user doesn't care
         if (cafe.hours) {
 
             if (cafe.hours[0]) {
-                const hours = cafe.hours[0].open;
-                const today = new Date();
-                const n = today.getDay();
-                const currTime = (today.getHours() * 60) + today.getMinutes(); // military hours
-                const todaysHours = hours[n];
+                let hours = cafe.hours[0].open;
+                let today = new Date();
+                let n = today.getDay();
+
+                let currTime = today.getHours(); // retrives 0-23
+                let todaysHours = hours[n];
+
                 if (!todaysHours) return false;
-                const endTime = parseInt(todaysHours.end);
-                const startTime = parseInt(todaysHours.start);
-                if ( currTime < startTime ) return false;
 
-                const timeOpenLeft = (endTime * 0.60) - currTime;
+                let endTime = parseInt(todaysHours.end);
+                let timeOpenLeft = (endTime * 0.60) - ((currTime * 60) + today.getMinutes());
 
-                // debugger
-                return ((0 < timeOpenLeft) && (timeOpenLeft > hoursLeftFilter));
+
+                return ((0 < timeOpenLeft) && (timeOpenLeft > hoursLeftFilter * 60));
             }
         } else {
             return false;
@@ -198,7 +224,7 @@ const applyTimeFilter = (cafes, filters) => {
     }
 
     cafeInEachTime["default"] = defaultChoices
-
+    debugger
 
     // Returns array of all cafes corresponding to each hours
     return cafeInEachTime;

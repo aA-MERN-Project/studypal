@@ -109,8 +109,13 @@ export const fetchCafeByFilters = filters => (dispatch, getState) => {
     const hourFilter = parseInt(getState().entities.filters.hours_opened_left)
 
     return getCafeByFilters(filters).then(cafes => {
-        dispatch(receiveCafes(cafes.data["default"]));
-        dispatch(receiveCafeHourChoices(cafes.data));
+        if (Object.keys(cafes.data).length === 0){
+            dispatch(receiveCafes(cafes.data))
+        } else{
+            dispatch(receiveCafes(cafes.data["default"]));
+            dispatch(receiveCafeHourChoices(cafes.data));
+        }
+       
         return cafes;
     })
 

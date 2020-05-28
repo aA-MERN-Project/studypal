@@ -31,8 +31,27 @@
 .yes-no-box {
     display: flex;
     justify-content: space-between;
-    width: 50%;
+    width: 20%;
 }
+
+
+.gifImgDiv{
+    height: 100vh;
+    background: linear-gradient(180deg, #4169E1 0%, rgba(193, 65, 225, 0.3) 50%, rgba(193, 65, 225, 0.05) 100%);
+    font-family: "Open Sans";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.gifImgDiv img{
+    position: relative;
+    height: 140px;
+    // left: 45vw;
+    // top: 40vh;
+}
+
 
 .modal-gif {
     height:300px;

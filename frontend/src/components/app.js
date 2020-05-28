@@ -12,6 +12,7 @@ import Errors from './yelpErrors/errors_container';
 import {Switch, Route} from 'react-router-dom';
 import CrewPage from './team/team_page';
 import FavoritesContainer from './favorites/favorites_container'
+import LoadingPage from './cafe/loader_test'
 // import ReactDOM from "react-dom";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -26,6 +27,7 @@ const App = (props) => {
       {window.beforeunload = () => props.logout()}
       <Switch>
         <Route exact path="/retry" component={RetryContainer} />
+        <Route exact path="/loading" component={LoadingPage} />
         <Route exact path="/errors" component={Errors} />
         <Route exact path="/" component={SplashContainer} />
         <Route exact path="/crew" component={CrewPage}/>
