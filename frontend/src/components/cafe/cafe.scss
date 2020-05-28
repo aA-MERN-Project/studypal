@@ -139,19 +139,24 @@
     cursor: pointer;
 }
 
+.loading-b-div {
+    display: flex;
+}
+
 .loading-yes {
     position: relative;
     top: 14px;
     margin-bottom: 8px;
-    // width: 72px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 4px;
     background-color: #ffffff;
     border: none;
     border-radius: 5px;
     font-size: 13.5px;
     color: rgba(65, 105, 225, 0.8);
     outline: none;
+    text-align: center;
+    width: 147px;
+    
 }
 
 .loading-yes:hover {
@@ -164,9 +169,7 @@
     position: relative;
     top: 14px;
     margin-bottom: 8px;
-    // width: 72px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 4px;
     background-color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -174,6 +177,8 @@
     color: rgba(65, 105, 225, 0.8);
     outline: none;
     margin-left: 20px;
+    width: 147px;
+    text-align: center
 }
 
 .loading-no:hover {

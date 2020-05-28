@@ -112,7 +112,7 @@ function LoadingPage(props) {
           </div>
             <img src={gif}></img>
 
-            <div >
+            <div className="loading-b-div" >
                 <button className="loading-yes"
                     onClick={() => {
                         props.rerollCafes(cafeChoices[nextBestChoice]);
