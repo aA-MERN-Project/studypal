@@ -63,7 +63,6 @@ function LoadingPage(props) {
         if (cafeChoices[choice].length > 0 && choice > nextBestChoice) nextBestChoice = choice;
     }
 
-    debugger
 
     const noCafesAtAll = (
         <div className="gifImgDiv">
