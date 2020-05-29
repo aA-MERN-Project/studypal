@@ -75,18 +75,18 @@ function LoadingPage(props) {
 
             <img src={gif}></img>
 
-            <div className="yes-no-box">
+            <div className="loading-b-div">
                 <button
-                    className="yes-button"
+                    className="loading-yes"
                     onClick={() => {
                         props.fetchRecommended("5ecd46d2a18efe02cc5d14f2");
                         props.closeModal();
                     }}
                 >
                     Yes
-          </button>
+                </button>
                 <button
-                    className="yes-button"
+                    className="loading-no"
                     onClick={() => {
                         props.history.push(`/`);
                         props.closeModal();
@@ -153,14 +153,14 @@ function LoadingPage(props) {
 
     
 
-        <div>
-            {cafeBestChoice}
-        </div>
-
-
         // <div>
-        //     {noCafesAtAll}
+        //     {cafeBestChoice}
         // </div>
+
+
+        <div>
+            {noCafesAtAll}
+        </div>
 
     )
 
