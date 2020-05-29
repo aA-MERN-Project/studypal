@@ -264,11 +264,12 @@ class Cafe extends React.Component {
 
         
         const noPhoto = (
-          
+          <div className="cafePhotoContainer">
             <img
               className="photo"
               src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/sparephoto.png"
             ></img>
+          </div>
           
         );
 
