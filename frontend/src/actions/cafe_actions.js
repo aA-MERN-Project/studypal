@@ -111,6 +111,7 @@ export const fetchCafeByFilters = filters => (dispatch, getState) => {
     return getCafeByFilters(filters).then(cafes => {
         if (Object.keys(cafes.data).length === 0){
             dispatch(receiveCafes(cafes.data))
+            dispatch(receiveCafeHourChoices(cafes.data))
         } else{
             dispatch(receiveCafes(cafes.data["default"]));
             dispatch(receiveCafeHourChoices(cafes.data));
