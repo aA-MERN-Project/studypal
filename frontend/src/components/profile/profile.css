@@ -397,19 +397,23 @@
     left: 90%;
     top: 2px;
     outline: none;
-    width:90px;
+    width:110px;
     padding-left:3px;
     padding-right:3px;
     padding-top: 4px;
     padding-bottom: 4px;
     background-color: #ffffff;
-    border: BLACK 1px solid;
-    border-radius: 2px;
-    font-size: 13px;
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+    font-size: 12px;
     color: gray;
     font-weight: 900;
     outline: none;
     text-align: center;
+    color: rgba(65, 105, 225, 0.5);
+    border:rgba(65, 105, 225, 0.5) 2px solid;
+    /* font-family: 'Open Sans';
+    font-weight:bold; */
 }
 
 .updateProfileButton:visited{
@@ -426,6 +430,7 @@
     color: #4169E1;
     background-color:#ffffff;
     cursor:pointer;
+    font-weight:bold;
 
 }
 
@@ -435,7 +440,7 @@
     color: #4169E1;
     cursor:pointer;
     background-color:#fdfffc;
-    border-radius:5px; 
+    border-radius:3px; 
     border:1px solid rgba(51,51, 51, .3);
 }
 
@@ -450,9 +455,9 @@
     padding-top: 4px;
     padding-bottom: 4px;
     background-color: #ffffff;
-    border: BLACK 1px solid;
-    border-radius: 2px;
-    font-size: 13px;
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+    font-size: 12px;
     color: gray;
     font-weight: 900;
     outline: none;
@@ -460,6 +465,12 @@
     outline: none;
     width:50px;
     margin-left: 10px;
+    color: rgba(65, 105, 225, 0.5);
+    border: rgba(65, 105, 225, 0.5) 2px solid;
+
+    /* font-family: 'Open Sans';
+    font-weight:bold; */
+
 }
 
 .update-profile-close:hover{
@@ -476,7 +487,7 @@ button.update-profile-close:active{
     color: #4169E1;
     cursor:pointer;
     background-color:#fdfffc;
-    border-radius:5px; 
+    border-radius:3px; 
     border:1px solid rgba(51,51, 51, .3);
 }
 

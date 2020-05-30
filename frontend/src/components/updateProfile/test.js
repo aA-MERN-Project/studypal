@@ -91,8 +91,10 @@ class Test extends React.Component {
                             <input className="update-input" type="text" placeholder="Change zipcode" value={this.state.zipcode} onChange={this.update("zipcode")}></input>
                             <br/>
                             <div className="profile-buttons-div">
-                                <div className="updateProfileButton" onClick={() => this.handleSubmit()}>Update profile</div>
-                                <div className="update-profile-close" onClick={() => this.closeUpdate()}>Close</div>
+                                {/* <div className="updateProfileButton" onClick={() => this.handleSubmit()}><span id="testtest">Update profile</span></div>
+                                <div className="update-profile-close" onClick={() => this.closeUpdate()}>Close</div> */}
+                                <button className="updateProfileButton" onClick={() => this.handleSubmit()}>Update profile</button>
+                                <button className="update-profile-close" onClick={() => this.closeUpdate()}>Close</button>
                             </div>
                             <ul className="update-errors" onClick={this.closeUpdate}>{this.renderErrors()}</ul>
                         </form>
