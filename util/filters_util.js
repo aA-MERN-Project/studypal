@@ -160,7 +160,7 @@ const applyTimeFilter = (cafes, filters) => {
 
     // })
 
-    debugger
+    // debugger
 
 
     const timeChoices = [0, 1, 2, 3, 5, 8];
@@ -200,7 +200,7 @@ const applyTimeFilter = (cafes, filters) => {
     }
 
     cafeInEachTime["default"] = cafeInEachTime[filters.hours_opened_left]
-    debugger
+    // debugger
 
     // Returns array of all cafes corresponding to each hours
     return cafeInEachTime;

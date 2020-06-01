@@ -81,7 +81,7 @@ export const fetchRecommended = (id) => dispatch => (
         .then(fave => {
             let cafeArr = fave.data.favorites
 
-            debugger
+            // debugger
             dispatch(rerollCafes(cafeArr))
             dispatch(recommendLoader())
         })

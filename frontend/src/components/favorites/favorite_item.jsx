@@ -70,7 +70,7 @@ class FavItem extends React.Component {
         this.props.getFilters({ miles_away: "fakeData" });
         this.props.history.push("/cafe");
 
-        debugger
+        // debugger
     }
 
    

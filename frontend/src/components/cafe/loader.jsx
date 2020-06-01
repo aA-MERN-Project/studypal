@@ -111,7 +111,7 @@ function LoadingPage(props) {
             <img src={gif}></img>
 
           <div className="loading-b-div">
-            <div className="loading-yes"
+            <button className="loading-yes"
               onClick={() => {
                 props.rerollCafes(cafeChoices[nextBestChoice]);
                 props.recommendLoader();
@@ -119,7 +119,7 @@ function LoadingPage(props) {
               }}
             >
               Let's do that
-            </div>
+            </button>
             <div className="loading-no"
               onClick={() => {
                 props.history.push(`/`);

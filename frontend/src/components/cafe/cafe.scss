@@ -142,20 +142,27 @@
 .loading-b-div {
     display: flex;
 }
+.gifImgDiv{
+    font-size:22px;
+    line-height:1.2;
+    
+}
 
 .loading-yes {
     position: relative;
     top: 14px;
     margin-bottom: 8px;
-    padding: 4px;
+    padding: 10px 4px;
+    padding-top:12px;
     background-color: #ffffff;
     border: none;
     border-radius: 5px;
-    font-size: 13.5px;
+    font: 17px 'Open Sans';
     color: rgba(65, 105, 225, 0.8);
     outline: none;
     text-align: center;
-    width: 147px;
+    box-sizing:border-box;
+    width: 210px;
     
 }
 
@@ -169,15 +176,17 @@
     position: relative;
     top: 14px;
     margin-bottom: 8px;
-    padding: 4px;
+    padding: 10px 4px;
+    padding-top:13px;
     background-color: #ffffff;
     border: none;
     border-radius: 5px;
-    font-size: 13.5px;
+    font-size:17px;
     color: rgba(65, 105, 225, 0.8);
     outline: none;
     margin-left: 20px;
-    width: 147px;
+    box-sizing:border-box;
+    width:210px;
     text-align: center
 }
 
