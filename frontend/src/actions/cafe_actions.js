@@ -69,9 +69,13 @@ export const startLoadingSingleCafe = () => ({
 
 });
 
+// unused
 export const fetchCafes = () => dispatch => (
   getCafes()
-    .then(cafes => dispatch(receiveCafes(cafes.data)))
+    .then(cafes => {
+        console.log(cafes)
+        dispatch(receiveCafes(cafes.data))
+    })
     .catch(err => console.log(err))
 );
 
@@ -79,9 +83,9 @@ export const fetchCafes = () => dispatch => (
 export const fetchRecommended = (id) => dispatch => (
     getFavorites(id)
         .then(fave => {
+            debugger
             let cafeArr = fave.data.favorites
 
-            // debugger
             dispatch(rerollCafes(cafeArr))
             dispatch(recommendLoader())
         })

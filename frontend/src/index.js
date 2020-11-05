@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import axios from 'axios';
+// import App from './App';
+// import axios from 'axios';
 import Root from "./components/root";
 import configureStore from './store/store';
 import './index.css';
 import jwt_decode from 'jwt-decode';
 import {setAuthToken} from './util/session_api_util';
 import {logout} from './actions/session_actions';
-import {updateProfile, getUser} from './util/user_api_util';
+// import {updateProfile, getUser} from './util/user_api_util';
 
 document.addEventListener("DOMContentLoaded", () => {
     let store;

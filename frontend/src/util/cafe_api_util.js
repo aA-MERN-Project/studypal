@@ -1,12 +1,12 @@
 import axios from 'axios';
 
+// unused
 export const getCafes = () => {
     return axios.get('/api/cafes')
 };
 
 export const getCafe = id => {
     return axios.get(`/api/cafes/${id}`);
-
 };
 
 export const getYelpCafeById = id => {

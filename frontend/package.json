@@ -10,6 +10,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "axios-mock-adapter": "^1.19.0",
     "jquery": "^3.5.0",
     "jwt-decode": "^2.2.0",
     "node-sass": "^4.13.1",
@@ -24,6 +25,7 @@
     "react-transition-group": "^4.3.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.4",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "yelp-fusion": "^3.0.0"
