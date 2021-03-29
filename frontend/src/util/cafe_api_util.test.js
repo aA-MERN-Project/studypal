@@ -60,5 +60,21 @@ describe('this tests 2 util functions in cafe_api_util', () => {
                 })
         )
     });
+
+    // to test store actions, do
+    // return store.dispatch(loadActions.receiveQuestion())
+    // then(() => {
+    //             let expectedActions = [
+    //                 {
+    //                     load: {
+    //                            "question": "A group of tigers are referred to as:",
+    //                             "incorrect": ["Chowder", "Pride", "Destruction"],
+    //                             "correct": "Ambush"
+    //                         },
+    //                         type: 'RECEIVE_LOAD', 
+    //                 }
+    //             ]
+    //             expect(store.getActions()).toEqual(expectedActions)
+    //         })
 })
 

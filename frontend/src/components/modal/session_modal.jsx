@@ -156,7 +156,7 @@ class SessionModal extends React.Component {
                     <img
                         id="signup-pic2"
                         src={
-                            "https://studypal-dev.s3-us-west-1.amazonaws.com/new_top_left.png"
+                            "https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/new_top_left.png"
                         }
                     />
                 </div>
@@ -294,7 +294,7 @@ class SessionModal extends React.Component {
                         <img
                             id="signup-pic"
                             src={
-                                "https://studypal-dev.s3-us-west-1.amazonaws.com/top-right.png"
+                                "https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/top-right.png"
                             }
                         />
                     </div>

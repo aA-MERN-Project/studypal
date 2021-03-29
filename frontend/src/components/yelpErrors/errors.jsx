@@ -24,7 +24,7 @@ class Errors extends React.Component {
           <div id="yellow">Something went wrong on our end</div>
           <div id="yellow2">Please go back and try again</div>
           <div id="doggos">
-            <img id="study-img" src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/study_dog.png"></img>
+            <img id="study-img" src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/study_dog.png"></img>
 
             {/* <div id="doggos-2">Meet Thomas & Jones</div> */}
 

@@ -28,7 +28,7 @@ class ShowMap extends React.Component {
     this.map = new google.maps.Map(this.mapNode, mapOptions);
 
     let icon = {
-      url: "https://studypal-dev.s3-us-west-1.amazonaws.com/Coffee_3.png", // url
+      url: "https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/Coffee_3.png", // url
       scaledSize: new google.maps.Size(70,70),
       target: "_blank" // scaled size
     };

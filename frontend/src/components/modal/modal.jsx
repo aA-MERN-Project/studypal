@@ -222,7 +222,7 @@ function Modal(props){
 
     const turnOnLocationModal = (
       <div className="location-modal" onClick={(e) => e.stopPropagation()}>
-        <img className="doggo-modal" src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/study_dog.png"/>
+        <img className="doggo-modal" src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/study_dog.png"/>
         <br/>
         <div className="noLocatText">
           <h1 >Hey there! We can't find your location.</h1>

@@ -26,8 +26,6 @@ class Cafe extends React.Component {
             isFavoriteClicked: false
         }
 
-
-
         this.handleClick = this.handleClick.bind(this);
         this.reRoll = this.reRoll.bind(this);
         this.calculateDistance = this.calculateDistance.bind(this);
@@ -267,7 +265,7 @@ class Cafe extends React.Component {
           <div className="cafePhotoContainer">
             <img
               className="photo"
-              src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/sparephoto.png"
+              src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/sparephoto.png"
             ></img>
           </div>
           

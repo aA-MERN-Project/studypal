@@ -82,28 +82,28 @@ body
 
 .andyPicDiv{
     width:100%;
-    background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/AndyProfile2.jpg');
+    background-image: url('https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/AndyProfile2.jpeg');
     background-size:cover;
     height:300px;
 }
 
 .wilsonPicDiv{
     width:100%;
-    background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/wilson.jpeg');
+    background-image: url('https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/wilson.jpeg');
     background-size:cover;
     height:300px;
 }
 
 .feiPicDiv{
     width:100%;
-    background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/fei.jpg');
+    background-image: url('https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/fei.jpeg');
     background-size:cover;
     height:300px;
 }
 
 .joannaPicDiv{
     width:100%;
-    background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/JoannaPic.jpg');
+    background-image: url('https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/JoannaPic.jpeg');
     background-size:cover;
     height:300px;
 }
@@ -261,28 +261,28 @@ body
         
         .andyPicDiv{
             width:100%;
-            background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/AndyProfile2.jpg');
+            background-image: url('https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/AndyProfile2.jpeg');
             background-size:cover;
             height:300px;
         }
         
         .wilsonPicDiv{
             width:100%;
-            background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/wilson.jpeg');
+            background-image: url('https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/wilson.jpeg');
             background-size:cover;
             height:300px;
         }
         
         .feiPicDiv{
             width:100%;
-            background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/fei.jpg');
+            background-image: url('https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/fei.jpeg');
             background-size:cover;
             height:300px;
         }
         
         .joannaPicDiv{
             width:100%;
-            background-image: url('https://studypal-dev.s3-us-west-1.amazonaws.com/JoannaPic.jpg');
+            background-image: url('https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/JoannaPic.jpeg');
             background-size:cover;
             height:300px;
         }

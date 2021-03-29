@@ -104,7 +104,7 @@ class Test extends React.Component {
             )
         }else{
             return(
-                <img className="updateProfileImg" src="https://studypal-dev.s3-us-west-1.amazonaws.com/edit.png" onClick={this.openUpdate}/>
+                <img className="updateProfileImg" src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/edit.png" onClick={this.openUpdate}/>
             )   
         }
     

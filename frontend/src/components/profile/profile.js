@@ -234,7 +234,7 @@ class Profile extends React.Component {
                     <img
                       className="coffee-img"
                       src={
-                        "https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"
+                        "https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/coffee.png"
                       }
                     />
                     <div className="only-profile-info">
@@ -465,7 +465,7 @@ class Profile extends React.Component {
               </div>
               <img
                 className="noun-espresso"
-                src="https://studypal-dev.s3-us-west-1.amazonaws.com/noun_espresso.png"
+                src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/noun_espresso.png"
               />
               <div
                 onClick={() => this.props.history.push(`/favorites`)}

@@ -53,7 +53,7 @@ class NavBar extends React.Component {
                 <div className="vertical-line-navbar"></div>
                     &emsp;
                 <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
-                  <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"/>
+                  <img className="gitIconLink" alt="studypal github repo" src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/white-github.png"/>
                 </a>
               </div>
           );
@@ -92,7 +92,7 @@ class NavBar extends React.Component {
                 <img
                   className="gitIconLink"
                   alt="studypal github repo"
-                  src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"
+                  src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/white-github.png"
                 />
               </a>
               {/* &emsp; */}
@@ -114,7 +114,7 @@ class NavBar extends React.Component {
                 </button>
                 <div className="vertical-line-navbar"></div>
                     <a target="_blank" className="gitIconLink" href="https://github.com/aA-MERN-Project/studypal" >    
-                    <img className="gitIconLink" alt="studypal github repo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"/>
+                    <img className="gitIconLink" alt="studypal github repo" src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/white-github.png"/>
                     </a>
               </div>
             );
@@ -143,7 +143,7 @@ class NavBar extends React.Component {
                 <img
                   className="gitIconLink"
                   alt="studypal github repo"
-                  src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"
+                  src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/white-github.png"
                 />
               </a>
             </div>
@@ -169,7 +169,7 @@ class NavBar extends React.Component {
                        <img
                          className="gitIconLink"
                          alt="studypal github repo"
-                         src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"
+                         src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/white-github.png"
                        />
                      </a>
                    </div>
@@ -199,7 +199,7 @@ class NavBar extends React.Component {
               <img
                 className="gitIconLink"
                 alt="studypal github repo"
-                src="https://studypal-dev.s3-us-west-1.amazonaws.com/white-github.png"
+                src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/white-github.png"
               />
             </a>
           </div>
@@ -216,7 +216,7 @@ class NavBar extends React.Component {
                     <Link className="logo" to="/">
                       <span className="logoText">Studypal&nbsp;&nbsp;</span> 
                       <span className="coffeeImgLogo">
-                          <img className="coffeeImgLogo" src="https://studypal-dev.s3-us-west-1.amazonaws.com/coffee.png"/>
+                          <img className="coffeeImgLogo" src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/coffee.png"/>
                       </span>
                     </Link>
                     

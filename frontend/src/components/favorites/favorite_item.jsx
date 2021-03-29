@@ -125,7 +125,7 @@ class FavItem extends React.Component {
                     ) : (
                             <img
                                 className="fav-cafe-img"
-                                src="https://stockhome-app-seeds.s3-us-west-1.amazonaws.com/sparephoto.png"
+                                src="https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/sparephoto.png"
                             ></img>
                         )}
                 </div>

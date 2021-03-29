@@ -107,7 +107,7 @@ class SessionForm extends React.Component {
               <img
                 className="top-left"
                 src={
-                  "https://studypal-dev.s3-us-west-1.amazonaws.com/top-left.png"
+                  "https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/top-left.png"
                 }
               />
             </div>
@@ -256,7 +256,7 @@ class SessionForm extends React.Component {
               <img
                 className="top-right"
                 src={
-                  "https://studypal-dev.s3-us-west-1.amazonaws.com/top-right.png"
+                  "https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/top-right.png"
                 }
               />
             </div>
