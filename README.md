@@ -194,3 +194,6 @@ Utilized Express.js to create a filtered search of cafes with parameters coming 
    //zipcode from updated user
      
 ```
+
+## Set up
+* npm run dev
