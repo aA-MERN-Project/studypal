@@ -77,9 +77,9 @@ function Carousel(props) {
     photos = props.photos;
   } else {
     photos = [
-      "https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png",
-      "https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png",
-      "https://studypal-dev.s3-us-west-1.amazonaws.com/no-imgs.png",
+      "https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/sparephoto.png",
+      "https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/sparephoto.png",
+      "https://segmed-dev.s3-us-west-1.amazonaws.com/studypal/sparephoto.png",
     ];
   }
 
