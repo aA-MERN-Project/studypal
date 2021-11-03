@@ -46,7 +46,7 @@
     "react-geolocated": "^3.0.1",
     "react-google-maps": "^9.4.5",
     "react-onclickoutside": "^6.9.0",
-    "validator": "^12.2.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
