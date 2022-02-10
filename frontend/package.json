@@ -13,7 +13,7 @@
     "axios-mock-adapter": "^1.19.0",
     "jquery": "^3.5.0",
     "jwt-decode": "^2.2.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.13.0",
